@@ -28,6 +28,7 @@ router.get('/', async(req, res) => {
     const value_2 = search_params.get('value_2');
     const value_3 = search_params.get('value_3');
     try{
+        // Upload data to firestore
         await db.collection('motif')
             .doc(id)
             .set({
