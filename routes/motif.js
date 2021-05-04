@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const fire = require("./fire");
+const db = fire.firestore();
 const url = require('url');
 
 // Function to get full url
@@ -10,16 +12,32 @@ function fullUrl(req){
         pathname: req.url
     });
 }
-/* GET motif name*/
-router.get('/', function(req, res, next) {
+/* GET motif name and task ID*/
+router.get('/', async(req, res) => {
     // Save decoded url to variable
-    var url = decodeURIComponent(fullUrl(req));
+    const url = decodeURIComponent(fullUrl(req));
     // Search parameter from URL
     const current_url = new URL(url);
-    var search_params = current_url.searchParams;
+    const search_params = current_url.searchParams;
     const id = search_params.get('id');
-    // Return id from URL parameter
-    res.send(id);
-});
+    // Search for file with given id in collection
+    const allData = []
+    try {
+        await db.collection('motif')
+            // Search document based on unique ID of the classification task
+            .doc(id)
+            // Get the value inside that document
+            .get()
+            // Store the value on allData[]
+            .then((value) => {
+                allData.push(value.data())
+            })
+        // Response with motif and unique ID
+        res.json(allData[0])
+    }catch (e) {
+        res.send("ID not found")
+    }
+        });
+
 
 module.exports = router;
