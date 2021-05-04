@@ -39,16 +39,16 @@
     <string name="account_gender">Jenis Kelamin</string>
     <string name="account_date">Tanggal Lahir</string>
     <string name="save">Simpan</string>
-    <string name="account_password">Password</string>
-    <string name="account_confirm_password">Konfirmasi Password</string>
+    <string name="account_password">Kata Sandi</string>
+    <string name="account_confirm_password">Konfirmasi Kata Sandi</string>
     <string name="settings">Pengaturan</string>
     <string name="change_password">Umpan Password</string>
     <string name="log_out">Keluar</string>
     <string name="log_in">Masuk</string>
     <string name="sign_up">Daftar</string>
-    <string name="log_in_txt">Log in to your accounts</string>
-    <string name="sign_up_txt">Sign Up to your accounts</string>
-    <string name="another_register">or log in with</string>
-    <string name="not_login">Don’t have an account?</string>
-    <string name="not_sign_up">Already have an account?</string>
+    <string name="log_in_txt">Login Ke Akunmu</string>
+    <string name="sign_up_txt">Daftarkan Akunmu</string>
+    <string name="another_register">atau login dengan</string>
+    <string name="not_login">Tidak mempunyai akun?</string>
+    <string name="not_sign_up">Sudah mempunyai akun?</string>
 </resources>
