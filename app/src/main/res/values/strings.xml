@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">Naratik</string>
+
+    <string name="batik">Batik</string>
+    <string name="article">Article</string>
+    <string name="title_on_boarding_1">EASY TO USE</string>
+    <string name="title_on_boarding_2">EXPLORE BATIK</string>
+    <string name="title_on_boarding_3">BATIK DETECTION</string>
+    <string name="on_boarding_1">Easy to use this application for find about indonesian batik</string>
+    <string name="on_boarding_2">Explore all batik motif and add more your knowledge about that</string>
+    <string name="on_boarding_3">Using your camera you can check and explore about batik</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="favorite">Favorite</string>
+    <string name="explore_batik">Explore Batik</string>
+    <string name="search">Search</string>
+    <string name="show_all">show all</string>
+    <string name="batik_name">Name</string>
+    <string name="batik_id"># %d</string>
+    <string name="batik_location">Location</string>
+    <string name="batik_meaning">Meaning</string>
+    <string name="article_date">Date</string>
+    <string name="article_title">Title</string>
+    <string name="article_contributor">Contributor</string>
+    <string name="view_more">View More</string>
+    <string name="read_more">Read More</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="batik_detection">Batik Detection</string>
+    <string name="history">History</string>
+    <string name="result">Result</string>
+    <string name="written_batik">Written Batik</string>
+    <string name="printed_batik">Printed Batik</string>
+    <string name="motifs_similarity">Motifs Similarity</string>
+    <string name="feedback">feedback</string>
+    <string name="account_name">Name</string>
+    <string name="account_email">Email</string>
+    <string name="account_phone">Phone</string>
+    <string name="account_gender">Gender</string>
+    <string name="account_date">Date Of Birth</string>
+    <string name="save">Save</string>
+    <string name="account_password">Password</string>
+    <string name="account_confirm_password">Confirm Password</string>
+    <string name="settings">Settings</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Log Out</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in_txt">Log in to your accounts</string>
+    <string name="sign_up_txt">Sign Up to your accounts</string>
+    <string name="another_register">or log in with</string>
+    <string name="not_login">Don’t have an account?</string>
+    <string name="not_sign_up">Already have an account?</string>
+
+
 </resources>

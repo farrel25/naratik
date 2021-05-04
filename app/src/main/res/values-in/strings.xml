@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Naratik</string>
+
+    <string name="batik">Batik</string>
+    <string name="article">Artikel</string>
+    <string name="title_on_boarding_1">MUDAH DIGUNAKAN</string>
+    <string name="title_on_boarding_2">JELAJAHI BATIK</string>
+    <string name="title_on_boarding_3">DETEKSI BATIK</string>
+    <string name="on_boarding_1">Easy to use this application for find about indonesian batik</string>
+    <string name="on_boarding_2">Explore all batik motif and add more your knowledge about that</string>
+    <string name="on_boarding_3">Using your camera you can check and explore about batik</string>
+    <string name="skip">Lewati</string>
+    <string name="next">Lanjut</string>
+    <string name="favorite">Favorit</string>
+    <string name="search">Pencarian</string>
+    <string name="show_all">semua</string>
+    <string name="batik_name">Nama</string>
+    <string name="batik_id"># %d</string>
+    <string name="batik_location">Lokasi</string>
+    <string name="batik_meaning">Arti</string>
+    <string name="article_date">Tangal</string>
+    <string name="article_title">Judul</string>
+    <string name="article_contributor">Kontributor</string>
+    <string name="view_more">Lihat Lainya</string>
+    <string name="read_more">Baca selanjutnya</string>
+    <string name="sort">Urutkan</string>
+    <string name="filter">Saring</string>
+    <string name="batik_detection">Deteksi Batik</string>
+    <string name="history">Sejarah</string>
+    <string name="result">Hasil</string>
+    <string name="written_batik">Batik Tulis</string>
+    <string name="printed_batik">Batik Cetak</string>
+    <string name="motifs_similarity">Kesamaan Motif</string>
+    <string name="feedback">Umpan Balik</string>
+    <string name="account_name">Name</string>
+    <string name="account_email">Email</string>
+    <string name="account_phone">Telepon</string>
+    <string name="account_gender">Jenis Kelamin</string>
+    <string name="account_date">Tanggal Lahir</string>
+    <string name="save">Simpan</string>
+    <string name="account_password">Password</string>
+    <string name="account_confirm_password">Konfirmasi Password</string>
+    <string name="settings">Pengaturan</string>
+    <string name="change_password">Umpan Password</string>
+    <string name="log_out">Keluar</string>
+    <string name="log_in">Masuk</string>
+    <string name="sign_up">Daftar</string>
+    <string name="log_in_txt">Log in to your accounts</string>
+    <string name="sign_up_txt">Sign Up to your accounts</string>
+    <string name="another_register">or log in with</string>
+    <string name="not_login">Don’t have an account?</string>
+    <string name="not_sign_up">Already have an account?</string>
+</resources>
