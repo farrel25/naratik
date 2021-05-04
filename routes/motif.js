@@ -14,7 +14,7 @@ function fullUrl(req){
 }
 /* GET motif name and task ID*/
 router.get('/', async(req, res) => {
-    // Save decoded url to variable
+    // Save decoded url to variable ( http://host/motif?id=xxxxxxxxxxxxx )
     const url = decodeURIComponent(fullUrl(req));
     // Search parameter from URL
     const current_url = new URL(url);
