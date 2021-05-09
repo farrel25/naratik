@@ -52,4 +52,7 @@
     <string name="another_register">atau login dengan</string>
     <string name="not_login">Tidak mempunyai akun?</string>
     <string name="not_sign_up">Sudah mempunyai akun?</string>
+    <string name="home">beranda</string>
+    <string name="camera">kamera</string>
+    <string name="account">akun</string>
 </resources>
