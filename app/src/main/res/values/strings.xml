@@ -12,7 +12,7 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="favorite">Favorite</string>
-    <string name="explore_batik">Explore Batik</string>
+    <string name="explore_batik">EXPLORE BATIK</string>
     <string name="search">Search</string>
     <string name="show_all">show all</string>
     <string name="batik_name">Name</string>
@@ -51,9 +51,10 @@
     <string name="another_register">or log in with</string>
     <string name="not_login">Don’t have an account?</string>
     <string name="not_sign_up">Already have an account?</string>
-    <string name="home">home</string>
+    <string name="home">Home</string>
     <string name="camera">camera</string>
     <string name="account">account</string>
+    <string name="splash_screen">splashscreen</string>
 
 
 </resources>

@@ -1,16 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Naratik" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Naratik" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grey_200</item>
+        <item name="colorPrimary">@color/grey_100</item>
         <item name="colorPrimaryVariant">@color/grey_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/yellow_500</item>
         <item name="colorSecondaryVariant">@color/red</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground"> @color/grey_100</item>
     </style>
@@ -19,21 +17,29 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_24sp">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
     <style name="text_16sp_bold">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="text_16sp_regular">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -41,6 +47,7 @@
     <style name="text_12sp_regular">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
     </style>
@@ -49,12 +56,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textSize">10sp</item>
     </style>
 
     <style name="text_10sp_regular">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">10sp</item>
     </style>

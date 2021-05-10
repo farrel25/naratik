@@ -18,7 +18,11 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomBar)
+        setSupportActionBar(binding.homeToolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        supportActionBar?.title = resources.getString(R.string.home)
+
+        val bottomNav = binding.bottomBar
         bottomNav.setOnNavigationItemSelectedListener(navListener)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(
@@ -26,7 +30,6 @@ class HomeActivity : AppCompatActivity() {
                 ExploreFragment()
             ).commit()
         }
-
     }
 
     private val navListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

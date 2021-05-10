@@ -12,7 +12,7 @@
     <string name="on_boarding_3">Using your camera you can check and explore about batik</string>
     <string name="skip">Lewati</string>
     <string name="next">Lanjut</string>
-    <string name="explore_batik">Jelajahi Batik</string>
+    <string name="explore_batik">JELAJAHI BATIK</string>
     <string name="favorite">Favorit</string>
     <string name="search">Pencarian</string>
     <string name="show_all">semua</string>
@@ -52,7 +52,8 @@
     <string name="another_register">atau login dengan</string>
     <string name="not_login">Tidak mempunyai akun?</string>
     <string name="not_sign_up">Sudah mempunyai akun?</string>
-    <string name="home">beranda</string>
+    <string name="home">Beranda</string>
     <string name="camera">kamera</string>
     <string name="account">akun</string>
+    <string name="splash_screen">splashscreen</string>
 </resources>

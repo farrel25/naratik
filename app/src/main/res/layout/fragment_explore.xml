@@ -4,15 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.home.homefragment.ExploreFragment">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtExploreBatik"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:letterSpacing="0.05"
+        android:shadowColor="@color/grey_200"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
+        android:text="@string/explore_batik"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_white_rounded"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtExploreBatik"
+        app:layout_constraintTop_toBottomOf="@+id/txtExploreBatik"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/txtBatik"
+        style="@style/text_24sp_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/batik"
+        app:layout_constraintStart_toStartOf="@+id/etSearch"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+    <TextView
+        android:id="@+id/txtArticle"
+        style="@style/text_24sp_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/article"
+        app:layout_constraintStart_toStartOf="@+id/rvBatik"
+        app:layout_constraintTop_toBottomOf="@+id/rvBatik" />
+
+    <Button
+        android:id="@+id/btnShowAllBatik"
+        style="@style/text_12sp_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:backgroundTint="@color/yellow_500"
+        android:includeFontPadding="false"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:stateListAnimator="@null"
+        android:text="@string/show_all"
+        android:textAllCaps="false"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtBatik"
+        app:layout_constraintEnd_toEndOf="@+id/etSearch"
+        app:layout_constraintTop_toTopOf="@+id/txtBatik" />
+
+    <Button
+        android:id="@+id/btnShowAllArticle"
+        style="@style/text_12sp_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:backgroundTint="@color/yellow_500"
+        android:includeFontPadding="false"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:stateListAnimator="@null"
+        android:text="@string/show_all"
+        android:textAllCaps="false"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtArticle"
+        app:layout_constraintEnd_toEndOf="@+id/rvBatik"
+        app:layout_constraintTop_toTopOf="@+id/txtArticle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvArticle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnShowAllArticle"
+        app:layout_constraintStart_toStartOf="@+id/txtArticle"
+        app:layout_constraintTop_toBottomOf="@+id/txtArticle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBatik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtBatik"
+        tools:layout_editor_absoluteX="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
