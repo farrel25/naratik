@@ -25,30 +25,19 @@ const db = fire.firestore();
  */
 
 router.post('/', async (req,res)=>{
-    const predictionResult = req.body
+    const {id,motif1,motif2,motif3} = req.body
 
     try{
         // Upload data to firestore
         await db.collection('motif')
-            .doc(predictionResult.id)
-            .set({
-                "motif1":{
-                    "motifName": predictionResult.motif1.motifName,
-                    "value": predictionResult.motif1.value
-                },
-                "motif2":{
-                    "motifName": predictionResult.motif2.motifName,
-                    "value": predictionResult.motif2.value
-                },
-                "motif3":{
-                    "motifName": predictionResult.motif3.motifName,
-                    "value": predictionResult.motif3.value
-                }
+            .doc(id)
+            .set(
+                {
+                    motif1,
+                    motif2,
+                    motif3
             })
-            .then(()=>{
-                res.send(predictionResult)
-
-            })
+        res.send(predictionResult)
     }catch (e) {
         res.send("Upload Fail")
     }
