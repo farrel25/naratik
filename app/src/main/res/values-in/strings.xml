@@ -56,4 +56,5 @@
     <string name="camera">kamera</string>
     <string name="account">akun</string>
     <string name="splash_screen">splashscreen</string>
+    <string name="image">image</string>
 </resources>

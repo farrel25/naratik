@@ -6,6 +6,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.b21cap0051.naratik.databinding.ActivitySplashBinding
 import com.b21cap0051.naratik.ui.home.HomeActivity
+import com.b21cap0051.naratik.ui.onboarding.OnBoardingActivity
 
 
 class SplashActivity : AppCompatActivity() {
@@ -16,10 +17,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler(mainLooper).postDelayed({
-            val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+            val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }, 1000)
 
     }
 }
