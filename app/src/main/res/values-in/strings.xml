@@ -21,6 +21,8 @@
     <string name="batik_location">Lokasi</string>
     <string name="batik_meaning">Arti</string>
     <string name="article_date">Tangal</string>
+    <string name="article_id">Id</string>
+    <string name="article_overview">Overview</string>
     <string name="article_title">Judul</string>
     <string name="article_contributor">Kontributor</string>
     <string name="view_more">Lihat Lainya</string>
@@ -59,4 +61,5 @@
     <string name="image">image</string>
     <string name="title">Judul</string>
     <string name="button">button</string>
+    <string name="writer">dari %s</string>
 </resources>

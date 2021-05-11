@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
-import com.b21cap0051.naratik.model.ModelOnBoarding
+import com.b21cap0051.naratik.model.OnBoardingModel
 
-class OnBoardingItemAdapter(private var modelOnBoarding: List<ModelOnBoarding>) :
+class OnBoardingItemAdapter(private var onBoardingModel: List<OnBoardingModel>) :
     RecyclerView.Adapter<OnBoardingItemAdapter.OnBoardingItemViewHolder>() {
 
 
@@ -18,10 +18,10 @@ class OnBoardingItemAdapter(private var modelOnBoarding: List<ModelOnBoarding>) 
         private val titleOnBoard : TextView = view.findViewById(R.id.tvTitleOnBoard)
         private val overviewOnBoard : TextView = view.findViewById(R.id.tvOverviewOnBoard)
 
-        fun bind(modelOnBoarding: ModelOnBoarding){
-            imgOnBoard.setImageResource(modelOnBoarding.images)
-            titleOnBoard.text = modelOnBoarding.title
-            overviewOnBoard.text = modelOnBoarding.overview
+        fun bind(onBoardingModel: OnBoardingModel){
+            imgOnBoard.setImageResource(onBoardingModel.images)
+            titleOnBoard.text = onBoardingModel.title
+            overviewOnBoard.text = onBoardingModel.overview
         }
     }
 
@@ -32,10 +32,10 @@ class OnBoardingItemAdapter(private var modelOnBoarding: List<ModelOnBoarding>) 
     }
 
     override fun onBindViewHolder(holder: OnBoardingItemViewHolder, position: Int) {
-        holder.bind(modelOnBoarding[position])
+        holder.bind(onBoardingModel[position])
     }
 
     override fun getItemCount(): Int {
-        return modelOnBoarding.size
+        return onBoardingModel.size
     }
 }

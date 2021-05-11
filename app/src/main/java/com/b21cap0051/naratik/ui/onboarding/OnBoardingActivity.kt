@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.OnBoardingItemAdapter
 import com.b21cap0051.naratik.databinding.ActivityOnBoardingBinding
-import com.b21cap0051.naratik.model.ModelOnBoarding
+import com.b21cap0051.naratik.model.OnBoardingModel
 import com.b21cap0051.naratik.ui.home.HomeActivity
 
 class OnBoardingActivity : AppCompatActivity() {
@@ -33,9 +33,9 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun setOnBoardingItems(){
         onBoardingItemAdapter = OnBoardingItemAdapter(
             listOf(
-                ModelOnBoarding(R.drawable.img_onboard_1,getString(R.string.title_on_boarding_1),getString(R.string.on_boarding_1)),
-                ModelOnBoarding(R.drawable.img_onboard_2,getString(R.string.title_on_boarding_2),getString(R.string.on_boarding_2)),
-                ModelOnBoarding(R.drawable.img_onboard_3,getString(R.string.title_on_boarding_3),getString(R.string.on_boarding_3))
+                OnBoardingModel(R.drawable.img_onboard_1,getString(R.string.title_on_boarding_1),getString(R.string.on_boarding_1)),
+                OnBoardingModel(R.drawable.img_onboard_2,getString(R.string.title_on_boarding_2),getString(R.string.on_boarding_2)),
+                OnBoardingModel(R.drawable.img_onboard_3,getString(R.string.title_on_boarding_3),getString(R.string.on_boarding_3))
             )
         )
         val viewPager = binding.vpOnBaord
