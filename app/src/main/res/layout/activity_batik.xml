@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.BatikActivity">
 
+    <include
+        layout="@layout/customcctionbar"
+        android:id="@+id/actionBarItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_batik"
+        android:layout_marginTop="74dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp"
