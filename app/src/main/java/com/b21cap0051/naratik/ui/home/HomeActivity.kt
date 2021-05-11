@@ -24,7 +24,10 @@ class HomeActivity : AppCompatActivity() {
         bindingActionBar = CustomActionBarLogoFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomNav = binding.bottomBar
+        binding.bottomBarMenu.background = null
+        binding.bottomBarMenu.menu.getItem(1).isEnabled = false
+
+        val bottomNav = binding.bottomBarMenu
         bottomNav.setOnNavigationItemSelectedListener(navListener)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(
@@ -45,7 +48,6 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.item_nav_account -> selectedFragment = AccountFragment()
                 R.id.item_nav_home -> selectedFragment = ExploreFragment()
-                R.id.item_nav_camera -> selectedFragment = CameraFragment()
             }
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container, selectedFragment!!

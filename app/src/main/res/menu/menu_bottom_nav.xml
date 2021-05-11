@@ -3,9 +3,8 @@
     <item android:id="@+id/item_nav_home"
         android:icon="@drawable/ic_home_filled"
         android:title="@string/home" />
-    <item android:id="@+id/item_nav_camera"
-        android:icon="@drawable/ic_camera_filled"
-        android:title="@string/camera" />
+    <item android:id="@+id/placeholder"
+        android:title="" />
     <item android:id="@+id/item_nav_account"
         android:icon="@drawable/ic_profile_filled"
         android:title="@string/account" />

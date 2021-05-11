@@ -11,6 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <include
             android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_logo_favorite"
@@ -21,32 +22,46 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
-        android:clipToPadding="false"
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionBarItem"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/actionBarItem" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="42dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_white_rounded"
-        android:elevation="2dp"
-        app:itemIconTint="@drawable/item_selector"
-        app:itemRippleColor="@android:color/transparent"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/menu_bottom_nav" />
+        app:fabCradleMargin="16dp"
+        app:fabCradleVerticalOffset="10dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        android:layout_gravity="bottom">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomBarMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:menu="@menu/menu_bottom_nav"
+            app:itemIconTint="@drawable/item_selector"
+            app:labelVisibilityMode="unlabeled"
+            />
 
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button"
+        android:src="@drawable/ic_camera_outlined"
+        android:tint="@color/black"
+        app:layout_anchor="@id/bottomBar" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
