@@ -24,14 +24,14 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/backgroundimagecorner"
+            android:background="@drawable/bg_image_corner"
             android:padding="0dp">
 
             <ImageView
                 android:id="@+id/imageBatikList"
                 android:layout_width="200dp"
                 android:layout_height="300dp"
-                android:background="@drawable/backgroundimagecorner" />
+                android:background="@drawable/bg_image_corner" />
 
             <ImageButton
                 android:id="@+id/likebatik"
@@ -40,7 +40,7 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/buttonliked"
+                android:background="@drawable/btn_liked"
                 android:src="@drawable/ic_love_filled" />
 
 

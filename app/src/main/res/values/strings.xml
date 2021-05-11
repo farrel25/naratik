@@ -56,6 +56,8 @@
     <string name="account">account</string>
     <string name="splash_screen">splashscreen</string>
     <string name="image">image</string>
+    <string name="title">Title</string>
+    <string name="button">button</string>
 
 
 </resources>

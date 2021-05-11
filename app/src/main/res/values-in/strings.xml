@@ -57,4 +57,6 @@
     <string name="account">akun</string>
     <string name="splash_screen">splashscreen</string>
     <string name="image">image</string>
+    <string name="title">Judul</string>
+    <string name="button">button</string>
 </resources>

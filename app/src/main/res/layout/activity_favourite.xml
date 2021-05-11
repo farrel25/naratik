@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/actionBarItem"
-        layout="@layout/customactionbarwithoutsearch"
+        layout="@layout/custom_action_bar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

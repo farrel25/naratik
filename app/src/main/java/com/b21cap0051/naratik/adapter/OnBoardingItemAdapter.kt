@@ -27,7 +27,7 @@ class OnBoardingItemAdapter(private var modelOnBoarding: List<ModelOnBoarding>) 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingItemViewHolder {
         return OnBoardingItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.slides_onboarding,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.slides_on_boarding,parent,false)
         )
     }
 

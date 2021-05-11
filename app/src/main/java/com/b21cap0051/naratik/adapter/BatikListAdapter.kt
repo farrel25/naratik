@@ -3,7 +3,7 @@ package com.b21cap0051.naratik.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.b21cap0051.naratik.databinding.BatikitemBinding
+import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.model.BatikModel
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
@@ -14,17 +14,17 @@ import java.util.*
 class BatikListAdapter(private val callBack: ItemBatikCallBack) :
     RecyclerView.Adapter<BatikListAdapter.ItemTarget>() {
 
-    val listbatik = ArrayList<BatikModel>()
+    val listBatik = ArrayList<BatikModel>()
 
-    fun setList(listbatik: ArrayList<BatikModel>) {
-        if (listbatik != null) {
-            this.listbatik.clear()
-            this.listbatik.addAll(listbatik)
+    fun setList(listBatik: ArrayList<BatikModel>) {
+        if (listBatik != null) {
+            this.listBatik.clear()
+            this.listBatik.addAll(listBatik)
             notifyDataSetChanged()
         }
     }
 
-    inner class ItemTarget(private val binding: BatikitemBinding) :
+    inner class ItemTarget(private val binding: ItemRowBatikBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: BatikModel) {
 
@@ -55,7 +55,7 @@ class BatikListAdapter(private val callBack: ItemBatikCallBack) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemTarget {
         return ItemTarget(
-            BatikitemBinding.inflate(
+            ItemRowBatikBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -64,10 +64,10 @@ class BatikListAdapter(private val callBack: ItemBatikCallBack) :
     }
 
     override fun onBindViewHolder(holder: ItemTarget, position: Int) {
-        holder.bind(listbatik[position])
+        holder.bind(listBatik[position])
     }
 
-    override fun getItemCount(): Int = listbatik.size
+    override fun getItemCount(): Int = listBatik.size
 
 
 }

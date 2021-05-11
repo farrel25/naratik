@@ -8,7 +8,7 @@
     tools:context=".ui.BatikActivity">
 
     <include
-        layout="@layout/customcctionbar"
+        layout="@layout/custom_action_bar_back_search"
         android:id="@+id/actionBarItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/batikitem" />
+        tools:listitem="@layout/item_row_batik" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
