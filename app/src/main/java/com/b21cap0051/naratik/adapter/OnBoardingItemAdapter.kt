@@ -1,24 +1,22 @@
-package com.b21cap0051.naratik.ui.onboarding
+package com.b21cap0051.naratik.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
 import com.b21cap0051.naratik.R
+import com.b21cap0051.naratik.model.ModelOnBoarding
 
 class OnBoardingItemAdapter(private var modelOnBoarding: List<ModelOnBoarding>) :
     RecyclerView.Adapter<OnBoardingItemAdapter.OnBoardingItemViewHolder>() {
 
 
     inner class OnBoardingItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val imgOnBoard : ImageView = view.findViewById(R.id.ivOnBoard)
-        val titleOnBoard : TextView = view.findViewById(R.id.tvTitleOnBoard)
-        val overviewOnBoard : TextView = view.findViewById(R.id.tvOverviewOnBoard)
+        private val imgOnBoard : ImageView = view.findViewById(R.id.ivOnBoard)
+        private val titleOnBoard : TextView = view.findViewById(R.id.tvTitleOnBoard)
+        private val overviewOnBoard : TextView = view.findViewById(R.id.tvOverviewOnBoard)
 
         fun bind(modelOnBoarding: ModelOnBoarding){
             imgOnBoard.setImageResource(modelOnBoarding.images)

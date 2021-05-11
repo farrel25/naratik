@@ -25,10 +25,7 @@
             android:stateListAnimator="@null"
             android:text="@string/next"
             android:textAllCaps="false"
-            app:icon="@drawable/ic_next"
-            app:iconGravity="end"
-            app:iconSize="20dp"
-            app:iconTint="@color/black"
+            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/btnSkip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnSkip"
@@ -37,12 +34,13 @@
         <Button
             android:id="@+id/btnSkip"
             style="@style/text_16sp_regular"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_border"
+            android:background="@drawable/btn_transparent_bordered"
             android:stateListAnimator="@null"
             android:text="@string/skip"
             android:textAllCaps="false"
+            app:cornerRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

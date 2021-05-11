@@ -8,12 +8,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.b21cap0051.naratik.R
+import com.b21cap0051.naratik.adapter.OnBoardingItemAdapter
 import com.b21cap0051.naratik.databinding.ActivityOnBoardingBinding
+import com.b21cap0051.naratik.model.ModelOnBoarding
 import com.b21cap0051.naratik.ui.home.HomeActivity
-import java.text.FieldPosition
 
 class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityOnBoardingBinding
