@@ -3,6 +3,7 @@
     <style name="Theme.Naratik" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/grey_700</item>
+        <item name="colorPrimaryDark">@color/grey_700</item>
         <item name="colorPrimaryVariant">@color/grey_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->

@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="74dp">
+    android:layout_height="74dp"
+    android:backgroundTint="@color/yellow_500">
 
 
-    <ImageButton
-        android:id="@+id/btnSearch"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFavorite"
         android:layout_width="42dp"
         android:layout_height="42dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/bg_tool_item"
-        android:contentDescription="@string/button"
-        android:src="@drawable/ic_favorite"
+        style="@style/btn_icon"
+        app:icon="@drawable/ic_favorite"
+        app:iconTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image"
