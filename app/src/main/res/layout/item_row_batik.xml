@@ -31,7 +31,7 @@
                 android:id="@+id/imageBatikList"
                 android:layout_width="200dp"
                 android:scaleType="centerCrop"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_image_corner" />
 
             <ImageButton
