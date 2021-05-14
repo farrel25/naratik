@@ -1,74 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:id="@+id/cv_batik"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:padding="5dp">
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="5dp"
+    app:cardPreventCornerOverlap="false"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_batik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:padding="0dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        app:cardMaxElevation="5dp"
-        app:cardPreventCornerOverlap="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_image_corner"
+        android:padding="0dp">
 
-        <FrameLayout
+        <ImageView
+            android:id="@+id/imageBatikList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_image_corner"
-            android:padding="0dp">
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop" />
 
-            <ImageView
-                android:id="@+id/imageBatikList"
-                android:layout_width="200dp"
-                android:scaleType="centerCrop"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_image_corner" />
-
-            <ImageButton
-                android:id="@+id/likebatik"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/btn_liked"
-                android:src="@drawable/ic_love_filled" />
+        <ImageButton
+            android:id="@+id/likebatik"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/btn_liked"
+            android:src="@drawable/ic_love_filled" />
 
 
-            <eightbitlab.com.blurview.BlurView
-                android:id="@+id/blurry"
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/blurry"
+            android:layout_width="match_parent"
+            android:layout_height="60.5dp"
+            android:layout_gravity="bottom"
+            app:blurOverlayColor="#4D777D81">
+
+            <TextView
+                android:id="@+id/batikName"
+                style="@style/text_16sp_bold"
                 android:layout_width="match_parent"
-                android:layout_height="60.5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:padding="5dp"
+                android:text="@string/batik_name"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/number"
+                style="@style/text_12sp_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:blurOverlayColor="#4D777D81">
-
-                <TextView
-                    android:id="@+id/batikName"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:padding="5dp" />
-
-                <TextView
-                    android:id="@+id/number"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:padding="5dp" />
+                android:layout_marginLeft="8dp"
+                android:padding="5dp"
+                android:text="@string/batik_id"
+                android:textColor="@color/white" />
 
 
-            </eightbitlab.com.blurview.BlurView>
+        </eightbitlab.com.blurview.BlurView>
 
 
-        </FrameLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
