@@ -30,6 +30,7 @@
             <ImageView
                 android:id="@+id/imageBatikList"
                 android:layout_width="200dp"
+                android:scaleType="centerCrop"
                 android:layout_height="300dp"
                 android:background="@drawable/bg_image_corner" />
 
@@ -47,7 +48,7 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blurry"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="60.5dp"
                 android:layout_gravity="bottom"
                 app:blurOverlayColor="#4D777D81">
 

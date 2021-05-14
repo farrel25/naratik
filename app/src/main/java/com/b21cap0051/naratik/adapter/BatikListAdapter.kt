@@ -29,9 +29,9 @@ class BatikListAdapter(private val callBack: ItemBatikCallBack) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: BatikModel) {
 
-            var height = 300
+            var height = 242
             if (adapterPosition % 2 == 1) {
-                height = 150
+                height = 121
                 binding.imageBatikList.layoutParams.height = height
             }
 

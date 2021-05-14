@@ -75,25 +75,25 @@ class ExploreFragment : Fragment(),ItemBatikCallBack {
         val listBatik = arrayListOf(
             BatikModel(
                 getString(R.string.article_id),
-                R.drawable.img_dummy,
+                R.drawable.img_batik,
                 getString(R.string.batik_name),
                 getString(R.string.batik_meaning),
             ),
             BatikModel(
                 getString(R.string.article_id),
-                R.drawable.img_dummy,
+                R.drawable.img_batik,
                 getString(R.string.batik_name),
                 getString(R.string.batik_meaning),
             ),
             BatikModel(
                 getString(R.string.article_id),
-                R.drawable.img_dummy,
+                R.drawable.img_batik,
                 getString(R.string.batik_name),
                 getString(R.string.batik_meaning),
             ),
             BatikModel(
                 getString(R.string.article_id),
-                R.drawable.img_dummy,
+                R.drawable.img_batik,
                 getString(R.string.batik_name),
                 getString(R.string.batik_meaning),
             )
