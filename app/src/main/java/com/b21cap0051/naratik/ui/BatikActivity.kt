@@ -1,13 +1,8 @@
 package com.b21cap0051.naratik.ui
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
-import androidx.annotation.StringRes
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
 import com.b21cap0051.naratik.model.BatikModel

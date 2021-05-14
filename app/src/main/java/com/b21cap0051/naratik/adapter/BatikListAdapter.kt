@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.model.BatikModel
+import com.b21cap0051.naratik.ui.BatikActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions

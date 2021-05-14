@@ -1,10 +1,12 @@
 package com.b21cap0051.naratik.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleBinding
 import com.b21cap0051.naratik.model.ArticleModel
+import com.b21cap0051.naratik.ui.DetailArticleActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -22,8 +24,7 @@ class ArticleListAdapter(private val listArticle: List<ArticleModel>) : Recycler
                 tvDateArticle.text = article.date
                 tvTitleArticle.text = article.title
                 tvWriterArticle.text = article.writer
-                btnFavArticle.setOnClickListener {
-                }
+
             }
         }
     }
@@ -35,6 +36,13 @@ class ArticleListAdapter(private val listArticle: List<ArticleModel>) : Recycler
 
     override fun onBindViewHolder(holder: ArticleListViewHolder, position: Int) {
         holder.bind(listArticle[position])
+
+        holder.itemView.setOnClickListener{
+            val intent =Intent(holder.itemView.context, DetailArticleActivity::class.java)
+
+            intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE,listArticle[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = listArticle.size
