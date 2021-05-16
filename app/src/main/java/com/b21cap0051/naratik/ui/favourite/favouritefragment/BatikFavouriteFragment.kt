@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentBatikFavouriteBinding
 
 

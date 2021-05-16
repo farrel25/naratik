@@ -1,4 +1,4 @@
-package com.b21cap0051.naratik.model
+package com.b21cap0051.naratik.dataresource.datamodellist
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

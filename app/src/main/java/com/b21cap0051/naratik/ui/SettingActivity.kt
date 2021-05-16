@@ -1,7 +1,7 @@
 package com.b21cap0051.naratik.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.b21cap0051.naratik.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {

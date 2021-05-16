@@ -12,8 +12,8 @@ import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
-import com.b21cap0051.naratik.model.ArticleModel
-import com.b21cap0051.naratik.model.BatikModel
+import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
+import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
 

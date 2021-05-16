@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.b21cap0051.naratik.databinding.ActivitySplashBinding
-import com.b21cap0051.naratik.ui.home.HomeActivity
 import com.b21cap0051.naratik.ui.onboarding.OnBoardingActivity
 
 

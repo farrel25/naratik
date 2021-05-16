@@ -1,11 +1,10 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.b21cap0051.naratik.R
+import androidx.fragment.app.Fragment
 import com.b21cap0051.naratik.databinding.FragmentAccountBinding
 
 

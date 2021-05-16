@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
-import com.b21cap0051.naratik.model.OnBoardingModel
+import com.b21cap0051.naratik.dataresource.datamodellist.OnBoardingModel
 
 class OnBoardingItemAdapter(private var onBoardingModel: List<OnBoardingModel>) :
     RecyclerView.Adapter<OnBoardingItemAdapter.OnBoardingItemViewHolder>() {

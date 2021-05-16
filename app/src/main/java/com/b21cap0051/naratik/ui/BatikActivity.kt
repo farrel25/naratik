@@ -1,11 +1,11 @@
 package com.b21cap0051.naratik.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
-import com.b21cap0051.naratik.model.BatikModel
+import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
 class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
