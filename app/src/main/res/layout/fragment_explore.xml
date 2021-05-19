@@ -27,7 +27,8 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/btnShowAllBatik"
                 app:layout_constraintStart_toStartOf="@+id/txtBatik"
-                app:layout_constraintTop_toBottomOf="@+id/txtBatik" />
+                app:layout_constraintTop_toBottomOf="@+id/txtBatik"
+                tools:listitem="@layout/item_row_batik" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvArticle"
@@ -36,7 +37,8 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/btnShowAllArticle"
                 app:layout_constraintStart_toStartOf="@+id/txtArticle"
-                app:layout_constraintTop_toBottomOf="@+id/txtArticle" />
+                app:layout_constraintTop_toBottomOf="@+id/txtArticle"
+                tools:listitem="@layout/item_row_article" />
 
             <TextView
                 android:id="@+id/txtExploreBatik"

@@ -5,8 +5,8 @@
         android:title="@string/home" />
     <item android:id="@+id/placeholder"
         android:title="" />
-    <item android:id="@+id/item_nav_account"
-        android:icon="@drawable/ic_profile_filled"
+    <item android:id="@+id/item_nav_e_commerce"
+        android:icon="@drawable/ic_ecommerce_filled"
         android:title="@string/account" />
 
 </menu>

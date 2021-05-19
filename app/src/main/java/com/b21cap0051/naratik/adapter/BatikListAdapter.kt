@@ -1,10 +1,13 @@
 package com.b21cap0051.naratik.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.ui.DetailArticleActivity
+import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -14,7 +17,7 @@ import java.util.*
 class BatikListAdapter(private val callBack: ItemBatikCallBack) :
     RecyclerView.Adapter<BatikListAdapter.ItemTarget>() {
 
-    val listBatik = ArrayList<BatikModel>()
+    private val listBatik = ArrayList<BatikModel>()
 
     fun setList(listBatik: ArrayList<BatikModel>) {
         if (listBatik != null) {
@@ -64,6 +67,11 @@ class BatikListAdapter(private val callBack: ItemBatikCallBack) :
 
     override fun onBindViewHolder(holder: ItemTarget, position: Int) {
         holder.bind(listBatik[position])
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, DetailBatikActivity::class.java)
+//            intent.putExtra(DetailBatikActivity.,listArticle[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = listBatik.size

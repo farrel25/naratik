@@ -10,7 +10,7 @@ import com.b21cap0051.naratik.ui.DetailArticleActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class ArticleListAdapter(private val listArticle: List<ArticleModel>) : RecyclerView.Adapter<ArticleListAdapter.ArticleListViewHolder>() {
+class ArticleListAdapter(private val listArticle: ArrayList<ArticleModel>) : RecyclerView.Adapter<ArticleListAdapter.ArticleListViewHolder>() {
 
 
     inner class ArticleListViewHolder(private val binding: ItemRowArticleBinding) : RecyclerView.ViewHolder(binding.root) {

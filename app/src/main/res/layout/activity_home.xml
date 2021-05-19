@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity"
-    >
-
+    tools:context=".ui.home.HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,10 +12,7 @@
 
         <include
             android:id="@+id/actionBarItem"
-            layout="@layout/custom_action_bar_logo_favorite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            layout="@layout/custom_action_bar_logo_favorite" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -25,21 +20,32 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionBarItem" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button"
+        android:src="@drawable/ic_camera_outlined"
+        android:tint="@color/black"
+        app:layout_anchor="@id/bottomBar"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:fabCradleMargin="16dp"
-        app:fabCradleVerticalOffset="10dp"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="12dp"
         app:fabCradleRoundedCornerRadius="20dp"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        app:hideOnScroll="true"
+
+        >
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomBarMenu"
@@ -52,16 +58,10 @@
             app:labelVisibilityMode="unlabeled"
             />
 
+
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/button"
-        android:src="@drawable/ic_camera_outlined"
-        android:tint="@color/black"
-        app:layout_anchor="@id/bottomBar" />
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

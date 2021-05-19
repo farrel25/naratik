@@ -61,5 +61,6 @@
     <string name="image">image</string>
     <string name="title">Judul</string>
     <string name="button">button</string>
+    <string name="ecomerce">Toko Online</string>
     <string name="writer">dari %s</string>
 </resources>

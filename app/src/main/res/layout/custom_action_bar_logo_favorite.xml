@@ -11,12 +11,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnFavorite"
+        style="@style/btn_icon"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_marginEnd="16dp"
-        style="@style/btn_icon"
-        app:icon="@drawable/ic_favorite"
-        app:iconTint="@color/red"
+        app:icon="@drawable/ic_profile_outlined"
+        app:iconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

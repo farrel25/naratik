@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,9 @@ import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.ui.ArticleActivity
+import com.b21cap0051.naratik.ui.BatikActivity
+import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
 
@@ -26,8 +30,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikListAdapter
 	
-	companion object
-	{
+	companion object {
 		val TAG : String = ExploreFragment::class.java.simpleName
 		const val EXTRA_ARTICLE = "extra_article"
 		const val EXTRA_BATIK = "extra_batik"
@@ -37,8 +40,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 		inflater : LayoutInflater ,
 		container : ViewGroup? ,
 		savedInstanceState : Bundle?
-	                         ) : View
-	{
+	                         ) : View {
 		_binding = FragmentExploreBinding.inflate(layoutInflater , container , false)
 		return binding.root
 	}
@@ -46,112 +48,35 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
 		super.onViewCreated(view , savedInstanceState)
+		adapterBatik = BatikListAdapter(this)
+		adapterArticle = ArticleListAdapter(DataDummy.generateDummyArticle())
 		
 		var row = 2
 		val orientCheck = resources.configuration.orientation
 		if (orientCheck == Configuration.ORIENTATION_LANDSCAPE)
 		{
+			adapterBatik.itemCount
 			row = 4
 		}
-		
-		
-		
-		adapterArticle = ArticleListAdapter(
-			listOf(
-				ArticleModel(
-					getString(R.string.article_id) ,
-					R.drawable.img_dummy ,
-					getString(R.string.article_title) ,
-					getString(R.string.article_date) ,
-					getString(R.string.article_contributor) ,
-					getString(R.string.article_overview) ,
-				            ) ,
-				ArticleModel(
-					getString(R.string.article_id) ,
-					R.drawable.img_dummy ,
-					getString(R.string.article_title) ,
-					getString(R.string.article_date) ,
-					getString(R.string.article_contributor) ,
-					getString(R.string.article_overview) ,
-				            ) ,
-				ArticleModel(
-					getString(R.string.article_id) ,
-					R.drawable.img_dummy ,
-					getString(R.string.article_title) ,
-					getString(R.string.article_date) ,
-					getString(R.string.article_contributor) ,
-					getString(R.string.article_overview) ,
-				            )
-			
-			      )
-		                                   )
-		
-		val listBatik = arrayListOf(
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          ) ,
-			BatikModel(
-				getString(R.string.article_id) ,
-				R.drawable.img_batik ,
-				getString(R.string.batik_name) ,
-				getString(R.string.batik_meaning) ,
-			          )
-		                           )
-		
-		adapterBatik = BatikListAdapter(
-			this
-		                               )
-		
-		
 		
 		binding.rvArticle.layoutManager = LinearLayoutManager(activity)
 		binding.rvArticle.adapter = adapterArticle
 		
-		binding.rvBatik.layoutManager =
-			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
+		val listBatik = DataDummy.generateDummyBatik()
 		adapterBatik.setList(listBatik)
 		
 		
+		binding.btnShowAllBatik.setOnClickListener{
+			val intent = Intent(requireActivity(), BatikActivity::class.java)
+			startActivity(intent)
+		}
+		
+		binding.btnShowAllArticle.setOnClickListener{
+			val intent = Intent(requireActivity(), ArticleActivity::class.java)
+			startActivity(intent)
+		}
 	}
 	
 	override fun itemBatikClick(model : BatikModel)

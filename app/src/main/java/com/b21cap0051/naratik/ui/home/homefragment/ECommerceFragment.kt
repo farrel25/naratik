@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.b21cap0051.naratik.databinding.FragmentCameraBinding
+import com.b21cap0051.naratik.databinding.FragmentECommerceBinding
 
 
-class CameraFragment : Fragment() {
+class ECommerceFragment : Fragment() {
 
-    private var _binding : FragmentCameraBinding? = null
+    private var _binding : FragmentECommerceBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCameraBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentECommerceBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
 

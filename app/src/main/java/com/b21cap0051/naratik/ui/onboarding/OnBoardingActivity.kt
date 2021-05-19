@@ -70,7 +70,7 @@ class OnBoardingActivity : AppCompatActivity() {
         val indicator = arrayOfNulls<ImageView>(onBoardingItemAdapter.itemCount)
         val layoutParameter: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        layoutParameter.setMargins(8,0,0,0)
+        layoutParameter.setMargins(16,0,0,0)
 
         for (i in indicator.indices){
             indicator[i] = ImageView(applicationContext)
