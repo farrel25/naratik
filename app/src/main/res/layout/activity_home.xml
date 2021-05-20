@@ -9,11 +9,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <include
             android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_logo_favorite" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
@@ -43,9 +41,7 @@
         app:fabCradleMargin="12dp"
         app:fabCradleRoundedCornerRadius="20dp"
         android:layout_gravity="bottom"
-        app:hideOnScroll="true"
-
-        >
+        app:hideOnScroll="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomBarMenu"
@@ -55,13 +51,8 @@
             android:background="@android:color/transparent"
             app:menu="@menu/menu_bottom_nav"
             app:itemIconTint="@drawable/item_selector"
-            app:labelVisibilityMode="unlabeled"
-            />
-
+            app:labelVisibilityMode="unlabeled" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

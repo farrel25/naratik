@@ -15,20 +15,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_batik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_batik"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="74dp"
-            tools:listitem="@layout/item_row_batik" />
-    </LinearLayout>
-
-
+        android:clipToPadding="false"
+        android:padding="8dp"
+        tools:listitem="@layout/item_row_batik"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
@@ -50,14 +49,15 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 		super.onViewCreated(view , savedInstanceState)
 		adapterBatik = BatikListAdapter(this)
 		adapterArticle = ArticleListAdapter(DataDummy.generateDummyArticle())
-		
 		var row = 2
+		var limit = 4
 		val orientCheck = resources.configuration.orientation
 		if (orientCheck == Configuration.ORIENTATION_LANDSCAPE)
 		{
-			adapterBatik.itemCount
 			row = 4
+			
 		}
+		
 		
 		binding.rvArticle.layoutManager = LinearLayoutManager(activity)
 		binding.rvArticle.adapter = adapterArticle

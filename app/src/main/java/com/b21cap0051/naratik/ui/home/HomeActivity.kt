@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityHomeBinding
 import com.b21cap0051.naratik.databinding.CustomActionBarLogoFavoriteBinding
+import com.b21cap0051.naratik.ui.CameraActivity
 import com.b21cap0051.naratik.ui.favourite.FavouriteActivity
 import com.b21cap0051.naratik.ui.home.homefragment.ECommerceFragment
 import com.b21cap0051.naratik.ui.home.homefragment.ExploreFragment
@@ -38,6 +39,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this@HomeActivity, FavouriteActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        binding.fabCamera.setOnClickListener{
+            val intent = Intent(this@HomeActivity, CameraActivity::class.java)
+            startActivity(intent)
         }
     }
 
