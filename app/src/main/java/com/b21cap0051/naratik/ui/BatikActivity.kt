@@ -19,8 +19,8 @@ class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
         setContentView(binding.root)
     
         batikAdapter = BatikListAdapter(this)
-        binding.rvBatik.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-        binding.rvBatik.adapter = batikAdapter
+        binding.rvAllBatik.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        binding.rvAllBatik.adapter = batikAdapter
         val listBatik = DataDummy.generateDummyBatik()
         batikAdapter.setList(listBatik)
     }

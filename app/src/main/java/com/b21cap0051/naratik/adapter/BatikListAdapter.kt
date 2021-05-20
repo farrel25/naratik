@@ -19,11 +19,9 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
     private val listBatik = ArrayList<BatikModel>()
 
     fun setList(listBatik : ArrayList<BatikModel>) {
-        if (listBatik != null) {
-            this.listBatik.clear()
-            this.listBatik.addAll(listBatik)
-            notifyDataSetChanged()
-        }
+        this.listBatik.clear()
+        this.listBatik.addAll(listBatik)
+        notifyDataSetChanged()
     }
 
     inner class ItemTarget(private val binding : ItemRowBatikBinding) :
@@ -44,9 +42,9 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
             Glide.with(itemView.context)
                 .load(model.image)
                 .apply(RequestOptions().override(200 , height))
-                .into(binding.imageBatikList)
-            binding.batikName.text = model.name
-            binding.number.text = model.id
+                .into(binding.ivItemBatik)
+            binding.tvItemNameBatik.text = model.name
+            binding.tvItemLocationBatik.text = model.id
 
             binding.cvBatik.setOnClickListener {
                 callBack.itemBatikClick(model)

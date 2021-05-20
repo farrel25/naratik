@@ -10,17 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include
-            android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_back_sort" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_article"
+        android:id="@+id/rv_all_article"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:paddingTop="16dp"
-        tools:listitem="@layout/item_row_article"
+        android:padding="16dp"
+        tools:listitem="@layout/item_row_article_large"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -34,8 +34,11 @@
                 android:id="@+id/rvArticle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/btnShowAllArticle"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txtArticle"
                 app:layout_constraintTop_toBottomOf="@+id/txtArticle"
                 tools:listitem="@layout/item_row_article" />

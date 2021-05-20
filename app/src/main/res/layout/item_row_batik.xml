@@ -24,20 +24,18 @@
         android:padding="0dp">
 
         <ImageView
-            android:id="@+id/imageBatikList"
+            android:id="@+id/ivItemBatik"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/image" />
 
-        <ImageButton
-            android:id="@+id/likebatik"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="right"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnItemFavBatik"
+            android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/btn_liked"
-            android:src="@drawable/ic_love_filled" />
+            android:layout_marginEnd="16dp"
+            style="@style/btn_favorite_icon"/>
 
 
         <eightbitlab.com.blurview.BlurView
@@ -48,29 +46,25 @@
             app:blurOverlayColor="#4D777D81">
 
             <TextView
-                android:id="@+id/batikName"
+                android:id="@+id/tvItemNameBatik"
                 style="@style/text_16sp_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:padding="5dp"
                 android:text="@string/batik_name"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/number"
+                android:id="@+id/tvItemLocationBatik"
                 style="@style/text_12sp_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:padding="5dp"
-                android:text="@string/batik_id"
+                android:text="@string/batik_location"
                 android:textColor="@color/white" />
-
-
         </eightbitlab.com.blurview.BlurView>
-
-
     </FrameLayout>
 </androidx.cardview.widget.CardView>

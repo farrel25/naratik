@@ -59,7 +59,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 		}
 		
 		
-		binding.rvArticle.layoutManager = LinearLayoutManager(activity)
+		binding.rvArticle.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
 		binding.rvArticle.adapter = adapterArticle
 		
 		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)

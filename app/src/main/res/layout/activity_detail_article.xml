@@ -1,16 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailArticleActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.DetailBatikActivity">
 
-    <include
-        android:id="@+id/actionBarItem"
-        layout="@layout/custom_action_bar_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:fitsSystemWindows="true">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/transparent"
+            app:collapsedTitleTextAppearance="@style/text_24sp_bold_white"
+            app:expandedTitleTextAppearance="@style/text_32sp_bold_white"
+            app:expandedTitleMarginStart="16dp"
+            app:title="@string/title"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            <ImageView
+                android:id="@+id/ivArticle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_dummy"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/image"/>
+            <include
+                layout="@layout/custom_action_bar_back" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_favorite"
+        app:tint="@android:color/white"
+        app:fabSize="normal"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/black"
+        android:contentDescription="@string/button" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:id="@+id/tvArticleOverview"
+                style="@style/text_16sp_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/article_overview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivAdmin" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVMArticle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewMoreArticle" />
+
+            <ImageView
+                android:id="@+id/ivAdmin"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/image"
+                android:src="@drawable/img_dummy"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tvAdminArticle"
+                style="@style/text_16sp_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/article_contributor"
+                app:layout_constraintStart_toEndOf="@+id/ivAdmin"
+                app:layout_constraintTop_toTopOf="@+id/ivAdmin" />
+
+            <TextView
+                android:id="@+id/tvDateArticle"
+                style="@style/text_10sp_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/article_date"
+                app:layout_constraintStart_toStartOf="@+id/tvAdminArticle"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdminArticle" />
+
+            <TextView
+                android:id="@+id/txtViewMoreArticle"
+                style="@style/text_16sp_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/view_more"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvArticleOverview" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

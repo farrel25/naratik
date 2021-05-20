@@ -10,13 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include
-            layout="@layout/custom_action_bar_back_filter"
-            android:id="@+id/actionBarItem" />
+            layout="@layout/custom_action_bar_back_filter" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_batik"
+        android:id="@+id/rv_all_batik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"

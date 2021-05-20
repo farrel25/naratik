@@ -3,20 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="74dp"
+    android:layout_height="?actionBarSize"
     android:background="@android:color/white"
-    app:layout_scrollFlags="scroll|enterAlways"
-    >
-
+    app:layout_scrollFlags="scroll|enterAlways">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnFavorite"
         style="@style/btn_icon"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
         android:layout_marginEnd="16dp"
         app:icon="@drawable/ic_profile_outlined"
-        app:iconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

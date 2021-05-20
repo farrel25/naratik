@@ -19,10 +19,10 @@ class ArticleListAdapter(private val listArticle: ArrayList<ArticleModel>) : Rec
                 Glide.with(itemView.context)
                     .load(article.image)
                     .transform(RoundedCorners(20))
-                    .into(ivArticle)
-                tvDateArticle.text = article.date
-                tvTitleArticle.text = article.title
-                tvWriterArticle.text = article.writer
+                    .into(ivItemArticle)
+                tvItemDateArticle.text = article.date
+                tvItemTitleArticle.text = article.title
+                tvItemWriterArticle.text = article.writer
 
             }
         }
