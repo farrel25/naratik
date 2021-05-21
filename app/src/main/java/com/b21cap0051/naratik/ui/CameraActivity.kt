@@ -53,7 +53,7 @@ class CameraActivity : AppCompatActivity()
 		
 		CameraExecutors = Executors.newSingleThreadExecutor()
 		outputDirectory = getOutputDirectory()
-		binding.captureImage.setOnClickListener {
+		binding.btnCapture.setOnClickListener {
 			takePhoto()
 		}
 	}

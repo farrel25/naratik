@@ -136,7 +136,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:clipToPadding="false"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
                 android:paddingEnd="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

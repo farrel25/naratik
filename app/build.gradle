@@ -92,4 +92,7 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:1.0.0"
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha24"
+
+    //Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
