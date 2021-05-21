@@ -1,4 +1,4 @@
-package com.b21cap0051.naratik.dataresource.api
+package com.b21cap0051.naratik.dataresource.remotedata.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,7 +9,7 @@ class APIConfig
 {
 	companion object
 	{
-		fun getBatikService():ApiService
+		fun getBatikService(): ApiService
 		{
 			val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 			val Client = OkHttpClient.Builder()
