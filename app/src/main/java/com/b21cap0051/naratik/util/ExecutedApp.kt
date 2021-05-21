@@ -9,19 +9,16 @@ import java.util.concurrent.Executors
 class ExecutedApp constructor(
 	private val DiskIO : Executor ,
 	private val NetworkThread : Executor,
-	private val CameraThread : ExecutorService
                              )
 {
 	
 	constructor() : this(
 		Executors.newSingleThreadExecutor() ,
 		Executors.newFixedThreadPool(THREAD_COUNT),
-		Executors.newSingleThreadExecutor()
 	                    )
 	
 	fun DiskIO() = this.DiskIO
 	fun NetworkThread() = this.NetworkThread
-	fun CameraThread() = this.CameraThread
 	
 	
 	companion object
