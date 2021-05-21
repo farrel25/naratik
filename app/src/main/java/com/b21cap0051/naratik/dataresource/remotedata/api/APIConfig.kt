@@ -4,16 +4,20 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class APIConfig
 {
 	companion object
 	{
-		fun getBatikService(): ApiService
+		fun ApiPredict(): PredictService
 		{
-			val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+			val interceptor = HttpLoggingInterceptor()
 			val Client = OkHttpClient.Builder()
-				.addInterceptor(interceptor)
+				.addInterceptor(interceptor.setLevel(HttpLoggingInterceptor.Level.BODY))
+				.connectTimeout(2,TimeUnit.MINUTES)
+				.readTimeout(2,TimeUnit.MINUTES)
+				.writeTimeout(2,TimeUnit.MINUTES)
 				.build()
 			
 			val API = Retrofit.Builder()
@@ -22,7 +26,26 @@ class APIConfig
 				.client(Client)
 				.build()
 			
-			return API.create(ApiService::class.java)
+			return API.create(PredictService::class.java)
+		}
+		
+		fun ApiData():DataServices{
+			val Logging = HttpLoggingInterceptor()
+			val client = OkHttpClient.Builder()
+				.addInterceptor(Logging.setLevel(HttpLoggingInterceptor.Level.BODY))
+				.connectTimeout(2,TimeUnit.MINUTES)
+				.readTimeout(2,TimeUnit.MINUTES)
+				.writeTimeout(2,TimeUnit.MINUTES)
+				.build()
+			
+			val retro = Retrofit.Builder()
+				.baseUrl("")
+				.addConverterFactory(GsonConverterFactory.create())
+				.client(client)
+				.build()
+			
+			return retro.create(DataServices::class.java)
+			
 		}
 		
 	}
