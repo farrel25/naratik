@@ -16,5 +16,7 @@ class CameraActivity : AppCompatActivity()
 		
 		
 		
+		
+		
 	}
 }
