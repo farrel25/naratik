@@ -57,72 +57,104 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtLocation"
                 style="@style/text_16sp_bold"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/batik_location" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/batik_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvItemLocationBatik"
                 style="@style/text_16sp_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/batik_location" />
+                android:layout_marginEnd="16dp"
+                android:text="@string/batik_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtLocation"
+                app:layout_constraintTop_toBottomOf="@+id/txtLocation" />
 
             <TextView
                 android:id="@+id/txtMeaning"
                 style="@style/text_16sp_bold"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/batik_meaning" />
+                android:text="@string/batik_meaning"
+                app:layout_constraintStart_toStartOf="@+id/txtLocation"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemLocationBatik" />
 
             <TextView
                 android:id="@+id/tvMeaning"
                 style="@style/text_16sp_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/batik_meaning" />
+                android:layout_marginEnd="16dp"
+                android:text="@string/batik_meaning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtMeaning"
+                app:layout_constraintTop_toBottomOf="@+id/txtMeaning" />
 
             <TextView
                 android:id="@+id/txtViewMore"
                 style="@style/text_16sp_bold"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/view_more" />
+                android:text="@string/view_more"
+                app:layout_constraintStart_toStartOf="@+id/txtMeaning"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeaning" />
+
+            <TextView
+                android:id="@+id/txtEcomerce"
+                style="@style/text_16sp_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ecomerce"
+                app:layout_constraintStart_toStartOf="@+id/txtViewMore"
+                app:layout_constraintTop_toBottomOf="@+id/rvVmBatik" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvVmBatik"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingEnd="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewMore">
 
-            <TextView
-                android:id="@+id/txtEcomerce"
-                style="@style/text_16sp_bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/ecomerce" />
+            </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvEcommerce"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEcomerce">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
 
