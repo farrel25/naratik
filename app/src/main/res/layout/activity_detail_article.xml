@@ -57,22 +57,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvArticleOverview"
                 style="@style/text_16sp_regular"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/article_overview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ivAdmin"
                 app:layout_constraintTop_toBottomOf="@+id/ivAdmin" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -80,19 +78,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtViewMoreArticle"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewMoreArticle" />
 
             <ImageView
                 android:id="@+id/ivAdmin"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:contentDescription="@string/image"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img_dummy"
-                android:scaleType="centerCrop"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAdminArticle"
@@ -116,12 +121,11 @@
             <TextView
                 android:id="@+id/txtViewMoreArticle"
                 style="@style/text_16sp_bold"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/view_more"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvArticleOverview"
                 app:layout_constraintTop_toBottomOf="@+id/tvArticleOverview" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
