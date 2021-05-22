@@ -27,6 +27,5 @@ class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
     
     override fun itemBatikClick(model : BatikModel)
     {
-        TODO("Not yet implemented")
     }
 }
