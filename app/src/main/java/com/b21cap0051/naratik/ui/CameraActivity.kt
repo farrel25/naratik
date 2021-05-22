@@ -2,12 +2,15 @@ package com.b21cap0051.naratik.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCapture.OutputFileOptions.*
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
@@ -15,6 +18,8 @@ import androidx.core.content.ContextCompat
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -23,13 +28,14 @@ class CameraActivity : AppCompatActivity()
 	private lateinit var binding : ActivityCameraBinding
 	private lateinit var CameraExecutors : ExecutorService
 	private lateinit var outputDirectory : File
-	private var ImageCapture : ImageCapture? = null
+	private var CapturePhoto : ImageCapture? = null
 	
 	companion object
 	{
-		private val TAG = "CameraXBasic"
-		private val FILENAME_FORMAT = "batik_xx"
-		private val REQUEST_CODE_PERMISSION = 10
+		private const val TAG = "CameraXBasic"
+		private const val DAY_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+		private const val FILENAME_FORMAT = "batik_xx"
+		private const val REQUEST_CODE_PERMISSION = 10
 		private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 	}
 	
@@ -84,12 +90,14 @@ class CameraActivity : AppCompatActivity()
 					.also {
 						it.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
 					}
+				CapturePhoto = ImageCapture.Builder().build()
+				
 				val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 				
 				try
 				{
 					cameraProvider.unbindAll()
-					cameraProvider.bindToLifecycle(this , cameraSelector , preview)
+					cameraProvider.bindToLifecycle(this , cameraSelector , preview,CapturePhoto)
 				} catch (e : Exception)
 				{
 					Log.e(TAG , "Use Case Binding Failed" , e)
@@ -101,6 +109,31 @@ class CameraActivity : AppCompatActivity()
 	
 	private fun takePhoto()
 	{
+		val imageCapture = CapturePhoto ?: return
+		
+		val photoFile = File(
+			outputDirectory ,
+			FILENAME_FORMAT + "_" + SimpleDateFormat(
+				DAY_FORMAT ,
+				Locale.US).format(System.currentTimeMillis()) + ".jpg")
+		
+		val outputOptions = Builder(photoFile).build()
+		imageCapture.takePicture(outputOptions,ContextCompat.getMainExecutor(this),object : ImageCapture.OnImageSavedCallback{
+			override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
+			{
+				val SavedURI = Uri.fromFile(photoFile)
+				Toast.makeText(baseContext,"Photo Captured and Saved on $SavedURI",Toast.LENGTH_SHORT).show()
+				
+				
+			}
+			
+			override fun onError(e : ImageCaptureException)
+			{
+				Log.e(TAG,"Photo Captured fail : ${e.message} ",e)
+			}
+			
+		})
+		
 	}
 	
 	override fun onDestroy()
