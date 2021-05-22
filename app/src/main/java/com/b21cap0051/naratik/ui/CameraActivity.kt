@@ -142,6 +142,11 @@ class CameraActivity : AppCompatActivity()
 		CameraExecutors.shutdown()
 	}
 	
+	override fun onBackPressed()
+	{
+		super.onBackPressed()
+	}
+	
 	override fun onRequestPermissionsResult(
 		requestCode : Int ,
 		permissions : Array<out String> ,

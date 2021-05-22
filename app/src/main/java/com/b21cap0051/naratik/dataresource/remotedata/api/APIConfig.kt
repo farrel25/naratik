@@ -39,7 +39,7 @@ class APIConfig
 				.build()
 			
 			val retro = Retrofit.Builder()
-				.baseUrl("")
+				.baseUrl("http://batikita.herokuapp.com/index.php")
 				.addConverterFactory(GsonConverterFactory.create())
 				.client(client)
 				.build()
