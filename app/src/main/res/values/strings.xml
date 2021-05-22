@@ -62,4 +62,5 @@
     <string name="title">Title</string>
     <string name="button">button</string>
     <string name="writer">by %s</string>
+    <string name="back_to_camera">Back To Camera</string>
 </resources>

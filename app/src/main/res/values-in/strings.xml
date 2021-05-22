@@ -63,4 +63,5 @@
     <string name="button">button</string>
     <string name="ecomerce">Toko Online</string>
     <string name="writer">dari %s</string>
+    <string name="back_to_camera">Back To Camera</string>
 </resources>
