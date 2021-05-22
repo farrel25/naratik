@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.airbnb.lottie.LottieAnimationView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.OnBoardingItemAdapter
 import com.b21cap0051.naratik.databinding.ActivityOnBoardingBinding
@@ -33,9 +34,9 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun setOnBoardingItems(){
         onBoardingItemAdapter = OnBoardingItemAdapter(
             listOf(
-                OnBoardingModel(R.drawable.img_onboard_1,getString(R.string.title_on_boarding_1),getString(R.string.on_boarding_1)) ,
-                OnBoardingModel(R.drawable.img_onboard_2,getString(R.string.title_on_boarding_2),getString(R.string.on_boarding_2)) ,
-                OnBoardingModel(R.drawable.img_onboard_3,getString(R.string.title_on_boarding_3),getString(R.string.on_boarding_3))
+                OnBoardingModel("animation_onboarding_1.json",getString(R.string.title_on_boarding_1),getString(R.string.on_boarding_1)) ,
+                OnBoardingModel("animation_onboarding_2.json",getString(R.string.title_on_boarding_2),getString(R.string.on_boarding_2)) ,
+                OnBoardingModel("animation_onboarding_3.json",getString(R.string.title_on_boarding_3),getString(R.string.on_boarding_3))
             )
         )
         val viewPager = binding.vpOnBaord

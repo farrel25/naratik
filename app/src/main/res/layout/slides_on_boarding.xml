@@ -6,26 +6,28 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/ivOnBoard"
-        android:layout_width="wrap_content"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laiOnBoard"
+        android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:contentDescription="@string/image"
+        app:lottie_loop="true"
+        app:lottie_fileName="animation_onboarding_1.json"
+        app:lottie_autoPlay="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_onboard_1" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/tvTitleOnBoard"
         style="@style/text_24sp_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="@string/title_on_boarding_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivOnBoard" />
+        app:layout_constraintTop_toBottomOf="@+id/laiOnBoard" />
 
     <TextView
         android:id="@+id/tvOverviewOnBoard"

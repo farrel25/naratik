@@ -6,28 +6,33 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.Lottie
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.utils.LottieValueAnimator
 import com.b21cap0051.naratik.R
+import com.b21cap0051.naratik.databinding.SlidesOnBoardingBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.OnBoardingModel
 
 class OnBoardingItemAdapter(private var onBoardingModel: List<OnBoardingModel>) :
     RecyclerView.Adapter<OnBoardingItemAdapter.OnBoardingItemViewHolder>() {
 
 
-    inner class OnBoardingItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        private val imgOnBoard : ImageView = view.findViewById(R.id.ivOnBoard)
-        private val titleOnBoard : TextView = view.findViewById(R.id.tvTitleOnBoard)
-        private val overviewOnBoard : TextView = view.findViewById(R.id.tvOverviewOnBoard)
+    inner class OnBoardingItemViewHolder(private val binding: SlidesOnBoardingBinding) : RecyclerView.ViewHolder(binding.root){
+        
 
         fun bind(onBoardingModel: OnBoardingModel){
-            imgOnBoard.setImageResource(onBoardingModel.images)
-            titleOnBoard.text = onBoardingModel.title
-            overviewOnBoard.text = onBoardingModel.overview
+            binding.laiOnBoard.imageAssetsFolder = "assets"
+            binding.laiOnBoard.setAnimation(onBoardingModel.anim)
+            binding.tvTitleOnBoard.text = onBoardingModel.title
+            binding.tvOverviewOnBoard.text = onBoardingModel.overview
         }
+        
     }
-
+    
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingItemViewHolder {
         return OnBoardingItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.slides_on_boarding,parent,false)
+            SlidesOnBoardingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         )
     }
 

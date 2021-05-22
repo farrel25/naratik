@@ -1,12 +1,17 @@
 package com.b21cap0051.naratik.adapter
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.ui.DetailBatikActivity
+import com.b21cap0051.naratik.ui.home.HomeActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -47,7 +52,10 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
             binding.tvItemLocationBatik.text = model.id
 
             binding.cvBatik.setOnClickListener {
+                val intent = Intent(itemView.context , DetailBatikActivity::class.java)
+//                intent.putExtra(DetailBatikActivity.,listBatik[position])
                 callBack.itemBatikClick(model)
+                itemView.context.startActivity(intent)
             }
         }
         
@@ -65,11 +73,7 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
 
     override fun onBindViewHolder(holder : ItemTarget , position : Int) {
         holder.bind(listBatik[position])
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context , DetailBatikActivity::class.java)
-//            intent.putExtra(DetailBatikActivity.,listArticle[position])
-            holder.itemView.context.startActivity(intent)
-        }
+        
     }
 
     override fun getItemCount(): Int {
