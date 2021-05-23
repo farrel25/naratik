@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.adapter
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -32,7 +33,6 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
         for (i in 1..4){
             this.listBatik.addAll(listOf(listBatik[i]))
         }
-        
         notifyDataSetChanged()
     }
 
@@ -41,7 +41,7 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
         fun bind(model : BatikModel) {
 
             var height = 900
-            if (adapterPosition % 2 == 1) {
+            if (adapterPosition % 2 == 1 ) {
                 height = 450
             }
 

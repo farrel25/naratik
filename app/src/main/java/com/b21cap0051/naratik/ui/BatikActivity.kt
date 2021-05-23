@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -17,9 +18,13 @@ class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
         super.onCreate(savedInstanceState)
         binding = ActivityBatikBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var row = 2
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            row = 4
+        }
     
         batikAdapter = BatikListAdapter(this)
-        binding.rvAllBatik.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        binding.rvAllBatik.layoutManager = StaggeredGridLayoutManager(row,StaggeredGridLayoutManager.VERTICAL)
         binding.rvAllBatik.adapter = batikAdapter
         val listBatik = DataDummy.generateDummyBatik()
         batikAdapter.setList(listBatik)

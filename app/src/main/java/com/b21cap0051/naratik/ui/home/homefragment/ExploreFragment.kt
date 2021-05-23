@@ -57,11 +57,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		adapterBatik = BatikListAdapter(this)
 		
 		var row = 2
-		val orientCheck = resources.configuration.orientation
-		if (orientCheck == Configuration.ORIENTATION_LANDSCAPE)
-		{
+		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			row = 4
-			
 		}
 		
 		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
