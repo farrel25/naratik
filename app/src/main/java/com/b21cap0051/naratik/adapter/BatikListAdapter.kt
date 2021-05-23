@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.adapter
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,6 +25,14 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
     fun setList(listBatik : ArrayList<BatikModel>) {
         this.listBatik.clear()
         this.listBatik.addAll(listBatik)
+        notifyDataSetChanged()
+    }
+    fun setListLimited(listBatik : ArrayList<BatikModel>) {
+        this.listBatik.clear()
+        for (i in 1..4){
+            this.listBatik.addAll(listOf(listBatik[i]))
+        }
+        
         notifyDataSetChanged()
     }
 

@@ -16,7 +16,7 @@ class ArticleListAdapter(private val callback: ItemArticleCallBack) :
     
     private val listArticle = ArrayList<ArticleModel>()
     
-    fun setList(listArticle : java.util.ArrayList<ArticleModel>) {
+    fun setList(listArticle : ArrayList<ArticleModel>) {
         this.listArticle.clear()
         this.listArticle.addAll(listArticle)
         notifyDataSetChanged()

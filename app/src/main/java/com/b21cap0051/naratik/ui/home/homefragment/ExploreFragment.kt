@@ -26,7 +26,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 	
 	private var _binding : FragmentExploreBinding? = null
 	private val binding get() = _binding as FragmentExploreBinding
-	private var list : ArrayList<ArticleModel> = arrayListOf()
+	private var listArticle : ArrayList<ArticleModel> = arrayListOf()
+	private var listBatik : ArrayList<BatikModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikListAdapter
 	
@@ -65,8 +66,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		
 		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
-		val listBatik = DataDummy.generateDummyBatik()
-		adapterBatik.setList(listBatik)
+		listBatik = DataDummy.generateDummyBatik()
+		adapterBatik.setListLimited(listBatik)
 		
 		binding.btnShowAllBatik.setOnClickListener{
 			val intent = Intent(requireActivity(), BatikActivity::class.java)
@@ -79,8 +80,10 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		
 		binding.rvArticle.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
 		binding.rvArticle.adapter = adapterArticle
-		val listArticle = DataDummy.generateDummyArticle()
+		listArticle = DataDummy.generateDummyArticle()
 		adapterArticle.setList(listArticle)
+		
+		
 		
 		binding.btnShowAllArticle.setOnClickListener{
 			val intent = Intent(requireActivity(), ArticleActivity::class.java)
