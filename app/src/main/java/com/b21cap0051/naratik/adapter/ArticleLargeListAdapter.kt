@@ -7,12 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleLargeBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.ui.DetailArticleActivity
+import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class ArticleLargeListAdapter(private val listArticle: ArrayList<ArticleModel>) : RecyclerView.Adapter<ArticleLargeListAdapter.ArticleListLargeViewHolder>() {
+class ArticleLargeListAdapter(private val callback: ItemArticleCallBack)
+	: RecyclerView.Adapter<ArticleLargeListAdapter.ItemTarget>() {
 	
-	inner class ArticleListLargeViewHolder(private val binding: ItemRowArticleLargeBinding) : RecyclerView.ViewHolder(binding.root) {
+	private val listArticle = ArrayList<ArticleModel>()
+	
+	fun setList(listArticle : java.util.ArrayList<ArticleModel>) {
+		this.listArticle.clear()
+		this.listArticle.addAll(listArticle)
+		notifyDataSetChanged()
+	}
+	
+	inner class ItemTarget(private val binding: ItemRowArticleLargeBinding) : RecyclerView.ViewHolder(binding.root) {
 		fun bind(article: ArticleModel) {
 			with(binding) {
 				Glide.with(itemView.context)
@@ -26,12 +36,12 @@ class ArticleLargeListAdapter(private val listArticle: ArrayList<ArticleModel>) 
 		}
 	}
 	
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleListLargeViewHolder {
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemTarget {
 		val binding = ItemRowArticleLargeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-		return ArticleListLargeViewHolder(binding)
+		return ItemTarget(binding)
 	}
 	
-	override fun onBindViewHolder(holder: ArticleListLargeViewHolder, position: Int) {
+	override fun onBindViewHolder(holder: ItemTarget, position: Int) {
 		holder.bind(listArticle[position])
 		
 		holder.itemView.setOnClickListener{

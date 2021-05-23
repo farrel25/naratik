@@ -7,9 +7,9 @@
     <string name="title_on_boarding_1">MUDAH DIGUNAKAN</string>
     <string name="title_on_boarding_2">JELAJAHI BATIK</string>
     <string name="title_on_boarding_3">DETEKSI BATIK</string>
-    <string name="on_boarding_1">Easy to use this application for find about indonesian batik</string>
-    <string name="on_boarding_2">Explore all batik motif and add more your knowledge about that</string>
-    <string name="on_boarding_3">Using your camera you can check and explore about batik</string>
+    <string name="on_boarding_1">Aplikasi yang mudah digunakan untuk menjelajahi motif batik</string>
+    <string name="on_boarding_2">Jelajahi batik dan buka pengetahuanmu tentang batik</string>
+    <string name="on_boarding_3">Gunakan kameramu untuk mengenal motif batik lebih jauh</string>
     <string name="skip">Lewati</string>
     <string name="next">Lanjut</string>
     <string name="explore_batik">JELAJAHI BATIK</string>
@@ -45,7 +45,7 @@
     <string name="account_password">Kata Sandi</string>
     <string name="account_confirm_password">Konfirmasi Kata Sandi</string>
     <string name="settings">Pengaturan</string>
-    <string name="change_password">Umpan Password</string>
+    <string name="change_password">Umpan Kata Sandi</string>
     <string name="log_out">Keluar</string>
     <string name="log_in">Masuk</string>
     <string name="sign_up">Daftar</string>
@@ -63,5 +63,7 @@
     <string name="button">button</string>
     <string name="ecomerce">Toko Online</string>
     <string name="writer">dari %s</string>
-    <string name="back_to_camera">Back To Camera</string>
+    <string name="back_to_camera">Kembali Ke Kamera</string>
+    <string name="batk_to_home">Kembali Ke Beranda</string>
+    <string name="presentase">%s %%</string>
 </resources>

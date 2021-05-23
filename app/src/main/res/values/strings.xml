@@ -63,4 +63,6 @@
     <string name="button">button</string>
     <string name="writer">by %s</string>
     <string name="back_to_camera">Back To Camera</string>
+    <string name="batk_to_home">Back To Home</string>
+    <string name="presentase">%s %%</string>
 </resources>

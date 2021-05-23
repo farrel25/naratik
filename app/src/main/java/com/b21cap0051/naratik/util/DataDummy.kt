@@ -1,9 +1,9 @@
 package com.b21cap0051.naratik.util
 
-import android.provider.Settings.Global.getString
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
 
 object DataDummy{
 	fun generateDummyArticle() : ArrayList<ArticleModel>{
@@ -122,5 +122,33 @@ object DataDummy{
 			          )
 		          )
 		return  batiks
+	}
+	
+	fun generateDummyResult() : ArrayList<ResultModel> {
+		val results = ArrayList<ResultModel>()
+		
+		results.add(
+			ResultModel(
+				"id" ,
+				"Kawung",
+				10
+			          )
+		          )
+		results.add(
+			ResultModel(
+				"id" ,
+				"Parang",
+				20
+			          )
+		          )
+		results.add(
+			ResultModel(
+				"id" ,
+				"Mega Mendung",
+				34
+			          )
+		          )
+		
+		return  results
 	}
 }

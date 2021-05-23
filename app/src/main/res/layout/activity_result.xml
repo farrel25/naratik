@@ -20,7 +20,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
@@ -30,23 +30,32 @@
             android:layout_height="match_parent"
             android:padding="16dp">
 
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pcResult"
+                android:layout_width="160dp"
+                android:layout_height="192dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivResult"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/ivResult"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_width="160dp"
+                android:layout_height="192dp"
+                android:contentDescription="@string/image"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@string/image" />
+                tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtMotifSimilarity"
         style="@style/text_16sp_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rvMotifResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -65,10 +74,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMotifSimilarity" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnFeedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -76,20 +85,28 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/black"
         android:text="@string/feedback"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:icon="@drawable/ic_feedback"
+        app:iconGravity="textStart"
+        app:iconSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnGoHome"
+        app:layout_constraintStart_toStartOf="@+id/btnGoHome"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoHome" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnGoHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/yellow_500"
-        android:text="@string/back_to_camera"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        android:text="@string/batk_to_home"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_home_outlined"
+        app:iconGravity="textStart"
+        app:iconSize="16dp"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/rvMotifResult"
+        app:layout_constraintStart_toStartOf="@+id/rvMotifResult"
+        app:layout_constraintTop_toBottomOf="@+id/rvMotifResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>

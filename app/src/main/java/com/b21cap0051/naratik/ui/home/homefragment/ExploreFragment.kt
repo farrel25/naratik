@@ -17,10 +17,11 @@ import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.ui.ArticleActivity
 import com.b21cap0051.naratik.ui.BatikActivity
 import com.b21cap0051.naratik.util.DataDummy
+import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
 
-class ExploreFragment : Fragment() , ItemBatikCallBack
+class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 {
 	
 	private var _binding : FragmentExploreBinding? = null
@@ -47,10 +48,14 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
 		super.onViewCreated(view , savedInstanceState)
+		loadListBatik()
+		loadListArticle()
+	}
+	
+	private fun loadListBatik(){
 		adapterBatik = BatikListAdapter(this)
-		adapterArticle = ArticleListAdapter(DataDummy.generateDummyArticle())
+		
 		var row = 2
-		var limit = 4
 		val orientCheck = resources.configuration.orientation
 		if (orientCheck == Configuration.ORIENTATION_LANDSCAPE)
 		{
@@ -58,20 +63,24 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 			
 		}
 		
-		
-		binding.rvArticle.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-		binding.rvArticle.adapter = adapterArticle
-		
 		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
 		val listBatik = DataDummy.generateDummyBatik()
 		adapterBatik.setList(listBatik)
 		
-		
 		binding.btnShowAllBatik.setOnClickListener{
 			val intent = Intent(requireActivity(), BatikActivity::class.java)
 			startActivity(intent)
 		}
+	}
+	
+	private fun loadListArticle(){
+		adapterArticle = ArticleListAdapter(this)
+		
+		binding.rvArticle.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+		binding.rvArticle.adapter = adapterArticle
+		val listArticle = DataDummy.generateDummyArticle()
+		adapterArticle.setList(listArticle)
 		
 		binding.btnShowAllArticle.setOnClickListener{
 			val intent = Intent(requireActivity(), ArticleActivity::class.java)
@@ -80,6 +89,11 @@ class ExploreFragment : Fragment() , ItemBatikCallBack
 	}
 	
 	override fun itemBatikClick(model : BatikModel)
+	{
+	
+	}
+	
+	override fun itemArticleClick(model : ArticleModel)
 	{
 	
 	}

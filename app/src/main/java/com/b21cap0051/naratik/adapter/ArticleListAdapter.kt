@@ -7,13 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.ui.DetailArticleActivity
+import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class ArticleListAdapter(private val listArticle: ArrayList<ArticleModel>) : RecyclerView.Adapter<ArticleListAdapter.ArticleListViewHolder>() {
-
-
-    inner class ArticleListViewHolder(private val binding: ItemRowArticleBinding) : RecyclerView.ViewHolder(binding.root) {
+class ArticleListAdapter(private val callback: ItemArticleCallBack) :
+    RecyclerView.Adapter<ArticleListAdapter.ItemTarget>() {
+    
+    private val listArticle = ArrayList<ArticleModel>()
+    
+    fun setList(listArticle : java.util.ArrayList<ArticleModel>) {
+        this.listArticle.clear()
+        this.listArticle.addAll(listArticle)
+        notifyDataSetChanged()
+    }
+    
+    inner class ItemTarget(private val binding: ItemRowArticleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: ArticleModel) {
             with(binding) {
                 Glide.with(itemView.context)
@@ -28,17 +37,16 @@ class ArticleListAdapter(private val listArticle: ArrayList<ArticleModel>) : Rec
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemTarget {
         val binding = ItemRowArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ArticleListViewHolder(binding)
+        return ItemTarget(binding)
     }
 
-    override fun onBindViewHolder(holder: ArticleListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemTarget, position: Int) {
         holder.bind(listArticle[position])
 
         holder.itemView.setOnClickListener{
             val intent =Intent(holder.itemView.context, DetailArticleActivity::class.java)
-
             intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE,listArticle[position])
             holder.itemView.context.startActivity(intent)
         }
