@@ -4,4 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.homefragment.ECommerceFragment"/>
+    tools:context=".ui.home.homefragment.ECommerceFragment">
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/isEc"
+        app:iss_corner_radius="20"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:iss_placeholder="@color/grey_700"
+        app:iss_auto_cycle="true"
+        app:iss_delay="0"
+        app:iss_period="2000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
