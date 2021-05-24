@@ -7,21 +7,20 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
+import androidx.camera.core.*
 import androidx.camera.core.ImageCapture.OutputFileOptions.*
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
 import java.io.File
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+typealias LumaListener = (luma: Double) -> Unit
 
 class CameraActivity : AppCompatActivity()
 {
@@ -92,12 +91,16 @@ class CameraActivity : AppCompatActivity()
 					}
 				CapturePhoto = ImageCapture.Builder().build()
 				
+				val imageAnalyzer = ImageAnalysis.Builder()
+					.build()
+				
+				
 				val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 				
 				try
 				{
 					cameraProvider.unbindAll()
-					cameraProvider.bindToLifecycle(this , cameraSelector , preview,CapturePhoto)
+					cameraProvider.bindToLifecycle(this , cameraSelector , preview,CapturePhoto,imageAnalyzer)
 				} catch (e : Exception)
 				{
 					Log.e(TAG , "Use Case Binding Failed" , e)
@@ -171,5 +174,27 @@ class CameraActivity : AppCompatActivity()
 		}
 	}
 	
+	
+}
+
+private class LuminosityAnalyzer(private val listener : LumaListener):ImageAnalysis.Analyzer{
+	
+	private fun ByteBuffer.toByteArray():ByteArray{
+		rewind()
+		val data = ByteArray(remaining())
+		get(data)
+		return data
+	}
+	
+	override fun analyze(image : ImageProxy)
+	{
+		val buffer = image.planes[0].buffer
+		val data = buffer.toByteArray()
+		val pixels = data.map { it.toInt() and 0xFF }
+		val luma = pixels.average()
+		
+		listener(luma)
+		image.close()
+	}
 	
 }
