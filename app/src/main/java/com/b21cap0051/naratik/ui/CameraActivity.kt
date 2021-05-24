@@ -5,6 +5,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -89,7 +91,10 @@ class CameraActivity : AppCompatActivity()
 					.also {
 						it.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
 					}
-				CapturePhoto = ImageCapture.Builder().build()
+				
+				CapturePhoto = ImageCapture.Builder()
+					.setTargetRotation(binding.cameraFinder.display.rotation)
+					.build()
 				
 				val imageAnalyzer = ImageAnalysis.Builder()
 					.build()
