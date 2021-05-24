@@ -6,5 +6,7 @@ import com.b21cap0051.naratik.util.Resource
 
 interface DataSourceInterface{
 	fun GetAllBatikResponse():LiveData<ApiResponse<BatikResponse>>
+	
+	fun GetPopularBatikResponse():LiveData<ApiResponse<BatikResponse>>
 }
 
