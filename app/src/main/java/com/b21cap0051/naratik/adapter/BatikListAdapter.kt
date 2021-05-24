@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.ui.home.HomeActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
@@ -21,14 +22,14 @@ import java.util.*
 class BatikListAdapter(private val callBack : ItemBatikCallBack) :
     RecyclerView.Adapter<BatikListAdapter.ItemTarget>() {
 
-    private val listBatik = ArrayList<BatikModel>()
+    private val listBatik = ArrayList<BatikEntity>()
 
-    fun setList(listBatik : ArrayList<BatikModel>) {
+    fun setList(listBatik : List<BatikEntity>) {
         this.listBatik.clear()
         this.listBatik.addAll(listBatik)
         notifyDataSetChanged()
     }
-    fun setListLimited(listBatik : ArrayList<BatikModel>) {
+    fun setListLimited(listBatik : List<BatikEntity>) {
         this.listBatik.clear()
         for (i in 1..4){
             this.listBatik.addAll(listOf(listBatik[i]))
@@ -38,7 +39,7 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
 
     inner class ItemTarget(private val binding : ItemRowBatikBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(model : BatikModel) {
+        fun bind(model : BatikEntity) {
 
             var height = 900
             if (adapterPosition % 2 == 1 ) {
@@ -52,11 +53,11 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
                 .setHasFixedTransformationMatrix(true)
 
             Glide.with(itemView.context)
-                .load(model.image)
+                .load(model.Image)
                 .apply(RequestOptions().override(200 , height))
                 .into(binding.ivItemBatik)
-            binding.tvItemNameBatik.text = model.name
-            binding.tvItemLocationBatik.text = model.id
+            binding.tvItemNameBatik.text = model.name_batik
+            binding.tvItemLocationBatik.text = model.batik_id?.toString()
 
             binding.cvBatik.setOnClickListener {
                 val intent = Intent(itemView.context , DetailBatikActivity::class.java)

@@ -7,6 +7,7 @@ import com.b21cap0051.naratik.adapter.ArticleMiniListAdapter
 import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
 import com.b21cap0051.naratik.databinding.ActivityDetailBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
@@ -22,10 +23,10 @@ class DetailBatikActivity : AppCompatActivity(),ItemBatikCallBack {
         binding.rvVmBatik.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
         binding.rvVmBatik.adapter = batikAdapter
         val listBatik = DataDummy.generateDummyBatik()
-        batikAdapter.setList(listBatik)
+        //batikAdapter.setList(listBatik)
     }
     
-    override fun itemBatikClick(model : BatikModel)
+    override fun itemBatikClick(model : BatikEntity)
     {
         TODO("Not yet implemented")
     }

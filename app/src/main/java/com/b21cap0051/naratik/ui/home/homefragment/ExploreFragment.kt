@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
@@ -14,11 +16,16 @@ import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
+import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.remotedata.StatusResponse
+import com.b21cap0051.naratik.mainview.ExploreMainView
+import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
 import com.b21cap0051.naratik.ui.BatikActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
+import com.b21cap0051.naratik.util.naratikDependencys
 
 
 class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
@@ -46,14 +53,38 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		return binding.root
 	}
 	
+	private lateinit var mainView :ExploreMainView
+	
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
 		super.onViewCreated(view , savedInstanceState)
-		loadListBatik()
+		
+		val factory = ViewFactoryModel(naratikDependencys.injectRepository(requireActivity()))
+		mainView = ViewModelProvider(requireActivity(),factory)[ExploreMainView::class.java]
+		
+		mainView.getAllbatik().observe(viewLifecycleOwner,{ response ->
+			when(response.Status){
+				StatusResponse.SUCCESS -> {
+				   loadListBatik(response.Data!!)
+				}
+				StatusResponse.EMPTY -> {
+				
+				}
+				StatusResponse.ERROR -> {
+					Toast.makeText(requireContext(),"Get Data To API Error!",Toast.LENGTH_SHORT).show()
+				}
+			}
+			
+		})
+		
+		
+		
+		
+	
 		loadListArticle()
 	}
 	
-	private fun loadListBatik(){
+	private fun loadListBatik(value : List<BatikEntity>){
 		adapterBatik = BatikListAdapter(this)
 		
 		var row = 2
@@ -64,7 +95,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
 		listBatik = DataDummy.generateDummyBatik()
-		adapterBatik.setListLimited(listBatik)
+		adapterBatik.setListLimited(value)
 		
 		binding.btnShowAllBatik.setOnClickListener{
 			val intent = Intent(requireActivity(), BatikActivity::class.java)
@@ -88,7 +119,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		}
 	}
 	
-	override fun itemBatikClick(model : BatikModel)
+	override fun itemBatikClick(model : BatikEntity)
 	{
 	
 	}
