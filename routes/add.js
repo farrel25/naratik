@@ -37,8 +37,9 @@ router.post('/', async (req,res)=>{
                     motif2,
                     motif3
             })
-        res.send(predictionResult)
+        res.send("Upload Success")
     }catch (e) {
+        console.log(e)
         res.send("Upload Fail")
     }
 })
