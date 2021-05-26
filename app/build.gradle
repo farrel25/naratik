@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -69,6 +70,7 @@ dependencies {
 
     //DB
     implementation "androidx.room:room-runtime:2.3.0"
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
     kapt "androidx.room:room-compiler:2.3.0"
 
     //testing
@@ -93,9 +95,6 @@ dependencies {
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha24"
 
-    //firebase Stroage
-    implementation platform('com.google.firebase:firebase-bom:28.0.1')
-    implementation 'com.google.firebase:firebase-storage-ktx'
 
     //Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

@@ -150,6 +150,7 @@ class CameraActivity : AppCompatActivity()
 	
 	private fun takePhoto()
 	{
+		var photo : Uri? = null
 		val imageCapture = CapturePhoto ?: return
 		
 		val photoFile = File(
@@ -174,6 +175,8 @@ class CameraActivity : AppCompatActivity()
 						"Photo Captured and Saved on $SavedURI" ,
 						Toast.LENGTH_SHORT
 					              ).show()
+					photo = SavedURI
+					
 				}
 				
 				override fun onError(e : ImageCaptureException)
