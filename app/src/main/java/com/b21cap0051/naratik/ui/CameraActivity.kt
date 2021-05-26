@@ -1,16 +1,21 @@
 package com.b21cap0051.naratik.ui
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
-import android.view.MotionEvent
+import android.util.Size
+import android.view.Surface.ROTATION_0
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
-import androidx.camera.core.ImageCapture.OutputFileOptions.*
+import androidx.camera.core.ImageCapture.OutputFileOptions.Builder
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -20,13 +25,16 @@ import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-typealias LumaListener = (luma: Double) -> Unit
+import java.util.concurrent.TimeUnit
+
+typealias LumaListener = (luma : Double) -> Unit
 
 class CameraActivity : AppCompatActivity()
 {
-	private lateinit var binding : ActivityCameraBinding
+	private lateinit var binding  : ActivityCameraBinding
 	private lateinit var CameraExecutors : ExecutorService
 	private lateinit var outputDirectory : File
 	private var CapturePhoto : ImageCapture? = null
@@ -63,6 +71,8 @@ class CameraActivity : AppCompatActivity()
 		binding.btnCapture.setOnClickListener {
 			takePhoto()
 		}
+		
+	
 	}
 	
 	
@@ -79,6 +89,7 @@ class CameraActivity : AppCompatActivity()
 	}
 	
 	
+	@SuppressLint("RestrictedApi")
 	private fun startCamera()
 	{
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -87,6 +98,7 @@ class CameraActivity : AppCompatActivity()
 				val cameraProvider : ProcessCameraProvider = cameraProviderFuture.get()
 				
 				val preview = Preview.Builder()
+					.setTargetRotation(ROTATION_0)
 					.build()
 					.also {
 						it.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
@@ -94,18 +106,39 @@ class CameraActivity : AppCompatActivity()
 				
 				CapturePhoto = ImageCapture.Builder()
 					.setTargetRotation(binding.cameraFinder.display.rotation)
+					.setTargetResolution(Size(300 , 300))
 					.build()
 				
 				val imageAnalyzer = ImageAnalysis.Builder()
 					.build()
-				
+					.apply {
+						val analyzer = HandlerThread("LuminosityAnalysis").apply { start() }
+						setAnalyzer(
+							ThreadExecutor(Handler(analyzer.looper)),
+							LuminosityAnalyzer{ luma -> Log.d(TAG,"$luma")  }
+								   )
+					}
 				
 				val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 				
 				try
 				{
 					cameraProvider.unbindAll()
-					cameraProvider.bindToLifecycle(this , cameraSelector , preview,CapturePhoto,imageAnalyzer)
+					cameraProvider.bindToLifecycle(
+						this ,
+						cameraSelector ,
+						preview ,
+						CapturePhoto ,
+						imageAnalyzer,
+					                              )
+					preview?.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
+					val cameraContorl = preview?.camera?.cameraControl
+					val factory = SurfaceOrientedMeteringPointFactory(1f,1f)
+					val point = factory.createPoint(.5f,.5f)
+					val action = FocusMeteringAction.Builder(point,FocusMeteringAction.FLAG_AF)
+						.setAutoCancelDuration(2,TimeUnit.SECONDS)
+						.build()
+					cameraContorl!!.startFocusAndMetering(action)
 				} catch (e : Exception)
 				{
 					Log.e(TAG , "Use Case Binding Failed" , e)
@@ -123,24 +156,32 @@ class CameraActivity : AppCompatActivity()
 			outputDirectory ,
 			FILENAME_FORMAT + "_" + SimpleDateFormat(
 				DAY_FORMAT ,
-				Locale.US).format(System.currentTimeMillis()) + ".jpg")
+				Locale.US
+			                                        ).format(System.currentTimeMillis()) + ".jpg"
+		                    )
 		
 		val outputOptions = Builder(photoFile).build()
-		imageCapture.takePicture(outputOptions,ContextCompat.getMainExecutor(this),object : ImageCapture.OnImageSavedCallback{
-			override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
+		imageCapture.takePicture(
+			outputOptions ,
+			ContextCompat.getMainExecutor(this) ,
+			object : ImageCapture.OnImageSavedCallback
 			{
-				val SavedURI = Uri.fromFile(photoFile)
-				Toast.makeText(baseContext,"Photo Captured and Saved on $SavedURI",Toast.LENGTH_SHORT).show()
+				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
+				{
+					val SavedURI = Uri.fromFile(photoFile)
+					Toast.makeText(
+						baseContext ,
+						"Photo Captured and Saved on $SavedURI" ,
+						Toast.LENGTH_SHORT
+					              ).show()
+				}
 				
+				override fun onError(e : ImageCaptureException)
+				{
+					Log.e(TAG , "Photo Captured fail : ${e.message} " , e)
+				}
 				
-			}
-			
-			override fun onError(e : ImageCaptureException)
-			{
-				Log.e(TAG,"Photo Captured fail : ${e.message} ",e)
-			}
-			
-		})
+			})
 		
 	}
 	
@@ -179,12 +220,39 @@ class CameraActivity : AppCompatActivity()
 		}
 	}
 	
+	inline fun View.afterMeasured(crossinline block : () -> Unit)
+	{
+		viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener
+		{
+			override fun onGlobalLayout()
+			{
+				if (measuredWidth > 0 && measuredHeight > 0)
+				{
+					viewTreeObserver.removeOnGlobalLayoutListener(this)
+					block()
+				}
+			}
+			
+		})
+	}
+	
 	
 }
 
-private class LuminosityAnalyzer(private val listener : LumaListener):ImageAnalysis.Analyzer{
+open class ThreadExecutor(private val handler : Handler) : Executor
+{
+	override fun execute(command : Runnable)
+	{
+		handler.post(command)
+	}
 	
-	private fun ByteBuffer.toByteArray():ByteArray{
+}
+
+private class LuminosityAnalyzer(private val listener : LumaListener) : ImageAnalysis.Analyzer
+{
+	
+	private fun ByteBuffer.toByteArray() : ByteArray
+	{
 		rewind()
 		val data = ByteArray(remaining())
 		get(data)

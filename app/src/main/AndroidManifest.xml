@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/networksecurityconfig"
         android:theme="@style/Theme.Naratik">
-        <activity android:name=".ui.CameraActivity">
+        <activity android:name=".ui.CameraActivity"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".ui.home.HomeActivity">

@@ -56,7 +56,8 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				data == null || data.isEmpty()
+//				data == null || data.isEmpty()
+				true
 			
 			override fun loadfromDb() : LiveData<List<BatikEntity>> =
 				LocalData.GetAllBatik()
@@ -90,7 +91,8 @@ class NaratikRepository constructor(
 		    }
 		
 		    override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-		    	data == null || data.isEmpty()
+//		    	data == null || data.isEmpty()
+		    	true
 		
 		    override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
 		    	LocalData.GetAllPopularBatik()
