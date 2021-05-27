@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.dataresource
 
 import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
@@ -8,6 +9,7 @@ import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.ApiResponse
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.Resource
 
@@ -101,6 +103,12 @@ class NaratikRepository constructor(
 		
 	    }.asLiveData()
 	}
+	
+	override fun InsertUploadImage(upload : ImageUploadModel) = RemoteData.UploadImage(upload)
+	
+	override fun GetProgress() : LiveData<Resource<Double>> = RemoteData.getProgress()
+	
+	override fun IsDone() : LiveData<Resource<Boolean>> = RemoteData.getIsDone()
 	
 	
 }
