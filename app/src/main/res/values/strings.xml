@@ -65,4 +65,6 @@
     <string name="back_to_camera">Back To Camera</string>
     <string name="batk_to_home">Back To Home</string>
     <string name="presentase">%s %%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

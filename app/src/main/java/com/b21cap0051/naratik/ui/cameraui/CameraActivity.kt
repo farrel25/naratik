@@ -21,6 +21,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
+import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment
+import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment.Companion.KEY_UPLOAD
 import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
@@ -150,7 +153,7 @@ class CameraActivity : AppCompatActivity()
 	
 	private fun takePhoto()
 	{
-		var photo : Uri? = null
+		
 		val imageCapture = CapturePhoto ?: return
 		
 		val photoFile = File(
@@ -175,8 +178,9 @@ class CameraActivity : AppCompatActivity()
 						"Photo Captured and Saved on $SavedURI" ,
 						Toast.LENGTH_SHORT
 					              ).show()
-					photo = SavedURI
 					
+					
+					UploadProcess(ImageUploadModel(SavedURI))
 				}
 				
 				override fun onError(e : ImageCaptureException)
@@ -187,6 +191,18 @@ class CameraActivity : AppCompatActivity()
 			})
 		
 	}
+	
+	private fun UploadProcess(modelUpload : ImageUploadModel)
+	{
+	    val fragment = UploadProcessFragment()
+		val bdata = Bundle()
+		bdata.putParcelable(KEY_UPLOAD, modelUpload)
+		fragment.arguments = bdata
+		supportFragmentManager.beginTransaction()
+			.add(R.id.uploadProcess,fragment,UploadProcessFragment::class.java.simpleName)
+			.commit()
+	}
+	
 	
 	override fun onDestroy()
 	{
@@ -223,21 +239,7 @@ class CameraActivity : AppCompatActivity()
 		}
 	}
 	
-	inline fun View.afterMeasured(crossinline block : () -> Unit)
-	{
-		viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener
-		{
-			override fun onGlobalLayout()
-			{
-				if (measuredWidth > 0 && measuredHeight > 0)
-				{
-					viewTreeObserver.removeOnGlobalLayoutListener(this)
-					block()
-				}
-			}
-			
-		})
-	}
+	
 	
 	
 }
