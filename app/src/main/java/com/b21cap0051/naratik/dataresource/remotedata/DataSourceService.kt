@@ -12,10 +12,13 @@ import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.util.Resource
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.FirebaseApp
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -98,13 +101,12 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 	
 	override fun UploadImage(upload : ImageUploadModel)
 	{
-		val storage = FirebaseStorage.getInstance()
-		
+		val storage = Firebase.storage("gs://b21-cap0051-image")
 		val storageRef = storage.reference
 		
 		_progress.value = Resource(StatusResponse.EMPTY,false)
 		
-		val imageRef = storageRef.child("images/${upload.uri.lastPathSegment}")
+		val imageRef = storageRef.child("${upload.uri.lastPathSegment}")
 		
 		var metadata = StorageMetadata.Builder()
 			.setContentType("image/jpg")
