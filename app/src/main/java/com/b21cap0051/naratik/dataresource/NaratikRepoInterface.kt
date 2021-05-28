@@ -1,11 +1,10 @@
 package com.b21cap0051.naratik.dataresource
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.util.Resource
+import com.b21cap0051.naratik.util.vo.Resource
 
 interface NaratikRepoInterface
 {

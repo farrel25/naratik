@@ -2,8 +2,6 @@ package com.b21cap0051.naratik.ui.cameraui
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.provider.CalendarContract
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +9,12 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
-import com.b21cap0051.naratik.dataresource.remotedata.StatusResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
-import com.google.android.material.snackbar.Snackbar
+import com.b21cap0051.naratik.util.vo.Status
 
 
 class UploadProcessFragment : Fragment()
@@ -49,7 +46,7 @@ class UploadProcessFragment : Fragment()
 		
 		mainView.GetProgress().observe(viewLifecycleOwner,{ response ->
 			when(response.Status){
-				StatusResponse.EMPTY -> {
+				Status.LOADING    -> {
 					pb.max = 100
 					val currentProgress = response.Data?.toInt()
 					if (currentProgress != null)
@@ -58,9 +55,10 @@ class UploadProcessFragment : Fragment()
 					}
 //					pb.progress = "${response.Data} %"
 				}
-				StatusResponse.SUCCESS -> {
+				Status.SUCCESS    -> {
 					Toast.makeText(context,response.message,Toast.LENGTH_SHORT).show()
-				}StatusResponse.ERROR -> {
+				}
+				Status.ERROR -> {
 					Toast.makeText(context,response.message,Toast.LENGTH_SHORT).show()
 				}
 			}
@@ -68,13 +66,13 @@ class UploadProcessFragment : Fragment()
 		
 		mainView.IsDone().observe(viewLifecycleOwner,{response ->
 			when(response.Status){
-				StatusResponse.EMPTY -> {
+				Status.LOADING    -> {
 					showText(response.Data!!)
 				}
-				StatusResponse.SUCCESS -> {
+				Status.SUCCESS    -> {
 					showText(response.Data!!)
 				}
-				StatusResponse.ERROR -> {
+				Status.ERROR -> {
 					showText(response.Data!!)
 				}
 			}

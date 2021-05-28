@@ -1,17 +1,16 @@
 package com.b21cap0051.naratik.dataresource
 
 import android.content.Context
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
-import com.b21cap0051.naratik.dataresource.remotedata.ApiResponse
+import com.b21cap0051.naratik.util.voapi.ApiResponse
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.util.ExecutedApp
-import com.b21cap0051.naratik.util.Resource
+import com.b21cap0051.naratik.util.vo.Resource
 
 class NaratikRepository constructor(
 	private val ctx : Context,
@@ -58,7 +57,6 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-//				data == null || data.isEmpty()
 				true
 			
 			override fun loadfromDb() : LiveData<List<BatikEntity>> =
@@ -93,7 +91,6 @@ class NaratikRepository constructor(
 		    }
 		
 		    override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-//		    	data == null || data.isEmpty()
 		    	true
 		
 		    override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =

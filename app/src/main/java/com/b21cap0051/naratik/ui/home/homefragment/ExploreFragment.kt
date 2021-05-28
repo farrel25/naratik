@@ -17,7 +17,7 @@ import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.dataresource.remotedata.StatusResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.b21cap0051.naratik.mainview.ExploreMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
@@ -26,6 +26,7 @@ import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.naratikDependencys
+import com.b21cap0051.naratik.util.vo.Status
 
 
 class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
@@ -64,13 +65,13 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		
 		mainView.getAllbatik().observe(viewLifecycleOwner,{ response ->
 			when(response.Status){
-				StatusResponse.SUCCESS -> {
+				Status.SUCCESS -> {
 				   loadListBatik(response.Data!!)
 				}
-				StatusResponse.EMPTY -> {
+				Status.LOADING -> {
 				
 				}
-				StatusResponse.ERROR -> {
+			Status.ERROR  -> {
 					Toast.makeText(requireContext(),"Get Data To API Error!",Toast.LENGTH_SHORT).show()
 				}
 			}

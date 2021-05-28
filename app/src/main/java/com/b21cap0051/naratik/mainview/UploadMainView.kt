@@ -1,11 +1,10 @@
 package com.b21cap0051.naratik.mainview
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.b21cap0051.naratik.dataresource.NaratikRepository
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.util.Resource
+import com.b21cap0051.naratik.util.vo.Resource
 
 class UploadMainView(private val repository : NaratikRepository) : ViewModel()
 {

@@ -1,7 +1,6 @@
 package com.b21cap0051.naratik.dataresource.remotedata
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -9,12 +8,13 @@ import androidx.lifecycle.MutableLiveData
 import com.b21cap0051.naratik.dataresource.remotedata.api.APIConfig
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.util.Resource
+import com.b21cap0051.naratik.util.vo.Resource
+import com.b21cap0051.naratik.util.vo.Status
+import com.b21cap0051.naratik.util.voapi.ApiResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.UploadTask
@@ -104,7 +104,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		val storage = Firebase.storage("gs://b21-cap0051-image")
 		val storageRef = storage.reference
 		
-		_progress.value = Resource(StatusResponse.EMPTY,false)
+		_progress.value = Resource(Status.LOADING,false)
 		
 		val imageRef = storageRef.child("${upload.uri.lastPathSegment}")
 		
@@ -119,7 +119,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			override fun onProgress(snapshot : UploadTask.TaskSnapshot)
 			{
 				val progress = (100.0 * snapshot.bytesTransferred) / snapshot.totalByteCount
-				_data.value = Resource(StatusResponse.EMPTY,progress)
+				_data.value = Resource(Status.LOADING,progress)
 				Log.d(TAG , "Progress $progress")
 			}
 		})
@@ -128,8 +128,8 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		{
 			override fun onSuccess(p0 : UploadTask.TaskSnapshot?)
 			{
-				_data.value = Resource(StatusResponse.SUCCESS,100.0,"Upload Succesfully")
-				_progress.value = Resource(StatusResponse.SUCCESS,true)
+				_data.value = Resource(Status.SUCCESS,100.0,"Upload Succesfully")
+				_progress.value = Resource(Status.SUCCESS,true)
 				Log.d(TAG , "Uploaded Sucessfully")
 			}
 			
@@ -139,8 +139,8 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		{
 			override fun onFailure(p0 : Exception)
 			{
-				_data.value = Resource(StatusResponse.ERROR,-1.0,"error : $p0")
-				_progress.value = Resource(StatusResponse.ERROR,true)
+				_data.value = Resource(Status.ERROR,-1.0,"error : $p0")
+				_progress.value = Resource(Status.ERROR,true)
 				Log.d(TAG , "Failure because ${p0.message}")
 			}
 			

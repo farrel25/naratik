@@ -4,12 +4,12 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.b21cap0051.naratik.dataresource.remotedata.ApiResponse
-import com.b21cap0051.naratik.dataresource.remotedata.StatusResponse
+import com.b21cap0051.naratik.util.voapi.ApiResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.b21cap0051.naratik.util.ExecutedApp
-import com.b21cap0051.naratik.util.Resource
+import com.b21cap0051.naratik.util.vo.Resource
 
-abstract class NetworkBoundResource<ResultType , RequestType>(private val Execute : ExecutedApp)
+abstract class NetworkBoundResource<ResultType , RequestType>(private val mExecutor : ExecutedApp)
 {
 	
 	private val result = MediatorLiveData<Resource<ResultType>>()
@@ -49,18 +49,18 @@ abstract class NetworkBoundResource<ResultType , RequestType>(private val Execut
 		result.addSource(dbSource) { newData ->
 			setValue(Resource.Loading(newData))
 		}
-		result.addSource(apiResponse) { Response ->
+		result.addSource(apiResponse) { response ->
 			result.removeSource(apiResponse)
 			result.removeSource(dbSource)
-			when (Response.statusResponse)
+			when (response.statusResponse)
 			{
 				StatusResponse.SUCCESS ->
 				{
-					Execute.DiskIO().execute {
-						saveCallResult(Response.body)
-						Execute.MainThread().execute {
+					mExecutor.DiskIO().execute {
+						saveCallResult(processResponse(response))
+						mExecutor.MainThread().execute {
 							result.addSource(loadfromDb()) { newData ->
-								result.value = Resource.Success(newData)
+								setValue(Resource.Success(newData))
 							}
 						}
 					}
@@ -68,9 +68,9 @@ abstract class NetworkBoundResource<ResultType , RequestType>(private val Execut
 				
 				StatusResponse.EMPTY   ->
 				{
-					Execute.MainThread().execute {
+					mExecutor.MainThread().execute {
 						result.addSource(loadfromDb()) { newData ->
-							result.value = Resource.Success(newData)
+							setValue(Resource.Success(newData))
 						}
 					}
 				}
@@ -78,7 +78,7 @@ abstract class NetworkBoundResource<ResultType , RequestType>(private val Execut
 				{
 					onFetchFailed()
 					result.addSource(dbSource) { newData ->
-						result.value = Resource.Error(Response.message , newData)
+						setValue(Resource.Error(response.message , newData))
 					}
 				}
 				
@@ -93,6 +93,9 @@ abstract class NetworkBoundResource<ResultType , RequestType>(private val Execut
 	
 	@MainThread
 	protected abstract fun shouldFetch(data : ResultType?) : Boolean
+	
+	@WorkerThread
+	protected open fun processResponse(response : ApiResponse<RequestType>) = response.body
 	
 	@MainThread
 	protected abstract fun loadfromDb() : LiveData<ResultType>
