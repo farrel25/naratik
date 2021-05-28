@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.dataresource.remotedata
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel

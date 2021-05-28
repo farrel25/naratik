@@ -5,59 +5,66 @@ import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
-import com.b21cap0051.naratik.util.voapi.ApiResponse
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.vo.Resource
+import com.b21cap0051.naratik.util.voapi.ApiResponse
 
 class NaratikRepository constructor(
-	private val ctx : Context,
-	private val RemoteData : DataSourceService,
-	private val LocalData :LocalDataSource,
+	private val ctx : Context ,
+	private val RemoteData : DataSourceService ,
+	private val LocalData : LocalDataSource ,
 	private val Executer : ExecutedApp
-								   ):NaratikRepoInterface
+                                   ) : NaratikRepoInterface
 {
 	
-	companion object{
+	companion object
+	{
 		
 		@Volatile
 		private var Instance : NaratikRepository? = null
 		
-		fun GetInstance(ctx : Context ,remote : DataSourceService, local : LocalDataSource,execute : ExecutedApp ):NaratikRepository =
-			Instance?: synchronized(this){
-				Instance?: NaratikRepository(ctx,remote,local,execute).apply {
-					 Instance = this
+		fun GetInstance(
+			ctx : Context ,
+			remote : DataSourceService ,
+			local : LocalDataSource ,
+			execute : ExecutedApp
+		               ) : NaratikRepository =
+			Instance ?: synchronized(this) {
+				Instance ?: NaratikRepository(ctx , remote , local , execute).apply {
+					Instance = this
 				}
 			}
-		
 		
 		
 	}
 	
 	override fun GetAllBatik() : LiveData<Resource<List<BatikEntity>>>
 	{
-		return object : NetworkBoundResource<List<BatikEntity>,BatikResponse>(Executer){
+		return object : NetworkBoundResource<List<BatikEntity> , BatikResponse>(Executer)
+		{
 			override fun saveCallResult(item : BatikResponse)
 			{
-			  val result = ArrayList<BatikEntity>()
+				val result = ArrayList<BatikEntity>()
 				val dataResponse = item.hasil
-				for (i in 0 until dataResponse?.size!!){
+				for (i in 0 until dataResponse?.size!!)
+				{
 					val dataDB = BatikEntity(
-						dataResponse[i].id,
-						dataResponse[i].namaBatik,
-						dataResponse[i].maknaBatik,
-						dataResponse[i].linkBatik,
+						dataResponse[i].id ,
+						dataResponse[i].namaBatik ,
+						dataResponse[i].maknaBatik ,
+						dataResponse[i].linkBatik ,
 						dataResponse[i].daerahBatik
-											)
+					                        )
 					result.add(dataDB)
 				}
 				LocalData.InsertBatik(result)
 			}
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				true
+				data == null || data.isEmpty()
 			
 			override fun loadfromDb() : LiveData<List<BatikEntity>> =
 				LocalData.GetAllBatik()
@@ -72,38 +79,45 @@ class NaratikRepository constructor(
 	
 	override fun GetPopular() : LiveData<Resource<List<PopularBatikEntity>>>
 	{
-	    return object : NetworkBoundResource<List<PopularBatikEntity>,BatikResponse>(Executer){
-		    override fun saveCallResult(item : BatikResponse)
-		    {
-			   val dataResponse = item?.hasil
-			    val dataDb = ArrayList<PopularBatikEntity>()
-			    for (i in 0 until dataResponse?.size!!){
-			    	val dataBatik = PopularBatikEntity(
-					    dataResponse[i].id,
-					    dataResponse[i].namaBatik,
-					    dataResponse[i].maknaBatik,
-					    dataResponse[i].linkBatik,
-					    dataResponse[i].daerahBatik
-			    									  )
-				    dataDb.add(dataBatik)
-			    }
-			    LocalData.insertPopularBatik(dataDb)
-		    }
-		
-		    override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-		    	true
-		
-		    override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
-		    	LocalData.GetAllPopularBatik()
-		
-		    override fun createCall() : LiveData<ApiResponse<BatikResponse>> = RemoteData.GetPopularBatikResponse()
-		
-	    }.asLiveData()
+		return object : NetworkBoundResource<List<PopularBatikEntity> , BatikResponse>(Executer)
+		{
+			override fun saveCallResult(item : BatikResponse)
+			{
+				val dataResponse = item?.hasil
+				val dataDb = ArrayList<PopularBatikEntity>()
+				for (i in 0 until dataResponse?.size!!)
+				{
+					val dataBatik = PopularBatikEntity(
+						dataResponse[i].id ,
+						dataResponse[i].namaBatik ,
+						dataResponse[i].maknaBatik ,
+						dataResponse[i].linkBatik ,
+						dataResponse[i].daerahBatik
+					                                  )
+					dataDb.add(dataBatik)
+				}
+				LocalData.insertPopularBatik(dataDb)
+			}
+			
+			override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
+				data == null || data.isEmpty()
+			
+			override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
+				LocalData.GetAllPopularBatik()
+			
+			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =
+				RemoteData.GetPopularBatikResponse()
+			
+		}.asLiveData()
 	}
 	
-	override fun InsertUploadImage(upload : ImageUploadModel) = RemoteData.UploadImage(upload)
+	override fun InsertUploadImage(
+		upload : ImageUploadModel
+	                              ) = RemoteData.UploadImage(upload)
 	
-	override fun GetProgress() : LiveData<Resource<Double>> = RemoteData.getProgress()
+	override fun getInternetConnect() : LiveData<Resource<Boolean>> =
+		RemoteData.InternetIsconnected()
+	
 	
 	override fun IsDone() : LiveData<Resource<Boolean>> = RemoteData.getIsDone()
 	

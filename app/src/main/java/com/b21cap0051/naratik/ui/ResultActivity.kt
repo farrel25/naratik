@@ -25,6 +25,12 @@ class ResultActivity : AppCompatActivity(),ItemResultCallback {
     private lateinit var batikChart : PieChart
     private lateinit var binding : ActivityResultBinding
     private lateinit var adapterResult : ResultMotifAdapter
+    
+    companion object{
+        const val KEY_DATA = "data"
+    }
+    
+    
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)

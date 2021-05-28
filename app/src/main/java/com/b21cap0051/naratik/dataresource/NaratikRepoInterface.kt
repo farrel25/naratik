@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.dataresource
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
@@ -14,7 +15,7 @@ interface NaratikRepoInterface
 	
 	fun InsertUploadImage(upload : ImageUploadModel)
 	
-	fun GetProgress():LiveData<Resource<Double>>
+	fun getInternetConnect():LiveData<Resource<Boolean>>
 	
 	fun IsDone():LiveData<Resource<Boolean>>
 	
