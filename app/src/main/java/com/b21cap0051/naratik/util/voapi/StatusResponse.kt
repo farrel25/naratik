@@ -1,4 +1,4 @@
-package com.b21cap0051.naratik.dataresource.remotedata
+package com.b21cap0051.naratik.util.voapi
 
 enum class StatusResponse
 {
