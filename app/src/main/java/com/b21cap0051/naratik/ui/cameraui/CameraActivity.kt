@@ -35,9 +35,9 @@ typealias LumaListener = (luma : Double) -> Unit
 class CameraActivity : AppCompatActivity()
 {
 	private lateinit var binding  : ActivityCameraBinding
-	private lateinit var CameraExecutors : ExecutorService
+	private lateinit var cameraExecutors : ExecutorService
 	private lateinit var outputDirectory : File
-	private var CapturePhoto : ImageCapture? = null
+	private var capturePhoto : ImageCapture? = null
 	
 	companion object
 	{
@@ -56,7 +56,7 @@ class CameraActivity : AppCompatActivity()
 		
 		
 		
-		if (CameraGranted())
+		if (cameraGranted())
 		{
 			startCamera()
 		} else
@@ -66,7 +66,7 @@ class CameraActivity : AppCompatActivity()
 			                                 )
 		}
 		
-		CameraExecutors = Executors.newSingleThreadExecutor()
+		cameraExecutors = Executors.newSingleThreadExecutor()
 		outputDirectory = getOutputDirectory()
 		binding.btnCapture.setOnClickListener {
 			takePhoto()
@@ -84,10 +84,9 @@ class CameraActivity : AppCompatActivity()
 		return if (mediaDir != null && mediaDir.exists()) mediaDir else filesDir
 	}
 	
-	private fun CameraGranted() = REQUIRED_PERMISSIONS.all {
+	private fun cameraGranted() = REQUIRED_PERMISSIONS.all {
 		ContextCompat.checkSelfPermission(baseContext , it) == PackageManager.PERMISSION_GRANTED
 	}
-	
 	
 	@SuppressLint("RestrictedApi")
 	private fun startCamera()
@@ -104,7 +103,7 @@ class CameraActivity : AppCompatActivity()
 						it.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
 					}
 				
-				CapturePhoto = ImageCapture.Builder()
+				capturePhoto = ImageCapture.Builder()
 					.setTargetRotation(binding.cameraFinder.display.rotation)
 					.setTargetResolution(Size(300 , 300))
 					.build()
@@ -128,11 +127,11 @@ class CameraActivity : AppCompatActivity()
 						this ,
 						cameraSelector ,
 						preview ,
-						CapturePhoto ,
+						capturePhoto ,
 						imageAnalyzer,
 					                              )
-					preview?.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
-					val cameraContorl = preview?.camera?.cameraControl
+					preview.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
+					val cameraContorl = preview.camera?.cameraControl
 					val factory = SurfaceOrientedMeteringPointFactory(1f,1f)
 					val point = factory.createPoint(.5f,.5f)
 					val action = FocusMeteringAction.Builder(point,FocusMeteringAction.FLAG_AF)
@@ -151,15 +150,12 @@ class CameraActivity : AppCompatActivity()
 	private fun takePhoto()
 	{
 		
-		val imageCapture = CapturePhoto ?: return
+		val imageCapture = capturePhoto ?: return
 		
 		val photoFile = File(
 			outputDirectory ,
 			FILENAME_FORMAT + "_" + SimpleDateFormat(
-				DAY_FORMAT ,
-				Locale.US
-			                                        ).format(System.currentTimeMillis()) + ".jpg"
-		                    )
+				DAY_FORMAT , Locale.US).format(System.currentTimeMillis()) + ".jpg")
 		
 		val outputOptions = Builder(photoFile).build()
 		imageCapture.takePicture(
@@ -169,15 +165,15 @@ class CameraActivity : AppCompatActivity()
 			{
 				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
 				{
-					val SavedURI = Uri.fromFile(photoFile)
+					val savedURI = Uri.fromFile(photoFile)
 					Toast.makeText(
 						baseContext ,
-						"Photo Captured and Saved on $SavedURI" ,
+						"Photo Captured and Saved on $savedURI" ,
 						Toast.LENGTH_SHORT
 					              ).show()
 					
 					
-					UploadProcess(ImageUploadModel(SavedURI))
+					uploadProcess(ImageUploadModel(savedURI))
 				}
 				
 				override fun onError(e : ImageCaptureException)
@@ -189,12 +185,12 @@ class CameraActivity : AppCompatActivity()
 		
 	}
 	
-	private fun UploadProcess(modelUpload : ImageUploadModel)
+	private fun uploadProcess(modelUpload : ImageUploadModel)
 	{
 	    val fragment = UploadProcessFragment()
-		val bdata = Bundle()
-		bdata.putParcelable(KEY_UPLOAD, modelUpload)
-		fragment.arguments = bdata
+		val bData = Bundle()
+		bData.putParcelable(KEY_UPLOAD, modelUpload)
+		fragment.arguments = bData
 		supportFragmentManager.beginTransaction()
 			.add(R.id.uploadProcess,fragment,UploadProcessFragment::class.java.simpleName)
 			.commit()
@@ -204,7 +200,7 @@ class CameraActivity : AppCompatActivity()
 	override fun onDestroy()
 	{
 		super.onDestroy()
-		CameraExecutors.shutdown()
+		cameraExecutors.shutdown()
 	}
 	
 	override fun onBackPressed()
@@ -221,7 +217,7 @@ class CameraActivity : AppCompatActivity()
 		super.onRequestPermissionsResult(requestCode , permissions , grantResults)
 		if (requestCode == REQUEST_CODE_PERMISSION)
 		{
-			if (CameraGranted())
+			if (cameraGranted())
 			{
 				startCamera()
 			} else

@@ -66,4 +66,6 @@
     <string name="back_to_camera">Kembali Ke Kamera</string>
     <string name="batk_to_home">Kembali Ke Beranda</string>
     <string name="presentase">%s %%</string>
+    <string name="upload_progress">Upload Progress!</string>
+    <string name="progress">progress</string>
 </resources>

@@ -1,11 +1,15 @@
 package com.b21cap0051.naratik.ui.cameraui
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
@@ -13,17 +17,18 @@ import com.b21cap0051.naratik.dataresource.remotedata.StatusResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class UploadProcessFragment : Fragment()
 {
 
 	private lateinit var binding : FragmentUploadProcessBinding
-	
+	private lateinit var pb : ProgressBar
 	override fun onCreateView(
 		inflater : LayoutInflater , container : ViewGroup? ,
 		savedInstanceState : Bundle?
-	                         ) : View?
+	                         ) : View
 	{
 		binding = FragmentUploadProcessBinding.inflate(layoutInflater,container,false)
 		return binding.root
@@ -36,8 +41,8 @@ class UploadProcessFragment : Fragment()
 		if(arguments!= null){
 			modelData = arguments?.getParcelable<ImageUploadModel>(KEY_UPLOAD) as ImageUploadModel
 		}
-		
-	   val factory = ViewFactoryModel.GetInstance(requireContext())
+		pb = binding.pbCameraUpload
+	    val factory = ViewFactoryModel.GetInstance(requireContext())
 		mainView = ViewModelProvider(requireActivity(),factory)[UploadMainView::class.java]
 		
 		mainView.uploadFile(modelData)
@@ -45,12 +50,18 @@ class UploadProcessFragment : Fragment()
 		mainView.GetProgress().observe(viewLifecycleOwner,{ response ->
 			when(response.Status){
 				StatusResponse.EMPTY -> {
-					binding.LoadingUpload.text = "${response.Data} %"
+					pb.max = 100
+					val currentProgress = response.Data?.toInt()
+					if (currentProgress != null)
+					{
+						ObjectAnimator.ofInt(binding.pbCameraUpload,"progress",currentProgress)
+					}
+//					pb.progress = "${response.Data} %"
 				}
 				StatusResponse.SUCCESS -> {
-					binding.notifSend.text = response.message
+					Toast.makeText(context,response.message,Toast.LENGTH_SHORT).show()
 				}StatusResponse.ERROR -> {
-				binding.notifSend.text = response.message
+					Toast.makeText(context,response.message,Toast.LENGTH_SHORT).show()
 				}
 			}
 		})
@@ -74,13 +85,11 @@ class UploadProcessFragment : Fragment()
 	
 	private fun showText(stat : Boolean){
 		if(stat){
-			binding.LoadingUpload.visibility = View.VISIBLE
+			binding.pbCameraUpload.visibility = View.VISIBLE
 			binding.textLoad.visibility = View.VISIBLE
-			binding.notifSend.visibility = View.GONE
 		}else{
-			binding.LoadingUpload.visibility = View.GONE
+			binding.pbCameraUpload.visibility = View.GONE
 			binding.textLoad.visibility = View.GONE
-			binding.notifSend.visibility = View.VISIBLE
 		}
 	}
 	
