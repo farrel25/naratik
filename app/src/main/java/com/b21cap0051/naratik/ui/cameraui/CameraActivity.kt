@@ -1,4 +1,4 @@
-package com.b21cap0051.naratik.ui
+package com.b21cap0051.naratik.ui.cameraui
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -10,8 +10,6 @@ import android.os.HandlerThread
 import android.util.Log
 import android.util.Size
 import android.view.Surface.ROTATION_0
-import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -22,7 +20,6 @@ import androidx.core.content.ContextCompat
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment
 import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment.Companion.KEY_UPLOAD
 import java.io.File
 import java.nio.ByteBuffer

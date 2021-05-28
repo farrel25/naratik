@@ -42,7 +42,7 @@ class BatikListAdapter(private val callBack : ItemBatikCallBack) :
         fun bind(model : BatikEntity) {
 
             var height = 900
-            if (adapterPosition % 2 == 1 ) {
+            if (position % 2 == 1 ) {
                 height = 450
             }
 
