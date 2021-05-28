@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.homefragment.ExploreFragment">
 
     <androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.home.homefragment.ExploreFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -14,21 +12,183 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/txtExploreBatik"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:letterSpacing="0.05"
+                    android:shadowColor="@color/grey_200"
+                    android:shadowDx="10"
+                    android:shadowDy="10"
+                    android:shadowRadius="5"
+                    android:text="@string/explore_batik"
+                    android:textColor="@color/black"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="173dp"
+                    android:layout_height="100dp"
+                    android:layout_alignTop="@+id/txtExploreBatik"
+                    android:layout_alignBottom="@+id/txtExploreBatik"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="0dp"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/img_explore_batik"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtExploreBatik"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtExploreBatik" />
+
+                <EditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtExploreBatik"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_white_rounded"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/search"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExploreBatik" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/txtBatik"
+                    style="@style/text_24sp_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/batik" />
+
+                <Button
+                    android:id="@+id/btnShowAllBatik"
+                    style="@style/text_12sp_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@color/yellow_500"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/show_all"
+                    android:textAllCaps="false"
+                    app:cornerRadius="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtBatik"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtBatik"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rvBatik">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rvShimmer"
+                    tools:listitem="@layout/shimmer_item_row_batik">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBatik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/btnShowAllBatik"
                 app:layout_constraintStart_toStartOf="@+id/txtBatik"
                 app:layout_constraintTop_toBottomOf="@+id/txtBatik"
-                tools:listitem="@layout/item_row_batik" />
+                tools:listitem="@layout/item_row_batik">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/txtArticle"
+                    style="@style/text_24sp_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/article" />
+
+                <Button
+                    android:id="@+id/btnShowAllArticle"
+                    style="@style/text_12sp_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/yellow_500"
+                    android:foregroundGravity="center"
+                    android:includeFontPadding="false"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/show_all"
+                    android:textAllCaps="false"
+                    app:cornerRadius="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtArticle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtArticle"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvArticle"
@@ -37,116 +197,12 @@
                 android:clipToPadding="false"
                 android:paddingStart="16dp"
                 android:paddingEnd="0dp"
-                android:paddingTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txtArticle"
                 app:layout_constraintTop_toBottomOf="@+id/txtArticle"
-                tools:listitem="@layout/item_row_article" />
+                tools:listitem="@layout/item_row_article">
 
-            <TextView
-                android:id="@+id/txtExploreBatik"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:letterSpacing="0.05"
-                android:shadowColor="@color/grey_200"
-                android:shadowDx="10"
-                android:shadowDy="10"
-                android:shadowRadius="5"
-                android:text="@string/explore_batik"
-                android:textColor="@color/black"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/txtBatik"
-                style="@style/text_24sp_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/batik"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etSearch" />
-
-            <TextView
-                android:id="@+id/txtArticle"
-                style="@style/text_24sp_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/article"
-                app:layout_constraintStart_toStartOf="@+id/txtBatik"
-                app:layout_constraintTop_toBottomOf="@+id/rvBatik" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="173dp"
-                android:layout_height="108dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/image"
-                android:src="@drawable/img_explore_batik"
-                app:layout_constraintBottom_toBottomOf="@+id/txtExploreBatik"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtExploreBatik" />
-
-            <Button
-                android:id="@+id/btnShowAllArticle"
-                style="@style/text_12sp_regular"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:backgroundTint="@color/yellow_500"
-                android:includeFontPadding="false"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:stateListAnimator="@null"
-                android:text="@string/show_all"
-                android:textAllCaps="false"
-                app:cornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/txtArticle"
-                app:layout_constraintEnd_toEndOf="@+id/btnShowAllBatik"
-                app:layout_constraintTop_toTopOf="@+id/txtArticle" />
-
-            <Button
-                android:id="@+id/btnShowAllBatik"
-                style="@style/text_12sp_regular"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/yellow_500"
-                android:includeFontPadding="false"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:stateListAnimator="@null"
-                android:text="@string/show_all"
-                android:textAllCaps="false"
-                app:cornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/txtBatik"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtBatik" />
-
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_white_rounded"
-                android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="8dp"
-                android:hint="@string/search"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:padding="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtExploreBatik" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

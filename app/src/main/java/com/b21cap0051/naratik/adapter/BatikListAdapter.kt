@@ -1,18 +1,12 @@
 package com.b21cap0051.naratik.adapter
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
-import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
-import com.b21cap0051.naratik.ui.home.HomeActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions

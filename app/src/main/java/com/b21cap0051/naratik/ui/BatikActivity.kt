@@ -4,16 +4,15 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.b21cap0051.naratik.adapter.BatikListAdapter
+import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
-import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 
 class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
 
-    private lateinit var batikAdapter : BatikListAdapter
+    private lateinit var batikAdapter : ShimmerBatikListAdapter
     private lateinit var binding : ActivityBatikBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,7 @@ class BatikActivity : AppCompatActivity(),ItemBatikCallBack {
             row = 4
         }
     
-        batikAdapter = BatikListAdapter(this)
+        batikAdapter = ShimmerBatikListAdapter(this)
         binding.rvAllBatik.layoutManager = StaggeredGridLayoutManager(row,StaggeredGridLayoutManager.VERTICAL)
         binding.rvAllBatik.adapter = batikAdapter
         val listBatik = DataDummy.generateDummyBatik()
