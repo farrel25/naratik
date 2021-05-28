@@ -2,12 +2,14 @@ package com.b21cap0051.naratik.ui.cameraui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.bluetooth.le.AdvertisingSetParameters
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
+import android.util.Rational
 import android.util.Size
 import android.view.Surface.ROTATION_0
 import android.widget.Toast
@@ -29,6 +31,7 @@ import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 typealias LumaListener = (luma : Double) -> Unit
 
@@ -42,8 +45,6 @@ class CameraActivity : AppCompatActivity()
 	companion object
 	{
 		private const val TAG = "CameraXBasic"
-		private const val DAY_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-		private const val FILENAME_FORMAT = "batik_xx"
 		private const val REQUEST_CODE_PERMISSION = 10
 		private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 	}
@@ -98,6 +99,7 @@ class CameraActivity : AppCompatActivity()
 				
 				val preview = Preview.Builder()
 					.setTargetRotation(ROTATION_0)
+					.setTargetAspectRatio(AspectRatio.RATIO_4_3)
 					.build()
 					.also {
 						it.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
@@ -147,15 +149,23 @@ class CameraActivity : AppCompatActivity()
 		                                )
 	}
 	
+	fun getRandomString(length: Int) : String {
+		val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+		return (1..length)
+			.map { allowedChars.random() }
+			.joinToString("")
+	}
+	
+	
 	private fun takePhoto()
 	{
 		
 		val imageCapture = capturePhoto ?: return
-		
+		val data = Random.nextInt(100)
+		val filename = getRandomString(5)
 		val photoFile = File(
-			outputDirectory ,
-			FILENAME_FORMAT + "_" + SimpleDateFormat(
-				DAY_FORMAT , Locale.US).format(System.currentTimeMillis()) + ".jpg")
+			outputDirectory ,filename +
+			data.toString() + ".jpg")
 		
 		val outputOptions = Builder(photoFile).build()
 		imageCapture.takePicture(
@@ -166,13 +176,6 @@ class CameraActivity : AppCompatActivity()
 				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
 				{
 					val savedURI = Uri.fromFile(photoFile)
-					Toast.makeText(
-						baseContext ,
-						"Photo Captured and Saved on $savedURI" ,
-						Toast.LENGTH_SHORT
-					              ).show()
-					
-					
 					uploadProcess(ImageUploadModel(savedURI))
 				}
 				
@@ -203,11 +206,7 @@ class CameraActivity : AppCompatActivity()
 		cameraExecutors.shutdown()
 	}
 	
-	override fun onBackPressed()
-	{
-		super.onBackPressed()
-	}
-	
+
 	override fun onRequestPermissionsResult(
 		requestCode : Int ,
 		permissions : Array<out String> ,
