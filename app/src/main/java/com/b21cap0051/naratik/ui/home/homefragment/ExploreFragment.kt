@@ -127,8 +127,6 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		listArticle = DataDummy.generateDummyArticle()
 		adapterArticle.setList(listArticle)
 		
-		
-		
 		binding.btnShowAllArticle.setOnClickListener{
 			val intent = Intent(requireActivity(), ArticleActivity::class.java)
 			startActivity(intent)
