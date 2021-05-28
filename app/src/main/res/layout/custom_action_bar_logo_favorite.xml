@@ -11,7 +11,8 @@
         android:id="@+id/btnFavorite"
         style="@style/btn_icon"
         android:layout_marginEnd="16dp"
-        app:icon="@drawable/ic_profile_outlined"
+        android:elevation="2dp"
+        app:icon="@drawable/ic_person"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

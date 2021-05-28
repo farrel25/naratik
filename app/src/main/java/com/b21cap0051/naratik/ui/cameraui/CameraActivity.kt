@@ -131,13 +131,13 @@ class CameraActivity : AppCompatActivity()
 						imageAnalyzer,
 					                              )
 					preview.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
-					val cameraContorl = preview.camera?.cameraControl
+					val cameraControl = preview.camera?.cameraControl
 					val factory = SurfaceOrientedMeteringPointFactory(1f,1f)
 					val point = factory.createPoint(.5f,.5f)
 					val action = FocusMeteringAction.Builder(point,FocusMeteringAction.FLAG_AF)
 						.setAutoCancelDuration(2,TimeUnit.SECONDS)
 						.build()
-					cameraContorl!!.startFocusAndMetering(action)
+					cameraControl!!.startFocusAndMetering(action)
 				} catch (e : Exception)
 				{
 					Log.e(TAG , "Use Case Binding Failed" , e)

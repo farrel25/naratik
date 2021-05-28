@@ -28,9 +28,11 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/button"
         android:src="@drawable/ic_camera_outlined"
-        android:tint="@color/black"
+        android:tintMode="add"
+        android:tint="@color/white"
+        app:backgroundTint="@color/black"
         app:layout_anchor="@id/bottomBar"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
 
 
     <com.google.android.material.bottomappbar.BottomAppBar

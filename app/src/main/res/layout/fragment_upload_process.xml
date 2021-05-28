@@ -11,11 +11,11 @@
     <View
         android:id="@+id/view"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_white_rounded_20"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf ="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,6 @@
         android:layout_marginTop="32dp"
         android:text="@string/upload_progress"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -38,6 +37,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/textLoad"
+        app:layout_constraintStart_toStartOf="@+id/textLoad"
+        app:layout_constraintTop_toBottomOf="@+id/textLoad" />
+
+    <TextView
+        android:id="@+id/tvProgress"
+        style="@style/text_12sp_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/progress"
+        app:layout_constraintBottom_toTopOf="@+id/pbCameraUpload"
         app:layout_constraintEnd_toEndOf="@+id/textLoad"
         app:layout_constraintStart_toStartOf="@+id/textLoad"
         app:layout_constraintTop_toBottomOf="@+id/textLoad" />

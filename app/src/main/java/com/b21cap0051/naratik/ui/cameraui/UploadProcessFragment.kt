@@ -1,20 +1,34 @@
 package com.b21cap0051.naratik.ui.cameraui
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+import android.os.Handler
+=======
+>>>>>>> Stashed changes
 import androidx.fragment.app.Fragment
+>>>>>>> 4c4913545203a416843919a836bb8dde9bdfcefe
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
+<<<<<<< Updated upstream
 import com.b21cap0051.naratik.util.vo.Status
+=======
+<<<<<<< HEAD
+=======
+import com.b21cap0051.naratik.util.vo.Status
+>>>>>>> 4c4913545203a416843919a836bb8dde9bdfcefe
+>>>>>>> Stashed changes
 
 
 class UploadProcessFragment : Fragment()
@@ -27,7 +41,7 @@ class UploadProcessFragment : Fragment()
 		savedInstanceState : Bundle?
 	                         ) : View
 	{
-		binding = FragmentUploadProcessBinding.inflate(layoutInflater,container,false)
+		binding = FragmentUploadProcessBinding.inflate(layoutInflater , container , false)
 		return binding.root
 	}
 	
@@ -40,10 +54,27 @@ class UploadProcessFragment : Fragment()
 		}
 		pb = binding.pbCameraUpload
 	    val factory = ViewFactoryModel.GetInstance(requireContext())
-		mainView = ViewModelProvider(requireActivity(),factory)[UploadMainView::class.java]
+		mainView = ViewModelProvider(requireActivity() , factory)[UploadMainView::class.java]
 		
 		mainView.uploadFile(modelData)
 		
+<<<<<<< HEAD
+		mainView.GetProgress().observe(viewLifecycleOwner , { response ->
+			when (response.Status)
+			{
+				StatusResponse.EMPTY   ->
+				{
+					binding.tvProgress.text = "${response.Data} %"
+					pb.progress = response.Data!!.toInt()
+				}
+				StatusResponse.SUCCESS ->
+				{
+					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
+				}
+				StatusResponse.ERROR   ->
+				{
+					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
+=======
 		mainView.GetProgress().observe(viewLifecycleOwner,{ response ->
 			when(response.Status){
 				Status.LOADING    -> {
@@ -60,10 +91,26 @@ class UploadProcessFragment : Fragment()
 				}
 				Status.ERROR -> {
 					Toast.makeText(context,response.message,Toast.LENGTH_SHORT).show()
+>>>>>>> 4c4913545203a416843919a836bb8dde9bdfcefe
 				}
 			}
 		})
 		
+<<<<<<< HEAD
+		mainView.IsDone().observe(viewLifecycleOwner , { response ->
+			when (response.Status)
+			{
+				StatusResponse.EMPTY   ->
+				{
+					showText(response.Data!!)
+				}
+				StatusResponse.SUCCESS ->
+				{
+					showText(response.Data!!)
+				}
+				StatusResponse.ERROR   ->
+				{
+=======
 		mainView.IsDone().observe(viewLifecycleOwner,{response ->
 			when(response.Status){
 				Status.LOADING    -> {
@@ -73,6 +120,10 @@ class UploadProcessFragment : Fragment()
 					showText(response.Data!!)
 				}
 				Status.ERROR -> {
+<<<<<<< Updated upstream
+=======
+>>>>>>> 4c4913545203a416843919a836bb8dde9bdfcefe
+>>>>>>> Stashed changes
 					showText(response.Data!!)
 				}
 			}
