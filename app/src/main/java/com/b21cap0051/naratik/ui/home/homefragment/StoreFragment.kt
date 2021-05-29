@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.b21cap0051.naratik.databinding.FragmentECommerceBinding
+import com.b21cap0051.naratik.databinding.FragmentStoreBinding
 import com.bumptech.glide.Glide
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -13,15 +13,15 @@ import com.denzcoskun.imageslider.models.SlideModel
 
 class StoreFragment : Fragment() {
 
-    private var _binding : FragmentECommerceBinding? = null
-    private val binding get() = _binding as FragmentECommerceBinding
+    private var _binding : FragmentStoreBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentECommerceBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentStoreBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
     
