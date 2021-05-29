@@ -113,4 +113,7 @@ dependencies {
 
     //ShimmerEffect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //SweetAlert
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
 }

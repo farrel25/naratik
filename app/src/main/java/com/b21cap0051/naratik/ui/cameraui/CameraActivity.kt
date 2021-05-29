@@ -2,16 +2,17 @@ package com.b21cap0051.naratik.ui.cameraui
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.bluetooth.le.AdvertisingSetParameters
+import android.content.Context
 import android.content.pm.PackageManager
+import com.b21cap0051.naratik.R
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
-import android.util.Rational
 import android.util.Size
 import android.view.Surface.ROTATION_0
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -19,19 +20,18 @@ import androidx.camera.core.ImageCapture.OutputFileOptions.Builder
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.b21cap0051.naratik.R
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment.Companion.KEY_UPLOAD
 import java.io.File
 import java.nio.ByteBuffer
-import java.text.SimpleDateFormat
-import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
+
 
 typealias LumaListener = (luma : Double) -> Unit
 
@@ -70,7 +70,7 @@ class CameraActivity : AppCompatActivity()
 		cameraExecutors = Executors.newSingleThreadExecutor()
 		outputDirectory = getOutputDirectory()
 		binding.btnCapture.setOnClickListener {
-			takePhoto()
+			takePhoto(this)
 		}
 		
 	
@@ -115,9 +115,9 @@ class CameraActivity : AppCompatActivity()
 					.apply {
 						val analyzer = HandlerThread("LuminosityAnalysis").apply { start() }
 						setAnalyzer(
-							ThreadExecutor(Handler(analyzer.looper)),
-							LuminosityAnalyzer{ luma -> Log.d(TAG,"$luma")  }
-								   )
+							ThreadExecutor(Handler(analyzer.looper)) ,
+							LuminosityAnalyzer { luma -> Log.d(TAG , "$luma") }
+						           )
 					}
 				
 				val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -130,14 +130,14 @@ class CameraActivity : AppCompatActivity()
 						cameraSelector ,
 						preview ,
 						capturePhoto ,
-						imageAnalyzer,
+						imageAnalyzer ,
 					                              )
 					preview.setSurfaceProvider(binding.cameraFinder.surfaceProvider)
 					val cameraControl = preview.camera?.cameraControl
-					val factory = SurfaceOrientedMeteringPointFactory(1f,1f)
-					val point = factory.createPoint(.5f,.5f)
-					val action = FocusMeteringAction.Builder(point,FocusMeteringAction.FLAG_AF)
-						.setAutoCancelDuration(2,TimeUnit.SECONDS)
+					val factory = SurfaceOrientedMeteringPointFactory(1f , 1f)
+					val point = factory.createPoint(.5f , .5f)
+					val action = FocusMeteringAction.Builder(point , FocusMeteringAction.FLAG_AF)
+						.setAutoCancelDuration(2 , TimeUnit.SECONDS)
 						.build()
 					cameraControl!!.startFocusAndMetering(action)
 				} catch (e : Exception)
@@ -149,7 +149,7 @@ class CameraActivity : AppCompatActivity()
 		                                )
 	}
 	
-	fun getRandomString(length: Int) : String {
+	fun getRandomString(length : Int) : String {
 		val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
 		return (1..length)
 			.map { allowedChars.random() }
@@ -157,15 +157,16 @@ class CameraActivity : AppCompatActivity()
 	}
 	
 	
-	private fun takePhoto()
+	private fun takePhoto(context : Context)
 	{
 		
 		val imageCapture = capturePhoto ?: return
 		val data = Random.nextInt(100)
 		val filename = getRandomString(5)
 		val photoFile = File(
-			outputDirectory ,filename +
-			data.toString() + ".jpg")
+			outputDirectory , filename +
+					data.toString() + ".jpg"
+		                    )
 		
 		val outputOptions = Builder(photoFile).build()
 		imageCapture.takePicture(
@@ -176,7 +177,15 @@ class CameraActivity : AppCompatActivity()
 				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
 				{
 					val savedURI = Uri.fromFile(photoFile)
-					uploadProcess(ImageUploadModel(savedURI))
+					SweetAlertDialog(context , SweetAlertDialog.WARNING_TYPE)
+						.setTitleText("Upload Foto Ini?")
+						.setContentText("Foto anda akan kekirim kedalam database")
+						.setConfirmText("Upload")
+						.setConfirmClickListener { uploadProcess(ImageUploadModel(savedURI)) }
+						.setCancelButton(
+							"Cancel"
+						                ) { sDialog -> sDialog.dismissWithAnimation() }
+						.show()
 				}
 				
 				override fun onError(e : ImageCaptureException)
@@ -192,10 +201,10 @@ class CameraActivity : AppCompatActivity()
 	{
 	    val fragment = UploadProcessFragment()
 		val bData = Bundle()
-		bData.putParcelable(KEY_UPLOAD, modelUpload)
+		bData.putParcelable(KEY_UPLOAD , modelUpload)
 		fragment.arguments = bData
 		supportFragmentManager.beginTransaction()
-			.add(R.id.uploadProcess,fragment,UploadProcessFragment::class.java.simpleName)
+			.add(R.id.uploadProcess , fragment , UploadProcessFragment::class.java.simpleName)
 			.commit()
 	}
 	
