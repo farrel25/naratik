@@ -11,7 +11,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 
 
-class ECommerceFragment : Fragment() {
+class StoreFragment : Fragment() {
 
     private var _binding : FragmentECommerceBinding? = null
     private val binding get() = _binding as FragmentECommerceBinding

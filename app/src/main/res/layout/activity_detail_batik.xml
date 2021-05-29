@@ -111,6 +111,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtMeaning" />
 
             <TextView
+                android:id="@+id/txtNoResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/text_12sp_regular"
+                android:text="@string/no_result"
+                app:layout_constraintStart_toStartOf="@+id/txtEcomerce"
+                app:layout_constraintTop_toBottomOf="@+id/txtEcomerce" />
+
+            <TextView
                 android:id="@+id/txtViewMore"
                 style="@style/text_16sp_bold"
                 android:layout_width="wrap_content"

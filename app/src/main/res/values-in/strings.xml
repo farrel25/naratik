@@ -68,4 +68,5 @@
     <string name="presentase">%s %%</string>
     <string name="upload_progress">Upload Progress!</string>
     <string name="progress">progress</string>
+    <string name="no_result">No Result</string>
 </resources>

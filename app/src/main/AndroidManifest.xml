@@ -3,32 +3,32 @@
     package="com.b21cap0051.naratik">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/networksecurityconfig"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/networksecurityconfig"
         android:theme="@style/Theme.Naratik">
-        <activity android:name=".ui.cameraui.CameraActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".ui.home.HomeActivity">
-
-        </activity>
+        <activity android:name=".ui.register.AccountActivity"></activity>
+        <activity
+            android:name=".ui.cameraui.CameraActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".ui.onboarding.OnBoardingActivity" />
         <activity android:name=".ui.favourite.FavouriteActivity" />
-        <activity android:name=".ui.ResultActivity" >
-
-        </activity>
+        <activity android:name=".ui.ResultActivity"></activity>
         <activity android:name=".ui.EditProfileActivity" />
         <activity android:name=".ui.ArticleActivity" />
         <activity android:name=".ui.BatikActivity" />

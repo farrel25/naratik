@@ -9,7 +9,7 @@ import com.b21cap0051.naratik.databinding.ActivityHomeBinding
 import com.b21cap0051.naratik.databinding.CustomActionBarLogoFavoriteBinding
 import com.b21cap0051.naratik.ui.cameraui.CameraActivity
 import com.b21cap0051.naratik.ui.favourite.FavouriteActivity
-import com.b21cap0051.naratik.ui.home.homefragment.ECommerceFragment
+import com.b21cap0051.naratik.ui.home.homefragment.StoreFragment
 import com.b21cap0051.naratik.ui.home.homefragment.ExploreFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
     private val navListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
             when (item.itemId) {
-                R.id.item_nav_e_commerce -> selectedFragment = ECommerceFragment()
+                R.id.item_nav_e_commerce -> selectedFragment = StoreFragment()
                 R.id.item_nav_home -> selectedFragment = ExploreFragment()
             }
             supportFragmentManager.beginTransaction().replace(

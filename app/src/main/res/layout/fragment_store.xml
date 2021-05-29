@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.homefragment.ECommerceFragment">
+    tools:context=".ui.home.homefragment.StoreFragment">
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/isEc"
