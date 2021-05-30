@@ -25,17 +25,18 @@ const db = fire.firestore();
  */
 
 router.post('/', async (req,res)=>{
-    const {id,motif1,motif2,motif3} = req.body
+    const {id,motif0,motif1,motif2,motif3,motif4} = req.body
 
     try{
         // Upload data to firestore
         await db.collection('motif')
             .doc(id)
             .set(
-                {
+                {   motif0,
                     motif1,
                     motif2,
-                    motif3
+                    motif3,
+                    motif4
             })
         res.send("Upload Success")
     }catch (e) {
