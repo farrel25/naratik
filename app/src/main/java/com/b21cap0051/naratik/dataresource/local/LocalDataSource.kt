@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.dataresource.local
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 
@@ -20,7 +21,10 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 			}
 	}
 	
-	override fun GetAllBatik() : LiveData<List<BatikEntity>> = mNaratikDao.GetAllBatikDb()
+	override fun GetAllBatik() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.GetAllBatikDb()
+	override fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity> =
+		mNaratikDao.GetLimitedBatik()
+	
 	
 	override fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>> =
 		mNaratikDao.GetAllPopularBatikDb()

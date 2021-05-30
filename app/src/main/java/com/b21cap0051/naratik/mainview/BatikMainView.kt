@@ -2,14 +2,18 @@ package com.b21cap0051.naratik.mainview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.NaratikRepository
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.util.vo.Resource
 
-class ExploreMainView(private val Repository : NaratikRepository) : ViewModel()
+class BatikMainView(private val Repository : NaratikRepository) : ViewModel()
 {
 	
-	fun getAllbatik() : LiveData<Resource<List<BatikEntity>>> =
+	fun getAllbatik() : LiveData<Resource<PagedList<BatikEntity>>> =
 		Repository.GetAllBatik()
+	
+	fun getLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>> =
+		Repository.GetLimitedBatik()
 	
 }

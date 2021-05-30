@@ -2,6 +2,8 @@ package com.b21cap0051.naratik.dataresource
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
@@ -41,9 +43,9 @@ class NaratikRepository constructor(
 		
 	}
 	
-	override fun GetAllBatik() : LiveData<Resource<List<BatikEntity>>>
+	override fun GetAllBatik() : LiveData<Resource<PagedList<BatikEntity>>>
 	{
-		return object : NetworkBoundResource<List<BatikEntity> , BatikResponse>(Executer)
+		return object : NetworkBoundResource<PagedList<BatikEntity> , BatikResponse>(Executer)
 		{
 			override fun saveCallResult(item : BatikResponse)
 			{
@@ -63,11 +65,20 @@ class NaratikRepository constructor(
 				LocalData.InsertBatik(result)
 			}
 			
-			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
+			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
 				data == null || data.isEmpty()
 			
-			override fun loadfromDb() : LiveData<List<BatikEntity>> =
-				LocalData.GetAllBatik()
+			
+			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
+			{
+				val buildPaged = PagedList.Config.Builder()
+					.setEnablePlaceholders(false)
+					.setInitialLoadSizeHint(10)
+					.setPageSize(10)
+					.build()
+				return LivePagedListBuilder(LocalData.GetAllBatik() , buildPaged).build()
+			}
+			
 			
 			override fun createCall() : LiveData<ApiResponse<BatikResponse>>
 			{
@@ -76,6 +87,52 @@ class NaratikRepository constructor(
 			
 		}.asLiveData()
 	}
+	
+	override fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
+	{
+		return object : NetworkBoundResource<PagedList<BatikEntity> , BatikResponse>(Executer)
+		{
+			override fun saveCallResult(item : BatikResponse)
+			{
+				val result = ArrayList<BatikEntity>()
+				val dataResponse = item.hasil
+				for (i in 0 until dataResponse?.size!!)
+				{
+					val dataDB = BatikEntity(
+						dataResponse[i].id ,
+						dataResponse[i].namaBatik ,
+						dataResponse[i].maknaBatik ,
+						dataResponse[i].linkBatik ,
+						dataResponse[i].daerahBatik
+					                        )
+					result.add(dataDB)
+				}
+				LocalData.InsertBatik(result)
+			}
+			
+			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
+				data == null || data.isEmpty()
+			
+			
+			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
+			{
+				val buildPaged = PagedList.Config.Builder()
+					.setEnablePlaceholders(false)
+					.setInitialLoadSizeHint(4)
+					.setPageSize(4)
+					.build()
+				return LivePagedListBuilder(LocalData.GetLimitedBatik() , buildPaged).build()
+			}
+			
+			
+			override fun createCall() : LiveData<ApiResponse<BatikResponse>>
+			{
+				return RemoteData.GetAllBatikResponse()
+			}
+			
+		}.asLiveData()
+	}
+	
 	
 	override fun GetPopular() : LiveData<Resource<List<PopularBatikEntity>>>
 	{

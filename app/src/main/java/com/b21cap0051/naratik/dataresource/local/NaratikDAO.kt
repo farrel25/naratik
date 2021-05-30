@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.dataresource.local
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
@@ -9,7 +10,11 @@ import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 interface NaratikDAO
 {
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC")
-	fun GetAllBatikDb() : LiveData<List<BatikEntity>>
+	fun GetAllBatikDb() : DataSource.Factory<Int , BatikEntity>
+	
+	@Query("SELECT * FROM Table_Batik ORDER BY id ASC LIMIT 4")
+	fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity>
+	
 	
 	@Query("SELECT * FROM Popular_Batik_Table ORDER BY id ASC")
 	fun GetAllPopularBatikDb() : LiveData<List<PopularBatikEntity>>

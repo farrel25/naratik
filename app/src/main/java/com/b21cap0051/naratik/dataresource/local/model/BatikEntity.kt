@@ -23,6 +23,8 @@ data class BatikEntity
 	var Image : String? = null ,
 	
 	@ColumnInfo(name = "daerah_batik")
-	var daerah_batik : String? = null
+	var daerah_batik : String? = null ,
 	
+	@ColumnInfo(name = "favourite")
+	var favorite_batik : Int? = 0
 	)

@@ -28,16 +28,16 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 	{
 		return when
 		{
-			modelClass.isAssignableFrom(ExploreMainView::class.java) ->
+			modelClass.isAssignableFrom(BatikMainView::class.java)  ->
 			{
-				ExploreMainView(mRepo) as T
+				BatikMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(UploadMainView::class.java)  ->
+			modelClass.isAssignableFrom(UploadMainView::class.java) ->
 			{
 				UploadMainView(mRepo) as T
 			}
 			
-			else                                                     -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
+			else                                                    -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
 		}
 	}
 	

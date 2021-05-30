@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -73,6 +74,7 @@ dependencies {
 
     //DB
     implementation "androidx.room:room-runtime:2.3.0"
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
     kapt "androidx.room:room-compiler:2.3.0"
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-storage-ktx'
