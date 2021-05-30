@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
@@ -26,6 +28,7 @@ class UploadProcessFragment : Fragment()
 {
 	
 	private lateinit var binding : FragmentUploadProcessBinding
+	private lateinit var modelData : ImageUploadModel
 	override fun onCreateView(
 		inflater : LayoutInflater , container : ViewGroup? ,
 		savedInstanceState : Bundle?
@@ -36,15 +39,10 @@ class UploadProcessFragment : Fragment()
 	}
 	
 	private lateinit var mainView : UploadMainView
-	private lateinit var modelData : ImageUploadModel
+	
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
-		
-		if (arguments != null)
-		{
-			modelData = arguments?.getParcelable<ImageUploadModel>(KEY_UPLOAD) as ImageUploadModel
-		}
-		
+		modelData = arguments?.getParcelable<ImageUploadModel>(KEY_UPLOAD) as ImageUploadModel
 		val factory = ViewFactoryModel.GetInstance(requireContext())
 		mainView = ViewModelProvider(requireActivity() , factory)[UploadMainView::class.java]
 		
@@ -56,7 +54,7 @@ class UploadProcessFragment : Fragment()
 				Status.SUCCESS ->
 				{
 					LoadingUpload()
-					uploadStatus()
+					uploadStatus(modelData)
 					
 				}
 				Status.ERROR   ->
@@ -93,7 +91,7 @@ class UploadProcessFragment : Fragment()
 		
 	}
 	
-	private fun uploadStatus()
+	private fun uploadStatus(image : ImageUploadModel)
 	{
 		mainView.IsDone().observe(viewLifecycleOwner , { response ->
 			
@@ -103,10 +101,11 @@ class UploadProcessFragment : Fragment()
 				{
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
 					val move = Intent(activity , ResultActivity::class.java)
-					move.putExtra(KEY_DATA , modelData)
+					move.putExtra(KEY_DATA , image)
 					startActivity(move)
+					onDetach()
 					onDestroy()
-					activity?.finish()
+					requireActivity().finish()
 				}
 				Status.ERROR   ->
 				{
@@ -119,6 +118,6 @@ class UploadProcessFragment : Fragment()
 	
 	private fun backCameraActivity()
 	{
-		requireActivity().onDetachedFromWindow()
+		findNavController().navigate(R.id.action_uploadProcessFragment_to_cameraFragment)
 	}
 }

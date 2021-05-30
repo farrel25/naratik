@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_nav_home"
+        android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_home_filled"
         android:title="@string/home" />
     <item
         android:id="@+id/placeholder"
         android:title="" />
     <item
-        android:id="@+id/item_nav_e_commerce"
+        android:id="@+id/storeFragment"
         android:icon="@drawable/ic_ecommerce_filled"
         android:title="@string/account" />
 

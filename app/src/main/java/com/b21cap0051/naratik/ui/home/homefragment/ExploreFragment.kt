@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
-import com.b21cap0051.naratik.adapter.BatikListAdapter
+import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.mainview.ExploreMainView
+import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
 import com.b21cap0051.naratik.ui.BatikActivity
@@ -37,7 +38,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	private var listArticle : ArrayList<ArticleModel> = arrayListOf()
 	private var listBatik : ArrayList<BatikModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
-	private lateinit var adapterBatik : BatikListAdapter
+	private lateinit var adapterBatik : BatikPagedListAdapter
 	private lateinit var adapterShimmer : ShimmerBatikListAdapter
 	
 	
@@ -58,16 +59,17 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		return binding.root
 	}
 	
-	private lateinit var mainView : ExploreMainView
+	private lateinit var mainView : BatikMainView
 	
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
 		super.onViewCreated(view , savedInstanceState)
 		
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(requireActivity()))
-		mainView = ViewModelProvider(requireActivity() , factory)[ExploreMainView::class.java]
+		mainView = ViewModelProvider(requireActivity() , factory)[BatikMainView::class.java]
 		loadShimmerBatikList()
-		mainView.getAllbatik().observe(viewLifecycleOwner , { response ->
+		
+		mainView.getLimitedBatik().observe(viewLifecycleOwner , { response ->
 			when (response.Status)
 			{
 				Status.SUCCESS ->
@@ -87,12 +89,13 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 			
 		})
 		
+		
 		loadListArticle()
 	}
 	
-	private fun loadListBatik(value : List<BatikEntity>)
+	private fun loadListBatik(value : PagedList<BatikEntity>)
 	{
-		adapterBatik = BatikListAdapter(this)
+		adapterBatik = BatikPagedListAdapter(this)
 		
 		
 		var row = 2
@@ -104,11 +107,12 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		binding.rvBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
+		adapterBatik.submitList(value)
 		
 		
 		
 		binding.shimmerLayout.visibility = View.GONE
-		adapterBatik.setListLimited(value)
+		
 		
 		binding.btnShowAllBatik.setOnClickListener {
 			val intent = Intent(requireActivity() , BatikActivity::class.java)
