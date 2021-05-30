@@ -2,6 +2,7 @@ package com.b21cap0051.naratik.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,7 @@ import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
+import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
@@ -22,7 +24,6 @@ import com.google.android.material.snackbar.Snackbar
 class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 {
 	
-	private lateinit var batikAdapter : ShimmerBatikListAdapter
 	private lateinit var batikPaged : BatikPagedListAdapter
 	private lateinit var binding : ActivityBatikBinding
 	private lateinit var mainView : BatikMainView
@@ -35,8 +36,6 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(this))
 		mainView = ViewModelProvider(this , factory)[BatikMainView::class.java]
 		
-		
-		
 		loadActionBar()
 		
 		var row = 2
@@ -48,20 +47,17 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 		binding.rvAllBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		
-		
 		batikPaged = BatikPagedListAdapter(this)
 		
-		batikAdapter = ShimmerBatikListAdapter(this)
 		
-		
-		val listBatik = DataDummy.generateDummyBatik()
-//
+//		val listBatik = DataDummy.generateDummyBatik()
 		
 		mainView.getAllbatik().observe(this , { response ->
 			when (response.Status)
 			{
 				Status.SUCCESS ->
 				{
+					binding.laiLoading.visibility = View.GONE
 					binding.rvAllBatik.adapter = batikPaged
 					batikPaged.submitList(response.Data)
 				}
@@ -72,8 +68,9 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 				}
 				Status.LOADING ->
 				{
-					binding.rvAllBatik.adapter = batikAdapter
-					batikAdapter.setList(listBatik)
+					binding.laiLoading.visibility = View.VISIBLE
+//					binding.rvAllBatik.adapter = batikAdapter
+//					batikAdapter.setList(listBatik)
 				}
 			}
 		})

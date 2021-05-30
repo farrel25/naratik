@@ -72,7 +72,7 @@ class NaratikRepository constructor(
 			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
 			{
 				val buildPaged = PagedList.Config.Builder()
-					.setEnablePlaceholders(false)
+					.setEnablePlaceholders(true)
 					.setInitialLoadSizeHint(10)
 					.setPageSize(10)
 					.build()
@@ -117,7 +117,7 @@ class NaratikRepository constructor(
 			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
 			{
 				val buildPaged = PagedList.Config.Builder()
-					.setEnablePlaceholders(false)
+					.setEnablePlaceholders(true)
 					.setInitialLoadSizeHint(4)
 					.setPageSize(4)
 					.build()

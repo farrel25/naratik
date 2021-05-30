@@ -3,9 +3,11 @@ package com.b21cap0051.naratik.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.persistableBundleOf
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
@@ -17,6 +19,7 @@ import eightbitlab.com.blurview.RenderScriptBlur
 class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	PagedListAdapter<BatikEntity , BatikPagedListAdapter.itemTarget>(DIFF_CALLBACK)
 {
+	
 	companion object
 	{
 		private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<BatikEntity>()
@@ -55,12 +58,11 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	}
 	
 	
-	inner class itemTarget(private val binding : ItemRowBatikBinding) :
+	inner class itemTarget( val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
 		fun bind(model : BatikEntity)
 		{
-			
 			var height = 900
 			if (position % 2 == 1)
 			{
@@ -75,13 +77,17 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 			
 			Glide.with(itemView.context)
 				.load(model.Image)
-				.apply(RequestOptions().override(200 , height))
+				.apply(RequestOptions().override(450 , height))
+				.apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
+					.error(R.drawable.ic_error))
 				.into(binding.ivItemBatik)
+			
 			binding.tvItemNameBatik.text = model.name_batik
-			binding.tvItemLocationBatik.text = model.batik_id?.toString()
+			binding.tvItemLocationBatik.text = itemView.resources.getString(R.string.batik_id, model.batik_id)
 			
 			binding.cvBatik.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
+				intent.putExtra(DetailBatikActivity.EXTRA_BATIK,model)
 				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
 			}

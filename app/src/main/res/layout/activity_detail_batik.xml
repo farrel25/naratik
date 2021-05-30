@@ -34,7 +34,8 @@
                 android:src="@drawable/img_batik"
                 app:layout_collapseMode="parallax" />
 
-            <include layout="@layout/custom_action_bar_back" />
+            <include
+                layout="@layout/custom_action_bar_back" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -67,7 +68,7 @@
 
             <TextView
                 android:id="@+id/txtLocation"
-                style="@style/text_16sp_bold"
+                style="@style/text_18sp_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -91,7 +92,7 @@
 
             <TextView
                 android:id="@+id/txtMeaning"
-                style="@style/text_16sp_bold"
+                style="@style/text_18sp_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -114,7 +115,7 @@
 
             <TextView
                 android:id="@+id/txtNoResult"
-                style="@style/text_12sp_regular"
+                style="@style/text_16sp_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -124,7 +125,7 @@
 
             <TextView
                 android:id="@+id/txtViewMore"
-                style="@style/text_16sp_bold"
+                style="@style/text_18sp_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -134,7 +135,7 @@
 
             <TextView
                 android:id="@+id/txtEcomerce"
-                style="@style/text_16sp_bold"
+                style="@style/text_18sp_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

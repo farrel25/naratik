@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowBatikMiniBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
@@ -19,7 +20,7 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 	
 	private val listBatik = ArrayList<BatikEntity>()
 	
-	fun setList(listBatik : List<BatikEntity>)
+	fun setList(listBatik : ArrayList<BatikEntity>)
 	{
 		this.listBatik.clear()
 		this.listBatik.addAll(listBatik)
@@ -31,11 +32,6 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 	{
 		fun bind(model : BatikEntity)
 		{
-
-//			var height = 900
-//			if (adapterPosition % 2 == 1) {
-//				height = 450
-//			}
 			
 			binding.blurry.setupWith(binding.root)
 				.setBlurAlgorithm(RenderScriptBlur(itemView.context))
@@ -48,11 +44,11 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 				.apply(RequestOptions().override(200 , 200))
 				.into(binding.ivItemBatik)
 			binding.tvItemNameBatik.text = model.name_batik
-			binding.tvItemLocationBatik.text = model.batik_id?.toString()
+			binding.tvItemLocationBatik.text = itemView.resources.getString(R.string.batik_id, model.batik_id)
 			
-			binding.cvMiniBatik.setOnClickListener {
-				callBack.itemBatikClick(model)
-			}
+//			binding.cvMiniBatik.setOnClickListener {
+//				callBack.itemBatikClick(model)
+//			}
 		}
 		
 	}
@@ -67,11 +63,11 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
 		holder.bind(listBatik[position])
-		holder.itemView.setOnClickListener {
-			val intent = Intent(holder.itemView.context , DetailBatikActivity::class.java)
-//            intent.putExtra(DetailBatikActivity.,listArticle[position])
-			holder.itemView.context.startActivity(intent)
-		}
+//		holder.itemView.setOnClickListener {
+//			val intent = Intent(holder.itemView.context , DetailBatikActivity::class.java)
+//            intent.putExtra(DetailBatikActivity.EXTRA_BATIK,mo)
+//			holder.itemView.context.startActivity(intent)
+//		}
 	}
 	
 	override fun getItemCount() : Int

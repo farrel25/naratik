@@ -144,12 +144,12 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		}
 		adapterShimmer = ShimmerBatikListAdapter(this)
 		
-		listBatik = DataDummy.generateDummyBatik()
+//		listBatik = DataDummy.generateDummyBatik()
 		binding.rvShimmer.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvShimmer.adapter = adapterShimmer
 		
-		adapterShimmer.setListLimited(listBatik)
+//		adapterShimmer.setListLimited(listBatik)
 	}
 	
 	private fun loadListArticle()

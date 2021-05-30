@@ -17,8 +17,8 @@
     <string name="show_all">show all</string>
     <string name="batik_name">Name</string>
     <string name="batik_id"># %d</string>
-    <string name="batik_location">Location</string>
-    <string name="batik_meaning">Meaning</string>
+    <string name="batik_location">Location :</string>
+    <string name="batik_meaning">Meaning :</string>
     <string name="article_date">Date</string>
     <string name="article_id">Id</string>
     <string name="article_overview">Overview</string>

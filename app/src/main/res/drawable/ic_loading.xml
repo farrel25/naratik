@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="200dp"
+        android:width="200dp"
+        android:bottom="-1dp"
+        android:drawable="@color/grey_200"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp" />
+
+
+    <item
+        android:bottom="50dp"
+        android:drawable="@drawable/ic_refresh"
+        android:left="50dp"
+        android:right="50dp"
+        android:top="50dp" />
+</layer-list>

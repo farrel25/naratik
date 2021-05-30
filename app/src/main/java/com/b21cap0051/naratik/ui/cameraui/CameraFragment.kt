@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
@@ -17,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
@@ -47,6 +49,7 @@ class CameraFragment : Fragment()
 	private var capturePhoto : ImageCapture? = null
 	private var _binding : FragmentCameraBinding? = null
 	private val binding get() = _binding as FragmentCameraBinding
+	private lateinit var dialog : SweetAlertDialog
 	
 	
 	override fun onCreate(savedInstanceState : Bundle?)
@@ -207,6 +210,7 @@ class CameraFragment : Fragment()
 			ContextCompat.getMainExecutor(requireContext()) ,
 			object : ImageCapture.OnImageSavedCallback
 			{
+				@RequiresApi(Build.VERSION_CODES.M)
 				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
 				{
 					val savedURI = Uri.fromFile(photoFile)
@@ -222,20 +226,26 @@ class CameraFragment : Fragment()
 		
 	}
 	
+	@RequiresApi(Build.VERSION_CODES.M)
 	private fun uploadNotification(uri : Uri)
 	{
-		SweetAlertDialog(context , SweetAlertDialog.WARNING_TYPE)
-			.setTitleText("Upload Foto Ini?")
-			.setContentText("Foto anda akan kekirim kedalam database")
-			.setConfirmText("Upload")
-			.setConfirmClickListener {
-				uploadProcess(ImageUploadModel(uri))
-				it.dismissWithAnimation()
-			}
-			.setCancelButton(
-				"Cancel"
-			                ) { sDialog -> sDialog.dismissWithAnimation() }
-			.show()
+		dialog = SweetAlertDialog(context , SweetAlertDialog.WARNING_TYPE)
+		dialog.titleText = "Upload Foto Ini?"
+		dialog.contentText = "Foto anda akan terkirim kedalam database"
+		dialog.confirmText = "Upload"
+		dialog.setConfirmClickListener { uploadProcess(ImageUploadModel(uri)) }
+		dialog.setCancelButton(
+			"Cancel"
+		                      ) { sDialog -> sDialog.dismissWithAnimation() }
+		dialog.show()
+		dialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).backgroundTintList =
+			context?.getColorStateList(R.color.yellow_500)
+		
+		dialog.getButton(SweetAlertDialog.BUTTON_CANCEL).backgroundTintList =
+			context?.getColorStateList(R.color.red)
+		
+		dialog.confirmButtonTextColor = requireContext().getColor(R.color.black)
+		dialog.cancelButtonTextColor = requireContext().getColor(R.color.white)
 	}
 	
 	

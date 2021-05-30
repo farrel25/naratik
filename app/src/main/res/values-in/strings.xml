@@ -18,8 +18,8 @@
     <string name="show_all">semua</string>
     <string name="batik_name">Nama</string>
     <string name="batik_id"># %d</string>
-    <string name="batik_location">Lokasi</string>
-    <string name="batik_meaning">Arti</string>
+    <string name="batik_location">Lokasi :</string>
+    <string name="batik_meaning">Arti : </string>
     <string name="article_date">Tangal</string>
     <string name="article_id">Id</string>
     <string name="article_overview">Overview</string>
