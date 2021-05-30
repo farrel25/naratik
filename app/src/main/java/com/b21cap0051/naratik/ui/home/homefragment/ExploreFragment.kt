@@ -4,14 +4,17 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
@@ -23,6 +26,7 @@ import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
 import com.b21cap0051.naratik.ui.BatikActivity
+import com.b21cap0051.naratik.ui.SearchActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
@@ -85,6 +89,17 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 					Toast.makeText(requireContext() , "Get Data To API Error!" , Toast.LENGTH_SHORT)
 						.show()
 				}
+			}
+			
+		})
+		
+		binding.etSearch.isEnabled = true
+		binding.etSearch.setOnClickListener(object : View.OnClickListener{
+			override fun onClick(v : View?)
+			{
+				val move = Intent(requireContext(),SearchActivity::class.java)
+				startActivity(move)
+				onPause()
 			}
 			
 		})

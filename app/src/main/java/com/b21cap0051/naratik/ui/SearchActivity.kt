@@ -1,7 +1,7 @@
 package com.b21cap0051.naratik.ui
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.b21cap0051.naratik.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity()

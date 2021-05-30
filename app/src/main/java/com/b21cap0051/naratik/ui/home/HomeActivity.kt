@@ -27,6 +27,7 @@ class HomeActivity : AppCompatActivity()
 		binding.bottomBarMenu.menu.getItem(1).isEnabled = false
 		
 		binding.bottomBarMenu.setupWithNavController(navControl)
+	
 		
 		bindingActionBar.btnFavorite.setOnClickListener {
 			val intent = Intent(this@HomeActivity , FavouriteActivity::class.java)
