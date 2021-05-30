@@ -4,9 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowBatikMiniBinding
-import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
@@ -16,20 +14,24 @@ import eightbitlab.com.blurview.RenderScriptBlur
 import java.util.*
 
 class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
-	RecyclerView.Adapter<BatikMiniListAdapter.ItemTarget>() {
+	RecyclerView.Adapter<BatikMiniListAdapter.ItemTarget>()
+{
 	
 	private val listBatik = ArrayList<BatikEntity>()
 	
-	fun setList(listBatik : List<BatikEntity>) {
+	fun setList(listBatik : List<BatikEntity>)
+	{
 		this.listBatik.clear()
 		this.listBatik.addAll(listBatik)
 		notifyDataSetChanged()
 	}
 	
 	inner class ItemTarget(private val binding : ItemRowBatikMiniBinding) :
-		RecyclerView.ViewHolder(binding.root) {
-		fun bind(model : BatikEntity) {
-		
+		RecyclerView.ViewHolder(binding.root)
+	{
+		fun bind(model : BatikEntity)
+		{
+
 //			var height = 900
 //			if (adapterPosition % 2 == 1) {
 //				height = 450
@@ -55,21 +57,25 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 		
 	}
 	
-	override fun onCreateViewHolder(parent : ViewGroup , viewType : Int): ItemTarget {
+	override fun onCreateViewHolder(parent : ViewGroup , viewType : Int) : ItemTarget
+	{
 		return ItemTarget(
-			ItemRowBatikMiniBinding.inflate(LayoutInflater.from(parent.context) , parent , false))
+			ItemRowBatikMiniBinding.inflate(LayoutInflater.from(parent.context) , parent , false)
+		                 )
 	}
 	
-	override fun onBindViewHolder(holder : ItemTarget , position : Int) {
+	override fun onBindViewHolder(holder : ItemTarget , position : Int)
+	{
 		holder.bind(listBatik[position])
-		holder.itemView.setOnClickListener{
+		holder.itemView.setOnClickListener {
 			val intent = Intent(holder.itemView.context , DetailBatikActivity::class.java)
 //            intent.putExtra(DetailBatikActivity.,listArticle[position])
 			holder.itemView.context.startActivity(intent)
 		}
 	}
 	
-	override fun getItemCount(): Int {
+	override fun getItemCount() : Int
+	{
 		return listBatik.size
 	}
 	

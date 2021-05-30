@@ -8,18 +8,20 @@ import com.b21cap0051.naratik.databinding.ActivitySplashBinding
 import com.b21cap0051.naratik.ui.onboarding.OnBoardingActivity
 
 
-class SplashActivity : AppCompatActivity() {
-    private lateinit var binding : ActivitySplashBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        Handler(mainLooper).postDelayed({
-            val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 1000)
-
-    }
+class SplashActivity : AppCompatActivity()
+{
+	private lateinit var binding : ActivitySplashBinding
+	override fun onCreate(savedInstanceState : Bundle?)
+	{
+		super.onCreate(savedInstanceState)
+		binding = ActivitySplashBinding.inflate(layoutInflater)
+		setContentView(binding.root)
+		
+		Handler(mainLooper).postDelayed({
+			val intent = Intent(this@SplashActivity , OnBoardingActivity::class.java)
+			startActivity(intent)
+			finish()
+		} , 1000)
+		
+	}
 }

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ResultModel(
-	var id : String? = null,
-	var motif : String? = null,
-	var percentage : Int? = null,
-                      ): Parcelable
+	var id : String? = null ,
+	var motif : String? = null ,
+	var percentage : Int? = null ,
+                      ) : Parcelable

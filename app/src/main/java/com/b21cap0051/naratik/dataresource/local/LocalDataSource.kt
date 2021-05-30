@@ -1,20 +1,20 @@
 package com.b21cap0051.naratik.dataresource.local
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 
-class LocalDataSource(private val mNaratikDao : NaratikDAO):LocalDataInterface
+class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 {
 	
-	companion object{
+	companion object
+	{
 		@Volatile
 		private var Instance : LocalDataSource? = null
 		
-		fun GetIntansce(dao : NaratikDAO):LocalDataSource =
-			Instance?: synchronized(this){
-				Instance?:LocalDataSource(dao).apply {
+		fun GetIntansce(dao : NaratikDAO) : LocalDataSource =
+			Instance ?: synchronized(this) {
+				Instance ?: LocalDataSource(dao).apply {
 					Instance = this
 				}
 			}
@@ -22,7 +22,8 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO):LocalDataInterface
 	
 	override fun GetAllBatik() : LiveData<List<BatikEntity>> = mNaratikDao.GetAllBatikDb()
 	
-	override fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>> = mNaratikDao.GetAllPopularBatikDb()
+	override fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>> =
+		mNaratikDao.GetAllPopularBatikDb()
 	
 	override fun InsertBatik(value : List<BatikEntity>)
 	{

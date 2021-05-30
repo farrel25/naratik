@@ -11,7 +11,7 @@
         <item name="colorSecondaryVariant">@color/red</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground"> @color/grey_100</item>
+        <item name="android:windowBackground">@color/grey_100</item>
     </style>
 
     <style name="text_24sp_bold">
@@ -21,6 +21,7 @@
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="text_24sp_bold_white">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -28,6 +29,7 @@
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="text_32sp_bold_white">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -43,6 +45,7 @@
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="text_16sp_bold">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

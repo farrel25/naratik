@@ -9,7 +9,7 @@ import com.b21cap0051.naratik.util.vo.Resource
 class ExploreMainView(private val Repository : NaratikRepository) : ViewModel()
 {
 	
-	fun getAllbatik():LiveData<Resource<List<BatikEntity>>> =
+	fun getAllbatik() : LiveData<Resource<List<BatikEntity>>> =
 		Repository.GetAllBatik()
 	
 }

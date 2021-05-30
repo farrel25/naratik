@@ -10,18 +10,18 @@ class APIConfig
 {
 	companion object
 	{
-		fun ApiPredict(): PredictService
+		fun ApiPredict() : PredictService
 		{
 			val interceptor = HttpLoggingInterceptor()
 			val Client = OkHttpClient.Builder()
 				.addInterceptor(interceptor.setLevel(HttpLoggingInterceptor.Level.BODY))
-				.connectTimeout(2,TimeUnit.MINUTES)
-				.readTimeout(2,TimeUnit.MINUTES)
-				.writeTimeout(2,TimeUnit.MINUTES)
+				.connectTimeout(2 , TimeUnit.MINUTES)
+				.readTimeout(2 , TimeUnit.MINUTES)
+				.writeTimeout(2 , TimeUnit.MINUTES)
 				.build()
 			
 			val API = Retrofit.Builder()
-				.baseUrl("")
+				.baseUrl("https://b21-cap0051-1.et.r.appspot.com/")
 				.addConverterFactory(GsonConverterFactory.create())
 				.client(Client)
 				.build()
@@ -29,13 +29,14 @@ class APIConfig
 			return API.create(PredictService::class.java)
 		}
 		
-		fun ApiData():DataServices{
+		fun ApiData() : DataServices
+		{
 			val Logging = HttpLoggingInterceptor()
 			val client = OkHttpClient.Builder()
 				.addInterceptor(Logging.setLevel(HttpLoggingInterceptor.Level.BODY))
-				.connectTimeout(2,TimeUnit.MINUTES)
-				.readTimeout(2,TimeUnit.MINUTES)
-				.writeTimeout(2,TimeUnit.MINUTES)
+				.connectTimeout(2 , TimeUnit.MINUTES)
+				.readTimeout(2 , TimeUnit.MINUTES)
+				.writeTimeout(2 , TimeUnit.MINUTES)
 				.build()
 			
 			val retro = Retrofit.Builder()

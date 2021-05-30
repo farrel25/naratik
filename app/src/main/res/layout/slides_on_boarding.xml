@@ -10,12 +10,12 @@
         android:id="@+id/laiOnBoard"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        app:lottie_loop="true"
-        app:lottie_fileName="animation_onboarding_1.json"
-        app:lottie_autoPlay="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="animation_onboarding_1.json"
+        app:lottie_loop="true" />
 
 
     <TextView

@@ -29,7 +29,7 @@ import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
 
 
-class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
+class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 {
 	
 	private var _binding : FragmentExploreBinding? = null
@@ -41,7 +41,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 	private lateinit var adapterShimmer : ShimmerBatikListAdapter
 	
 	
-	companion object {
+	companion object
+	{
 		val TAG : String = ExploreFragment::class.java.simpleName
 		const val EXTRA_ARTICLE = "extra_article"
 		const val EXTRA_BATIK = "extra_batik"
@@ -51,30 +52,36 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		inflater : LayoutInflater ,
 		container : ViewGroup? ,
 		savedInstanceState : Bundle?
-	                         ) : View {
+	                         ) : View
+	{
 		_binding = FragmentExploreBinding.inflate(layoutInflater , container , false)
 		return binding.root
 	}
 	
-	private lateinit var mainView :ExploreMainView
+	private lateinit var mainView : ExploreMainView
 	
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
 		super.onViewCreated(view , savedInstanceState)
 		
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(requireActivity()))
-		mainView = ViewModelProvider(requireActivity(),factory)[ExploreMainView::class.java]
+		mainView = ViewModelProvider(requireActivity() , factory)[ExploreMainView::class.java]
 		loadShimmerBatikList()
-		mainView.getAllbatik().observe(viewLifecycleOwner,{ response ->
-			when(response.Status){
-				Status.SUCCESS -> {
-				   loadListBatik(response.Data!!)
+		mainView.getAllbatik().observe(viewLifecycleOwner , { response ->
+			when (response.Status)
+			{
+				Status.SUCCESS ->
+				{
+					loadListBatik(response.Data!!)
 				}
-				Status.LOADING -> {
+				Status.LOADING ->
+				{
 				
 				}
-			Status.ERROR  -> {
-					Toast.makeText(requireContext(),"Get Data To API Error!",Toast.LENGTH_SHORT).show()
+				Status.ERROR   ->
+				{
+					Toast.makeText(requireContext() , "Get Data To API Error!" , Toast.LENGTH_SHORT)
+						.show()
 				}
 			}
 			
@@ -83,16 +90,19 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		loadListArticle()
 	}
 	
-	private fun loadListBatik(value : List<BatikEntity>){
+	private fun loadListBatik(value : List<BatikEntity>)
+	{
 		adapterBatik = BatikListAdapter(this)
 		
 		
 		var row = 2
-		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
 			row = 4
 		}
 		
-		binding.rvBatik.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		binding.rvBatik.layoutManager =
+			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
 		
 		
@@ -100,35 +110,41 @@ class ExploreFragment : Fragment() , ItemBatikCallBack,ItemArticleCallBack
 		binding.shimmerLayout.visibility = View.GONE
 		adapterBatik.setListLimited(value)
 		
-		binding.btnShowAllBatik.setOnClickListener{
-			val intent = Intent(requireActivity(), BatikActivity::class.java)
+		binding.btnShowAllBatik.setOnClickListener {
+			val intent = Intent(requireActivity() , BatikActivity::class.java)
 			startActivity(intent)
 		}
 	}
 	
-	private fun loadShimmerBatikList(){
+	private fun loadShimmerBatikList()
+	{
 		var row = 2
-		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
 			row = 4
 		}
 		adapterShimmer = ShimmerBatikListAdapter(this)
 		
 		listBatik = DataDummy.generateDummyBatik()
-		binding.rvShimmer.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		binding.rvShimmer.layoutManager =
+			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvShimmer.adapter = adapterShimmer
 		
 		adapterShimmer.setListLimited(listBatik)
 	}
-	private fun loadListArticle(){
+	
+	private fun loadListArticle()
+	{
 		adapterArticle = ArticleListAdapter(this)
 		
-		binding.rvArticle.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+		binding.rvArticle.layoutManager =
+			LinearLayoutManager(activity , LinearLayoutManager.HORIZONTAL , false)
 		binding.rvArticle.adapter = adapterArticle
 		listArticle = DataDummy.generateDummyArticle()
 		adapterArticle.setList(listArticle)
 		
-		binding.btnShowAllArticle.setOnClickListener{
-			val intent = Intent(requireActivity(), ArticleActivity::class.java)
+		binding.btnShowAllArticle.setOnClickListener {
+			val intent = Intent(requireActivity() , ArticleActivity::class.java)
 			startActivity(intent)
 		}
 	}

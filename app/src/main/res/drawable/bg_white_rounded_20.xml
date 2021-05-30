@@ -3,10 +3,9 @@
 
     <!-- White Top color -->
     <item>
-        <shape  android:shape="rectangle">
+        <shape android:shape="rectangle">
             <solid android:color="#FFFFFF" />
-            <corners
-                android:radius="20dp"/>
+            <corners android:radius="20dp" />
         </shape>
     </item>
 

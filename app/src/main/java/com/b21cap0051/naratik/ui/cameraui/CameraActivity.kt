@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import com.b21cap0051.naratik.R
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -12,7 +11,6 @@ import android.os.HandlerThread
 import android.util.Log
 import android.util.Size
 import android.view.Surface.ROTATION_0
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -21,6 +19,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityCameraBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment.Companion.KEY_UPLOAD
@@ -37,7 +36,7 @@ typealias LumaListener = (luma : Double) -> Unit
 
 class CameraActivity : AppCompatActivity()
 {
-	private lateinit var binding  : ActivityCameraBinding
+	private lateinit var binding : ActivityCameraBinding
 	private lateinit var cameraExecutors : ExecutorService
 	private lateinit var outputDirectory : File
 	private var capturePhoto : ImageCapture? = null
@@ -73,7 +72,7 @@ class CameraActivity : AppCompatActivity()
 			takePhoto(this)
 		}
 		
-	
+		
 	}
 	
 	
@@ -149,9 +148,10 @@ class CameraActivity : AppCompatActivity()
 		                                )
 	}
 	
-	fun getRandomString(length : Int) : String {
-		val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
-		return (1..length)
+	fun getRandomString(length : Int) : String
+	{
+		val allowedChars = ('A' .. 'Z') + ('a' .. 'z') + ('0' .. '9')
+		return (1 .. length)
 			.map { allowedChars.random() }
 			.joinToString("")
 	}
@@ -199,7 +199,7 @@ class CameraActivity : AppCompatActivity()
 	
 	private fun uploadProcess(modelUpload : ImageUploadModel)
 	{
-	    val fragment = UploadProcessFragment()
+		val fragment = UploadProcessFragment()
 		val bData = Bundle()
 		bData.putParcelable(KEY_UPLOAD , modelUpload)
 		fragment.arguments = bData
@@ -215,7 +215,7 @@ class CameraActivity : AppCompatActivity()
 		cameraExecutors.shutdown()
 	}
 	
-
+	
 	override fun onRequestPermissionsResult(
 		requestCode : Int ,
 		permissions : Array<out String> ,
@@ -239,8 +239,6 @@ class CameraActivity : AppCompatActivity()
 			}
 		}
 	}
-	
-	
 	
 	
 }

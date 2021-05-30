@@ -7,9 +7,9 @@ import retrofit2.http.GET
 interface DataServices
 {
 	@GET("batik/all")
-	fun GetAllBatik():Call<BatikResponse>
+	fun GetAllBatik() : Call<BatikResponse>
 	
 	@GET("batik/popular")
-	fun GetPopularBatik():Call<BatikResponse>
+	fun GetPopularBatik() : Call<BatikResponse>
 	
 }

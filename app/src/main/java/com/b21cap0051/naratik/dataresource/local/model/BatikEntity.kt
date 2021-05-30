@@ -11,16 +11,16 @@ data class BatikEntity
 	
 	@PrimaryKey
 	@ColumnInfo(name = "id")
-	var batik_id : Int? = 0,
+	var batik_id : Int? = 0 ,
 	
 	@ColumnInfo(name = "nama_batik")
-	var name_batik : String? = null,
+	var name_batik : String? = null ,
 	
 	@ColumnInfo(name = "makna_batik")
-	var makna_batik : String? = null,
+	var makna_batik : String? = null ,
 	
 	@ColumnInfo(name = "batik_pic")
-	var Image : String? = null,
+	var Image : String? = null ,
 	
 	@ColumnInfo(name = "daerah_batik")
 	var daerah_batik : String? = null

@@ -5,8 +5,10 @@ import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
 
-object DataDummy{
-	fun generateDummyArticle() : ArrayList<ArticleModel>{
+object DataDummy
+{
+	fun generateDummyArticle() : ArrayList<ArticleModel>
+	{
 		
 		val articles = ArrayList<ArticleModel>()
 		
@@ -14,17 +16,7 @@ object DataDummy{
 			ArticleModel(
 				"id" ,
 				R.drawable.img_dummy ,
-				"Title",
-				"5 August 2022" ,
-				"Admin" ,
-				"overview" ,
-						)
-		            )
-		articles.add(
-			ArticleModel(
-				"id" ,
-				R.drawable.img_dummy ,
-				"Title",
+				"Title" ,
 				"5 August 2022" ,
 				"Admin" ,
 				"overview" ,
@@ -34,7 +26,7 @@ object DataDummy{
 			ArticleModel(
 				"id" ,
 				R.drawable.img_dummy ,
-				"Title",
+				"Title" ,
 				"5 August 2022" ,
 				"Admin" ,
 				"overview" ,
@@ -44,7 +36,17 @@ object DataDummy{
 			ArticleModel(
 				"id" ,
 				R.drawable.img_dummy ,
-				"Title",
+				"Title" ,
+				"5 August 2022" ,
+				"Admin" ,
+				"overview" ,
+			            )
+		            )
+		articles.add(
+			ArticleModel(
+				"id" ,
+				R.drawable.img_dummy ,
+				"Title" ,
 				"5 August 2022" ,
 				"Admin" ,
 				"overview" ,
@@ -54,22 +56,15 @@ object DataDummy{
 		return articles
 	}
 	
-	fun generateDummyBatik() : ArrayList<BatikModel> {
+	fun generateDummyBatik() : ArrayList<BatikModel>
+	{
 		val batiks = ArrayList<BatikModel>()
 		
 		batiks.add(
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
-				"Filosofi"
-			            )
-		            )
-		batiks.add(
-			BatikModel(
-				"id" ,
-				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -77,7 +72,7 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -85,7 +80,7 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -93,7 +88,7 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -101,7 +96,7 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -109,7 +104,7 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
@@ -117,38 +112,47 @@ object DataDummy{
 			BatikModel(
 				"id" ,
 				R.drawable.img_batik ,
-				"Name",
+				"Name" ,
 				"Filosofi"
 			          )
 		          )
-		return  batiks
+		batiks.add(
+			BatikModel(
+				"id" ,
+				R.drawable.img_batik ,
+				"Name" ,
+				"Filosofi"
+			          )
+		          )
+		return batiks
 	}
 	
-	fun generateDummyResult() : ArrayList<ResultModel> {
+	fun generateDummyResult() : ArrayList<ResultModel>
+	{
 		val results = ArrayList<ResultModel>()
 		
 		results.add(
 			ResultModel(
 				"id" ,
-				"Kawung",
+				"Kawung" ,
 				10
-			          )
-		          )
+			           )
+		           )
 		results.add(
 			ResultModel(
 				"id" ,
-				"Parang",
+				"Parang" ,
 				20
-			          )
-		          )
+			           )
+		           )
 		results.add(
 			ResultModel(
 				"id" ,
-				"Mega Mendung",
+				"Mega Mendung" ,
 				34
-			          )
-		          )
+			           )
+		           )
 		
-		return  results
+		return results
 	}
 }

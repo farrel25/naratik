@@ -9,6 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <include
             android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_logo_favorite" />
@@ -28,8 +29,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/button"
         android:src="@drawable/ic_camera_outlined"
-        android:tintMode="add"
         android:tint="@color/white"
+        android:tintMode="add"
         app:backgroundTint="@color/black"
         app:layout_anchor="@id/bottomBar"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
@@ -39,10 +40,10 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         app:fabAlignmentMode="center"
         app:fabCradleMargin="12dp"
         app:fabCradleRoundedCornerRadius="20dp"
-        android:layout_gravity="bottom"
         app:hideOnScroll="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -51,9 +52,9 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:menu="@menu/menu_bottom_nav"
             app:itemIconTint="@drawable/item_selector"
-            app:labelVisibilityMode="unlabeled" />
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_bottom_nav" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 

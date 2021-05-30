@@ -1,9 +1,6 @@
 package com.b21cap0051.naratik.dataresource.remotedata
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -100,20 +97,20 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 	fun getIsDone() : LiveData<Resource<Boolean>> = _progress
 	
 	private val _checkInternet = MutableLiveData<Resource<Boolean>>()
-	fun InternetIsconnected():LiveData<Resource<Boolean>> = _checkInternet
+	fun InternetIsconnected() : LiveData<Resource<Boolean>> = _checkInternet
 	
 	override fun UploadImage(upload : ImageUploadModel)
 	{
-		_checkInternet.value = Resource(Status.SUCCESS,false,"")
-	
+		_checkInternet.value = Resource(Status.SUCCESS , false , "")
+		
 		val checkInet = CheckConnected.CreateInstance(ctx)
 		
 		if (checkInet.IsConnected() == 0)
 		{
-			_checkInternet.value = Resource(Status.ERROR,true,"Internet Connection Lost")
+			_checkInternet.value = Resource(Status.ERROR , true , "Internet Connection Lost")
 		} else
 		{
-			_checkInternet.value = Resource(Status.SUCCESS,false,"")
+			_checkInternet.value = Resource(Status.SUCCESS , false , "")
 			
 			val storage = Firebase.storage("gs://b21-cap0051-image")
 			val storageRef = storage.reference

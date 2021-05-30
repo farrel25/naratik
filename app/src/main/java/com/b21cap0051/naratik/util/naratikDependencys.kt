@@ -8,12 +8,13 @@ import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 
 object naratikDependencys
 {
-	fun injectRepository(ctx : Context):NaratikRepository{
+	fun injectRepository(ctx : Context) : NaratikRepository
+	{
 		val db = NaratikDB.CreateDB(ctx)
 		val remote = DataSourceService.GetInstance(ctx)
 		val local = LocalDataSource.GetIntansce(db.PrimaryDAO())
 		val ExecuteThread = ExecutedApp()
 		
-		return NaratikRepository(ctx,remote,local,ExecuteThread)
+		return NaratikRepository(ctx , remote , local , ExecuteThread)
 	}
 }

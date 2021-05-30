@@ -4,10 +4,10 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.b21cap0051.naratik.util.voapi.ApiResponse
-import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.vo.Resource
+import com.b21cap0051.naratik.util.voapi.ApiResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse
 
 abstract class NetworkBoundResource<ResultType , RequestType>(private val mExecutor : ExecutedApp)
 {
@@ -86,7 +86,7 @@ abstract class NetworkBoundResource<ResultType , RequestType>(private val mExecu
 		}
 	}
 	
-	fun asLiveData():LiveData<Resource<ResultType>> = result
+	fun asLiveData() : LiveData<Resource<ResultType>> = result
 	
 	@WorkerThread
 	protected abstract fun saveCallResult(item : RequestType)

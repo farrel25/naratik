@@ -93,7 +93,8 @@ class UploadProcessFragment : Fragment()
 		
 	}
 	
-	private fun uploadStatus(){
+	private fun uploadStatus()
+	{
 		mainView.IsDone().observe(viewLifecycleOwner , { response ->
 			
 			when (response.Status)
@@ -116,7 +117,8 @@ class UploadProcessFragment : Fragment()
 		})
 	}
 	
-	private fun backCameraActivity(){
+	private fun backCameraActivity()
+	{
 		requireActivity().onDetachedFromWindow()
 	}
 }

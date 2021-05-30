@@ -11,19 +11,24 @@ import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class ArticleLargeListAdapter(private val callback: ItemArticleCallBack)
-	: RecyclerView.Adapter<ArticleLargeListAdapter.ItemTarget>() {
+class ArticleLargeListAdapter(private val callback : ItemArticleCallBack) :
+	RecyclerView.Adapter<ArticleLargeListAdapter.ItemTarget>()
+{
 	
 	private val listArticle = ArrayList<ArticleModel>()
 	
-	fun setList(listArticle : java.util.ArrayList<ArticleModel>) {
+	fun setList(listArticle : java.util.ArrayList<ArticleModel>)
+	{
 		this.listArticle.clear()
 		this.listArticle.addAll(listArticle)
 		notifyDataSetChanged()
 	}
 	
-	inner class ItemTarget(private val binding: ItemRowArticleLargeBinding) : RecyclerView.ViewHolder(binding.root) {
-		fun bind(article: ArticleModel) {
+	inner class ItemTarget(private val binding : ItemRowArticleLargeBinding) :
+		RecyclerView.ViewHolder(binding.root)
+	{
+		fun bind(article : ArticleModel)
+		{
 			with(binding) {
 				Glide.with(itemView.context)
 					.load(article.image)
@@ -36,21 +41,24 @@ class ArticleLargeListAdapter(private val callback: ItemArticleCallBack)
 		}
 	}
 	
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemTarget {
-		val binding = ItemRowArticleLargeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+	override fun onCreateViewHolder(parent : ViewGroup , viewType : Int) : ItemTarget
+	{
+		val binding =
+			ItemRowArticleLargeBinding.inflate(LayoutInflater.from(parent.context) , parent , false)
 		return ItemTarget(binding)
 	}
 	
-	override fun onBindViewHolder(holder: ItemTarget, position: Int) {
+	override fun onBindViewHolder(holder : ItemTarget , position : Int)
+	{
 		holder.bind(listArticle[position])
 		
-		holder.itemView.setOnClickListener{
-			val intent =Intent(holder.itemView.context, DetailArticleActivity::class.java)
+		holder.itemView.setOnClickListener {
+			val intent = Intent(holder.itemView.context , DetailArticleActivity::class.java)
 			
-			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE,listArticle[position])
+			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE , listArticle[position])
 			holder.itemView.context.startActivity(intent)
 		}
 	}
 	
-	override fun getItemCount(): Int = listArticle.size
+	override fun getItemCount() : Int = listArticle.size
 }

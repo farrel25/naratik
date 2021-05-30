@@ -9,8 +9,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include
-            layout="@layout/custom_action_bar_back_sort" />
+
+        <include layout="@layout/custom_action_bar_back_sort" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="16dp"
-        tools:listitem="@layout/item_row_article_large"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_row_article_large" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

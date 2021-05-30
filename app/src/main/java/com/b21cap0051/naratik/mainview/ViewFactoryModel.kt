@@ -32,12 +32,12 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 			{
 				ExploreMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(UploadMainView::class.java) ->
+			modelClass.isAssignableFrom(UploadMainView::class.java)  ->
 			{
 				UploadMainView(mRepo) as T
 			}
 			
-			else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
+			else                                                     -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
 		}
 	}
 	
