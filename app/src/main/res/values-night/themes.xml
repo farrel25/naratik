@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Naratik" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Naratik" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/grey_700</item>
         <item name="colorPrimaryDark">@color/grey_700</item>
@@ -11,5 +11,6 @@
         <item name="colorSecondaryVariant">@color/yellow_500</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/grey_100</item>
     </style>
 </resources>
