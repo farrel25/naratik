@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
-import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
@@ -40,7 +39,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	//	private var listBatik : ArrayList<BatikModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikPagedListAdapter
-	private lateinit var adapterShimmer : ShimmerBatikListAdapter
+//	private lateinit var adapterShimmer : ShimmerBatikListAdapter
 	
 	
 	companion object
@@ -134,7 +133,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		{
 			row = 4
 		}
-		adapterShimmer = ShimmerBatikListAdapter(this)
+//		adapterShimmer = ShimmerBatikListAdapter(this)
 
 //		listBatik = DataDummy.generateDummyBatik()
 //		binding.rvShimmer.layoutManager =

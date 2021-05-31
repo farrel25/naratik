@@ -15,7 +15,7 @@ import com.b21cap0051.naratik.util.ItemArticleCallBack
 class DetailArticleActivity : AppCompatActivity() , ItemArticleCallBack
 {
 	private lateinit var binding : ActivityDetailArticleBinding
-	private lateinit var articleAdapter : ArticleMiniListAdapter
+	private lateinit var articleMiniAdapter : ArticleMiniListAdapter
 	
 	companion object
 	{
@@ -29,7 +29,7 @@ class DetailArticleActivity : AppCompatActivity() , ItemArticleCallBack
 		binding = ActivityDetailArticleBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		articleAdapter = ArticleMiniListAdapter(this)
+		articleMiniAdapter = ArticleMiniListAdapter(this)
 		
 		loadActionBar()
 		binding.rvVMArticle.layoutManager = LinearLayoutManager(
@@ -37,9 +37,9 @@ class DetailArticleActivity : AppCompatActivity() , ItemArticleCallBack
 			LinearLayoutManager.HORIZONTAL ,
 			false
 		                                                       )
-		binding.rvVMArticle.adapter = articleAdapter
+		binding.rvVMArticle.adapter = articleMiniAdapter
 		val listArticle = DataDummy.generateDummyArticle()
-		articleAdapter.setList(listArticle)
+		articleMiniAdapter.setList(listArticle)
 		
 	}
 	

@@ -36,6 +36,7 @@
         android:text="@string/history" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
@@ -51,8 +52,10 @@
         android:text="@string/batik" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchBatik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipToPadding="false"
         android:paddingStart="16dp"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_row_batik_mini"
@@ -69,9 +72,10 @@
         android:text="@string/article" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchArticle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:clipToPadding="false"
         android:paddingStart="16dp"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_row_article_mini"
