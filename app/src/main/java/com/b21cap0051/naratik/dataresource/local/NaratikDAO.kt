@@ -31,4 +31,7 @@ interface NaratikDAO
 	@Update
 	fun UpdateBatikPopularDb(Value : PopularBatikEntity)
 	
+	@Query("SELECT * FROM Table_Batik WHERE nama_batik LIKE '%' || :namabatik || '%'")
+	fun searchBatik(namabatik : String) : LiveData<List<BatikEntity>>
+	
 }

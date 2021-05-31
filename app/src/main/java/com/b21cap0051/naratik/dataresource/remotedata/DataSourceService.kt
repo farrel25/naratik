@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import com.b21cap0051.naratik.dataresource.remotedata.api.APIConfig
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.util.CheckConnected
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.vo.Status
@@ -154,6 +155,32 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			})
 		}
 		
+	}
+	
+	override fun GetPredict(id : String) : LiveData<ApiResponse<PredictResponse>>
+	{
+		val mutableData = MutableLiveData<ApiResponse<PredictResponse>>()
+		val retro = APIConfig.ApiPredict().GetPredictBatik(id)
+		retro.enqueue(object : Callback<PredictResponse>{
+			override fun onResponse(
+				call : Call<PredictResponse> ,
+				response : Response<PredictResponse>
+			                       )
+			{
+				if(response.isSuccessful){
+					val dataResponse = response.body() as PredictResponse
+					mutableData.value = ApiResponse.success(dataResponse)
+				}
+			}
+			
+			override fun onFailure(call : Call<PredictResponse> , t : Throwable)
+			{
+				Log.e("ERROR" , "${t.message}")
+				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
+			}
+			
+		})
+		return mutableData
 	}
 	
 	

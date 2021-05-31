@@ -111,7 +111,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
-				data == null || data.isEmpty()
+				true
 			
 			
 			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
@@ -157,7 +157,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-				data == null || data.isEmpty()
+				true
 			
 			override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
 				LocalData.GetAllPopularBatik()
@@ -177,6 +177,37 @@ class NaratikRepository constructor(
 	
 	
 	override fun IsDone() : LiveData<Resource<Boolean>> = RemoteData.getIsDone()
+	
+	override fun searchBatik(id : String) : LiveData<Resource<List<BatikEntity>>>
+	{
+		return object : NetworkBoundResource<List<BatikEntity>,BatikResponse>(Executer){
+			override fun saveCallResult(item : BatikResponse)
+			{
+				val dataResponse = item?.hasil
+				val dataDb = ArrayList<PopularBatikEntity>()
+				for (i in 0 until dataResponse?.size!!)
+				{
+					val dataBatik = PopularBatikEntity(
+						dataResponse[i].id ,
+						dataResponse[i].namaBatik ,
+						dataResponse[i].maknaBatik ,
+						dataResponse[i].linkBatik ,
+						dataResponse[i].daerahBatik
+					                                  )
+					dataDb.add(dataBatik)
+				}
+				LocalData.insertPopularBatik(dataDb)
+			}
+			
+			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
+				true
+			
+			override fun loadfromDb() : LiveData<List<BatikEntity>> = LocalData.searchData(id)
+			
+			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =  RemoteData.GetAllBatikResponse()
+			
+		}.asLiveData()
+	}
 	
 	
 }

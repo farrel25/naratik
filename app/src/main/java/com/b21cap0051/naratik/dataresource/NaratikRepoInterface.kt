@@ -21,4 +21,6 @@ interface NaratikRepoInterface
 	
 	fun IsDone() : LiveData<Resource<Boolean>>
 	
+	fun searchBatik(id : String):LiveData<Resource<List<BatikEntity>>>
+	
 }

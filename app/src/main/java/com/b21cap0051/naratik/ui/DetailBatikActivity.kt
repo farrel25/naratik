@@ -46,6 +46,7 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 		
 		supportActionBar?.title = batik.name_batik
 		
+		
 		binding.tvItemLocationBatik.text = batik.daerah_batik
 		binding.tvMeaning.text = batik.makna_batik
 		Glide.with(this)

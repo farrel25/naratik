@@ -49,5 +49,7 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		mNaratikDao.UpdateBatikPopularDb(value)
 	}
 	
+	override fun searchData(value : String) : LiveData<List<BatikEntity>> = mNaratikDao.searchBatik(value)
+	
 	
 }

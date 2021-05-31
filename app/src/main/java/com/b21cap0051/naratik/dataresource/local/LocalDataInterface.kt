@@ -14,4 +14,5 @@ interface LocalDataInterface
 	fun insertPopularBatik(value : List<PopularBatikEntity>)
 	fun updateBatik(value : BatikEntity)
 	fun updatePopularBatik(value : PopularBatikEntity)
+	fun searchData(value : String) : LiveData<List<BatikEntity>>
 }

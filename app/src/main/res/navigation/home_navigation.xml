@@ -15,4 +15,5 @@
         android:name="com.b21cap0051.naratik.ui.home.homefragment.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" />
+
 </navigation>

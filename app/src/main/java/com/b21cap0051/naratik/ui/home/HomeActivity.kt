@@ -8,6 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityHomeBinding
 import com.b21cap0051.naratik.databinding.CustomActionBarLogoFavoriteBinding
+import com.b21cap0051.naratik.ui.SettingActivity
 import com.b21cap0051.naratik.ui.cameraui.CameraActivity
 import com.b21cap0051.naratik.ui.favourite.FavouriteActivity
 
@@ -29,18 +30,12 @@ class HomeActivity : AppCompatActivity()
 		binding.bottomBarMenu.setupWithNavController(navControl)
 		
 		
-		bindingActionBar.btnFavorite.setOnClickListener {
+		binding.actionBarItem.btnFavorite.setOnClickListener {
 			val intent = Intent(this@HomeActivity , FavouriteActivity::class.java)
 			startActivity(intent)
 			finish()
 		}
 		
-		
-		binding.actionBarItem.ivLogo.setOnClickListener {
-			val move = Intent(this , HomeActivity::class.java)
-			startActivity(move)
-			finish()
-		}
 		binding.fabCamera.setOnClickListener {
 			val intent = Intent(this@HomeActivity , CameraActivity::class.java)
 			startActivity(intent)
