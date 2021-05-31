@@ -16,13 +16,12 @@ from firebase_admin import credentials, initialize_app, firestore
 
 
 app = Flask(__name__)
-data_json = {"id": "cloudfunctionpredict"}
+data_json = {}
 env_var = open("var.json")
 loaded_var = json.load(env_var)
 super_secret_key = loaded_var["Auth"]
 base_url = loaded_var["base_url"]
 add_endpoint = loaded_var["add_endpoint"]
-
 
 
 cred = credentials.Certificate("key.json")
@@ -40,7 +39,8 @@ def making_prediction(filename):
     labels = (['ceplok', 'kawung', 'megamendung', 'parang', 'sidomukti'])
     url = base_url + filename
     document_id = re.sub(r"\.\w*", "", filename)
-    data_json["id"] = document_id
+    data_json.update({"id" : document_id})
+    data_json.update({"img_url": url})
 
     res = request.urlopen(url).read()
     img = Image.open(BytesIO(res)).resize((224, 224))
@@ -65,7 +65,6 @@ def making_prediction(filename):
 def post_prediction(data):
     x = requests.post(add_endpoint, json=data)
     return x
-
 
 
 def post_prediction_result(json_data):
@@ -107,7 +106,6 @@ def predict(filename):
             return "No Access"
     except Exception as e:
         return f"An Error Occured: {e}"
-
 
 
 @app.route('/motif/<unique_id>', methods=["GET"])
