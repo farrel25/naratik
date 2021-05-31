@@ -4,23 +4,19 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
-import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
@@ -40,7 +36,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	private var _binding : FragmentExploreBinding? = null
 	private val binding get() = _binding as FragmentExploreBinding
 	private var listArticle : ArrayList<ArticleModel> = arrayListOf()
-//	private var listBatik : ArrayList<BatikModel> = arrayListOf()
+	
+	//	private var listBatik : ArrayList<BatikModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikPagedListAdapter
 	private lateinit var adapterShimmer : ShimmerBatikListAdapter
@@ -119,9 +116,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
 		adapterBatik.submitList(value)
-		
-		
-		
+
+
 //		binding.shimmerLayout.visibility = View.GONE
 		
 		
@@ -139,12 +135,12 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 			row = 4
 		}
 		adapterShimmer = ShimmerBatikListAdapter(this)
-		
+
 //		listBatik = DataDummy.generateDummyBatik()
 //		binding.rvShimmer.layoutManager =
-			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 //		binding.rvShimmer.adapter = adapterShimmer
-		
+
 //		adapterShimmer.setListLimited(listBatik)
 	}
 	

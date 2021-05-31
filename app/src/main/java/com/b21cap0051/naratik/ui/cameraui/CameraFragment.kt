@@ -31,7 +31,9 @@ import com.b21cap0051.naratik.databinding.FragmentCameraBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment.Companion.KEY_UPLOAD
 import com.b21cap0051.naratik.ui.home.HomeActivity
+import kotlinx.coroutines.*
 import java.io.File
+import java.lang.Runnable
 import java.nio.ByteBuffer
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
@@ -80,6 +82,7 @@ class CameraFragment : Fragment()
 				requireActivity() , REQUIRED_PERMISSIONS , REQUEST_CODE_PERMISSION
 			                                 )
 		}
+		
 		
 		binding.btnCapture.setOnClickListener {
 			takePhoto(requireContext())
@@ -195,7 +198,6 @@ class CameraFragment : Fragment()
 	
 	private fun takePhoto(context : Context)
 	{
-		
 		val imageCapture = capturePhoto ?: return
 		val data = Random.nextInt(100)
 		val filename = getRandomString(5)
@@ -213,39 +215,55 @@ class CameraFragment : Fragment()
 				@RequiresApi(Build.VERSION_CODES.M)
 				override fun onImageSaved(outputFileResults : ImageCapture.OutputFileResults)
 				{
-					val savedURI = Uri.fromFile(photoFile)
-					uploadNotification(savedURI)
+					Toast.makeText(
+						requireContext() ,
+						resources.getString(R.string.savephotonotif) ,
+						Toast.LENGTH_SHORT
+					              ).show()
+					uploadNotification(Uri.fromFile(photoFile))
 				}
 				
 				override fun onError(e : ImageCaptureException)
 				{
+					Toast.makeText(
+						requireContext() ,
+						resources.getString(R.string.savephotonotif) ,
+						Toast.LENGTH_SHORT
+					              ).show()
 					Log.e(TAG , "Photo Captured fail : ${e.message} " , e)
 				}
 				
 			})
 		
+		
 	}
+	
 	
 	@RequiresApi(Build.VERSION_CODES.M)
 	private fun uploadNotification(uri : Uri)
 	{
-		dialog = SweetAlertDialog(context , SweetAlertDialog.WARNING_TYPE)
-		dialog.titleText = "Upload Foto Ini?"
-		dialog.contentText = "Foto anda akan terkirim kedalam database"
-		dialog.confirmText = "Upload"
-		dialog.setConfirmClickListener { uploadProcess(ImageUploadModel(uri)) }
+		dialog = SweetAlertDialog(requireActivity() , SweetAlertDialog.WARNING_TYPE)
+		dialog.titleText = resources.getString(R.string.noticeupload)
+		dialog.contentText = resources.getString(R.string.noticeuploadcontext)
+		dialog.confirmText = resources.getString(R.string.noticeuploadconfirmtext)
+		dialog.setCancelable(false)
+		dialog.setConfirmClickListener {
+			uploadProcess(ImageUploadModel(uri))
+			it.dismissWithAnimation()
+		}
 		dialog.setCancelButton(
-			"Cancel"
+			resources.getString(R.string.noticeuploadconfirmcancel)
 		                      ) { sDialog -> sDialog.dismissWithAnimation() }
 		dialog.show()
 		dialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).backgroundTintList =
-			context?.getColorStateList(R.color.yellow_500)
+			requireActivity().getColorStateList(R.color.yellow_500)
 		
-		dialog.getButton(SweetAlertDialog.BUTTON_CANCEL).backgroundTintList =
-			context?.getColorStateList(R.color.red)
+		dialog.getButton(SweetAlertDialog.BUTTON_CANCEL)
+			.backgroundTintList = requireActivity().getColorStateList(R.color.red)
 		
-		dialog.confirmButtonTextColor = requireContext().getColor(R.color.black)
-		dialog.cancelButtonTextColor = requireContext().getColor(R.color.white)
+		
+		dialog.confirmButtonTextColor = requireActivity().getColor(R.color.black)
+		dialog.cancelButtonTextColor = requireActivity().getColor(R.color.white)
 	}
 	
 	
@@ -259,7 +277,8 @@ class CameraFragment : Fragment()
 	{
 		val mbundle = Bundle()
 		mbundle.putParcelable(KEY_UPLOAD , modelUpload)
-		findNavController().navigate(R.id.action_cameraFragment_to_uploadProcessFragment , mbundle)
+		findNavController().navigate(R.id.uploadProcessFragment , mbundle)
+		
 	}
 	
 	

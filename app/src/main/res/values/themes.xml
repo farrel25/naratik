@@ -37,6 +37,7 @@
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="text_32sp_bold">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -108,7 +109,8 @@
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
-    </style>'
+    </style>
+    '
 
     <style name="text_12sp_reguler_white">
         <item name="android:layout_width">wrap_content</item>

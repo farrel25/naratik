@@ -9,13 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
-import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
-import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
@@ -48,8 +45,8 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		
 		batikPaged = BatikPagedListAdapter(this)
-		
-		
+
+
 //		val listBatik = DataDummy.generateDummyBatik()
 		
 		mainView.getAllbatik().observe(this , { response ->

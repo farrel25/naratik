@@ -7,7 +7,7 @@
     tools:context=".ui.cameraui.CameraActivity">
 
     <fragment
-        android:id="@+id/defaultActivity"
+        android:id="@+id/camera_frag"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

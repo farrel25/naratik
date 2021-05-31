@@ -20,7 +20,8 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 	private lateinit var mActionBarToolbar : Toolbar
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
 	
-	companion object {
+	companion object
+	{
 		const val EXTRA_BATIK = "extra_batik"
 	}
 	
@@ -30,7 +31,7 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 		binding = ActivityDetailBatikBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		mActionBarToolbar =  findViewById(R.id.custom_action_bar_back)
+		mActionBarToolbar = findViewById(R.id.custom_action_bar_back)
 		setSupportActionBar(mActionBarToolbar)
 		
 		val batik = intent.getParcelableExtra<BatikEntity>(EXTRA_BATIK) as BatikEntity
@@ -49,9 +50,11 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 		binding.tvMeaning.text = batik.makna_batik
 		Glide.with(this)
 			.load(batik.Image)
-			.apply(RequestOptions().override(500,500))
-			.apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
-				.error(R.drawable.ic_error))
+			.apply(RequestOptions().override(500 , 500))
+			.apply(
+				RequestOptions.placeholderOf(R.drawable.ic_loading)
+					.error(R.drawable.ic_error)
+			      )
 			.into(binding.ivBatik)
 		
 		

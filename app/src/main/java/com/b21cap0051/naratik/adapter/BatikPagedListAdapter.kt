@@ -3,7 +3,6 @@ package com.b21cap0051.naratik.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.persistableBundleOf
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -58,7 +57,7 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	}
 	
 	
-	inner class itemTarget( val binding : ItemRowBatikBinding) :
+	inner class itemTarget(val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
 		fun bind(model : BatikEntity)
@@ -78,16 +77,19 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 			Glide.with(itemView.context)
 				.load(model.Image)
 				.apply(RequestOptions().override(450 , height))
-				.apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
-					.error(R.drawable.ic_error))
+				.apply(
+					RequestOptions.placeholderOf(R.drawable.ic_loading)
+						.error(R.drawable.ic_error)
+				      )
 				.into(binding.ivItemBatik)
 			
 			binding.tvItemNameBatik.text = model.name_batik
-			binding.tvItemLocationBatik.text = itemView.resources.getString(R.string.batik_id, model.batik_id)
+			binding.tvItemLocationBatik.text =
+				itemView.resources.getString(R.string.batik_id , model.batik_id)
 			
 			binding.cvBatik.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
-				intent.putExtra(DetailBatikActivity.EXTRA_BATIK,model)
+				intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
 				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
 			}

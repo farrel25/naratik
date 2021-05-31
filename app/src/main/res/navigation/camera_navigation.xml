@@ -4,25 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/camera_navigation"
     app:startDestination="@id/cameraFragment">
+
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.b21cap0051.naratik.ui.cameraui.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera">
-        <action
-            android:id="@+id/action_cameraFragment_to_uploadProcessFragment"
-            app:destination="@id/uploadProcessFragment" />
-    </fragment>
-    <fragment
+        tools:layout="@layout/fragment_camera" />
+    <dialog
         android:id="@+id/uploadProcessFragment"
         android:name="com.b21cap0051.naratik.ui.cameraui.UploadProcessFragment"
         android:label="fragment_upload_process"
-        tools:layout="@layout/fragment_upload_process">
-        <action
-            android:id="@+id/action_uploadProcessFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment" />
-        <argument
-            android:name="ImageData"
-            app:argType="com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel" />
-    </fragment>
+        tools:layout="@layout/fragment_upload_process" />
 </navigation>

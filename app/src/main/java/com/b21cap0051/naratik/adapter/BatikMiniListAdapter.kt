@@ -1,13 +1,11 @@
 package com.b21cap0051.naratik.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowBatikMiniBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -44,8 +42,9 @@ class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
 				.apply(RequestOptions().override(200 , 200))
 				.into(binding.ivItemBatik)
 			binding.tvItemNameBatik.text = model.name_batik
-			binding.tvItemLocationBatik.text = itemView.resources.getString(R.string.batik_id, model.batik_id)
-			
+			binding.tvItemLocationBatik.text =
+				itemView.resources.getString(R.string.batik_id , model.batik_id)
+
 //			binding.cvMiniBatik.setOnClickListener {
 //				callBack.itemBatikClick(model)
 //			}

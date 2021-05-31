@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
@@ -24,7 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class UploadProcessFragment : Fragment()
+class UploadProcessFragment : DialogFragment()
 {
 	
 	private lateinit var binding : FragmentUploadProcessBinding
@@ -103,8 +102,6 @@ class UploadProcessFragment : Fragment()
 					val move = Intent(activity , ResultActivity::class.java)
 					move.putExtra(KEY_DATA , image)
 					startActivity(move)
-					onDetach()
-					onDestroy()
 					requireActivity().finish()
 				}
 				Status.ERROR   ->
@@ -118,6 +115,6 @@ class UploadProcessFragment : Fragment()
 	
 	private fun backCameraActivity()
 	{
-		findNavController().navigate(R.id.action_uploadProcessFragment_to_cameraFragment)
+		findNavController().navigateUp()
 	}
 }

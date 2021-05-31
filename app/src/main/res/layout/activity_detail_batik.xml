@@ -34,8 +34,7 @@
                 android:src="@drawable/img_batik"
                 app:layout_collapseMode="parallax" />
 
-            <include
-                layout="@layout/custom_action_bar_back" />
+            <include layout="@layout/custom_action_bar_back" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

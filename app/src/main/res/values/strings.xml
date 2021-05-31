@@ -70,5 +70,11 @@
     <string name="no_result">No Result</string>
     <string name="rating">rating</string>
     <string name="price">price</string>
+    <string name="noticeupload">Upload This Photo?</string>
+    <string name="noticeuploadcontext">This Photo Will Be processing</string>
+    <string name="noticeuploadconfirmtext">Upload</string>
+    <string name="noticeuploadconfirmcancel">Cancel</string>
+    <string name="savephotonotif">Photo Saved</string>
+    <string name="savephotonotiffail">Photo Saved Fail</string>
 
 </resources>

@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SearchActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.SearchActivity">
 
-    <include
-        layout="@layout/custom_action_bar_back" />
+    <include layout="@layout/custom_action_bar_back" />
 
     <EditText
         android:id="@+id/etSearch"
@@ -22,11 +21,11 @@
         android:drawablePadding="8dp"
         android:hint="@string/search"
         android:importantForAutofill="no"
+        android:inputType="textShortMessage"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:inputType="textShortMessage" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txtHistory"

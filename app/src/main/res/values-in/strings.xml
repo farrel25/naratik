@@ -71,4 +71,10 @@
     <string name="no_result">No Result</string>
     <string name="rating">rating</string>
     <string name="price">price</string>
+    <string name="noticeupload">Unggah Foto Ini?</string>
+    <string name="noticeuploadcontext">Foto ini Akan Di Proses</string>
+    <string name="noticeuploadconfirmtext">Unggah</string>
+    <string name="noticeuploadconfirmcancel">Batal</string>
+    <string name="savephotonotif">Foto Tersimpan</string>
+    <string name="savephotonotiffail">Foto Gagal Tersimpan</string>
 </resources>
