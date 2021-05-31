@@ -1,9 +1,11 @@
 package com.b21cap0051.naratik.ui
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -78,6 +80,8 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 	private fun loadActionBar()
 	{
 		val btnBack : Button = findViewById(R.id.btnBack)
+		val title : TextView = findViewById(R.id.tvTitle)
+		title.text = resources.getString(R.string.batik)
 		btnBack.setOnClickListener() {
 			super.onBackPressed()
 		}

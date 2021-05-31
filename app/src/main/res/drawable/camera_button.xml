@@ -8,7 +8,7 @@
     <solid android:color="@color/white" />
     <stroke
         android:width="10dp"
-        android:color="@color/yellow_500" />
+        android:color="@color/brown_200" />
 
 
 </shape>

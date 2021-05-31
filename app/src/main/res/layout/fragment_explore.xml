@@ -58,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/txtExploreBatik" />
 
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/etSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,15 +66,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+
+                app:defaultQueryHint="Search Motif"
                 android:background="@drawable/bg_white_rounded"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="8dp"
-                android:focusable="false"
-                android:hint="@string/search"
-                android:importantForAutofill="no"
-                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtExploreBatik" />
@@ -103,7 +97,7 @@
                 android:layout_height="28dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/yellow_500"
+                android:backgroundTint="@color/brown_200"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:stateListAnimator="@null"
@@ -155,7 +149,7 @@
                 android:layout_centerInParent="true"
 
                 android:layout_marginEnd="0dp"
-                android:backgroundTint="@color/yellow_500"
+                android:backgroundTint="@color/brown_200"
                 android:foregroundGravity="center"
                 android:includeFontPadding="false"
                 android:insetTop="0dp"

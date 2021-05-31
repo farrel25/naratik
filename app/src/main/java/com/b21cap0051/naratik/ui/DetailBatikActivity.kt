@@ -43,8 +43,8 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 			LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false)
 		binding.rvVmBatik.adapter = batikMiniAdapter
 		
+		binding.collapsingToolbar.title = batik.name_batik
 		
-		supportActionBar?.title = batik.name_batik
 		
 		
 		binding.tvItemLocationBatik.text = batik.daerah_batik
@@ -57,7 +57,6 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 					.error(R.drawable.ic_error)
 			      )
 			.into(binding.ivBatik)
-		
 		
 		val listBatik = DataDummy.generateDummyBatik()
 		batikMiniAdapter.setList(listBatik)
@@ -73,6 +72,6 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 	
 	override fun itemBatikClick(model : BatikEntity)
 	{
-		TODO("Not yet implemented")
+	
 	}
 }

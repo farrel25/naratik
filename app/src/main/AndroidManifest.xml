@@ -19,17 +19,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Naratik">
-        <activity android:name=".ui.home.SearchActivity"></activity>
-        <activity android:name=".ui.register.AccountActivity"></activity>
+        <activity android:name=".ui.home.SearchActivity">
+
+        </activity>
+        <activity android:name=".ui.register.AccountActivity">
+
+        </activity>
         <activity
             android:name=".ui.cameraui.CameraActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".ui.home.HomeActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
         <activity android:name=".ui.onboarding.OnBoardingActivity" />
         <activity android:name=".ui.favourite.FavouriteActivity" />
-        <activity android:name=".ui.ResultActivity"></activity>
+        <activity android:name=".ui.ResultActivity">
+                
+        </activity>
         <activity android:name=".ui.EditProfileActivity" />
         <activity android:name=".ui.ArticleActivity" />
         <activity android:name=".ui.BatikActivity" />

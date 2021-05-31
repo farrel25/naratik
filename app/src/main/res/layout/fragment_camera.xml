@@ -47,7 +47,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/yellow_500"
+            android:backgroundTint="@color/brown_200"
             android:elevation="5dp"
             android:insetLeft="0dp"
             android:insetTop="0dp"

@@ -5,7 +5,7 @@
     <!-- White Top color -->
     <item android:bottom="3px">
         <shape android:shape="rectangle">
-            <solid android:color="@color/yellow_500" />
+            <solid android:color="@color/brown_200" />
             <corners android:radius="100dp" />
         </shape>
     </item>

@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.ui
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.b21cap0051.naratik.R
@@ -42,6 +43,8 @@ class ArticleActivity : AppCompatActivity() , ItemArticleCallBack
 	private fun loadActionBar()
 	{
 		val btnBack : Button = findViewById(R.id.btnBack)
+		val title : TextView = findViewById(R.id.tvTitle)
+		title.text = resources.getString(R.string.article)
 		btnBack.setOnClickListener() {
 			super.onBackPressed()
 		}

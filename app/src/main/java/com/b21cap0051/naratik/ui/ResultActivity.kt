@@ -81,7 +81,7 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		val dataSet = PieDataSet(entries , "")
 		dataSet.setColors(
 			resources.getColor(R.color.grey_700) ,
-			resources.getColor(R.color.yellow_500)
+			resources.getColor(R.color.brown_200)
 		                 )
 		
 		val data = PieData(dataSet)

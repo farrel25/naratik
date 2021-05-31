@@ -256,7 +256,7 @@ class CameraFragment : Fragment()
 		                      ) { sDialog -> sDialog.dismissWithAnimation() }
 		dialog.show()
 		dialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).backgroundTintList =
-			requireActivity().getColorStateList(R.color.yellow_500)
+			requireActivity().getColorStateList(R.color.brown_200)
 		
 		dialog.getButton(SweetAlertDialog.BUTTON_CANCEL)
 			.backgroundTintList = requireActivity().getColorStateList(R.color.red)
