@@ -69,4 +69,6 @@
     <string name="upload_progress">Upload Progress!</string>
     <string name="progress">progress</string>
     <string name="no_result">No Result</string>
+    <string name="rating">rating</string>
+    <string name="price">price</string>
 </resources>

@@ -40,7 +40,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	private var _binding : FragmentExploreBinding? = null
 	private val binding get() = _binding as FragmentExploreBinding
 	private var listArticle : ArrayList<ArticleModel> = arrayListOf()
-	private var listBatik : ArrayList<BatikModel> = arrayListOf()
+//	private var listBatik : ArrayList<BatikModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikPagedListAdapter
 	private lateinit var adapterShimmer : ShimmerBatikListAdapter
@@ -94,15 +94,11 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		})
 		
 		binding.etSearch.isEnabled = true
-		binding.etSearch.setOnClickListener(object : View.OnClickListener{
-			override fun onClick(v : View?)
-			{
-				val move = Intent(requireContext(),SearchActivity::class.java)
-				startActivity(move)
-				onPause()
-			}
-			
-		})
+		binding.etSearch.setOnClickListener {
+			val move = Intent(requireContext() , SearchActivity::class.java)
+			startActivity(move)
+			onPause()
+		}
 		
 		
 		loadListArticle()
@@ -126,7 +122,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		
 		
 		
-		binding.shimmerLayout.visibility = View.GONE
+//		binding.shimmerLayout.visibility = View.GONE
 		
 		
 		binding.btnShowAllBatik.setOnClickListener {
@@ -145,9 +141,9 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		adapterShimmer = ShimmerBatikListAdapter(this)
 		
 //		listBatik = DataDummy.generateDummyBatik()
-		binding.rvShimmer.layoutManager =
+//		binding.rvShimmer.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
-		binding.rvShimmer.adapter = adapterShimmer
+//		binding.rvShimmer.adapter = adapterShimmer
 		
 //		adapterShimmer.setListLimited(listBatik)
 	}

@@ -119,4 +119,6 @@ dependencies {
     //SweetAlert
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

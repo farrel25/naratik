@@ -117,26 +117,6 @@
 
         </RelativeLayout>
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rvBatik">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvShimmer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/shimmer_item_row_batik">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBatik"
             android:layout_width="match_parent"
