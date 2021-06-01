@@ -18,9 +18,10 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				R.drawable.img_dummy ,
+				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg",
+				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg",
 				"Title" ,
-				"5 August 2022" ,
+				"5 August 2021" ,
 				"Admin" ,
 				"overview" ,
 			            )
@@ -28,9 +29,10 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				R.drawable.img_dummy ,
+				"https://d2pa5gi5n2e1an.cloudfront.net/id/images/article/11008_ID/1.jpg" ,
+				"https://d2pa5gi5n2e1an.cloudfront.net/id/images/article/11008_ID/1.jpg" ,
 				"Title" ,
-				"5 August 2022" ,
+				"5 August 2021" ,
 				"Admin" ,
 				"overview" ,
 			            )
@@ -38,9 +40,10 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				R.drawable.img_dummy ,
+				"https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/12/06/c71703d4-171e-11ea-9462-4dd25a5b0420_image_hires_204340.jpg" ,
+				"https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/12/06/c71703d4-171e-11ea-9462-4dd25a5b0420_image_hires_204340.jpg" ,
 				"Title" ,
-				"5 August 2022" ,
+				"5 August 2021" ,
 				"Admin" ,
 				"overview" ,
 			            )
@@ -48,9 +51,10 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				R.drawable.img_dummy ,
+				"https://fitinline.com/data/article/20131130/Batik%20Pasuruan%201.JPG" ,
+				"https://fitinline.com/data/article/20131130/Batik%20Pasuruan%201.JPG" ,
 				"Title" ,
-				"5 August 2022" ,
+				"5 August 2021" ,
 				"Admin" ,
 				"overview" ,
 			            )
@@ -58,9 +62,10 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				R.drawable.img_dummy ,
+				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png",
+				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png",
 				"Title" ,
-				"5 August 2022" ,
+				"5 August 2021" ,
 				"Admin" ,
 				"overview" ,
 			            )

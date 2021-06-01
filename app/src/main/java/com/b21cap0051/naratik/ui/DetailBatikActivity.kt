@@ -17,7 +17,6 @@ import com.bumptech.glide.request.RequestOptions
 class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 {
 	private lateinit var binding : ActivityDetailBatikBinding
-	private lateinit var mActionBarToolbar : Toolbar
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
 	
 	companion object
@@ -31,22 +30,26 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 		binding = ActivityDetailBatikBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		mActionBarToolbar = findViewById(R.id.custom_action_bar_back)
-		setSupportActionBar(mActionBarToolbar)
-		
-		val batik = intent.getParcelableExtra<BatikEntity>(EXTRA_BATIK) as BatikEntity
+		batikMiniAdapter = BatikMiniListAdapter(this)
 		
 		loadActionBar()
+		loadDetail()
+		loadViewMore()
 		
-		batikMiniAdapter = BatikMiniListAdapter(this)
+	}
+	
+	private fun loadViewMore(){
+		val listBatik = DataDummy.generateDummyBatik()
+		batikMiniAdapter.setList(listBatik)
 		binding.rvVmBatik.layoutManager =
 			LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false)
 		binding.rvVmBatik.adapter = batikMiniAdapter
 		
+	}
+	
+	private fun loadDetail(){
+		val batik = intent.getParcelableExtra<BatikEntity>(EXTRA_BATIK) as BatikEntity
 		binding.collapsingToolbar.title = batik.name_batik
-		
-		
-		
 		binding.tvItemLocationBatik.text = batik.daerah_batik
 		binding.tvMeaning.text = batik.makna_batik
 		Glide.with(this)
@@ -58,8 +61,6 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 			      )
 			.into(binding.ivBatik)
 		
-		val listBatik = DataDummy.generateDummyBatik()
-		batikMiniAdapter.setList(listBatik)
 	}
 	
 	private fun loadActionBar()

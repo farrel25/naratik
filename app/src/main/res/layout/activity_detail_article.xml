@@ -24,15 +24,29 @@
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="@string/title">
 
-            <ImageView
-                android:id="@+id/ivArticle"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/image"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_dummy"
-                app:layout_collapseMode="parallax" />
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/ivArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_dummy"
+                    app:layout_collapseMode="parallax" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    app:srcCompat="@drawable/bg_shadow_transparent" />
+            </androidx.cardview.widget.CardView>
+
 
             <include layout="@layout/custom_action_bar_back" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -89,7 +103,7 @@
                 app:layout_constraintStart_toStartOf="@+id/txtViewMoreArticle"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewMoreArticle" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivAdmin"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
