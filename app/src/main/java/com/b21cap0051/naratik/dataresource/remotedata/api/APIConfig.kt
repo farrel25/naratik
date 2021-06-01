@@ -25,12 +25,11 @@ class APIConfig
 							.addHeader("Auth","B21-CAP0051")
 						return chain.proceed(builder.build())
 					}
-
 				})
 				.addInterceptor(interceptor.setLevel(HttpLoggingInterceptor.Level.BODY))
-				.connectTimeout(30 , TimeUnit.SECONDS)
-				.readTimeout(30 , TimeUnit.SECONDS)
-				.writeTimeout(30  , TimeUnit.SECONDS)
+				.connectTimeout(60 , TimeUnit.SECONDS)
+				.readTimeout(60 , TimeUnit.SECONDS)
+				.writeTimeout(60 , TimeUnit.SECONDS)
 				.build()
 			
 			val API = Retrofit.Builder()

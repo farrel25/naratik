@@ -86,10 +86,7 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 					loadBatikResult(response.body)
 				}
 				StatusResponse.ERROR -> {
-
-				}
-				StatusResponse.EMPTY ->{
-
+				
 				}
 			}
 		})

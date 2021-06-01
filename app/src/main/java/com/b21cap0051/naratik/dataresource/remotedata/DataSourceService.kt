@@ -1,6 +1,8 @@
 package com.b21cap0051.naratik.dataresource.remotedata
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -166,70 +168,89 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 	
 	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
 	{
-		_loadMotif.postValue(Resource(Status.LOADING,false))
+		_loadMotif.postValue(Resource(Status.LOADING , false))
 		val mutableData = MutableLiveData<ApiResponse<PredictResponse>>()
-		val retro = APIConfig.ApiPredict().GetPredictBatik(id)
-		retro.enqueue(object : Callback<PredictResponse>{
-			override fun onResponse(
-				call : Call<PredictResponse> ,
-				response : Response<PredictResponse>
-			                       )
+		
+		Handler(Looper.getMainLooper()).postDelayed({
+			val retro = APIConfig.ApiPredict().GetPredictBatik(id)
+			retro.enqueue(object : Callback<PredictResponse>
 			{
-				if(response.isSuccessful){
-					if(response.body() != null){
-						val dataResponse = response.body()
-						mutableData.postValue(ApiResponse.success(dataResponse!!))
-						_loadMotif.postValue(Resource(Status.SUCCESS,true))
+				override fun onResponse(
+					call : Call<PredictResponse> ,
+					response : Response<PredictResponse>
+				                       )
+				{
+					if (response.isSuccessful)
+					{
+						Log.d("MYTAG" , response.errorBody().toString())
+						if (response.body() != null)
+						{
+							val dataResponse = response.body()
+							mutableData.postValue(ApiResponse.success(dataResponse!!))
+							_loadMotif.postValue(Resource(Status.SUCCESS , true))
+						} else
+						{
+							call.clone().enqueue(this)
+						}
 					}
 				}
-			}
-			
-			override fun onFailure(call : Call<PredictResponse> , t : Throwable)
-			{
-				_loadMotif.postValue(Resource(Status.ERROR,false))
-				Log.e("ERROR" , "${t.message}")
-				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
-			}
-			
-		})
+				
+				override fun onFailure(call : Call<PredictResponse> , t : Throwable)
+				{
+					call.clone().enqueue(this)
+					_loadMotif.postValue(Resource(Status.ERROR , false))
+					Log.e("ERROR" , "${t.message}")
+					Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
+				}
+			})
+		} , 5000L)
+		
 		return mutableData
 	}
 	
 	override fun GetPredicTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
 	{
-		_loadTechnique.postValue(Resource(Status.LOADING,false))
+		_loadTechnique.postValue(Resource(Status.LOADING , false))
 		val MutableData = MutableLiveData<ApiResponse<TechniquePredictResponse>>()
+		Handler(Looper.getMainLooper()).postDelayed({
+			val getApi = APIConfig.ApiPredict().GetPredictTechnique(id)
+			getApi.enqueue(object : Callback<TechniquePredictResponse>
+			{
+				override fun onResponse(
+					call : Call<TechniquePredictResponse> ,
+					response : Response<TechniquePredictResponse>
+				                       )
+				{
+					if (response.isSuccessful)
+					{
+						if (response.body() != null)
+						{
+							val dataResponse = response.body()
+							Log.d("MyTAG" , "$dataResponse")
+							MutableData.postValue(ApiResponse.success(dataResponse!!))
+							_loadTechnique.postValue(Resource(Status.SUCCESS , true))
+						} else
+						{
+							call.clone().enqueue(this)
+						}
+						
+						Log.d("MyTAG" , "${response.body()}")
+					}
+				}
+				
+				override fun onFailure(call : Call<TechniquePredictResponse> , t : Throwable)
+				{
+					call.clone().enqueue(this)
+					_loadTechnique.postValue(Resource(Status.ERROR , false))
+					Log.e("ERROR" , "${t.message}")
+					Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
+				}
+				
+			})
+		} , 5000L)
 		
-		val getApi = APIConfig.ApiPredict().GetPredictTechnique(id)
-		getApi.enqueue(object : Callback<TechniquePredictResponse>{
-			override fun onResponse(
-				call : Call<TechniquePredictResponse> ,
-				response : Response<TechniquePredictResponse>
-			                       )
-			{
-			 if(response.isSuccessful){
-			 	if(response.body() != null){
-				    val dataResponse = response.body()
-				    Log.d("MyTAG","$dataResponse")
-				    MutableData.postValue(ApiResponse.success(dataResponse!!))
-				    _loadTechnique.postValue(Resource(Status.SUCCESS,true))
-			    }
-				 Log.d("MyTAG","${response.body()}")
-			 }
-			}
-			
-			override fun onFailure(call : Call<TechniquePredictResponse> , t : Throwable)
-			{
-				_loadTechnique.postValue(Resource(Status.ERROR,false))
-				Log.e("ERROR" , "${t.message}")
-				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
-			}
-			
-		})
 		return MutableData
 	}
-	
-	
 	
 	
 }

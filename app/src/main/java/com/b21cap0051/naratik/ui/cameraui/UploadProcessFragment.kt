@@ -28,8 +28,6 @@ class UploadProcessFragment : DialogFragment()
 	
 	private lateinit var binding : FragmentUploadProcessBinding
 	private lateinit var modelData : ImageUploadModel
-	private var stat = false
-	private var notif = ""
 	override fun onCreateView(
 		inflater : LayoutInflater , container : ViewGroup? ,
 		savedInstanceState : Bundle?
@@ -54,9 +52,9 @@ class UploadProcessFragment : DialogFragment()
 			{
 				Status.SUCCESS ->
 				{
-					uploadStatus()
-					LoadingUpload(modelData)
-				
+					
+					LoadingUpload()
+					uploadStatus(modelData)
 				}
 				Status.ERROR   ->
 				{
@@ -74,12 +72,13 @@ class UploadProcessFragment : DialogFragment()
 		const val KEY_UPLOAD = "key_upload"
 	}
 	
-	private fun LoadingUpload(image : ImageUploadModel)
+	private fun LoadingUpload()
 	{
-		mainView.IsDone().removeObservers(this)
+		
 		binding.pbCameraUpload.max = 100
 		lifecycleScope.launch(Dispatchers.Default) {
-			for (i in 0 .. 100 step 10)
+			
+			for (i in 0 .. 100 step 25)
 			{
 				delay(200)
 				withContext(Dispatchers.Main) {
@@ -89,19 +88,11 @@ class UploadProcessFragment : DialogFragment()
 			
 				
 			}
-			if(stat){
-				val move = Intent(activity , ResultActivity::class.java)
-				move.putExtra(KEY_DATA , image)
-				startActivity(move)
-				requireActivity().finish()
-			}else{
-				backCameraActivity()
-			}
+			
 		}
-		
 	}
 	
-	private fun uploadStatus()
+	private fun uploadStatus(image : ImageUploadModel)
 	{
 		mainView.IsDone().observe(viewLifecycleOwner , { response ->
 			
@@ -109,16 +100,16 @@ class UploadProcessFragment : DialogFragment()
 			{
 				Status.SUCCESS ->
 				{
-					
-					stat = true
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
-					
+					val move = Intent(activity , ResultActivity::class.java)
+					move.putExtra(KEY_DATA , image)
+					startActivity(move)
+					requireActivity().finish()
 				}
 				Status.ERROR   ->
 				{
-					stat = false
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
-					
+					backCameraActivity()
 				}
 			}
 		})
@@ -126,6 +117,6 @@ class UploadProcessFragment : DialogFragment()
 	
 	private fun backCameraActivity()
 	{
-		findNavController().popBackStack()
+		dismiss()
 	}
 }
