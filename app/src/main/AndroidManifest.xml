@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".ui.onboarding.OnBoardingActivity" />

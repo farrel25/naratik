@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="350dp">
+        android:layout_height="320dp">
 
         <ImageView
             android:id="@+id/ivItemProduct"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tvItemNameProduct"
-            style="@style/text_14sp_regular"
+            style="@style/text_16sp_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -51,29 +51,28 @@
             style="@style/text_12sp_reguler_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/green"
-            android:drawableStart="@drawable/ic_location"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_white_rounded"
+            android:backgroundTint="@color/green"
             android:drawablePadding="4dp"
-            android:padding="4dp"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
             android:text="@string/category"
             app:drawableTint="@color/white"
             app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/rbItemProduct" />
 
-        <TextView
-            android:id="@+id/tvItemRatingProduct"
-            style="@style/text_12sp_regular"
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rbItemProduct"
+            style="@style/customRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/yellow"
-            android:drawableStart="@drawable/ic_star"
-            android:drawablePadding="4dp"
-            android:padding="4dp"
-            android:text="@string/rating"
-            app:drawableTint="@color/black"
+            android:numStars="5"
             app:layout_constraintStart_toStartOf="@+id/tvItemCategoryProduct"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemCategoryProduct" />
+            app:layout_constraintTop_toBottomOf="@+id/tvItemPrice" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

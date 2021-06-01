@@ -36,8 +36,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="173dp"
                 android:layout_height="100dp"
                 android:layout_alignTop="@+id/txtExploreBatik"
@@ -46,11 +46,24 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="0dp"
-                android:contentDescription="@string/image"
-                android:src="@drawable/img_explore_batik"
-                app:layout_constraintBottom_toBottomOf="@+id/txtExploreBatik"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtExploreBatik" />
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/img_batik"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    app:srcCompat="@drawable/bg_gradient_light" />
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/etSearch"
@@ -104,6 +117,26 @@
                 tools:ignore="RelativeOverlap" />
 
         </RelativeLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rvBatik">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/shimmer_item_row_batik">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBatik"
