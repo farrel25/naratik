@@ -6,15 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowResultBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
+import com.b21cap0051.naratik.dataresource.remotedata.model.MotifResponseItem
+import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.util.ItemResultCallback
 
 class ResultMotifAdapter(private val callback : ItemResultCallback) :
 	RecyclerView.Adapter<ResultMotifAdapter.ItemTarget>()
 {
 	
-	private val listMotifResult = ArrayList<ResultModel>()
+	private val listMotifResult = ArrayList<MotifResponseItem>()
 	
-	fun setList(listMotifResult : java.util.ArrayList<ResultModel>)
+	fun setList(listMotifResult : List<MotifResponseItem>)
 	{
 		this.listMotifResult.clear()
 		this.listMotifResult.addAll(listMotifResult)
@@ -25,12 +27,12 @@ class ResultMotifAdapter(private val callback : ItemResultCallback) :
 		RecyclerView.ViewHolder(binding.root)
 	{
 		
-		fun bind(motif : ResultModel)
+		fun bind(motif : MotifResponseItem)
 		{
 			with(binding) {
-				tvItemMotifResult.text = motif.motif
+				tvItemMotifResult.text = motif.motifName
 				tvItemPercentageResult.text =
-					itemView.resources.getString(R.string.presentase , motif.percentage.toString())
+					itemView.resources.getString(R.string.presentase , motif.valueMotif.toString())
 			}
 		}
 	}

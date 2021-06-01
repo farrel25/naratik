@@ -72,7 +72,6 @@ class UploadProcessFragment : DialogFragment()
 	companion object
 	{
 		const val KEY_UPLOAD = "key_upload"
-		
 	}
 	
 	private fun LoadingUpload(image : ImageUploadModel)
@@ -127,6 +126,6 @@ class UploadProcessFragment : DialogFragment()
 	
 	private fun backCameraActivity()
 	{
-		findNavController().navigateUp()
+		findNavController().popBackStack()
 	}
 }

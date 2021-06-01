@@ -217,5 +217,9 @@ class NaratikRepository constructor(
 	
 	override fun GetTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> = RemoteData.GetPredicTechnique(id)
 	
+	override fun IsDoneMotif() : LiveData<Resource<Boolean>> = RemoteData.loadMotif
+	
+	override fun IsDoneTechnique() : LiveData<Resource<Boolean>> = RemoteData.loadTechnique
+	
 	
 }

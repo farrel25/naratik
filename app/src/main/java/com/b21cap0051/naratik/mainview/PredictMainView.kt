@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.b21cap0051.naratik.dataresource.NaratikRepository
 import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
+import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.voapi.ApiResponse
 
 class PredictMainView(private val repo : NaratikRepository) : ViewModel()
@@ -14,5 +15,9 @@ class PredictMainView(private val repo : NaratikRepository) : ViewModel()
 	
 	fun GetTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> =
 		repo.GetTechniquePredict(id)
+	
+	fun IsDoneMotif():LiveData<Resource<Boolean>> = repo.IsDoneMotif()
+	
+	fun IsDoneTechnique():LiveData<Resource<Boolean>> = repo.IsDoneTechnique()
 	
 }

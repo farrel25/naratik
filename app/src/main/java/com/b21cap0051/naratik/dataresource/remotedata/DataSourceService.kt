@@ -158,9 +158,15 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		
 	}
 	
+	private var _loadMotif = MutableLiveData<Resource<Boolean>>()
+	val loadMotif : LiveData<Resource<Boolean>> = _loadMotif
+	
+	private var _loadTechnique = MutableLiveData<Resource<Boolean>>()
+	val loadTechnique : LiveData<Resource<Boolean>> = _loadTechnique
+	
 	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
 	{
-		Log.d("myTAG",id)
+		_loadMotif.postValue(Resource(Status.LOADING,false))
 		val mutableData = MutableLiveData<ApiResponse<PredictResponse>>()
 		val retro = APIConfig.ApiPredict().GetPredictBatik(id)
 		retro.enqueue(object : Callback<PredictResponse>{
@@ -170,13 +176,17 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			                       )
 			{
 				if(response.isSuccessful){
-					val dataResponse = response.body()
-					mutableData.value = ApiResponse.success(dataResponse!!)
+					if(response.body() != null){
+						val dataResponse = response.body()
+						mutableData.postValue(ApiResponse.success(dataResponse!!))
+						_loadMotif.postValue(Resource(Status.SUCCESS,true))
+					}
 				}
 			}
 			
 			override fun onFailure(call : Call<PredictResponse> , t : Throwable)
 			{
+				_loadMotif.postValue(Resource(Status.ERROR,false))
 				Log.e("ERROR" , "${t.message}")
 				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
 			}
@@ -187,7 +197,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 	
 	override fun GetPredicTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
 	{
-		Log.d("myTAG",id)
+		_loadTechnique.postValue(Resource(Status.LOADING,false))
 		val MutableData = MutableLiveData<ApiResponse<TechniquePredictResponse>>()
 		
 		val getApi = APIConfig.ApiPredict().GetPredictTechnique(id)
@@ -202,6 +212,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 				    val dataResponse = response.body()
 				    Log.d("MyTAG","$dataResponse")
 				    MutableData.postValue(ApiResponse.success(dataResponse!!))
+				    _loadTechnique.postValue(Resource(Status.SUCCESS,true))
 			    }
 				 Log.d("MyTAG","${response.body()}")
 			 }
@@ -209,6 +220,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			
 			override fun onFailure(call : Call<TechniquePredictResponse> , t : Throwable)
 			{
+				_loadTechnique.postValue(Resource(Status.ERROR,false))
 				Log.e("ERROR" , "${t.message}")
 				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
 			}

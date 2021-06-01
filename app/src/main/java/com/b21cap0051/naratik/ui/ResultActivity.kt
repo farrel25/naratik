@@ -2,6 +2,7 @@ package com.b21cap0051.naratik.ui
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,11 +11,13 @@ import com.b21cap0051.naratik.adapter.ResultMotifAdapter
 import com.b21cap0051.naratik.databinding.ActivityResultBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import com.b21cap0051.naratik.mainview.PredictMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemResultCallback
+import com.b21cap0051.naratik.util.vo.Status
 import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -52,6 +55,28 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		val factory = ViewFactoryModel.GetInstance(this)
 		mainView = ViewModelProvider(this,factory)[PredictMainView::class.java]
 		
+		
+		mainView.IsDoneMotif().observe(this,{
+			   response ->
+			when(response.Status){
+				Status.SUCCESS -> {
+					LoadingProcess(response.Data!!)
+				}
+				Status.ERROR -> {
+				
+				}
+				
+				Status.LOADING -> {
+					LoadingProcess(response.Data!!)
+				}
+			}
+		})
+		
+		mainView.IsDoneTechnique().observe(this,{
+		
+		})
+		
+		
 		mainView.GetTechnique(getID(data.uri)).observe(this,{
 			response ->
 			when(response.statusResponse){
@@ -61,17 +86,48 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 					loadBatikResult(response.body)
 				}
 				StatusResponse.ERROR -> {
+
+				}
+				StatusResponse.EMPTY ->{
+
+				}
+			}
+		})
+		
+		mainView.GetMotif(getID(data.uri)).observe(this,{
+			response ->
+			when(response.statusResponse){
+				StatusResponse.SUCCESS->{
+				loadListMotifResult(response.body)
+				}
+				StatusResponse.ERROR -> {
 				
 				}
 				StatusResponse.EMPTY ->{
 				
 				}
 			}
-			
-			
 		})
 		
 		
+	}
+	
+	private fun LoadingProcess(stat : Boolean){
+		if(stat){
+			binding.txtMotifSimilarity.visibility = View.VISIBLE
+			binding.picDetail.visibility = View.VISIBLE
+			binding.picDetail.visibility = View.VISIBLE
+			binding.btnFeedback.visibility = View.VISIBLE
+			binding.btnGoHome.visibility = View.VISIBLE
+			binding.LoadingResult.visibility = View.GONE
+		}else{
+			binding.txtMotifSimilarity.visibility = View.GONE
+			binding.LoadingResult.visibility = View.VISIBLE
+			binding.picDetail.visibility = View.GONE
+			binding.picDetail.visibility = View.GONE
+			binding.btnFeedback.visibility = View.GONE
+			binding.btnGoHome.visibility = View.GONE
+		}
 	}
 	
 	private fun getImage(id : String){
@@ -98,7 +154,7 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		batikChart.isDrawHoleEnabled = true
 		batikChart.setUsePercentValues(true)
 		batikChart.setDrawEntryLabels(false)
-		batikChart.centerText = "Batik"
+		batikChart.centerText = "Technique Batik Result"
 		batikChart.setCenterTextSize(12F)
 		batikChart.description.isEnabled = false
 		val legend : Legend = batikChart.legend
@@ -110,11 +166,11 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		legend.isEnabled = true
 	}
 	
-	private fun loadListMotifResult()
+	private fun loadListMotifResult(data : PredictResponse)
 	{
 		adapterResult = ResultMotifAdapter(this)
 		
-		val listMotifs = DataDummy.generateDummyResult()
+		val listMotifs = data.motifResult
 		adapterResult.setList(listMotifs)
 		binding.rvMotifResult.layoutManager = LinearLayoutManager(this)
 		binding.rvMotifResult.adapter = adapterResult
