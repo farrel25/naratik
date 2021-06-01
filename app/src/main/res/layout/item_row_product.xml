@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,10 +14,11 @@
         android:layout_height="350dp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivItemProduct"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,9 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:maxLines="2"
             android:text="@string/account_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/ivItemProduct" />
 
         <TextView
             android:id="@+id/tvItemPrice"
@@ -42,16 +47,16 @@
             app:layout_constraintTop_toBottomOf="@+id/tvItemNameProduct" />
 
         <TextView
-            android:id="@+id/tvItemLocationProduct"
+            android:id="@+id/tvItemCategoryProduct"
             style="@style/text_12sp_reguler_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/purple"
+            android:background="@color/green"
             android:drawableStart="@drawable/ic_location"
             android:drawablePadding="4dp"
             android:padding="4dp"
-            android:text="@string/batik_location"
+            android:text="@string/category"
             app:drawableTint="@color/white"
             app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvItemPrice" />
@@ -68,7 +73,7 @@
             android:padding="4dp"
             android:text="@string/rating"
             app:drawableTint="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tvItemLocationProduct"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemLocationProduct" />
+            app:layout_constraintStart_toStartOf="@+id/tvItemCategoryProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemCategoryProduct" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

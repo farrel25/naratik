@@ -66,17 +66,20 @@
     <string name="back_to_camera">Kembali Ke Kamera</string>
     <string name="batk_to_home">Kembali Ke Beranda</string>
     <string name="presentase">%s %%</string>
-    <string name="upload_progress">Upload Progress!</string>
-    <string name="progress">progress</string>
-    <string name="no_result">No Result</string>
-    <string name="rating">rating</string>
-    <string name="price">price</string>
+    <string name="upload_progress">Proses Unggah!</string>
+    <string name="progress">Unggah</string>
+    <string name="no_result">Tdak ada hasil</string>
+    <string name="rating">Rating</string>
+    <string name="price">Harga</string>
     <string name="noticeupload">Unggah Foto Ini?</string>
     <string name="noticeuploadcontext">Foto ini Akan Di Proses</string>
     <string name="noticeuploadconfirmtext">Unggah</string>
     <string name="noticeuploadconfirmcancel">Batal</string>
     <string name="savephotonotif">Foto Tersimpan</string>
     <string name="savephotonotiffail">Foto Gagal Tersimpan</string>
-    <string name="popular_batik">Popular Batik</string>
-    <string name="popular_article">Popular Article</string>
+    <string name="popular_batik">Batik Populer</string>
+    <string name="popular_article">Artikel Populer</string>
+    <string name="category">Category</string>
+    <string name="popular_store">Popular Store</string>
+    <string name="popular_product">Popular Product</string>
 </resources>

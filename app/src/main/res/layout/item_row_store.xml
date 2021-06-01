@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="20dp"
+    android:layout_marginEnd="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="220dp">
+        android:layout_width="150dp"
+        android:layout_height="170dp">
 
         <ImageView
             android:id="@+id/ivItemImageBackdrop"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:scaleType="centerCrop"
+            android:layout_height="60dp"
             android:contentDescription="@string/image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +24,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivItemStore"
+            android:scaleType="centerCrop"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/image"
@@ -36,7 +39,8 @@
             style="@style/text_14sp_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="1"
             android:text="@string/account_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,13 +53,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@color/yellow"
-            android:drawableStart="@drawable/ic_star"
             android:drawablePadding="4dp"
             android:padding="4dp"
             android:text="@string/rating"
             app:drawableTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameStore" />
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameStore"
+            app:drawableStartCompat="@drawable/ic_star" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

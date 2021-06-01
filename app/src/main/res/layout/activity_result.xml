@@ -62,8 +62,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/motifs_similarity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintStart_toStartOf="@+id/picDetail"
+        app:layout_constraintTop_toBottomOf="@+id/picDetail" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMotifResult"
@@ -72,8 +72,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/picDetail"
+        app:layout_constraintStart_toStartOf="@+id/picDetail"
         app:layout_constraintTop_toBottomOf="@+id/txtMotifSimilarity" />
 
     <Button

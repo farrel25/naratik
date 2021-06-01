@@ -8,6 +8,6 @@ data class ProductEntity(
 	var category : String = "" ,
 	var image : String = "" ,
 	var rating : Double = 0.0 ,
-	var price : Int = 0 ,
+	var price : String = "" ,
 	var isFavorite : Int = 0
                         )

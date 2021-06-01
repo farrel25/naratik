@@ -9,20 +9,24 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <include
-            android:id="@+id/actionBarItem"
-            layout="@layout/custom_action_bar_logo_favorite" />
+            <include
+                android:id="@+id/actionBarItem"
+                layout="@layout/custom_action_bar_logo_favorite" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
-        android:id="@+id/HomeFragmentActivity"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:navGraph="@navigation/home_navigation" />
+        android:layout_height="match_parent">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/HomeFragmentActivity"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/home_navigation" />
+    </androidx.core.widget.NestedScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabCamera"
@@ -55,7 +59,8 @@
             android:background="@android:color/transparent"
             app:itemIconTint="@drawable/item_selector"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_bottom_nav" />
+            app:menu="@menu/menu_bottom_nav"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"/>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 

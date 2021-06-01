@@ -4,6 +4,8 @@ import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
+import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
 
 object DataDummy
 {
@@ -12,6 +14,16 @@ object DataDummy
 		
 		val articles = ArrayList<ArticleModel>()
 		
+		articles.add(
+			ArticleModel(
+				"id" ,
+				R.drawable.img_dummy ,
+				"Title" ,
+				"5 August 2022" ,
+				"Admin" ,
+				"overview" ,
+			            )
+		            )
 		articles.add(
 			ArticleModel(
 				"id" ,
@@ -140,5 +152,145 @@ object DataDummy
 		           )
 		
 		return results
+	}
+	
+	fun generateDummyStore() : ArrayList<StoreEntity>
+	{
+		val stores = ArrayList<StoreEntity>()
+		
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+				))
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+			           ))
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+			           ))
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+			           ))
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+			           ))
+		stores.add(
+			StoreEntity(
+				1 ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://jooinn.com/images/backdrop-1.jpg" ,
+				"Name" ,
+				"081234567890" ,
+				8.0 ,
+				"Semarang" ,
+				5 ,
+			           ))
+		
+		return stores
+	}
+	fun generateDummyProduct() : ArrayList<ProductEntity>
+	{
+		val products = ArrayList<ProductEntity>()
+		
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+				))
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+			             ))
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+			             ))
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+			             ))
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+			             ))
+		products.add(
+			ProductEntity(
+				1 ,
+				"Name" ,
+				"Parang" ,
+				"Kaos" ,
+				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				8.0 ,
+				"100.000" ,
+			             ))
+		return products
 	}
 }

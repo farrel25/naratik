@@ -78,5 +78,8 @@
     <string name="savephotonotiffail">Photo Saved Fail</string>
     <string name="popular_batik">Popular Batik</string>
     <string name="popular_article">Popular Article</string>
+    <string name="category">Category</string>
+    <string name="popular_store">Popular Store</string>
+    <string name="popular_product">Popular Product</string>
 
 </resources>
