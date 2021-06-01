@@ -2,6 +2,8 @@ package com.b21cap0051.naratik.dataresource
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
@@ -10,6 +12,8 @@ import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.voapi.ApiResponse
@@ -157,7 +161,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-				true
+				data == null || data.isEmpty()
 			
 			override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
 				LocalData.GetAllPopularBatik()
@@ -200,7 +204,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				true
+				data == null || data.isEmpty()
 			
 			override fun loadfromDb() : LiveData<List<BatikEntity>> = LocalData.searchData(id)
 			
@@ -208,6 +212,10 @@ class NaratikRepository constructor(
 			
 		}.asLiveData()
 	}
+	
+	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>> = RemoteData.GetPredictMotif(id)
+	
+	override fun GetTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> = RemoteData.GetPredicTechnique(id)
 	
 	
 }

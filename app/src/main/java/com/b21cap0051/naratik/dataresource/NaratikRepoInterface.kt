@@ -5,7 +5,11 @@ import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.dataresource.remotedata.model.MotifResponseItem
+import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import com.b21cap0051.naratik.util.vo.Resource
+import com.b21cap0051.naratik.util.voapi.ApiResponse
 
 interface NaratikRepoInterface
 {
@@ -22,5 +26,9 @@ interface NaratikRepoInterface
 	fun IsDone() : LiveData<Resource<Boolean>>
 	
 	fun searchBatik(id : String):LiveData<Resource<List<BatikEntity>>>
+	
+	fun GetPredictMotif(id : String):LiveData<ApiResponse<PredictResponse>>
+	
+	fun GetTechniquePredict(id : String):LiveData<ApiResponse<TechniquePredictResponse>>
 	
 }

@@ -1,6 +1,9 @@
 package com.b21cap0051.naratik.dataresource.remotedata.api
 
+import okhttp3.Headers
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,16 +17,26 @@ class APIConfig
 		{
 			val interceptor = HttpLoggingInterceptor()
 			val Client = OkHttpClient.Builder()
+				.addInterceptor(object : Interceptor{
+					override fun intercept(chain : Interceptor.Chain) : Response
+					{
+						val original = chain.request()
+						val builder = original.newBuilder()
+							.addHeader("Auth","B21-CAP0051")
+						return chain.proceed(builder.build())
+					}
+					
+				})
 				.addInterceptor(interceptor.setLevel(HttpLoggingInterceptor.Level.BODY))
-				.connectTimeout(2 , TimeUnit.MINUTES)
-				.readTimeout(2 , TimeUnit.MINUTES)
-				.writeTimeout(2 , TimeUnit.MINUTES)
+				.connectTimeout(1 , TimeUnit.MINUTES)
+				.readTimeout(1 , TimeUnit.MINUTES)
+				.writeTimeout(1 , TimeUnit.MINUTES)
 				.build()
 			
 			val API = Retrofit.Builder()
-				.baseUrl("https://b21-cap0051-1.et.r.appspot.com/")
-				.addConverterFactory(GsonConverterFactory.create())
 				.client(Client)
+				.baseUrl("https://causal-folder-315209.et.r.appspot.com")
+				.addConverterFactory(GsonConverterFactory.create())
 				.build()
 			
 			return API.create(PredictService::class.java)
@@ -34,9 +47,9 @@ class APIConfig
 			val Logging = HttpLoggingInterceptor()
 			val client = OkHttpClient.Builder()
 				.addInterceptor(Logging.setLevel(HttpLoggingInterceptor.Level.BODY))
-				.connectTimeout(2 , TimeUnit.MINUTES)
-				.readTimeout(2 , TimeUnit.MINUTES)
-				.writeTimeout(2 , TimeUnit.MINUTES)
+				.connectTimeout(1 , TimeUnit.MINUTES)
+				.readTimeout(1 , TimeUnit.MINUTES)
+				.writeTimeout(1 , TimeUnit.MINUTES)
 				.build()
 			
 			val retro = Retrofit.Builder()

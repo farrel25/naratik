@@ -9,6 +9,7 @@ import com.b21cap0051.naratik.dataresource.remotedata.api.APIConfig
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import com.b21cap0051.naratik.util.CheckConnected
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.vo.Status
@@ -157,8 +158,9 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		
 	}
 	
-	override fun GetPredict(id : String) : LiveData<ApiResponse<PredictResponse>>
+	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
 	{
+		Log.d("myTAG",id)
 		val mutableData = MutableLiveData<ApiResponse<PredictResponse>>()
 		val retro = APIConfig.ApiPredict().GetPredictBatik(id)
 		retro.enqueue(object : Callback<PredictResponse>{
@@ -168,8 +170,8 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			                       )
 			{
 				if(response.isSuccessful){
-					val dataResponse = response.body() as PredictResponse
-					mutableData.value = ApiResponse.success(dataResponse)
+					val dataResponse = response.body()
+					mutableData.value = ApiResponse.success(dataResponse!!)
 				}
 			}
 			
@@ -182,6 +184,40 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		})
 		return mutableData
 	}
+	
+	override fun GetPredicTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
+	{
+		Log.d("myTAG",id)
+		val MutableData = MutableLiveData<ApiResponse<TechniquePredictResponse>>()
+		
+		val getApi = APIConfig.ApiPredict().GetPredictTechnique(id)
+		getApi.enqueue(object : Callback<TechniquePredictResponse>{
+			override fun onResponse(
+				call : Call<TechniquePredictResponse> ,
+				response : Response<TechniquePredictResponse>
+			                       )
+			{
+			 if(response.isSuccessful){
+			 	if(response.body() != null){
+				    val dataResponse = response.body()
+				    Log.d("MyTAG","$dataResponse")
+				    MutableData.postValue(ApiResponse.success(dataResponse!!))
+			    }
+				 Log.d("MyTAG","${response.body()}")
+			 }
+			}
+			
+			override fun onFailure(call : Call<TechniquePredictResponse> , t : Throwable)
+			{
+				Log.e("ERROR" , "${t.message}")
+				Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
+			}
+			
+		})
+		return MutableData
+	}
+	
+	
 	
 	
 }

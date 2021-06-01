@@ -40,7 +40,10 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 			{
 				SearchMainView(mRepo) as T
 			}
-			
+			modelClass.isAssignableFrom(PredictMainView::class.java) ->
+			{
+				PredictMainView(mRepo) as T
+			}
 			else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
 		}
 	}

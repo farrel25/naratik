@@ -12,5 +12,4 @@ interface DataServices
 	@GET("batik/popular")
 	fun GetPopularBatik() : Call<BatikResponse>
 	
-	
 }

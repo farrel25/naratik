@@ -28,6 +28,8 @@ class UploadProcessFragment : DialogFragment()
 	
 	private lateinit var binding : FragmentUploadProcessBinding
 	private lateinit var modelData : ImageUploadModel
+	private var stat = false
+	private var notif = ""
 	override fun onCreateView(
 		inflater : LayoutInflater , container : ViewGroup? ,
 		savedInstanceState : Bundle?
@@ -52,9 +54,9 @@ class UploadProcessFragment : DialogFragment()
 			{
 				Status.SUCCESS ->
 				{
-					LoadingUpload()
-					uploadStatus(modelData)
-					
+					uploadStatus()
+					LoadingUpload(modelData)
+				
 				}
 				Status.ERROR   ->
 				{
@@ -73,24 +75,34 @@ class UploadProcessFragment : DialogFragment()
 		
 	}
 	
-	private fun LoadingUpload()
+	private fun LoadingUpload(image : ImageUploadModel)
 	{
+		mainView.IsDone().removeObservers(this)
 		binding.pbCameraUpload.max = 100
 		lifecycleScope.launch(Dispatchers.Default) {
-			for (i in 0 .. 100 step 25)
+			for (i in 0 .. 100 step 10)
 			{
 				delay(200)
 				withContext(Dispatchers.Main) {
 					binding.tvProgress.text = "$i %"
 					binding.pbCameraUpload.progress = i
 				}
+			
 				
+			}
+			if(stat){
+				val move = Intent(activity , ResultActivity::class.java)
+				move.putExtra(KEY_DATA , image)
+				startActivity(move)
+				requireActivity().finish()
+			}else{
+				backCameraActivity()
 			}
 		}
 		
 	}
 	
-	private fun uploadStatus(image : ImageUploadModel)
+	private fun uploadStatus()
 	{
 		mainView.IsDone().observe(viewLifecycleOwner , { response ->
 			
@@ -98,16 +110,16 @@ class UploadProcessFragment : DialogFragment()
 			{
 				Status.SUCCESS ->
 				{
+					
+					stat = true
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
-					val move = Intent(activity , ResultActivity::class.java)
-					move.putExtra(KEY_DATA , image)
-					startActivity(move)
-					requireActivity().finish()
+					
 				}
 				Status.ERROR   ->
 				{
+					stat = false
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
-					backCameraActivity()
+					
 				}
 			}
 		})
