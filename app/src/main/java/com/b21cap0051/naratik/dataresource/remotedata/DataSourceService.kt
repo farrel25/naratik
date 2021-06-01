@@ -203,7 +203,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 					Toast.makeText(ctx , "Error : ${t.message}" , Toast.LENGTH_SHORT).show()
 				}
 			})
-		} , 5000L)
+		} , 12000L)
 		
 		return mutableData
 	}
@@ -247,7 +247,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 				}
 				
 			})
-		} , 5000L)
+		} , 12000L)
 		
 		return MutableData
 	}
