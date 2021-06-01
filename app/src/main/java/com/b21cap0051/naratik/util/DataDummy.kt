@@ -40,8 +40,8 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				"https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/12/06/c71703d4-171e-11ea-9462-4dd25a5b0420_image_hires_204340.jpg" ,
-				"https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/12/06/c71703d4-171e-11ea-9462-4dd25a5b0420_image_hires_204340.jpg" ,
+				"https://www.harianbhirawa.co.id/wp-content/uploads/2019/10/batik.jpg" ,
+				"https://www.harianbhirawa.co.id/wp-content/uploads/2019/10/batik.jpg" ,
 				"Title" ,
 				"5 August 2021" ,
 				"Admin" ,

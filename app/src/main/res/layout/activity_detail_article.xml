@@ -44,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/image"
-                    app:srcCompat="@drawable/bg_shadow_transparent" />
+                    app:srcCompat="@drawable/bg_gradient_dark" />
             </androidx.cardview.widget.CardView>
 
 

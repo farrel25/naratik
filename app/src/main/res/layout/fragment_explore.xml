@@ -36,8 +36,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="173dp"
                 android:layout_height="100dp"
                 android:layout_alignTop="@+id/txtExploreBatik"
@@ -46,11 +46,24 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="0dp"
-                android:contentDescription="@string/image"
-                android:src="@drawable/img_explore_batik"
-                app:layout_constraintBottom_toBottomOf="@+id/txtExploreBatik"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtExploreBatik" />
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/img_batik"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image"
+                    app:srcCompat="@drawable/bg_gradient_light" />
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/etSearch"
