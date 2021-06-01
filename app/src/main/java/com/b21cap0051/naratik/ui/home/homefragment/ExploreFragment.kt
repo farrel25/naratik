@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
+import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
+import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
@@ -36,10 +38,10 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	private val binding get() = _binding as FragmentExploreBinding
 	private var listArticle : ArrayList<ArticleModel> = arrayListOf()
 	
-	//	private var listBatik : ArrayList<BatikModel> = arrayListOf()
+	private var listShimmer : ArrayList<ShimmerModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
 	private lateinit var adapterBatik : BatikPagedListAdapter
-//	private lateinit var adapterShimmer : ShimmerBatikListAdapter
+	private lateinit var adapterShimmer : ShimmerBatikListAdapter
 	
 	
 	companion object
@@ -118,7 +120,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		adapterBatik.submitList(value)
 
 
-//		binding.shimmerLayout.visibility = View.GONE
+		binding.shimmerLayout.visibility = View.GONE
 		
 		
 		binding.btnShowAllBatik.setOnClickListener {
@@ -134,14 +136,13 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		{
 			row = 4
 		}
-//		adapterShimmer = ShimmerBatikListAdapter(this)
+		adapterShimmer = ShimmerBatikListAdapter()
 
-//		listBatik = DataDummy.generateDummyBatik()
-//		binding.rvShimmer.layoutManager =
-		StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
-//		binding.rvShimmer.adapter = adapterShimmer
+		listShimmer = DataDummy.generateShimmerBatik()
+		binding.rvShimmer.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		binding.rvShimmer.adapter = adapterShimmer
 
-//		adapterShimmer.setListLimited(listBatik)
+		adapterShimmer.setList(listShimmer)
 	}
 	
 	private fun loadListArticle()

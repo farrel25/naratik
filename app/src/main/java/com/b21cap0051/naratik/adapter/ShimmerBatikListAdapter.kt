@@ -4,40 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ShimmerItemRowBatikBinding
-import com.b21cap0051.naratik.dataresource.datamodellist.BatikModel
-import com.b21cap0051.naratik.util.ItemBatikCallBack
+import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ShimmerBatikListAdapter(private val callBack : ItemBatikCallBack) :
+class ShimmerBatikListAdapter() :
 	RecyclerView.Adapter<ShimmerBatikListAdapter.ItemTarget>()
 {
 	
-	private val listBatik = ArrayList<BatikModel>()
+	private val shimmer = ArrayList<ShimmerModel>()
 	
-	fun setList(listBatik : List<BatikModel>)
+	fun setList(shimmer : List<ShimmerModel>)
 	{
-		this.listBatik.clear()
-		this.listBatik.addAll(listBatik)
-		notifyDataSetChanged()
-	}
-	
-	fun setListLimited(listBatik : List<BatikModel>)
-	{
-		this.listBatik.clear()
-		for (i in 1 .. 4)
-		{
-			this.listBatik.addAll(listOf(listBatik[i]))
-		}
+		this.shimmer.clear()
+		this.shimmer.addAll(shimmer)
 		notifyDataSetChanged()
 	}
 	
 	inner class ItemTarget(private val binding : ShimmerItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
-		fun bind(model : BatikModel)
+		fun bind(model : ShimmerModel)
 		{
-			
 			var height = 900
 			if (position % 2 == 1)
 			{
@@ -65,13 +53,13 @@ class ShimmerBatikListAdapter(private val callBack : ItemBatikCallBack) :
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
-		holder.bind(listBatik[position])
+		holder.bind(shimmer[position])
 		
 	}
 	
 	override fun getItemCount() : Int
 	{
-		return listBatik.size
+		return shimmer.size
 	}
 	
 	

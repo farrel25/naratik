@@ -192,4 +192,10 @@
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/black</item>
     </style>
+
+    <style name="customRatingBar"
+        parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="colorControlNormal">@color/grey_700</item>
+    </style>
 </resources>

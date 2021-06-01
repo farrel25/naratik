@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.util
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
+import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
 import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
@@ -292,5 +293,26 @@ object DataDummy
 				"100.000" ,
 			             ))
 		return products
+	}
+	fun generateShimmerBatik() :  ArrayList<ShimmerModel>{
+		val shimmers = ArrayList<ShimmerModel>()
+		
+		shimmers.add(
+			ShimmerModel(
+				R.drawable.img_shimmer
+			            ))
+		shimmers.add(
+			ShimmerModel(
+				R.drawable.img_shimmer
+			            ))
+		shimmers.add(
+			ShimmerModel(
+				R.drawable.img_shimmer
+			            ))
+		shimmers.add(
+			ShimmerModel(
+				R.drawable.img_shimmer
+			            ))
+		return shimmers
 	}
 }
