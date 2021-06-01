@@ -1,4 +1,4 @@
-package com.b21cap0051.naratik.ui.home
+package com.b21cap0051.naratik.ui
 
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleMiniListAdapter
 import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
+import com.b21cap0051.naratik.adapter.SearchAdapter
 import com.b21cap0051.naratik.databinding.ActivitySearchBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
@@ -23,6 +24,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	private lateinit var binding : ActivitySearchBinding
 	private lateinit var articleMiniAdapter : ArticleMiniListAdapter
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
+	private lateinit var searchAdapter : SearchAdapter
 	private lateinit var viewModel : SearchMainView
 	
 	override fun onCreate(savedInstanceState : Bundle?)
@@ -59,7 +61,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			
 		})
 		
-		
+		loadSearch()
 		loadActionBar()
 		loadBatik()
 		loadArticle()
@@ -76,25 +78,38 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	private fun loadBatik()
 	{
 		batikMiniAdapter = BatikMiniListAdapter(this)
-		binding.rvSearchBatik.layoutManager = LinearLayoutManager(
+		binding.rvSearchPopularBatik.layoutManager = LinearLayoutManager(
 			this ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
 		                                                         )
-		binding.rvSearchBatik.adapter = batikMiniAdapter
+		binding.rvSearchPopularBatik.adapter = batikMiniAdapter
 		val listBatik = DataDummy.generateDummyBatik()
 		batikMiniAdapter.setList(listBatik)
+	}
+	
+	private fun loadSearch()
+	{
+		searchAdapter = SearchAdapter(this)
+		binding.rvSearchBatik.layoutManager = LinearLayoutManager(
+			this ,
+			LinearLayoutManager.VERTICAL ,
+			false
+		                                                         )
+		binding.rvSearchBatik.adapter = searchAdapter
+		val listBatik = DataDummy.generateDummyBatik()
+		searchAdapter.setList(listBatik)
 	}
 	
 	private fun loadArticle()
 	{
 		articleMiniAdapter = ArticleMiniListAdapter(this)
-		binding.rvSearchArticle.layoutManager = LinearLayoutManager(
+		binding.rvSearchPopularArticle.layoutManager = LinearLayoutManager(
 			this ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
 		                                                           )
-		binding.rvSearchArticle.adapter = articleMiniAdapter
+		binding.rvSearchPopularArticle.adapter = articleMiniAdapter
 		val listArticle = DataDummy.generateDummyArticle()
 		articleMiniAdapter.setList(listArticle)
 	}

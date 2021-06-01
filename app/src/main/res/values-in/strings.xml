@@ -77,4 +77,6 @@
     <string name="noticeuploadconfirmcancel">Batal</string>
     <string name="savephotonotif">Foto Tersimpan</string>
     <string name="savephotonotiffail">Foto Gagal Tersimpan</string>
+    <string name="popular_batik">Popular Batik</string>
+    <string name="popular_article">Popular Article</string>
 </resources>

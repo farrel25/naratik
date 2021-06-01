@@ -21,7 +21,7 @@ import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
 import com.b21cap0051.naratik.ui.BatikActivity
-import com.b21cap0051.naratik.ui.home.SearchActivity
+import com.b21cap0051.naratik.ui.SearchActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack

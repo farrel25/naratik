@@ -76,5 +76,7 @@
     <string name="noticeuploadconfirmcancel">Cancel</string>
     <string name="savephotonotif">Photo Saved</string>
     <string name="savephotonotiffail">Photo Saved Fail</string>
+    <string name="popular_batik">Popular Batik</string>
+    <string name="popular_article">Popular Article</string>
 
 </resources>
