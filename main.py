@@ -176,3 +176,15 @@ def get_predict_technique_result(unique_id):
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
+
+@app.route('/shop/', methods=["GET"])
+def get_shop_data():
+    try:
+        docs = db.collection("shop").stream()
+        array_shop = []
+        for doc in docs:
+            array_shop.append({"namaToko":doc.get("namaToko"),"alamatToko": doc.get("alamatToko"), "product":doc.get("produk")})
+        data_json_shop.update({"shopList": array_shop})
+        return data_json_shop
+    except Exception as e:
+        return f"An Error Occured: {e}"
