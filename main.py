@@ -19,6 +19,7 @@ from firebase_admin import credentials, initialize_app, firestore
 app = Flask(__name__)
 data_json_motif = {}
 data_json_technique = {}
+data_json_shop ={}
 env_var = open("var.json")
 loaded_var = json.load(env_var)
 super_secret_key = loaded_var["Auth"]
