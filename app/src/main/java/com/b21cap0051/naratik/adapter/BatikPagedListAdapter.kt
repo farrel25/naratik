@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -60,6 +61,7 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	inner class itemTarget(val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
+		@SuppressLint("CheckResult")
 		fun bind(model : BatikEntity)
 		{
 			var height = 900
@@ -67,6 +69,7 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 			{
 				height = 450
 			}
+			binding.cvBatik.layoutParams.height = height
 			
 			binding.blurry.setupWith(binding.root)
 				.setBlurAlgorithm(RenderScriptBlur(itemView.context))

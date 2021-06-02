@@ -20,7 +20,8 @@
         app:iss_corner_radius="20"
         app:iss_delay="0"
         app:iss_period="2000"
-        app:iss_placeholder="@color/grey_700" />
+        app:iss_placeholder="@drawable/ic_loading"
+        app:iss_error_image="@drawable/ic_error"/>
 
     <TextView
         android:id="@+id/textView2"

@@ -87,6 +87,14 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="text_18sp_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="text_12sp_regular">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
