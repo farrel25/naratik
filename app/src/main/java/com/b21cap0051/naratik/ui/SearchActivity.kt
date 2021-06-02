@@ -31,6 +31,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
 	private lateinit var searchAdapter : SearchAdapter
 	private lateinit var viewModel : SearchMainView
+	private lateinit var adapterHistory : HistoryAdapter
+	private var posIndexAdapter = 0
 	
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
@@ -41,6 +43,9 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		
 		val factory = ViewFactoryModel.GetInstance(this)
 		viewModel = ViewModelProvider(this , factory)[SearchMainView::class.java]
+		
+		adapterHistory = HistoryAdapter(this)
+		
 		binding.rvSearchHistory.visibility = View.GONE
 		binding.etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener
 		{
@@ -69,7 +74,6 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				}
 				return false
 			}
-			
 		})
 		loadActionBar()
 		loadBatik()
@@ -131,14 +135,13 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	
 	fun loadHistory()
 	{
-	   val adapter = HistoryAdapter(this)
 		binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
-		binding.rvSearchHistory.adapter = adapter
+		binding.rvSearchHistory.adapter =adapterHistory
 		
 		viewModel.GetALLHistory().observe(this,{
 			response ->
 			if(response?.size != 0){
-				adapter.setList(response)
+				adapterHistory.setList(response)
 				binding.rvSearchHistory.visibility = View.VISIBLE
 			}else{
 				binding.rvSearchHistory.visibility = View.VISIBLE
@@ -162,9 +165,18 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	{
 	}
 	
+	
+	
 	override fun getItem(model : HistoryEntity)
 	{
 		viewModel.DelHistory(model)
+		adapterHistory.removeItem(posIndexAdapter)
+	}
+	
+	override fun getPosition(Position : Int)
+	{
+		posIndexAdapter = Position
+	
 	}
 	
 }

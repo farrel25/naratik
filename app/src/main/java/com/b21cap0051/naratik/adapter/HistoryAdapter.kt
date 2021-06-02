@@ -5,24 +5,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowHistoryBinding
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
-import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.ItemCallbackHistory
 
-class HistoryAdapter(private val callback : ItemCallbackHistory) : RecyclerView.Adapter<HistoryAdapter.ItemTarget>()
+class HistoryAdapter(private val callback : ItemCallbackHistory) :
+	RecyclerView.Adapter<HistoryAdapter.ItemTarget>()
 {
 	
 	private val ListHistory = ArrayList<HistoryEntity>()
 	
 	
-	fun setList(model : List<HistoryEntity>){
-		if(model != null){
+	fun setList(model : List<HistoryEntity>)
+	{
+		if (model != null)
+		{
 			ListHistory.clear()
 			ListHistory.addAll(model)
-		}else{
+			notifyDataSetChanged()
+		} else
+		{
 			ListHistory.clear()
+			notifyDataSetChanged()
 		}
 	}
 	
+	fun removeItem(position : Int)
+	{
+		this.ListHistory.removeAt(position)
+		notifyItemRemoved(position)
+		notifyItemRangeChanged(position , this.ListHistory.size)
+	}
 	
 	
 	inner class ItemTarget(private val binding : ItemRowHistoryBinding) :
@@ -34,8 +45,7 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) : RecyclerView.
 			binding.tvHistory.text = model.history
 			
 			binding.btnItemFavBatik.setOnClickListener {
-				callback.getItem(model)
-				notifyItemRemoved(layoutPosition)
+			callback.getItem(model)
 			}
 		}
 	}
@@ -52,15 +62,11 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) : RecyclerView.
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
-		if (ListHistory.size == 0){
-			return
-		}else{
-			holder.bind(ListHistory[position])
-		}
-		
+		holder.bind(ListHistory[position])
+		callback.getPosition(position)
 	}
 	
 	override fun getItemCount() : Int = ListHistory.size
 	
 	
-	}
+}
