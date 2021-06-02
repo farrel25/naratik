@@ -8,6 +8,7 @@ import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowSearchBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
+import com.b21cap0051.naratik.ui.DetailBatikActivity.Companion.EXTRA_BATIK
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -42,7 +43,7 @@ class SearchAdapter(private val callBack : ItemBatikCallBack) :
 			
 			binding.cvSearch.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
-//                intent.putExtra(DetailBatikActivity.,listBatik[position])
+                intent.putExtra(EXTRA_BATIK,model)
 				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
 			}

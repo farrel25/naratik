@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -9,17 +10,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleMiniListAdapter
 import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
+import com.b21cap0051.naratik.adapter.HistoryAdapter
 import com.b21cap0051.naratik.adapter.SearchAdapter
 import com.b21cap0051.naratik.databinding.ActivitySearchBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.mainview.SearchMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
+import com.b21cap0051.naratik.util.ItemCallbackHistory
+import com.b21cap0051.naratik.util.vo.Status
 
-class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack
+class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack,ItemCallbackHistory
 {
 	private lateinit var binding : ActivitySearchBinding
 	private lateinit var articleMiniAdapter : ArticleMiniListAdapter
@@ -36,7 +41,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		
 		val factory = ViewFactoryModel.GetInstance(this)
 		viewModel = ViewModelProvider(this , factory)[SearchMainView::class.java]
-		
+		binding.rvSearchHistory.visibility = View.GONE
 		binding.etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener
 		{
 			override fun onQueryTextSubmit(query : String?) : Boolean
@@ -44,6 +49,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				if (query != null)
 				{
 					findItem(query)
+					viewModel.AddHistory(HistoryEntity(0,query))
+					binding.rvSearchBatik.visibility = View.VISIBLE
 					return true
 				}
 				return false
@@ -54,6 +61,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				if (newText != null)
 				{
 					findItem(newText)
+					viewModel.AddHistory(HistoryEntity(0,newText))
+					binding.rvSearchBatik.visibility = View.VISIBLE
 					return true
 				}
 				return false
@@ -61,17 +70,24 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			
 		})
 		
-		loadSearch()
+	
 		loadActionBar()
 		loadBatik()
 		loadArticle()
+		loadHistory()
 	}
 	
 	
 	private fun findItem(text : String)
 	{
 		viewModel.GetSearch(text).observe(this , {
-		
+		     response ->
+			when(response.Status){
+				Status.SUCCESS -> {
+					
+					loadSearch(response.Data!!)
+				}
+			}
 		})
 	}
 	
@@ -88,7 +104,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		batikMiniAdapter.setList(listBatik)
 	}
 	
-	private fun loadSearch()
+	private fun loadSearch(model : List<BatikEntity>)
 	{
 		searchAdapter = SearchAdapter(this)
 		binding.rvSearchBatik.layoutManager = LinearLayoutManager(
@@ -97,8 +113,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			false
 		                                                         )
 		binding.rvSearchBatik.adapter = searchAdapter
-		val listBatik = DataDummy.generateDummyBatik()
-		searchAdapter.setList(listBatik)
+		searchAdapter.setList(model)
 	}
 	
 	private fun loadArticle()
@@ -116,7 +131,19 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	
 	fun loadHistory()
 	{
-	
+	   val adapter = HistoryAdapter(this)
+		binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
+		binding.rvSearchHistory.adapter = adapter
+		
+		viewModel.GetALLHistory().observe(this,{
+			response ->
+			if(response?.size != 0){
+				adapter.setList(response)
+				binding.rvSearchHistory.visibility = View.VISIBLE
+			}else{
+				binding.rvSearchHistory.visibility = View.VISIBLE
+			}
+		})
 	}
 	
 	private fun loadActionBar()
@@ -134,4 +161,10 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	override fun itemBatikClick(model : BatikEntity)
 	{
 	}
+	
+	override fun getItem(model : HistoryEntity)
+	{
+		viewModel.DelHistory(model)
+	}
+	
 }

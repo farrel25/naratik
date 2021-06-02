@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 
 @Dao
@@ -34,4 +35,16 @@ interface NaratikDAO
 	@Query("SELECT * FROM Table_Batik WHERE nama_batik LIKE '%' || :namabatik || '%'")
 	fun searchBatik(namabatik : String) : LiveData<List<BatikEntity>>
 	
+	
+	@Insert(onConflict = OnConflictStrategy.REPLACE)
+	fun AddHisstory(value : HistoryEntity)
+	
+	@Delete
+	fun DelHistory(value : HistoryEntity)
+	
+	@Query("DELETE FROM history_table")
+	fun DelAllHistory()
+	
+	@Query("SELECT * FROM history_table ORDER BY id")
+	fun GetAllQueryHistory():LiveData<List<HistoryEntity>>
 }

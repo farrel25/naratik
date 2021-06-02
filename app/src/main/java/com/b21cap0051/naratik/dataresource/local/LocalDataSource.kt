@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.dataresource.local
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 
 class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
@@ -49,7 +50,16 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		mNaratikDao.UpdateBatikPopularDb(value)
 	}
 	
-	override fun searchData(value : String) : LiveData<List<BatikEntity>> = mNaratikDao.searchBatik(value)
+	override fun searchData(value : String) : LiveData<List<BatikEntity>> =
+		mNaratikDao.searchBatik(value)
+	
+	override fun InsertHistory(value : HistoryEntity) = mNaratikDao.AddHisstory(value)
+	
+	override fun DeleteHistory(value : HistoryEntity) = mNaratikDao.DelHistory(value)
+	
+	override fun DeleteAllHistory() = mNaratikDao.DelAllHistory()
+	
+	override fun GetAllHistory() = mNaratikDao.GetAllQueryHistory()
 	
 	
 }

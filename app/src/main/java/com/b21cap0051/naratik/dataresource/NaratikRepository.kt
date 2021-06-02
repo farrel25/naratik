@@ -8,6 +8,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
 import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
@@ -17,6 +18,7 @@ import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResp
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.voapi.ApiResponse
+import net.bytebuddy.asm.Advice
 
 class NaratikRepository constructor(
 	private val ctx : Context ,
@@ -220,6 +222,28 @@ class NaratikRepository constructor(
 	override fun IsDoneMotif() : LiveData<Resource<Boolean>> = RemoteData.loadMotif
 	
 	override fun IsDoneTechnique() : LiveData<Resource<Boolean>> = RemoteData.loadTechnique
+	
+	override fun InsertHistory(value : HistoryEntity) = Executer.DiskIO().execute {
+		LocalData.InsertHistory(value)
+	}
+	
+	override fun DeleteHistory(value : HistoryEntity) = Executer.DiskIO().execute {
+		LocalData.DeleteHistory(value)
+	}
+	
+	override fun DeleteAllHistory() = Executer.DiskIO().execute {
+		LocalData.DeleteAllHistory()
+	}
+	
+	override fun AddLikedBatik(value : BatikEntity) = Executer.DiskIO().execute{
+		LocalData.updateBatik(value)
+	}
+	
+	override fun DelLikeBatik(value : BatikEntity) = Executer.DiskIO().execute {
+		LocalData.updateBatik(value)
+	}
+	
+	override fun GetAllHistory() : LiveData<List<HistoryEntity>> = LocalData.GetAllHistory()
 	
 	
 }

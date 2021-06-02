@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.dataresource
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
@@ -33,5 +34,17 @@ interface NaratikRepoInterface
 	fun IsDoneMotif() : LiveData<Resource<Boolean>>
 	
 	fun IsDoneTechnique() : LiveData<Resource<Boolean>>
+	
+	fun InsertHistory(value : HistoryEntity)
+	
+	fun DeleteHistory(value : HistoryEntity)
+	
+	fun DeleteAllHistory()
+	
+	fun AddLikedBatik(value : BatikEntity)
+	
+	fun DelLikeBatik(value : BatikEntity)
+	
+	fun GetAllHistory():LiveData<List<HistoryEntity>>
 	
 }
