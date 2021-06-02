@@ -53,11 +53,11 @@ class ArticleMiniListAdapter(private val callback : ItemArticleCallBack) :
 	{
 		holder.bind(listArticle[position])
 		
-		holder.itemView.setOnClickListener {
-			val intent = Intent(holder.itemView.context , DetailArticleActivity::class.java)
-			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE , listArticle[position])
-			holder.itemView.context.startActivity(intent)
-		}
+//		holder.itemView.setOnClickListener {
+//			val intent = Intent(holder.itemView.context , DetailArticleActivity::class.java)
+//			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE , listArticle[position])
+//			holder.itemView.context.startActivity(intent)
+//		}
 	}
 	
 	override fun getItemCount() : Int = listArticle.size

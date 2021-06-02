@@ -42,10 +42,9 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 		loadStore()
 		loadProduct()
 		
-		slideModel.add(SlideModel("https://picsum.photos/id/237/700/700"))
-		slideModel.add(SlideModel("https://picsum.photos/id/238/700/700"))
-		slideModel.add(SlideModel("https://picsum.photos/id/231/700/700"))
-		slideModel.add(SlideModel("https://picsum.photos/id/232/700/700"))
+		slideModel.add(SlideModel("https://cdn-2.tstatic.net/tribunnews/foto/bank/images/promo-yang-ditawarkan-untuk-memperingati-hari-batik-nasional_20181002_125726.jpg"))
+		slideModel.add(SlideModel("https://malangstrudel.com/wp-content/uploads/2019/10/WEB-HARI-BATIK.jpg"))
+		slideModel.add(SlideModel("https://images.milledcdn.com/2018-10-01/TFObbj4W4lz_Qidg/DrKAk8Mhw9Uf.jpg"))
 		
 		binding.isEc.setImageList(slideModel , ScaleTypes.CENTER_CROP)
 		
