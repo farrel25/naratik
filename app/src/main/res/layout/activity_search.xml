@@ -42,59 +42,70 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/txtHistory"
-                style="@style/text_18sp_bold"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/history" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/llSearch">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSearchHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                tools:listitem="@layout/item_row_history" />
+                <TextView
+                    android:id="@+id/txtHistory"
+                    style="@style/text_18sp_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/history" />
 
-            <TextView
-                android:id="@+id/txtPopularBatik"
-                style="@style/text_18sp_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/popular_batik" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    tools:listitem="@layout/item_row_history" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSearchPopularBatik"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="16dp"
-                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_row_batik_mini"
-                tools:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtPopularArticle"
+                    style="@style/text_18sp_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/popular_article" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchPopularArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_row_article_mini"
+                    tools:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/txtPopularArticle"
-                style="@style/text_18sp_bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/popular_article" />
+                </androidx.recyclerview.widget.RecyclerView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSearchPopularArticle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="16dp"
-                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_row_article_mini"
-                tools:orientation="horizontal" />
+                <TextView
+                    android:id="@+id/txtPopularBatik"
+                    style="@style/text_18sp_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/popular_batik" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchPopularBatik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_row_batik_mini"
+                    tools:orientation="horizontal">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

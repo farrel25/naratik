@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/tvItemSearchBatik"
-            style="@style/text_12sp_regular"
+            style="@style/text_16sp_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

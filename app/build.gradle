@@ -121,4 +121,7 @@ dependencies {
 
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //RoundedImage
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

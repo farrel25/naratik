@@ -167,9 +167,9 @@ object DataDummy
 		stores.add(
 			StoreEntity(
 				1 ,
-				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://whatsnewindonesia.com/jakarta/wp-content/uploads/sites/2/2018/02/batik-keris-pacific-place1-730x510.jpg" ,
 				"https://jooinn.com/images/backdrop-1.jpg" ,
-				"Name" ,
+				"Batik Keris" ,
 				"081234567890" ,
 				8.0 ,
 				"Semarang" ,
@@ -178,9 +178,9 @@ object DataDummy
 		stores.add(
 			StoreEntity(
 				1 ,
-				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
+				"https://thumbs.dreamstime.com/b/batik-technique-wax-resist-dyeing-applied-to-whole-cloth-technique-originated-java-indonesia-batik-shop-168174782.jpg" ,
 				"https://jooinn.com/images/backdrop-1.jpg" ,
-				"Name" ,
+				"BatiKita" ,
 				"081234567890" ,
 				8.0 ,
 				"Semarang" ,
@@ -191,7 +191,7 @@ object DataDummy
 				1 ,
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				"https://jooinn.com/images/backdrop-1.jpg" ,
-				"Name" ,
+				"Batik Lestari" ,
 				"081234567890" ,
 				8.0 ,
 				"Semarang" ,

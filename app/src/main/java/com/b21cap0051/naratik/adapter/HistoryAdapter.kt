@@ -18,6 +18,8 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) : RecyclerView.
 		if(model != null){
 			ListHistory.clear()
 			ListHistory.addAll(model)
+		}else{
+			ListHistory.clear()
 		}
 	}
 	
@@ -50,7 +52,12 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) : RecyclerView.
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
-		holder.bind(ListHistory[position])
+		if (ListHistory.size == 0){
+			return
+		}else{
+			holder.bind(ListHistory[position])
+		}
+		
 	}
 	
 	override fun getItemCount() : Int = ListHistory.size

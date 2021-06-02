@@ -51,6 +51,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 					findItem(query)
 					viewModel.AddHistory(HistoryEntity(0,query))
 					binding.rvSearchBatik.visibility = View.VISIBLE
+					binding.llSearch.visibility = View.GONE
 					return true
 				}
 				return false
@@ -63,14 +64,13 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 					findItem(newText)
 					viewModel.AddHistory(HistoryEntity(0,newText))
 					binding.rvSearchBatik.visibility = View.VISIBLE
+					binding.llSearch.visibility = View.GONE
 					return true
 				}
 				return false
 			}
 			
 		})
-		
-	
 		loadActionBar()
 		loadBatik()
 		loadArticle()
