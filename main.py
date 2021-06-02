@@ -173,10 +173,6 @@ def get_predict_technique_result(unique_id):
     except Exception as e:
         return f"An Error Occured: {e}"
 
-
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
-
 @app.route('/shop/', methods=["GET"])
 def get_shop_data():
     try:
@@ -188,3 +184,6 @@ def get_shop_data():
         return data_json_shop
     except Exception as e:
         return f"An Error Occured: {e}"
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
