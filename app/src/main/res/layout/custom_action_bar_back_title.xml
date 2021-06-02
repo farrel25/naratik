@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_action_bar_back"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:stateListAnimator="@null"
+    app:layout_collapseMode="pin"
+    app:titleMarginStart="16dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        style="@style/btn_icon"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/button"
+        app:icon="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/text_24sp_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSearch"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.appcompat.widget.Toolbar>

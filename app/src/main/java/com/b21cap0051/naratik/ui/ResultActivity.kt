@@ -116,11 +116,13 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 			binding.picDetail.visibility = View.VISIBLE
 			binding.btnFeedback.visibility = View.VISIBLE
 			binding.btnGoHome.visibility = View.VISIBLE
-			binding.LoadingResult.visibility = View.GONE
+			binding.include.btnBack.visibility = View.VISIBLE
+			binding.laiLoading.visibility = View.GONE
 		}else{
 			binding.txtMotifSimilarity.visibility = View.GONE
-			binding.LoadingResult.visibility = View.VISIBLE
+			binding.laiLoading.visibility = View.VISIBLE
 			binding.picDetail.visibility = View.GONE
+			binding.include.btnBack.visibility = View.GONE
 			binding.picDetail.visibility = View.GONE
 			binding.btnFeedback.visibility = View.GONE
 			binding.btnGoHome.visibility = View.GONE

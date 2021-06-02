@@ -12,14 +12,19 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
-    <ProgressBar
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laiLoading"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/LoadingResult"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="cat_loading.json"
+        app:lottie_loop="true" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/picDetail"
