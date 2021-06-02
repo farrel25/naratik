@@ -5,6 +5,7 @@ import androidx.paging.DataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 
 class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 {
@@ -50,8 +51,7 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		mNaratikDao.UpdateBatikPopularDb(value)
 	}
 	
-	override fun searchData(value : String) : LiveData<List<BatikEntity>> =
-		mNaratikDao.searchBatik(value)
+	override fun searchData(value : String) : LiveData<List<BatikEntity>> = mNaratikDao.searchBatik(value)
 	
 	override fun InsertHistory(value : HistoryEntity) = mNaratikDao.AddHisstory(value)
 	
@@ -60,6 +60,11 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 	override fun DeleteAllHistory() = mNaratikDao.DelAllHistory()
 	
 	override fun GetAllHistory() = mNaratikDao.GetAllQueryHistory()
+	
+	override fun GetAllShop() : DataSource.Factory<Int , ShopEntity> =mNaratikDao.GetAllQueryShop()
+	
+	override fun InsertShop(value : List<ShopEntity>) = mNaratikDao.InsertShop(value)
+	
 	
 	
 }

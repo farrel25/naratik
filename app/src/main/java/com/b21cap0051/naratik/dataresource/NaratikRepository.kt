@@ -2,23 +2,18 @@ package com.b21cap0051.naratik.dataresource
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.LocalDataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 import com.b21cap0051.naratik.dataresource.remotedata.DataSourceService
-import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
-import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
-import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.*
 import com.b21cap0051.naratik.util.ExecutedApp
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.voapi.ApiResponse
-import net.bytebuddy.asm.Advice
 
 class NaratikRepository constructor(
 	private val ctx : Context ,
@@ -68,7 +63,9 @@ class NaratikRepository constructor(
 					                        )
 					result.add(dataDB)
 				}
-				LocalData.InsertBatik(result)
+				Executer.DiskIO().execute {
+					LocalData.InsertBatik(result)
+				}
 			}
 			
 			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
@@ -94,6 +91,49 @@ class NaratikRepository constructor(
 		}.asLiveData()
 	}
 	
+	override fun GetAllShop() : LiveData<Resource<PagedList<ShopEntity>>>
+	{
+		return object : NetworkBoundResource<PagedList<ShopEntity> , ShopResponse>(Executer)
+		{
+			override fun saveCallResult(item : ShopResponse)
+			{
+				val result = ArrayList<ShopEntity>()
+				val dataResponse = item.shopList
+				for (i in 0 until dataResponse?.size!!)
+				{
+					val dataSource = ShopEntity(
+						0 ,
+						dataResponse[i].namaToko ,
+						dataResponse[i].product ,
+						dataResponse[i].alamatToko
+					                           )
+					result.add(dataSource)
+				}
+				Executer.DiskIO().execute {
+					LocalData.InsertShop(result)
+				}
+				
+			}
+			
+			override fun shouldFetch(data : PagedList<ShopEntity>?) : Boolean =
+				data == null || data.isEmpty()
+			
+			override fun loadfromDb() : LiveData<PagedList<ShopEntity>>
+			{
+				val buildPaged = PagedList.Config.Builder()
+					.setEnablePlaceholders(true)
+					.setInitialLoadSizeHint(20)
+					.setPageSize(20)
+					.build()
+				return LivePagedListBuilder(LocalData.GetAllShop() , buildPaged).build()
+			}
+			
+			override fun createCall() : LiveData<ApiResponse<ShopResponse>> =
+				RemoteData.GetAllShop()
+			
+		}.asLiveData()
+	}
+	
 	override fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
 	{
 		return object : NetworkBoundResource<PagedList<BatikEntity> , BatikResponse>(Executer)
@@ -113,11 +153,13 @@ class NaratikRepository constructor(
 					                        )
 					result.add(dataDB)
 				}
-				LocalData.InsertBatik(result)
+				Executer.DiskIO().execute {
+					LocalData.InsertBatik(result)
+				}
 			}
 			
 			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
-				true
+				data == null || data.isEmpty()
 			
 			
 			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
@@ -159,7 +201,9 @@ class NaratikRepository constructor(
 					                                  )
 					dataDb.add(dataBatik)
 				}
-				LocalData.insertPopularBatik(dataDb)
+				Executer.DiskIO().execute {
+					LocalData.insertPopularBatik(dataDb)
+				}
 			}
 			
 			override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
@@ -186,7 +230,8 @@ class NaratikRepository constructor(
 	
 	override fun searchBatik(id : String) : LiveData<Resource<List<BatikEntity>>>
 	{
-		return object : NetworkBoundResource<List<BatikEntity>,BatikResponse>(Executer){
+		return object : NetworkBoundResource<List<BatikEntity> , BatikResponse>(Executer)
+		{
 			override fun saveCallResult(item : BatikResponse)
 			{
 				val dataResponse = item?.hasil
@@ -202,7 +247,9 @@ class NaratikRepository constructor(
 					                                  )
 					dataDb.add(dataBatik)
 				}
-				LocalData.insertPopularBatik(dataDb)
+				Executer.DiskIO().execute {
+					LocalData.insertPopularBatik(dataDb)
+				}
 			}
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
@@ -210,14 +257,17 @@ class NaratikRepository constructor(
 			
 			override fun loadfromDb() : LiveData<List<BatikEntity>> = LocalData.searchData(id)
 			
-			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =  RemoteData.GetAllBatikResponse()
+			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =
+				RemoteData.GetAllBatikResponse()
 			
 		}.asLiveData()
 	}
 	
-	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>> = RemoteData.GetPredictMotif(id)
+	override fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>> =
+		RemoteData.GetPredictMotif(id)
 	
-	override fun GetTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> = RemoteData.GetPredicTechnique(id)
+	override fun GetTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> =
+		RemoteData.GetPredicTechnique(id)
 	
 	override fun IsDoneMotif() : LiveData<Resource<Boolean>> = RemoteData.loadMotif
 	
@@ -228,6 +278,10 @@ class NaratikRepository constructor(
 	}
 	
 	override fun DeleteHistory(value : HistoryEntity) = Executer.DiskIO().execute {
+		if (LocalData.GetAllHistory().value?.size == 1)
+		{
+			LocalData.DeleteAllHistory()
+		}
 		LocalData.DeleteHistory(value)
 	}
 	
@@ -235,7 +289,7 @@ class NaratikRepository constructor(
 		LocalData.DeleteAllHistory()
 	}
 	
-	override fun AddLikedBatik(value : BatikEntity) = Executer.DiskIO().execute{
+	override fun AddLikedBatik(value : BatikEntity) = Executer.DiskIO().execute {
 		LocalData.updateBatik(value)
 	}
 	

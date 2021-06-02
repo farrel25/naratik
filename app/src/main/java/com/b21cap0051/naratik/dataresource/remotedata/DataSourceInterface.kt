@@ -1,10 +1,7 @@
 package com.b21cap0051.naratik.dataresource.remotedata
 
 import androidx.lifecycle.LiveData
-import com.b21cap0051.naratik.dataresource.remotedata.model.BatikResponse
-import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
-import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
-import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.*
 import com.b21cap0051.naratik.util.voapi.ApiResponse
 
 interface DataSourceInterface
@@ -18,5 +15,7 @@ interface DataSourceInterface
 	fun GetPredictMotif(id : String):LiveData<ApiResponse<PredictResponse>>
 	
 	fun GetPredicTechnique(id : String):LiveData<ApiResponse<TechniquePredictResponse>>
+	
+	fun GetAllShop():LiveData<ApiResponse<ShopResponse>>
 }
 

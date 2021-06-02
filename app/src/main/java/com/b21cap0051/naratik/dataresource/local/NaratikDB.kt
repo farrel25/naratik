@@ -7,9 +7,10 @@ import androidx.room.RoomDatabase
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 
 
-@Database(entities = [BatikEntity::class , PopularBatikEntity::class,HistoryEntity::class] , version = 1)
+@Database(entities = [BatikEntity::class , PopularBatikEntity::class,HistoryEntity::class,ShopEntity::class] , version = 1)
 abstract class NaratikDB : RoomDatabase()
 {
 	abstract fun PrimaryDAO() : NaratikDAO

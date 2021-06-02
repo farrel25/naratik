@@ -5,6 +5,7 @@ import androidx.paging.DataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 
 interface LocalDataInterface
 {
@@ -20,4 +21,6 @@ interface LocalDataInterface
 	fun DeleteHistory(value : HistoryEntity)
 	fun DeleteAllHistory()
 	fun GetAllHistory():LiveData<List<HistoryEntity>>
+	fun GetAllShop(): DataSource.Factory<Int,ShopEntity>
+	fun InsertShop(value : List<ShopEntity>)
 }

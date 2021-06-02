@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.dataresource.remotedata.api
 
 import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
+import com.b21cap0051.naratik.dataresource.remotedata.model.ShopResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,4 +16,8 @@ interface PredictService
 	@GET("technique/{unique_id}")
 	@Headers("Auth: B21-CAP0051")
 	fun GetPredictTechnique(@Path("unique_id") unique_id : String) : Call<TechniquePredictResponse>
+	
+	@GET("shop")
+	fun GetShopList():Call<ShopResponse>
+	
 }

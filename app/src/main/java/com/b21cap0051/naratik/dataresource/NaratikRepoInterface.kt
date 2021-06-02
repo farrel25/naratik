@@ -5,6 +5,7 @@ import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
@@ -14,6 +15,8 @@ import com.b21cap0051.naratik.util.voapi.ApiResponse
 interface NaratikRepoInterface
 {
 	fun GetAllBatik() : LiveData<Resource<PagedList<BatikEntity>>>
+	
+	fun GetAllShop():LiveData<Resource<PagedList<ShopEntity>>>
 	
 	fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
 	
@@ -46,5 +49,7 @@ interface NaratikRepoInterface
 	fun DelLikeBatik(value : BatikEntity)
 	
 	fun GetAllHistory():LiveData<List<HistoryEntity>>
+	
+	
 	
 }
