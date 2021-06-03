@@ -7,8 +7,8 @@ def predict_motif(event, context):
     """
     file = event
     print(f"Processing file: {file['name']}.")
-    BASE_URL = "<prediction endpoint>"
+    BASE_URL = "https://causal-folder-315209.et.r.appspot.com/"
     FILE_NAME = file["name"]
     FINAL_URL = BASE_URL + FILE_NAME
-    requests.get(FINAL_URL)
+    requests.get(FINAL_URL, headers={"Auth": <Super_Secret_Key})
 
