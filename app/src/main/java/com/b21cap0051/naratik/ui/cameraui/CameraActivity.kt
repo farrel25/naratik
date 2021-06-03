@@ -12,6 +12,8 @@ import android.os.HandlerThread
 import android.util.Log
 import android.util.Size
 import android.view.Surface
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +52,8 @@ class CameraActivity : AppCompatActivity()
 		binding = ActivityCameraBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
+		loadActionBar()
+		
 		cameraExecutors = Executors.newSingleThreadExecutor()
 		outputDirectory = getOutputDirectory()
 		
@@ -68,6 +72,14 @@ class CameraActivity : AppCompatActivity()
 			takePhoto(this)
 		}
 		
+	}
+	
+	private fun loadActionBar()
+	{
+		
+		binding.btnCancel.setOnClickListener() {
+			super.onBackPressed()
+		}
 	}
 	
 	companion object
@@ -162,7 +174,7 @@ class CameraActivity : AppCompatActivity()
 		                                )
 	}
 	
-	fun getRandomString(length : Int) : String
+	private fun getRandomString(length : Int) : String
 	{
 		val allowedChars = ('A' .. 'Z') + ('a' .. 'z') + ('0' .. '9')
 		return (1 .. length)

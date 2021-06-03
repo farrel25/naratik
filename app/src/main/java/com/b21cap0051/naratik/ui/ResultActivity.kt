@@ -3,6 +3,8 @@ package com.b21cap0051.naratik.ui
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +51,9 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		super.onCreate(savedInstanceState)
 		binding = ActivityResultBinding.inflate(layoutInflater)
 		setContentView(binding.root)
+		
+		loadActionBar()
+		
 		val dataIntent = intent.extras
 		data =  dataIntent?.getParcelable<ImageUploadModel>(KEY_DATA) as ImageUploadModel
 		
@@ -56,18 +61,19 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		mainView = ViewModelProvider(this,factory)[PredictMainView::class.java]
 		
 		
+		
 		mainView.IsDoneMotif().observe(this,{
 			   response ->
 			when(response.Status){
 				Status.SUCCESS -> {
-					LoadingProcess(response.Data!!)
+					loadingProcess(response.Data!!)
 				}
 				Status.ERROR -> {
 				
 				}
 				
 				Status.LOADING -> {
-					LoadingProcess(response.Data!!)
+					loadingProcess(response.Data!!)
 				}
 			}
 		})
@@ -109,23 +115,26 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		
 	}
 	
-	private fun LoadingProcess(stat : Boolean){
+	private fun loadActionBar()
+	{
+		val title : TextView = findViewById(R.id.tvTitle)
+		title.text = resources.getString(R.string.favorite)
+		val btnBack : Button = findViewById(R.id.btnBack)
+		btnBack.setOnClickListener() {
+			super.onBackPressed()
+		}
+	}
+	
+	private fun loadingProcess(stat : Boolean){
 		if(stat){
-			binding.txtMotifSimilarity.visibility = View.VISIBLE
-			binding.picDetail.visibility = View.VISIBLE
-			binding.picDetail.visibility = View.VISIBLE
-			binding.btnFeedback.visibility = View.VISIBLE
-			binding.btnGoHome.visibility = View.VISIBLE
-			binding.include.btnBack.visibility = View.VISIBLE
+			binding.nsvResult.visibility = View.VISIBLE
+			binding.include.customActionBarBack.visibility = View.VISIBLE
+			
 			binding.laiLoading.visibility = View.GONE
 		}else{
-			binding.txtMotifSimilarity.visibility = View.GONE
+			binding.include.customActionBarBack.visibility  = View.GONE
 			binding.laiLoading.visibility = View.VISIBLE
-			binding.picDetail.visibility = View.GONE
-			binding.include.btnBack.visibility = View.GONE
-			binding.picDetail.visibility = View.GONE
-			binding.btnFeedback.visibility = View.GONE
-			binding.btnGoHome.visibility = View.GONE
+			binding.nsvResult.visibility = View.GONE
 		}
 	}
 	
@@ -153,14 +162,14 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		batikChart.isDrawHoleEnabled = true
 		batikChart.setUsePercentValues(true)
 		batikChart.setDrawEntryLabels(false)
-		batikChart.centerText = "Technique Batik Result"
+		batikChart.centerText = "Batik Making Technique"
 		batikChart.setCenterTextSize(12F)
 		batikChart.description.isEnabled = false
 		val legend : Legend = batikChart.legend
 		legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
 		legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
-		legend.orientation = Legend.LegendOrientation.HORIZONTAL
-		legend.textSize = 12f
+		legend.orientation = Legend.LegendOrientation.VERTICAL
+		legend.textSize = 13f
 		legend.setDrawInside(false)
 		legend.isEnabled = true
 	}
@@ -178,8 +187,8 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 	private fun loadBatikResult(result : TechniquePredictResponse)
 	{
 		val entries : ArrayList<PieEntry> = ArrayList()
-		entries.add(PieEntry(result.technique?.get(0)?.value?.toFloat()!!, result?.technique?.get(0)?.techniqueName+" Batik" ))
-		entries.add(PieEntry(result.technique?.get(1)?.value?.toFloat()!!, result?.technique?.get(1)?.techniqueName+" Batik" ))
+		entries.add(PieEntry(result.technique?.get(0)?.value?.toFloat()!!, result.technique[0].techniqueName+" batik"))
+		entries.add(PieEntry(result.technique[1].value?.toFloat()!!, result.technique[1].techniqueName+" batik"))
 		
 		val dataSet = PieDataSet(entries , "Technique Detect Result")
 		dataSet.setColors(

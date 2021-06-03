@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
 import com.b21cap0051.naratik.mainview.UploadMainView
@@ -17,6 +18,7 @@ import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ResultActivity
 import com.b21cap0051.naratik.ui.ResultActivity.Companion.KEY_DATA
 import com.b21cap0051.naratik.util.vo.Status
+import com.b21cap0051.naratik.util.vo.Status.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -50,13 +52,13 @@ class UploadProcessFragment : DialogFragment()
 		mainView.IsCOnnected().observe(viewLifecycleOwner , { response ->
 			when (response.Status)
 			{
-				Status.SUCCESS ->
+				SUCCESS ->
 				{
 					
-					LoadingUpload()
+					loadingUpload()
 					uploadStatus(modelData)
 				}
-				Status.ERROR   ->
+				ERROR   ->
 				{
 					backCameraActivity()
 					Toast.makeText(requireContext() , response.message , Toast.LENGTH_SHORT).show()
@@ -72,7 +74,7 @@ class UploadProcessFragment : DialogFragment()
 		const val KEY_UPLOAD = "key_upload"
 	}
 	
-	private fun LoadingUpload()
+	private fun loadingUpload()
 	{
 		
 		binding.pbCameraUpload.max = 100
@@ -82,7 +84,7 @@ class UploadProcessFragment : DialogFragment()
 			{
 				delay(200)
 				withContext(Dispatchers.Main) {
-					binding.tvProgress.text = "$i %"
+					binding.tvProgress.text = resources.getString(R.string.presentase, i.toString())
 					binding.pbCameraUpload.progress = i
 				}
 			
@@ -98,7 +100,7 @@ class UploadProcessFragment : DialogFragment()
 			
 			when (response.Status)
 			{
-				Status.SUCCESS ->
+				SUCCESS ->
 				{
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
 					val move = Intent(activity , ResultActivity::class.java)
@@ -106,7 +108,7 @@ class UploadProcessFragment : DialogFragment()
 					startActivity(move)
 					requireActivity().finish()
 				}
-				Status.ERROR   ->
+				ERROR   ->
 				{
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
 					backCameraActivity()

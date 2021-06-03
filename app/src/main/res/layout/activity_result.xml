@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ResultActivity">
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/custom_action_bar_back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+    tools:context=".ui.ResultActivity"
+    android:orientation="vertical">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/laiLoading"
@@ -18,110 +13,114 @@
         android:layout_height="400dp"
         android:layout_gravity="center"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="cat_loading.json"
-        app:lottie_loop="true" />
+        app:lottie_loop="true"
+        app:lottie_renderMode="automatic" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/picDetail"
+    <include
+        android:id="@+id/include"
+        layout="@layout/custom_action_bar_back_title">
+
+    </include>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
+        android:layout_marginTop="58dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/techniqueshow"
             android:layout_height="match_parent"
-            android:padding="16dp">
+            android:orientation="vertical">
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pcResult"
-                android:layout_width="160dp"
-                android:layout_height="192dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/picDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivResult"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
 
-            <ImageView
-                android:id="@+id/ivResult"
-                android:layout_width="160dp"
-                android:layout_height="192dp"
-                android:contentDescription="@string/image"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/techniqueshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pcResult"
+                        android:layout_width="160dp"
+                        android:layout_height="216dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivResult"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivResult"
+                        android:layout_width="160dp"
+                        android:layout_height="216dp"
+                        android:contentDescription="@string/image"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/roundedImage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/txtMotifSimilarity"
-        style="@style/text_16sp_bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/motifs_similarity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/picDetail"
-        app:layout_constraintTop_toBottomOf="@+id/picDetail" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMotifResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/picDetail"
-        app:layout_constraintStart_toStartOf="@+id/picDetail"
-        app:layout_constraintTop_toBottomOf="@+id/txtMotifSimilarity" />
+            </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnFeedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/feedback"
-        app:icon="@drawable/ic_feedback"
-        app:iconGravity="textStart"
-        app:iconSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnGoHome"
-        app:layout_constraintStart_toStartOf="@+id/btnGoHome"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoHome" />
+            <TextView
+                android:id="@+id/txtMotifSimilarity"
+                style="@style/text_16sp_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
 
-    <Button
-        android:id="@+id/btnGoHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/brown_200"
-        android:text="@string/batk_to_home"
-        android:textColor="@color/black"
-        app:icon="@drawable/ic_home_outlined"
-        app:iconGravity="textStart"
-        app:iconSize="16dp"
-        app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/rvMotifResult"
-        app:layout_constraintStart_toStartOf="@+id/rvMotifResult"
-        app:layout_constraintTop_toBottomOf="@+id/rvMotifResult" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="@string/motifs_similarity" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMotifResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <Button
+                android:id="@+id/btnFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/feedback"
+                app:icon="@drawable/ic_feedback"
+                app:iconGravity="textStart"
+                app:iconSize="16dp" />
+
+            <Button
+                android:id="@+id/btnGoHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/brown_200"
+                android:text="@string/batk_to_home"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_home_outlined"
+                app:iconGravity="textStart"
+                app:iconSize="16dp"
+                app:iconTint="@color/black" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

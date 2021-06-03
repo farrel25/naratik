@@ -35,7 +35,6 @@ class HomeActivity : AppCompatActivity()
 		binding.actionBarItem.btnFavorite.setOnClickListener {
 			val intent = Intent(this@HomeActivity , FavouriteActivity::class.java)
 			startActivity(intent)
-			finish()
 		}
 
 		binding.fabCamera.setOnClickListener {
