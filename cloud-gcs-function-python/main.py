@@ -10,5 +10,5 @@ def predict_motif(event, context):
     BASE_URL = "<prediction endpoint>"
     FILE_NAME = file["name"]
     FINAL_URL = BASE_URL + FILE_NAME
-    requests.get(FINAL_URL, headers={"Auth": <SUPER_SECRET_KEY>}
+    requests.get(FINAL_URL)
 
