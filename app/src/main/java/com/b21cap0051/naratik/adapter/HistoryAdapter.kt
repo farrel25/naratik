@@ -11,28 +11,21 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) :
 	RecyclerView.Adapter<HistoryAdapter.ItemTarget>()
 {
 	
-	private val ListHistory = ArrayList<HistoryEntity>()
+	private val listHistory = ArrayList<HistoryEntity>()
 	
 	
 	fun setList(model : List<HistoryEntity>)
 	{
-		if (model != null)
-		{
-			ListHistory.clear()
-			ListHistory.addAll(model)
-			notifyDataSetChanged()
-		} else
-		{
-			ListHistory.clear()
-			notifyDataSetChanged()
-		}
+		listHistory.clear()
+		listHistory.addAll(model)
+		notifyDataSetChanged()
 	}
 	
 	fun removeItem(position : Int)
 	{
-		this.ListHistory.removeAt(position)
+		this.listHistory.removeAt(position)
 		notifyItemRemoved(position)
-		notifyItemRangeChanged(position , this.ListHistory.size)
+		notifyItemRangeChanged(position , this.listHistory.size)
 	}
 	
 	
@@ -62,11 +55,11 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) :
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
-		holder.bind(ListHistory[position])
+		holder.bind(listHistory[position])
 		callback.getPosition(position)
 	}
 	
-	override fun getItemCount() : Int = ListHistory.size
+	override fun getItemCount() : Int = listHistory.size
 	
 	
 }

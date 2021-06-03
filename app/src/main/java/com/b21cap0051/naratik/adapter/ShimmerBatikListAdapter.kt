@@ -8,7 +8,7 @@ import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ShimmerBatikListAdapter() :
+class ShimmerBatikListAdapter :
 	RecyclerView.Adapter<ShimmerBatikListAdapter.ItemTarget>()
 {
 	
@@ -27,7 +27,7 @@ class ShimmerBatikListAdapter() :
 		fun bind(model : ShimmerModel)
 		{
 			var height = 900
-			if (position % 2 == 1)
+			if (layoutPosition % 2 == 1)
 			{
 				height = 450
 			}

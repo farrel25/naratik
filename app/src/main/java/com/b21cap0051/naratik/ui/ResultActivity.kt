@@ -111,14 +111,12 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 				}
 			}
 		})
-		
-		
 	}
 	
 	private fun loadActionBar()
 	{
 		val title : TextView = findViewById(R.id.tvTitle)
-		title.text = resources.getString(R.string.favorite)
+		title.text = resources.getString(R.string.result)
 		val btnBack : Button = findViewById(R.id.btnBack)
 		btnBack.setOnClickListener() {
 			super.onBackPressed()

@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -133,7 +134,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		articleMiniAdapter.setList(listArticle)
 	}
 	
-	fun loadHistory()
+	private fun loadHistory()
 	{
 		binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
 		binding.rvSearchHistory.adapter =adapterHistory
@@ -151,8 +152,10 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	
 	private fun loadActionBar()
 	{
+		val title : TextView = findViewById(R.id.tvTitle)
+		title.text = resources.getString(R.string.search)
 		val btnBack : Button = findViewById(R.id.btnBack)
-		btnBack.setOnClickListener() {
+		btnBack.setOnClickListener {
 			super.onBackPressed()
 		}
 	}

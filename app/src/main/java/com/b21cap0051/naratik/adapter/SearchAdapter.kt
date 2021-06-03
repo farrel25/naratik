@@ -4,7 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowSearchBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.ui.DetailBatikActivity
@@ -12,7 +11,6 @@ import com.b21cap0051.naratik.ui.DetailBatikActivity.Companion.EXTRA_BATIK
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import eightbitlab.com.blurview.RenderScriptBlur
 import java.util.*
 
 class SearchAdapter(private val callBack : ItemBatikCallBack) :

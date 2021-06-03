@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions
 import eightbitlab.com.blurview.RenderScriptBlur
 
 class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
-	PagedListAdapter<BatikEntity , BatikPagedListAdapter.itemTarget>(DIFF_CALLBACK)
+	PagedListAdapter<BatikEntity , BatikPagedListAdapter.ItemTarget>(DIFF_CALLBACK)
 {
 	
 	companion object
@@ -41,9 +41,9 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	override fun onCreateViewHolder(
 		parent : ViewGroup ,
 		viewType : Int
-	                               ) : BatikPagedListAdapter.itemTarget
+	                               ) : BatikPagedListAdapter.ItemTarget
 	{
-		return itemTarget(
+		return ItemTarget(
 			ItemRowBatikBinding.inflate(
 				LayoutInflater.from(parent.context) ,
 				parent ,
@@ -52,20 +52,20 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 		                 )
 	}
 	
-	override fun onBindViewHolder(holder : BatikPagedListAdapter.itemTarget , position : Int)
+	override fun onBindViewHolder(holder : BatikPagedListAdapter.ItemTarget , position : Int)
 	{
 		holder.bind(getItem(position) as BatikEntity)
 	}
 	
 	
-	inner class itemTarget(val binding : ItemRowBatikBinding) :
+	inner class ItemTarget(val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
 		@SuppressLint("CheckResult")
 		fun bind(model : BatikEntity)
 		{
 			var height = 900
-			if (position % 2 == 1)
+			if (layoutPosition % 2 == 1)
 			{
 				height = 450
 			}

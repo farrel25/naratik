@@ -7,17 +7,19 @@
     android:orientation="vertical"
     tools:context=".ui.SearchActivity">
 
-    <include layout="@layout/custom_action_bar_back" />
+    <include layout="@layout/custom_action_bar_back_title" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingTop="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/etSearch"
@@ -34,19 +36,19 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSearchBatik"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                tools:listitem="@layout/item_row_search_batik" >
+                android:visibility="gone"
+                tools:listitem="@layout/item_row_search_batik">
 
             </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
+                android:id="@+id/llSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/llSearch">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtHistory"
@@ -80,7 +82,7 @@
                     android:paddingStart="16dp"
                     tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_row_article_mini"
-                    tools:orientation="horizontal" >
+                    tools:orientation="horizontal">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
