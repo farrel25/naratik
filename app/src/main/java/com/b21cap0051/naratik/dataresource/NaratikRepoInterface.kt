@@ -18,6 +18,11 @@ interface NaratikRepoInterface
 	
 	fun GetAllShop():LiveData<Resource<PagedList<ShopEntity>>>
 	
+	fun GetAllFavorite():LiveData<Resource<PagedList<BatikEntity>>>
+	
+	fun GetCheckFavorite():LiveData<List<BatikEntity>>
+	
+	
 	fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
 	
 	fun GetPopular() : LiveData<Resource<List<PopularBatikEntity>>>
@@ -49,6 +54,7 @@ interface NaratikRepoInterface
 	fun DelLikeBatik(value : BatikEntity)
 	
 	fun GetAllHistory():LiveData<List<HistoryEntity>>
+	
 	
 	
 	

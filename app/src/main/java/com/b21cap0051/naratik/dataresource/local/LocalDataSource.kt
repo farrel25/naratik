@@ -24,6 +24,11 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 	}
 	
 	override fun GetAllBatik() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.GetAllBatikDb()
+	
+	override fun CheckFavouriteBatik() : LiveData<List<BatikEntity>> = mNaratikDao.GetCheckFavoriteBatik()
+	
+	override fun GetAllFavorite() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.GetAllFavoriteBatikDb()
+	
 	override fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity> =
 		mNaratikDao.GetLimitedBatik()
 	

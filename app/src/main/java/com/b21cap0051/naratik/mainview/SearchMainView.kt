@@ -15,7 +15,9 @@ class SearchMainView(private val repo : NaratikRepository):ViewModel(){
 	
 	fun DelHistory(value : HistoryEntity) = repo.DeleteHistory(value)
 	
-	fun DelAllHistory() = repo.DeleteAllHistory()
+	fun addFavor(model : BatikEntity) = repo.AddLikedBatik(model)
+	
+	fun checkFavorite():LiveData<List<BatikEntity>> = repo.GetCheckFavorite()
 	
 	fun GetALLHistory():LiveData<List<HistoryEntity>> = repo.GetAllHistory()
 	

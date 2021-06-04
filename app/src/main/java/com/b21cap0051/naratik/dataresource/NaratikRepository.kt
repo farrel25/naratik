@@ -134,6 +134,53 @@ class NaratikRepository constructor(
 		}.asLiveData()
 	}
 	
+	override fun GetAllFavorite() : LiveData<Resource<PagedList<BatikEntity>>>
+	{
+		return object : NetworkBoundResource<PagedList<BatikEntity> , BatikResponse>(Executer)
+		{
+			override fun saveCallResult(item : BatikResponse)
+			{
+				val result = ArrayList<BatikEntity>()
+				val dataResponse = item.hasil
+				for (i in 0 until dataResponse?.size!!)
+				{
+					val dataDB = BatikEntity(
+						dataResponse[i].id ,
+						dataResponse[i].namaBatik ,
+						dataResponse[i].maknaBatik ,
+						dataResponse[i].linkBatik ,
+						dataResponse[i].daerahBatik
+					                        )
+					result.add(dataDB)
+				}
+				Executer.DiskIO().execute {
+					LocalData.InsertBatik(result)
+				}
+			}
+			
+			override fun shouldFetch(data : PagedList<BatikEntity>?) : Boolean =
+				data == null || data.isEmpty()
+			
+			
+			override fun loadfromDb() : LiveData<PagedList<BatikEntity>>
+			{
+				val buildPaged = PagedList.Config.Builder()
+					.setEnablePlaceholders(true)
+					.setInitialLoadSizeHint(10)
+					.setPageSize(10)
+					.build()
+				return LivePagedListBuilder(LocalData.GetAllFavorite() , buildPaged).build()
+			}
+			
+			
+			override fun createCall() : LiveData<ApiResponse<BatikResponse>> = RemoteData.GetAllBatikResponse()
+			
+			
+		}.asLiveData()
+	}
+	
+	
+	
 	override fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
 	{
 		return object : NetworkBoundResource<PagedList<BatikEntity> , BatikResponse>(Executer)
@@ -299,5 +346,5 @@ class NaratikRepository constructor(
 	
 	override fun GetAllHistory() : LiveData<List<HistoryEntity>> = LocalData.GetAllHistory()
 	
-	
+	override fun GetCheckFavorite() : LiveData<List<BatikEntity>> = LocalData.CheckFavouriteBatik()
 }

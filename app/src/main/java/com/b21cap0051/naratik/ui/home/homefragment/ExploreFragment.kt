@@ -3,6 +3,7 @@ package com.b21cap0051.naratik.ui.home.homefragment
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
+import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
@@ -123,6 +126,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		binding.shimmerLayout.visibility = View.GONE
 		
 		
+		
 		binding.btnShowAllBatik.setOnClickListener {
 			val intent = Intent(requireActivity() , BatikActivity::class.java)
 			startActivity(intent)
@@ -161,9 +165,61 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		}
 	}
 	
+	
+	
 	override fun itemBatikClick(model : BatikEntity)
 	{
 	
+	}
+	
+	override fun AddFavour(v : ItemRowBatikBinding , model : BatikEntity)
+	{
+		if(CheckIsFavor(model)){
+			val modelbaru = BatikEntity(
+				model.batik_id,
+				model.name_batik,
+				model.makna_batik,
+				model.Image,
+				model.daerah_batik,
+				0
+			                           )
+			mainView.addFavor(modelbaru)
+			v.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_outlined)
+			adapterBatik.notifyDataSetChanged()
+		}else{
+			val modelbaru = BatikEntity(
+				model.batik_id,
+				model.name_batik,
+				model.makna_batik,
+				model.Image,
+				model.daerah_batik,
+				1
+			                           )
+			mainView.addFavor(modelbaru)
+			v.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_filled)
+			adapterBatik.notifyDataSetChanged()
+		}
+	}
+	
+	override fun CheckIsFavor(model : BatikEntity) : Boolean
+	{
+		var stat = false
+		mainView.getFavourAllbatik().observe(viewLifecycleOwner,{
+				response ->
+			when(response.Status){
+				Status.SUCCESS -> {
+					for (i in  0 until response.Data?.size!!){
+						if(response.Data[i]?.batik_id == model.batik_id){
+							Log.d("TESAPP","$response.Data[i]?.batik_id")
+							stat = true
+							Log.d("TESAPP","$stat")
+							break
+						}
+					}
+				}
+			}
+		})
+		return stat
 	}
 	
 	override fun itemArticleClick(model : ArticleModel)

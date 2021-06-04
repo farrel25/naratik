@@ -16,4 +16,11 @@ class BatikMainView(private val Repository : NaratikRepository) : ViewModel()
 	fun getLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>> =
 		Repository.GetLimitedBatik()
 	
+	fun addFavor(model : BatikEntity) = Repository.AddLikedBatik(model)
+
+	fun checkFavorite():LiveData<List<BatikEntity>> = Repository.GetCheckFavorite()
+	
+	fun getFavourAllbatik() : LiveData<Resource<PagedList<BatikEntity>>> =
+		Repository.GetAllFavorite()
+	
 }

@@ -16,7 +16,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import eightbitlab.com.blurview.RenderScriptBlur
 
-class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
+class BatikPagedListAdapter(private val callBack : ItemBatikCallBack
+) :
 	PagedListAdapter<BatikEntity , BatikPagedListAdapter.ItemTarget>(DIFF_CALLBACK)
 {
 	
@@ -55,7 +56,10 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 	override fun onBindViewHolder(holder : BatikPagedListAdapter.ItemTarget , position : Int)
 	{
 		holder.bind(getItem(position) as BatikEntity)
+		
 	}
+	
+
 	
 	
 	inner class ItemTarget(val binding : ItemRowBatikBinding) :
@@ -64,6 +68,15 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 		@SuppressLint("CheckResult")
 		fun bind(model : BatikEntity)
 		{
+			
+			
+			if(callBack.CheckIsFavor(model)){
+				binding.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_filled)
+				
+			}else{
+				
+				binding.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_outlined)
+			}
 			var height = 900
 			if (layoutPosition % 2 == 1)
 			{
@@ -90,11 +103,20 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack) :
 			binding.tvItemLocationBatik.text =
 				itemView.resources.getString(R.string.batik_id , model.batik_id)
 			
+			
+			
+			
 			binding.cvBatik.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
 				intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
 				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
+			}
+			
+			
+			
+			binding.btnItemFavBatik.setOnClickListener {
+				 callBack.AddFavour(binding,model)
 			}
 		}
 	}

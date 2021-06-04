@@ -14,6 +14,12 @@ interface NaratikDAO
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC")
 	fun GetAllBatikDb() : DataSource.Factory<Int , BatikEntity>
 	
+	@Query("SELECT * FROM Table_Batik WHERE favourite = 1")
+	fun GetAllFavoriteBatikDb() : DataSource.Factory<Int , BatikEntity>
+	
+	@Query("SELECT * FROM Table_Batik WHERE favourite = 1")
+	fun GetCheckFavoriteBatik() : LiveData<List<BatikEntity>>
+	
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC LIMIT 4")
 	fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity>
 	

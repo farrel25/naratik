@@ -14,6 +14,7 @@ import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
 import com.b21cap0051.naratik.adapter.HistoryAdapter
 import com.b21cap0051.naratik.adapter.SearchAdapter
 import com.b21cap0051.naratik.databinding.ActivitySearchBinding
+import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
@@ -168,6 +169,45 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	{
 	}
 	
+	override fun AddFavour(v : ItemRowBatikBinding , model : BatikEntity)
+	{
+		if(CheckIsFavor(model)){
+			val modelbaru = BatikEntity(
+				model.batik_id,
+				model.name_batik,
+				model.makna_batik,
+				model.Image,
+				model.daerah_batik,
+				0
+			                           )
+			viewModel.addFavor(modelbaru)
+			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_outlined)
+		}else{
+			val modelbaru = BatikEntity(
+				model.batik_id,
+				model.name_batik,
+				model.makna_batik,
+				model.Image,
+				model.daerah_batik,
+				1
+			                           )
+			viewModel.addFavor(modelbaru)
+			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_filled)
+		}
+	}
+	
+	override fun CheckIsFavor(model : BatikEntity) : Boolean
+	{
+		var stat = false
+		viewModel.checkFavorite().observe(this,{
+			for (i in 0 until it.size){
+				if(model.batik_id == it[i].batik_id){
+					stat = true
+				}
+			}
+		})
+		return stat
+	}
 	
 	
 	override fun getItem(model : HistoryEntity)

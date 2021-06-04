@@ -10,6 +10,8 @@ import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 interface LocalDataInterface
 {
 	fun GetAllBatik() : DataSource.Factory<Int , BatikEntity>
+	fun CheckFavouriteBatik() : LiveData<List<BatikEntity>>
+	fun GetAllFavorite():DataSource.Factory<Int,BatikEntity>
 	fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity>
 	fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>>
 	fun InsertBatik(value : List<BatikEntity>)
