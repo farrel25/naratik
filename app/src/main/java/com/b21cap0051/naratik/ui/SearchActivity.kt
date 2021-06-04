@@ -25,6 +25,7 @@ import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.ItemCallbackHistory
 import com.b21cap0051.naratik.util.vo.Status
+import com.b21cap0051.naratik.util.vo.Status.*
 
 class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack,ItemCallbackHistory
 {
@@ -49,7 +50,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		adapterHistory = HistoryAdapter(this)
 		
 		binding.rvSearchHistory.visibility = View.GONE
-		binding.etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+		binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener
 		{
 			override fun onQueryTextSubmit(query : String?) : Boolean
 			{
@@ -76,7 +77,11 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				}
 				return false
 			}
+			
 		})
+		
+		
+		
 		loadActionBar()
 		loadBatik()
 		loadArticle()
@@ -89,7 +94,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		viewModel.GetSearch(text).observe(this , {
 		     response ->
 			when(response.Status){
-				Status.SUCCESS -> {
+				SUCCESS -> {
 					
 					loadSearch(response.Data!!)
 				}
@@ -200,8 +205,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	{
 		var stat = false
 		viewModel.checkFavorite().observe(this,{
-			for (i in 0 until it.size){
-				if(model.batik_id == it[i].batik_id){
+			for (element in it){
+				if(model.batik_id == element.batik_id){
 					stat = true
 				}
 			}

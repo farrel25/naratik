@@ -33,13 +33,15 @@
         <TextView
             android:id="@+id/tvItemMotifResult"
             style="@style/text_16sp_bold"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/batik_name"
             app:layout_constraintBottom_toBottomOf="@+id/tvItemPercentageResult"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvItemPercentageResult"
-            app:layout_constraintTop_toTopOf="@+id/tvItemPercentageResult" />
+            app:layout_constraintTop_toTopOf="@+id/tvItemPercentageResult"
+            app:drawableEndCompat="@drawable/ic_next" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

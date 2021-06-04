@@ -17,8 +17,6 @@
         android:padding="16dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            app:riv_corner_radius="20dip"
-            app:riv_oval="true"
             android:src="@drawable/bg_image_corner"
             android:id="@+id/ivItemArticle"
             android:layout_width="match_parent"

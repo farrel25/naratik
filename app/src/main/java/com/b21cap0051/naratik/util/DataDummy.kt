@@ -174,6 +174,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 				))
 		stores.add(
 			StoreEntity(
@@ -185,6 +186,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 			           ))
 		stores.add(
 			StoreEntity(
@@ -196,6 +198,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 			           ))
 		stores.add(
 			StoreEntity(
@@ -207,6 +210,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 			           ))
 		stores.add(
 			StoreEntity(
@@ -218,6 +222,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 			           ))
 		stores.add(
 			StoreEntity(
@@ -229,6 +234,7 @@ object DataDummy
 				8.0 ,
 				"Semarang" ,
 				5 ,
+				"product" ,
 			           ))
 		
 		return stores

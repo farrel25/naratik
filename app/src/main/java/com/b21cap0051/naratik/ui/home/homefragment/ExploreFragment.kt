@@ -94,8 +94,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 			
 		})
 		
-		binding.etSearch.isEnabled = true
-		binding.etSearch.setOnClickListener {
+		binding.svSearch.isEnabled = true
+		binding.svSearch.setOnClickListener {
 			val move = Intent(requireContext() , SearchActivity::class.java)
 			startActivity(move)
 			onPause()

@@ -21,13 +21,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_next" />
+            app:srcCompat="@drawable/ic_next"
+            android:contentDescription="@string/image" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivItemSearchBatik"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/roundedImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

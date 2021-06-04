@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.b21cap0051.naratik.adapter.*
 import com.b21cap0051.naratik.databinding.FragmentStoreBinding
 import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
 import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
+import com.b21cap0051.naratik.ui.BatikActivity
+import com.b21cap0051.naratik.ui.StoreActivity
 import com.b21cap0051.naratik.util.*
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -61,6 +64,11 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 		binding.rvStore.adapter = storeAdapter
 		val listStore = DataDummy.generateDummyStore()
 		storeAdapter.setList(listStore)
+		
+		binding.btnShowAllStore.setOnClickListener(){
+			val intent = Intent(requireActivity() , StoreActivity::class.java)
+			startActivity(intent)
+		}
 	}
 	
 	private fun loadProduct()

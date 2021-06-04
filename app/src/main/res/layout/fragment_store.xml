@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="192dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:iss_auto_cycle="true"
         app:iss_corner_radius="20"
@@ -23,14 +23,40 @@
         app:iss_placeholder="@drawable/ic_loading"
         app:iss_error_image="@drawable/ic_error"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/text_18sp_bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/popular_store" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/txtBatik"
+            style="@style/text_24sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popular_store" />
+
+        <Button
+            android:id="@+id/btnShowAllStore"
+            style="@style/text_12sp_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/brown_200"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:stateListAnimator="@null"
+            android:text="@string/show_all"
+            android:textAllCaps="false"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtBatik"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtBatik"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvStore"
@@ -45,7 +71,7 @@
 
     <TextView
         android:id="@+id/textView"
-        style="@style/text_18sp_bold"
+        style="@style/text_24sp_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

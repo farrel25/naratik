@@ -117,8 +117,8 @@ class BatikFavouriteFragment : Fragment() , ItemBatikCallBack
 	{
 		var stat = false
 		mainView.checkFavorite().observe(viewLifecycleOwner,{
-			for (i in 0 until it.size){
-				if(model.batik_id == it[i].batik_id){
+			for (element in it){
+				if(model.batik_id == element.batik_id){
 					stat = true
 				}
 			}

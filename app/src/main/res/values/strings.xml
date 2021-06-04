@@ -82,5 +82,8 @@
     <string name="popular_store">Popular Store</string>
     <string name="popular_product">Popular Product</string>
     <string name="version">Beta 1.0</string>
+    <string name="name_store">name store</string>
+    <string name="store">Store</string>
+    <string name="product">Product : %s</string>
 
 </resources>
