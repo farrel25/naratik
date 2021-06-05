@@ -1,27 +1,33 @@
 package com.b21cap0051.naratik.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
+import com.b21cap0051.naratik.adapter.StoreAdapter
 import com.b21cap0051.naratik.databinding.ActivityDetailBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
 import com.b21cap0051.naratik.mainview.FavoriteMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
+import com.b21cap0051.naratik.util.ItemStoreCallback
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
+class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreCallback
 {
 	private lateinit var binding : ActivityDetailBatikBinding
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
 	private lateinit var mainView : FavoriteMainView
+	private lateinit var storeAdapter : StoreAdapter
 	
 	companion object
 	{
@@ -42,6 +48,7 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 		loadActionBar()
 		loadDetail()
 		loadViewMore()
+		loadStore()
 		
 	}
 	
@@ -116,14 +123,32 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack
 	{
 		var stat = false
 		mainView.checkFavorite().observe(this , {
-			for (i in 0 until it.size)
+			for (element in it)
 			{
-				if (model.batik_id == it[i].batik_id)
+				if (model.batik_id == element.batik_id)
 				{
 					stat = true
 				}
 			}
 		})
 		return stat
+	}
+	
+	private fun loadStore()
+	{
+		binding.txtNoResult.visibility = View.GONE
+		storeAdapter = StoreAdapter(this)
+		binding.rvEcommerce.layoutManager = LinearLayoutManager(
+			this ,
+			LinearLayoutManager.HORIZONTAL ,
+			false
+		                                                   )
+		binding.rvEcommerce.adapter = storeAdapter
+		val listStore = DataDummy.generateDummyStore()
+		storeAdapter.setList(listStore)
+	}
+	
+	override fun itemStoreClick(model : StoreEntity)
+	{
 	}
 }
