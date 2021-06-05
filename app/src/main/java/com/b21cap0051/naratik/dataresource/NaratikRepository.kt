@@ -169,7 +169,7 @@ class NaratikRepository constructor(
 					.setInitialLoadSizeHint(10)
 					.setPageSize(10)
 					.build()
-				return LivePagedListBuilder(LocalData.getAllFavorite() , buildPaged).build()
+				return LivePagedListBuilder(LocalData.getAllFavoriteBatik() , buildPaged).build()
 			}
 			
 			
@@ -337,11 +337,11 @@ class NaratikRepository constructor(
 	}
 	
 	override fun AddLikedBatik(value : BatikEntity) = Executer.DiskIO().execute {
-		LocalData.updateBatik(value)
+		LocalData.setAllFavoriteBatik(value)
 	}
 	
 	override fun DelLikeBatik(value : BatikEntity) = Executer.DiskIO().execute {
-		LocalData.updateBatik(value)
+		LocalData.setAllFavoriteBatik(value)
 	}
 	
 	override fun GetAllHistory() : LiveData<List<HistoryEntity>> = LocalData.getAllHistory()

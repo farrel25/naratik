@@ -34,7 +34,7 @@ interface NaratikDAO
 	fun addBatikDb(value : List<BatikEntity>)
 	
 	@Update
-	fun updateBatikDb(Value : BatikEntity)
+	fun updateBatikDb(value : BatikEntity)
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	fun addBatikPopularDb(value : List<PopularBatikEntity>)

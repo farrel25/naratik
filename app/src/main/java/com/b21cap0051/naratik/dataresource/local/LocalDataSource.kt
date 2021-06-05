@@ -43,17 +43,16 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		mNaratikDao.updateBatikPopularDb(value)
 	}
 	
-	override fun updateBatik(value : BatikEntity)
-	{
-		mNaratikDao.updateBatikDb(value)
-	}
-	
 	
 	//Favorite
 	override fun checkFavouriteBatik() : LiveData<List<BatikEntity>> = mNaratikDao.getCheckFavoriteBatik()
 	
-	override fun getAllFavorite() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.getAllFavoriteBatikDb()
+	override fun getAllFavoriteBatik() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.getAllFavoriteBatikDb()
 	
+	override fun setAllFavoriteBatik(value : BatikEntity)
+	{
+		mNaratikDao.updateBatikDb(value)
+	}
 	
 	
 	//Article
@@ -62,8 +61,10 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		mNaratikDao.addBatikPopularDb(value)
 	}
 	
+	
 	//Store
 	override fun insertShop(value : List<ShopEntity>) = mNaratikDao.insertShop(value)
+	
 	
 	//Search
 	override fun searchData(value : String) : LiveData<List<BatikEntity>> = mNaratikDao.searchBatik(value)

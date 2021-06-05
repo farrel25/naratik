@@ -15,12 +15,12 @@ interface LocalDataInterface
 	fun getAllPopularBatik() : LiveData<List<PopularBatikEntity>>
 	fun insertBatik(value : List<BatikEntity>)
 	fun insertPopularBatik(value : List<PopularBatikEntity>)
-	fun updateBatik(value : BatikEntity)
 	fun updatePopularBatik(value : PopularBatikEntity)
 	
 	//Favorite
 	fun checkFavouriteBatik() : LiveData<List<BatikEntity>>
-	fun getAllFavorite():DataSource.Factory<Int,BatikEntity>
+	fun getAllFavoriteBatik():DataSource.Factory<Int,BatikEntity>
+	fun setAllFavoriteBatik(value : BatikEntity)
 	
 	//Article
 	
