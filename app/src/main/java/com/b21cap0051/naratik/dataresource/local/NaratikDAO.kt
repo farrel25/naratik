@@ -12,55 +12,55 @@ import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 interface NaratikDAO
 {
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC")
-	fun GetAllBatikDb() : DataSource.Factory<Int , BatikEntity>
+	fun getAllBatikDb() : DataSource.Factory<Int , BatikEntity>
 	
 	@Query("SELECT * FROM Table_Batik WHERE favourite = 1")
-	fun GetAllFavoriteBatikDb() : DataSource.Factory<Int , BatikEntity>
+	fun getAllFavoriteBatikDb() : DataSource.Factory<Int , BatikEntity>
 	
 	@Query("SELECT * FROM Table_Batik WHERE favourite = 1")
-	fun GetCheckFavoriteBatik() : LiveData<List<BatikEntity>>
+	fun getCheckFavoriteBatik() : LiveData<List<BatikEntity>>
 	
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC LIMIT 4")
-	fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity>
+	fun getLimitedBatik() : DataSource.Factory<Int , BatikEntity>
 	
 	@Query("SELECT * FROM Shop_Table ORDER BY id")
-	fun GetAllQueryShop():DataSource.Factory<Int,ShopEntity>
+	fun getAllQueryShop():DataSource.Factory<Int,ShopEntity>
 	
 	
 	@Query("SELECT * FROM Popular_Batik_Table ORDER BY id ASC")
-	fun GetAllPopularBatikDb() : LiveData<List<PopularBatikEntity>>
+	fun getAllPopularBatikDb() : LiveData<List<PopularBatikEntity>>
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun AddBatikDb(value : List<BatikEntity>)
+	fun addBatikDb(value : List<BatikEntity>)
 	
 	@Update
-	fun UpdateBatikDb(Value : BatikEntity)
+	fun updateBatikDb(Value : BatikEntity)
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun AddBatikPopularDb(value : List<PopularBatikEntity>)
+	fun addBatikPopularDb(value : List<PopularBatikEntity>)
 	
 	@Update
-	fun UpdateBatikPopularDb(Value : PopularBatikEntity)
+	fun updateBatikPopularDb(Value : PopularBatikEntity)
 	
 	@Query("SELECT * FROM Table_Batik WHERE nama_batik LIKE '%' || :namabatik || '%'")
 	fun searchBatik(namabatik : String) : LiveData<List<BatikEntity>>
 	
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun AddHisstory(value : HistoryEntity)
+	fun addHistory(value : HistoryEntity)
 	
 	@Delete
-	fun DelHistory(value : HistoryEntity)
+	fun delHistory(value : HistoryEntity)
 	
 	@Query("DELETE FROM history_table")
-	fun DelAllHistory()
+	fun delAllHistory()
 	
 	@Query("SELECT * FROM history_table ORDER BY id")
-	fun GetAllQueryHistory():LiveData<List<HistoryEntity>>
+	fun getAllQueryHistory():LiveData<List<HistoryEntity>>
 	
 	
 	@Insert(onConflict =  OnConflictStrategy.REPLACE)
-	fun InsertShop(value : List<ShopEntity>)
+	fun insertShop(value : List<ShopEntity>)
 	
 	
 }

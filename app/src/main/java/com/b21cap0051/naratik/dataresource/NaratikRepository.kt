@@ -64,7 +64,7 @@ class NaratikRepository constructor(
 					result.add(dataDB)
 				}
 				Executer.DiskIO().execute {
-					LocalData.InsertBatik(result)
+					LocalData.insertBatik(result)
 				}
 			}
 			
@@ -79,7 +79,7 @@ class NaratikRepository constructor(
 					.setInitialLoadSizeHint(10)
 					.setPageSize(10)
 					.build()
-				return LivePagedListBuilder(LocalData.GetAllBatik() , buildPaged).build()
+				return LivePagedListBuilder(LocalData.getAllBatik() , buildPaged).build()
 			}
 			
 			
@@ -110,7 +110,7 @@ class NaratikRepository constructor(
 					result.add(dataSource)
 				}
 				Executer.DiskIO().execute {
-					LocalData.InsertShop(result)
+					LocalData.insertShop(result)
 				}
 				
 			}
@@ -125,7 +125,7 @@ class NaratikRepository constructor(
 					.setInitialLoadSizeHint(20)
 					.setPageSize(20)
 					.build()
-				return LivePagedListBuilder(LocalData.GetAllShop() , buildPaged).build()
+				return LivePagedListBuilder(LocalData.getAllShop() , buildPaged).build()
 			}
 			
 			override fun createCall() : LiveData<ApiResponse<ShopResponse>> =
@@ -154,7 +154,7 @@ class NaratikRepository constructor(
 					result.add(dataDB)
 				}
 				Executer.DiskIO().execute {
-					LocalData.InsertBatik(result)
+					LocalData.insertBatik(result)
 				}
 			}
 			
@@ -169,7 +169,7 @@ class NaratikRepository constructor(
 					.setInitialLoadSizeHint(10)
 					.setPageSize(10)
 					.build()
-				return LivePagedListBuilder(LocalData.GetAllFavorite() , buildPaged).build()
+				return LivePagedListBuilder(LocalData.getAllFavorite() , buildPaged).build()
 			}
 			
 			
@@ -201,7 +201,7 @@ class NaratikRepository constructor(
 					result.add(dataDB)
 				}
 				Executer.DiskIO().execute {
-					LocalData.InsertBatik(result)
+					LocalData.insertBatik(result)
 				}
 			}
 			
@@ -216,7 +216,7 @@ class NaratikRepository constructor(
 					.setInitialLoadSizeHint(4)
 					.setPageSize(4)
 					.build()
-				return LivePagedListBuilder(LocalData.GetLimitedBatik() , buildPaged).build()
+				return LivePagedListBuilder(LocalData.getLimitedBatik() , buildPaged).build()
 			}
 			
 			
@@ -257,7 +257,7 @@ class NaratikRepository constructor(
 				data == null || data.isEmpty()
 			
 			override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
-				LocalData.GetAllPopularBatik()
+				LocalData.getAllPopularBatik()
 			
 			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =
 				RemoteData.GetPopularBatikResponse()
@@ -321,19 +321,19 @@ class NaratikRepository constructor(
 	override fun IsDoneTechnique() : LiveData<Resource<Boolean>> = RemoteData.loadTechnique
 	
 	override fun InsertHistory(value : HistoryEntity) = Executer.DiskIO().execute {
-		LocalData.InsertHistory(value)
+		LocalData.insertHistory(value)
 	}
 	
 	override fun DeleteHistory(value : HistoryEntity) = Executer.DiskIO().execute {
-		if (LocalData.GetAllHistory().value?.size == 1)
+		if (LocalData.getAllHistory().value?.size == 1)
 		{
-			LocalData.DeleteAllHistory()
+			LocalData.deleteAllHistory()
 		}
-		LocalData.DeleteHistory(value)
+		LocalData.deleteHistory(value)
 	}
 	
 	override fun DeleteAllHistory() = Executer.DiskIO().execute {
-		LocalData.DeleteAllHistory()
+		LocalData.deleteAllHistory()
 	}
 	
 	override fun AddLikedBatik(value : BatikEntity) = Executer.DiskIO().execute {
@@ -344,7 +344,7 @@ class NaratikRepository constructor(
 		LocalData.updateBatik(value)
 	}
 	
-	override fun GetAllHistory() : LiveData<List<HistoryEntity>> = LocalData.GetAllHistory()
+	override fun GetAllHistory() : LiveData<List<HistoryEntity>> = LocalData.getAllHistory()
 	
-	override fun GetCheckFavorite() : LiveData<List<BatikEntity>> = LocalData.CheckFavouriteBatik()
+	override fun GetCheckFavorite() : LiveData<List<BatikEntity>> = LocalData.checkFavouriteBatik()
 }

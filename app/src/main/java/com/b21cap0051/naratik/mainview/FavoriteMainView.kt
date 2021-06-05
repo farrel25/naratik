@@ -9,7 +9,7 @@ import com.b21cap0051.naratik.util.vo.Resource
 
 class FavoriteMainView(private val repo : NaratikRepository):ViewModel()
 {
-	fun GetFavourite(): LiveData<Resource<PagedList<BatikEntity>>> = repo.GetAllFavorite()
+	fun getFavourite(): LiveData<Resource<PagedList<BatikEntity>>> = repo.GetAllFavorite()
 	
 	fun addFavor(model : BatikEntity) = repo.AddLikedBatik(model)
 	

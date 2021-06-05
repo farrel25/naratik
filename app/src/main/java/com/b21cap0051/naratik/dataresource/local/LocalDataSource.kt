@@ -15,7 +15,7 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 		@Volatile
 		private var Instance : LocalDataSource? = null
 		
-		fun GetIntansce(dao : NaratikDAO) : LocalDataSource =
+		fun getInstance(dao : NaratikDAO) : LocalDataSource =
 			Instance ?: synchronized(this) {
 				Instance ?: LocalDataSource(dao).apply {
 					Instance = this
@@ -23,52 +23,60 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 			}
 	}
 	
-	override fun GetAllBatik() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.GetAllBatikDb()
+	//Batik
+	override fun getAllBatik() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.getAllBatikDb()
 	
-	override fun CheckFavouriteBatik() : LiveData<List<BatikEntity>> = mNaratikDao.GetCheckFavoriteBatik()
-	
-	override fun GetAllFavorite() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.GetAllFavoriteBatikDb()
-	
-	override fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity> =
-		mNaratikDao.GetLimitedBatik()
+	override fun getLimitedBatik() : DataSource.Factory<Int , BatikEntity> =
+		mNaratikDao.getLimitedBatik()
 	
 	
-	override fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>> =
-		mNaratikDao.GetAllPopularBatikDb()
+	override fun getAllPopularBatik() : LiveData<List<PopularBatikEntity>> =
+		mNaratikDao.getAllPopularBatikDb()
 	
-	override fun InsertBatik(value : List<BatikEntity>)
+	override fun insertBatik(value : List<BatikEntity>)
 	{
-		mNaratikDao.AddBatikDb(value)
-	}
-	
-	override fun insertPopularBatik(value : List<PopularBatikEntity>)
-	{
-		mNaratikDao.AddBatikPopularDb(value)
-	}
-	
-	override fun updateBatik(value : BatikEntity)
-	{
-		mNaratikDao.UpdateBatikDb(value)
+		mNaratikDao.addBatikDb(value)
 	}
 	
 	override fun updatePopularBatik(value : PopularBatikEntity)
 	{
-		mNaratikDao.UpdateBatikPopularDb(value)
+		mNaratikDao.updateBatikPopularDb(value)
 	}
 	
+	override fun updateBatik(value : BatikEntity)
+	{
+		mNaratikDao.updateBatikDb(value)
+	}
+	
+	
+	//Favorite
+	override fun checkFavouriteBatik() : LiveData<List<BatikEntity>> = mNaratikDao.getCheckFavoriteBatik()
+	
+	override fun getAllFavorite() : DataSource.Factory<Int , BatikEntity> = mNaratikDao.getAllFavoriteBatikDb()
+	
+	
+	
+	//Article
+	override fun insertPopularBatik(value : List<PopularBatikEntity>)
+	{
+		mNaratikDao.addBatikPopularDb(value)
+	}
+	
+	//Store
+	override fun insertShop(value : List<ShopEntity>) = mNaratikDao.insertShop(value)
+	
+	//Search
 	override fun searchData(value : String) : LiveData<List<BatikEntity>> = mNaratikDao.searchBatik(value)
 	
-	override fun InsertHistory(value : HistoryEntity) = mNaratikDao.AddHisstory(value)
+	override fun insertHistory(value : HistoryEntity) = mNaratikDao.addHistory(value)
 	
-	override fun DeleteHistory(value : HistoryEntity) = mNaratikDao.DelHistory(value)
+	override fun deleteHistory(value : HistoryEntity) = mNaratikDao.delHistory(value)
 	
-	override fun DeleteAllHistory() = mNaratikDao.DelAllHistory()
+	override fun deleteAllHistory() = mNaratikDao.delAllHistory()
 	
-	override fun GetAllHistory() = mNaratikDao.GetAllQueryHistory()
+	override fun getAllHistory() = mNaratikDao.getAllQueryHistory()
 	
-	override fun GetAllShop() : DataSource.Factory<Int , ShopEntity> =mNaratikDao.GetAllQueryShop()
-	
-	override fun InsertShop(value : List<ShopEntity>) = mNaratikDao.InsertShop(value)
+	override fun getAllShop() : DataSource.Factory<Int , ShopEntity> =mNaratikDao.getAllQueryShop()
 	
 	
 	

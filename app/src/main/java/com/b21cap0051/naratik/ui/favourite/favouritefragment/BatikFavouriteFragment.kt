@@ -49,7 +49,7 @@ class BatikFavouriteFragment : Fragment() , ItemBatikCallBack
 		favoriteBatikListAdapter = BatikPagedListAdapter(this)
 		binding.rvFavBatik.layoutManager =
 			LinearLayoutManager(requireActivity() , LinearLayoutManager.VERTICAL , false)
-		mainView.GetFavourite().observe(viewLifecycleOwner , { response ->
+		mainView.getFavourite().observe(viewLifecycleOwner , { response ->
 			when (response.Status)
 			{
 				Status.SUCCESS ->

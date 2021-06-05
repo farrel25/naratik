@@ -12,7 +12,7 @@ object naratikDependencys
 	{
 		val db = NaratikDB.CreateDB(ctx)
 		val remote = DataSourceService.GetInstance(ctx)
-		val local = LocalDataSource.GetIntansce(db.PrimaryDAO())
+		val local = LocalDataSource.getInstance(db.PrimaryDAO())
 		val ExecuteThread = ExecutedApp()
 		
 		return NaratikRepository(ctx , remote , local , ExecuteThread)

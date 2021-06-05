@@ -9,20 +9,29 @@ import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
 
 interface LocalDataInterface
 {
-	fun GetAllBatik() : DataSource.Factory<Int , BatikEntity>
-	fun CheckFavouriteBatik() : LiveData<List<BatikEntity>>
-	fun GetAllFavorite():DataSource.Factory<Int,BatikEntity>
-	fun GetLimitedBatik() : DataSource.Factory<Int , BatikEntity>
-	fun GetAllPopularBatik() : LiveData<List<PopularBatikEntity>>
-	fun InsertBatik(value : List<BatikEntity>)
+	//Batik
+	fun getAllBatik() : DataSource.Factory<Int , BatikEntity>
+	fun getLimitedBatik() : DataSource.Factory<Int , BatikEntity>
+	fun getAllPopularBatik() : LiveData<List<PopularBatikEntity>>
+	fun insertBatik(value : List<BatikEntity>)
 	fun insertPopularBatik(value : List<PopularBatikEntity>)
 	fun updateBatik(value : BatikEntity)
 	fun updatePopularBatik(value : PopularBatikEntity)
+	
+	//Favorite
+	fun checkFavouriteBatik() : LiveData<List<BatikEntity>>
+	fun getAllFavorite():DataSource.Factory<Int,BatikEntity>
+	
+	//Article
+	
+	//Store
+	fun getAllShop(): DataSource.Factory<Int,ShopEntity>
+	fun insertShop(value : List<ShopEntity>)
+	
+	//Search
 	fun searchData(value : String) : LiveData<List<BatikEntity>>
-	fun InsertHistory(value : HistoryEntity)
-	fun DeleteHistory(value : HistoryEntity)
-	fun DeleteAllHistory()
-	fun GetAllHistory():LiveData<List<HistoryEntity>>
-	fun GetAllShop(): DataSource.Factory<Int,ShopEntity>
-	fun InsertShop(value : List<ShopEntity>)
+	fun insertHistory(value : HistoryEntity)
+	fun deleteHistory(value : HistoryEntity)
+	fun deleteAllHistory()
+	fun getAllHistory():LiveData<List<HistoryEntity>>
 }
