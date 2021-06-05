@@ -1,5 +1,6 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -109,8 +110,6 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	private fun loadListBatik(value : PagedList<BatikEntity>)
 	{
 		adapterBatik = BatikPagedListAdapter(this)
-		
-		
 		var row = 2
 		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
@@ -122,10 +121,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		binding.rvBatik.adapter = adapterBatik
 		adapterBatik.submitList(value)
 
-
 		binding.shimmerLayout.visibility = View.GONE
-		
-		
 		
 		binding.btnShowAllBatik.setOnClickListener {
 			val intent = Intent(requireActivity() , BatikActivity::class.java)
@@ -184,7 +180,8 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 				0
 			                           )
 			mainView.addFavor(modelbaru)
-			v.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_outlined)
+			
+			v.btnItemFavBatik.setIconTintResource(R.color.red)
 			adapterBatik.notifyDataSetChanged()
 		}else{
 			val modelbaru = BatikEntity(
@@ -196,7 +193,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 				1
 			                           )
 			mainView.addFavor(modelbaru)
-			v.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_filled)
+			v.btnItemFavBatik.setIconTintResource(R.color.red)
 			adapterBatik.notifyDataSetChanged()
 		}
 	}

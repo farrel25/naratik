@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -65,18 +64,10 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack
 	inner class ItemTarget(val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
-		@SuppressLint("CheckResult")
 		fun bind(model : BatikEntity)
 		{
 			
 			
-			if(callBack.CheckIsFavor(model)){
-				binding.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_filled)
-				
-			}else{
-				
-				binding.btnItemFavBatik.setBackgroundColor(R.drawable.ic_love_outlined)
-			}
 			var height = 900
 			if (layoutPosition % 2 == 1)
 			{

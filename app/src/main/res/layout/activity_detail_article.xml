@@ -66,6 +66,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="end|bottom"
+        app:rippleColor="@color/white"
         app:tint="@android:color/white" />
 
     <androidx.core.widget.NestedScrollView

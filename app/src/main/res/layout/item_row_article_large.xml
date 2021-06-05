@@ -66,6 +66,7 @@
             android:id="@+id/btnItemFavArticle"
             style="@style/btn_favorite_icon"
             android:layout_marginEnd="8dp"
+            app:rippleColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/tvItemWriterArticle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvItemTitleArticle" />
