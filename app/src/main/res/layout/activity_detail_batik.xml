@@ -95,7 +95,7 @@
 
             <TextView
                 android:id="@+id/tvItemLocationBatik"
-                style="@style/text_16sp_regular"
+                style="@style/text_14sp_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -118,7 +118,7 @@
 
             <TextView
                 android:id="@+id/tvMeaning"
-                style="@style/text_16sp_regular"
+                style="@style/text_14sp_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

@@ -113,9 +113,9 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/brown_200"
-                android:text="@string/batk_to_home"
+                android:text="@string/back_to_camera"
                 android:textColor="@color/black"
-                app:icon="@drawable/ic_home_outlined"
+                app:icon="@drawable/ic_camera_outlined"
                 app:iconGravity="textStart"
                 app:iconSize="16dp"
                 app:iconTint="@color/black" />

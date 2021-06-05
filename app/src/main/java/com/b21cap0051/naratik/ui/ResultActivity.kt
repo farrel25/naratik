@@ -1,11 +1,13 @@
 package com.b21cap0051.naratik.ui
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.R
@@ -17,6 +19,8 @@ import com.b21cap0051.naratik.dataresource.remotedata.model.PredictResponse
 import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResponse
 import com.b21cap0051.naratik.mainview.PredictMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
+import com.b21cap0051.naratik.ui.cameraui.CameraActivity
+import com.b21cap0051.naratik.ui.home.HomeActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemResultCallback
 import com.b21cap0051.naratik.util.vo.Status
@@ -111,6 +115,11 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 				}
 			}
 		})
+		
+		binding.btnGoHome.setOnClickListener{
+			val intent = Intent(this , CameraActivity::class.java)
+			startActivity(intent)
+		}
 	}
 	
 	private fun loadActionBar()
@@ -190,8 +199,8 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		
 		val dataSet = PieDataSet(entries , "Technique Detect Result")
 		dataSet.setColors(
-			resources.getColor(R.color.grey_700) ,
-			resources.getColor(R.color.brown_200)
+			ContextCompat.getColor(applicationContext,R.color.black) ,
+			ContextCompat.getColor(applicationContext, R.color.brown_200)
 		                 )
 		
 		val data = PieData(dataSet)
@@ -208,5 +217,6 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 	
 	override fun itemResultClick(model : ResultModel)
 	{
+	
 	}
 }

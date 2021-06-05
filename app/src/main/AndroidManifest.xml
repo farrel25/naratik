@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.b21cap0051.naratik">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,7 +16,8 @@
         android:networkSecurityConfig="@xml/networksecurityconfig"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Naratik">
+        android:theme="@style/Theme.Naratik"
+        tools:targetApi="n">
         <activity android:name=".ui.StoreActivity">
 
         </activity>
@@ -27,7 +29,11 @@
         </activity>
         <activity
             android:name=".ui.cameraui.CameraActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity" />
 
         </activity>
         <activity
@@ -41,8 +47,20 @@
 
         </activity>
         <activity android:name=".ui.EditProfileActivity" />
-        <activity android:name=".ui.ArticleActivity" />
-        <activity android:name=".ui.BatikActivity" />
+        <activity android:name=".ui.ArticleActivity"
+            android:parentActivityName=".ui.home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity" />
+
+        </activity>
+        <activity android:name=".ui.BatikActivity"
+            android:parentActivityName=".ui.home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity" />
+
+        </activity>
         <activity android:name=".ui.DetailArticleActivity" />
         <activity android:name=".ui.DetailBatikActivity" />
         <activity android:name=".ui.SplashActivity">

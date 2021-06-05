@@ -82,7 +82,7 @@
 
             <TextView
                 android:id="@+id/tvArticleOverview"
-                style="@style/text_16sp_regular"
+                style="@style/text_14sp_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
