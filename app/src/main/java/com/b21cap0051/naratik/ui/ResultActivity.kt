@@ -199,7 +199,7 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		
 		val dataSet = PieDataSet(entries , "Technique Detect Result")
 		dataSet.setColors(
-			ContextCompat.getColor(applicationContext,R.color.black) ,
+			ContextCompat.getColor(applicationContext,R.color.blue_200) ,
 			ContextCompat.getColor(applicationContext, R.color.brown_200)
 		                 )
 		

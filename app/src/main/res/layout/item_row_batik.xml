@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="60.5dp"
             android:layout_gravity="bottom"
-            app:blurOverlayColor="#4D777D81">
+            app:blurOverlayColor="#46232D33">
 
             <TextView
                 android:id="@+id/tvItemNameBatik"

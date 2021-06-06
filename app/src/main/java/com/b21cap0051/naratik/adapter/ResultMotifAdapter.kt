@@ -1,11 +1,13 @@
 package com.b21cap0051.naratik.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowResultBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.MotifResponseItem
+import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.util.ItemResultCallback
 
 class ResultMotifAdapter(private val callback : ItemResultCallback) :
@@ -47,8 +49,8 @@ class ResultMotifAdapter(private val callback : ItemResultCallback) :
 		holder.bind(listMotifResult[position])
 		
 		holder.itemView.setOnClickListener {
-//			val intent =Intent(holder.itemView.context, DetailArticleActivity::class.java)
-//			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE,listArticle[position])
+//			val intent = Intent(holder.itemView.context, DetailBatikActivity::class.java)
+//			intent.putExtra(DetailBatikActivity.EXTRA_RESULT,listMotifResult[position].motifName)
 //			holder.itemView.context.startActivity(intent)
 		}
 	}

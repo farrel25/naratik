@@ -77,7 +77,7 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack
 			
 			binding.blurry.setupWith(binding.root)
 				.setBlurAlgorithm(RenderScriptBlur(itemView.context))
-				.setBlurRadius(20f)
+				.setBlurRadius(10f)
 				.setBlurAutoUpdate(true)
 				.setHasFixedTransformationMatrix(true)
 			
@@ -93,8 +93,6 @@ class BatikPagedListAdapter(private val callBack : ItemBatikCallBack
 			binding.tvItemNameBatik.text = model.name_batik
 			binding.tvItemLocationBatik.text =
 				itemView.resources.getString(R.string.batik_id , model.batik_id)
-			
-			
 			
 			
 			binding.cvBatik.setOnClickListener {

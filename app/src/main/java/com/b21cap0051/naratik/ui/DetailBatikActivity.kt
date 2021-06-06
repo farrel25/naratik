@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,17 +11,20 @@ import com.b21cap0051.naratik.adapter.BatikMiniListAdapter
 import com.b21cap0051.naratik.adapter.StoreAdapter
 import com.b21cap0051.naratik.databinding.ActivityDetailBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
+import com.b21cap0051.naratik.dataresource.datamodellist.ResultModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
+import com.b21cap0051.naratik.dataresource.remotedata.model.MotifResponseItem
 import com.b21cap0051.naratik.mainview.FavoriteMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemBatikCallBack
+import com.b21cap0051.naratik.util.ItemResultCallback
 import com.b21cap0051.naratik.util.ItemStoreCallback
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreCallback
+class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreCallback, ItemResultCallback
 {
 	private lateinit var binding : ActivityDetailBatikBinding
 	private lateinit var batikMiniAdapter : BatikMiniListAdapter
@@ -32,6 +34,7 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreC
 	companion object
 	{
 		const val EXTRA_BATIK = "extra_batik"
+		const val EXTRA_RESULT = "extra_result"
 	}
 	
 	override fun onCreate(savedInstanceState : Bundle?)
@@ -44,11 +47,11 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreC
 		mainView = ViewModelProvider(this , factory)[FavoriteMainView::class.java]
 		
 		batikMiniAdapter = BatikMiniListAdapter(this)
-		
-		loadActionBar()
 		loadDetail()
+		loadActionBar()
 		loadViewMore()
 		loadStore()
+//		loadResultDetail()
 		
 	}
 	
@@ -82,9 +85,13 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreC
 	private fun loadActionBar()
 	{
 		val btnBack : Button = findViewById(R.id.btnBack)
-		btnBack.setOnClickListener() {
+		btnBack.setOnClickListener {
 			super.onBackPressed()
 		}
+	}
+	
+	private fun loadResultDetail(){
+		binding.collapsingToolbar.title = EXTRA_RESULT
 	}
 	
 	override fun itemBatikClick(model : BatikEntity)
@@ -150,5 +157,10 @@ class DetailBatikActivity : AppCompatActivity() , ItemBatikCallBack , ItemStoreC
 	
 	override fun itemStoreClick(model : StoreEntity)
 	{
+	}
+	
+	override fun itemResultClick(model : ResultModel)
+	{
+	
 	}
 }
