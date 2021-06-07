@@ -1,6 +1,7 @@
 package com.b21cap0051.naratik.ui
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -24,7 +25,6 @@ import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.ItemCallbackHistory
-import com.b21cap0051.naratik.util.vo.Status
 import com.b21cap0051.naratik.util.vo.Status.*
 
 class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack,ItemCallbackHistory
@@ -54,26 +54,24 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		{
 			override fun onQueryTextSubmit(query : String?) : Boolean
 			{
-				if (query != null)
+				if (query != null && TextUtils.getTrimmedLength(query) > 0)
 				{
 					findItem(query)
-					viewModel.AddHistory(HistoryEntity(0,query))
+					viewModel.AddHistory(HistoryEntity(0 , query))
 					binding.rvSearchBatik.visibility = View.VISIBLE
 					binding.llSearch.visibility = View.GONE
-					return true
 				}
 				return false
 			}
 			
 			override fun onQueryTextChange(newText : String?) : Boolean
 			{
-				if (newText != null)
+				
+				 if (newText != null)
 				{
-					findItem(newText)
-					viewModel.AddHistory(HistoryEntity(0,newText))
+			//					findItem(newText)
 					binding.rvSearchBatik.visibility = View.VISIBLE
 					binding.llSearch.visibility = View.GONE
-					return true
 				}
 				return false
 			}
@@ -91,12 +89,20 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	
 	private fun findItem(text : String)
 	{
-		viewModel.GetSearch(text).observe(this , {
-		     response ->
-			when(response.Status){
-				SUCCESS -> {
-					
+		viewModel.GetSearch(text).observe(this , { response ->
+			when (response.Status)
+			{
+				SUCCESS ->
+				{
 					loadSearch(response.Data!!)
+				}
+				LOADING ->
+				{
+				
+				}
+				ERROR   ->
+				{
+				
 				}
 			}
 		})
@@ -109,7 +115,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			this ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
-		                                                         )
+		                                                                )
 		binding.rvSearchPopularBatik.adapter = batikMiniAdapter
 		val listBatik = DataDummy.generateDummyBatik()
 		batikMiniAdapter.setList(listBatik)
@@ -134,7 +140,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			this ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
-		                                                           )
+		                                                                  )
 		binding.rvSearchPopularArticle.adapter = articleMiniAdapter
 		val listArticle = DataDummy.generateDummyArticle()
 		articleMiniAdapter.setList(listArticle)
@@ -145,12 +151,13 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 		binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
 		binding.rvSearchHistory.adapter =adapterHistory
 		
-		viewModel.GetALLHistory().observe(this,{
-			response ->
-			if(response?.size != 0){
+		viewModel.GetALLHistory().observe(this , { response ->
+			if (response?.size != 0)
+			{
 				adapterHistory.setList(response)
 				binding.rvSearchHistory.visibility = View.VISIBLE
-			}else{
+			} else
+			{
 				binding.rvSearchHistory.visibility = View.VISIBLE
 			}
 		})
@@ -178,22 +185,22 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	{
 		if(CheckIsFavor(model)){
 			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
+				model.batik_id ,
+				model.name_batik ,
+				model.makna_batik ,
+				model.Image ,
+				model.daerah_batik ,
 				0
 			                           )
 			viewModel.addFavor(modelbaru)
 			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_outlined)
 		}else{
 			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
+				model.batik_id ,
+				model.name_batik ,
+				model.makna_batik ,
+				model.Image ,
+				model.daerah_batik ,
 				1
 			                           )
 			viewModel.addFavor(modelbaru)
@@ -204,9 +211,11 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	override fun CheckIsFavor(model : BatikEntity) : Boolean
 	{
 		var stat = false
-		viewModel.checkFavorite().observe(this,{
-			for (element in it){
-				if(model.batik_id == element.batik_id){
+		viewModel.checkFavorite().observe(this , {
+			for (element in it)
+			{
+				if (model.batik_id == element.batik_id)
+				{
 					stat = true
 				}
 			}
