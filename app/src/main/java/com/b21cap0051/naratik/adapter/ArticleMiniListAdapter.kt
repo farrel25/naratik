@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleMiniBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
-import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import java.util.*
 
-class ArticleMiniListAdapter(private val callback : ItemArticleCallBack) :
+class ArticleMiniListAdapter :
 	RecyclerView.Adapter<ArticleMiniListAdapter.ItemTarget>()
 {
 	

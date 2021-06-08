@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowBatikFavoriteBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.mainview.FavoriteMainView
-import com.b21cap0051.naratik.ui.DetailBatikActivity
+import com.b21cap0051.naratik.viewmodel.FavoriteMainView
+import com.b21cap0051.naratik.view.DetailBatikActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 

@@ -6,9 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowResultBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.MotifResponseItem
-import com.b21cap0051.naratik.util.ItemResultCallback
 
-class ResultMotifAdapter(private val callback : ItemResultCallback) :
+class ResultMotifAdapter() :
 	RecyclerView.Adapter<ResultMotifAdapter.ItemTarget>()
 {
 	

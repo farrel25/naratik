@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowProductBinding
 import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
-import com.b21cap0051.naratik.util.ItemProductCallback
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.util.*
 
-class ProductAdapter(private val callBack : ItemProductCallback) :
+class ProductAdapter() :
 	RecyclerView.Adapter<ProductAdapter.ItemTarget>()
 {
 	

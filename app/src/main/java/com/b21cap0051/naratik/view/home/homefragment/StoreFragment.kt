@@ -1,0 +1,98 @@
+package com.b21cap0051.naratik.view.home.homefragment
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.b21cap0051.naratik.adapter.ProductAdapter
+import com.b21cap0051.naratik.adapter.StoreAdapter
+import com.b21cap0051.naratik.databinding.FragmentStoreBinding
+import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
+import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
+import com.b21cap0051.naratik.view.StoreActivity
+import com.b21cap0051.naratik.util.DataDummy
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
+
+
+class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
+{
+	
+	private var _binding : FragmentStoreBinding? = null
+	private val binding get() = _binding as FragmentStoreBinding
+	private lateinit var productAdapter : ProductAdapter
+	private lateinit var storeAdapter : StoreAdapter
+	
+	override fun onCreateView(
+		inflater : LayoutInflater ,
+		container : ViewGroup? ,
+		savedInstanceState : Bundle?
+	                         ) : View
+	{
+		_binding = FragmentStoreBinding.inflate(layoutInflater , container , false)
+		return binding.root
+	}
+	
+	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
+	{
+		super.onViewCreated(view , savedInstanceState)
+		val slideModel : ArrayList<SlideModel> = arrayListOf()
+		
+		loadStore()
+		loadProduct()
+		
+		slideModel.add(SlideModel("https://cdn-2.tstatic.net/tribunnews/foto/bank/images/promo-yang-ditawarkan-untuk-memperingati-hari-batik-nasional_20181002_125726.jpg"))
+		slideModel.add(SlideModel("https://malangstrudel.com/wp-content/uploads/2019/10/WEB-HARI-BATIK.jpg"))
+		slideModel.add(SlideModel("https://images.milledcdn.com/2018-10-01/TFObbj4W4lz_Qidg/DrKAk8Mhw9Uf.jpg"))
+		
+		binding.isEc.setImageList(slideModel , ScaleTypes.CENTER_CROP)
+		
+	}
+	
+	private fun loadStore()
+	{
+		storeAdapter = StoreAdapter(this)
+		binding.rvStore.layoutManager = LinearLayoutManager(
+			requireActivity() ,
+			LinearLayoutManager.HORIZONTAL ,
+			false
+		                                                   )
+		binding.rvStore.adapter = storeAdapter
+		val listStore = DataDummy.generateDummyStore()
+		storeAdapter.setList(listStore)
+		
+		binding.btnShowAllStore.setOnClickListener() {
+			val intent = Intent(requireActivity() , StoreActivity::class.java)
+			startActivity(intent)
+		}
+	}
+	
+	private fun loadProduct()
+	{
+		productAdapter = ProductAdapter(this)
+		binding.rvProduct.layoutManager = LinearLayoutManager(
+			requireActivity() ,
+			LinearLayoutManager.HORIZONTAL ,
+			false
+		                                                     )
+		binding.rvProduct.adapter = productAdapter
+		val listProduct = DataDummy.generateDummyProduct()
+		productAdapter.setList(listProduct)
+	}
+	
+	companion object
+	{
+	
+	}
+	
+	override fun itemProductClick(model : ProductEntity)
+	{
+	}
+	
+	override fun itemStoreClick(model : StoreEntity)
+	{
+	}
+}

@@ -18,55 +18,55 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Naratik"
         tools:targetApi="n">
-        <activity android:name=".ui.StoreActivity">
+        <activity android:name=".view.StoreActivity">
 
         </activity>
-        <activity android:name=".ui.SearchActivity">
+        <activity android:name=".view.SearchActivity">
 
         </activity>
-        <activity android:name=".ui.register.AccountActivity">
+        <activity android:name=".view.register.AccountActivity">
 
         </activity>
         <activity
-            android:name=".ui.cameraui.CameraActivity"
-            android:parentActivityName=".ui.home.HomeActivity"
+            android:name=".view.cameraui.CameraActivity"
+            android:parentActivityName=".view.home.HomeActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
+                android:value=".view.home.HomeActivity" />
 
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".view.home.HomeActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ui.onboarding.OnBoardingActivity" />
-        <activity android:name=".ui.favourite.FavouriteActivity" />
-        <activity android:name=".ui.ResultActivity">
+        <activity android:name=".view.onboarding.OnBoardingActivity" />
+        <activity android:name=".view.favourite.FavouriteActivity" />
+        <activity android:name=".view.ResultActivity">
 
         </activity>
-        <activity android:name=".ui.EditProfileActivity" />
+        <activity android:name=".view.EditProfileActivity" />
         <activity
-            android:name=".ui.ArticleActivity"
-            android:parentActivityName=".ui.home.HomeActivity">
+            android:name=".view.ArticleActivity"
+            android:parentActivityName=".view.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
+                android:value=".view.home.HomeActivity" />
 
         </activity>
         <activity
-            android:name=".ui.BatikActivity"
-            android:parentActivityName=".ui.home.HomeActivity">
+            android:name=".view.BatikActivity"
+            android:parentActivityName=".view.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
+                android:value=".view.home.HomeActivity" />
 
         </activity>
-        <activity android:name=".ui.DetailArticleActivity" />
-        <activity android:name=".ui.DetailBatikActivity" />
+        <activity android:name=".view.DetailArticleActivity" />
+        <activity android:name=".view.DetailBatikActivity" />
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/SplashScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,8 +74,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.FeedbackActivity" />
-        <activity android:name=".ui.SettingActivity" />
+        <activity android:name=".view.FeedbackActivity" />
+        <activity android:name=".view.SettingActivity" />
     </application>
 
 </manifest>

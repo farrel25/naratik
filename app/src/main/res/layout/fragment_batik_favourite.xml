@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favourite.favouritefragment.BatikFavouriteFragment">
+    tools:context=".view.favourite.favouritefragment.BatikFavouriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavBatik"

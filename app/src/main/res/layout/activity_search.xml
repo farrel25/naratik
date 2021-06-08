@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.SearchActivity">
+    tools:context=".view.SearchActivity">
 
     <include layout="@layout/custom_action_bar_back_title" />
 

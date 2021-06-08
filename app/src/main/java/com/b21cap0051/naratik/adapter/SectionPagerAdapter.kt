@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.b21cap0051.naratik.R
-import com.b21cap0051.naratik.ui.favourite.favouritefragment.ArticleFavouriteFragment
-import com.b21cap0051.naratik.ui.favourite.favouritefragment.BatikFavouriteFragment
+import com.b21cap0051.naratik.view.favourite.favouritefragment.ArticleFavouriteFragment
+import com.b21cap0051.naratik.view.favourite.favouritefragment.BatikFavouriteFragment
 
 class SectionPagerAdapter(private val mContext : Context , fm : FragmentManager) :
 	FragmentPagerAdapter(fm , BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)

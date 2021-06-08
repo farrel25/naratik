@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowAllStoreBinding
 import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
-import com.b21cap0051.naratik.util.ItemStoreCallback
 
-class StoreAllAdapter(private val callBack : ItemStoreCallback) :
+class StoreAllAdapter :
 	PagedListAdapter<ShopEntity , StoreAllAdapter.ItemTarget>(DIFF_CALLBACK)
 {
 	

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".ui.home.homefragment.ExploreFragment">
+    tools:context=".view.home.homefragment.ExploreFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowBatikMiniBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import eightbitlab.com.blurview.RenderScriptBlur
 import java.util.*
 
-class BatikMiniListAdapter(private val callBack : ItemBatikCallBack) :
+class BatikMiniListAdapter :
 	RecyclerView.Adapter<BatikMiniListAdapter.ItemTarget>()
 {
 	
