@@ -1,0 +1,3 @@
+## Cloud Function Using Python in Google Cloud Platform
+# Overview
+This simple python code is used to automate request to our deployed REST API that serve motif and technique prediction. This function will run automatically when there is new object on our Google Cloud Storage Bucket. This function will send HTTP GET request to our endpoint with the required headers, and trigger our machine learning model to make a prediction and store it to the Google Firestore Database, so our Android Application can request the prediction result.
