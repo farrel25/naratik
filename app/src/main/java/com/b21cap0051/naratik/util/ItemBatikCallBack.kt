@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.util
 
-import android.view.View
 import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 
@@ -11,6 +10,4 @@ interface ItemBatikCallBack
 	fun itemBatikClick(model : BatikEntity)
 	
 	fun AddFavour(v: ItemRowBatikBinding , model : BatikEntity)
-	
-	
 }

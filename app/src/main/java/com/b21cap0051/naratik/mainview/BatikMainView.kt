@@ -2,25 +2,26 @@ package com.b21cap0051.naratik.mainview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.NaratikRepository
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.util.vo.Resource
 
 class BatikMainView(private val Repository : NaratikRepository) : ViewModel()
 {
 	
-	fun getAllbatik() : LiveData<Resource<PagedList<BatikEntity>>> =
+	fun getAllbatik() : LiveData<Resource<List<BatikEntity>>> =
 		Repository.GetAllBatik()
 	
-	fun getLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>> =
-		Repository.GetLimitedBatik()
+	fun getPopularbatik() : LiveData<Resource<List<PopularBatikEntity>>> =
+		Repository.GetPopular()
 	
-	fun addFavor(model : BatikEntity) = Repository.AddLikedBatik(model)
-
-	fun checkFavorite():LiveData<List<BatikEntity>> = Repository.GetCheckFavorite()
+	fun getAllbatikRandom() : LiveData<Resource<List<BatikEntity>>> =
+		Repository.GetAllBatikRandomDb()
 	
-	fun getFavourAllbatik() : LiveData<Resource<PagedList<BatikEntity>>> =
-		Repository.GetAllFavorite()
+	
+	fun setFavorite(model : BatikEntity) = Repository.updateLikedBatik(model)
+	
+	fun getAllFavoriteDb() : LiveData<Resource<List<BatikEntity>>> = Repository.GetAllFavorite()
 	
 }

@@ -13,7 +13,7 @@ class UploadMainView(private val repository : NaratikRepository) : ViewModel()
 		repository.InsertUploadImage(model)
 	}
 	
-	fun IsCOnnected() : LiveData<Resource<Boolean>> = repository.getInternetConnect()
+	fun IsConnected() : LiveData<Resource<Boolean>> = repository.getInternetConnect()
 	
-	fun IsDone() : LiveData<Resource<Boolean>> = repository.IsDone()
+	fun IsDone() : LiveData<Resource<Boolean>> = repository.isDone()
 }

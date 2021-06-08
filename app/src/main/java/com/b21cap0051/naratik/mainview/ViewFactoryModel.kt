@@ -52,6 +52,7 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 			{
 				FavoriteMainView(mRepo) as T
 			}
+		
 			else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
 		}
 	}

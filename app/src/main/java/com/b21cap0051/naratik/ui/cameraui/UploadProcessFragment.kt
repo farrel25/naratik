@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
@@ -17,7 +16,6 @@ import com.b21cap0051.naratik.mainview.UploadMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ResultActivity
 import com.b21cap0051.naratik.ui.ResultActivity.Companion.KEY_DATA
-import com.b21cap0051.naratik.util.vo.Status
 import com.b21cap0051.naratik.util.vo.Status.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -49,7 +47,7 @@ class UploadProcessFragment : DialogFragment()
 		
 		mainView.uploadFile(modelData)
 		
-		mainView.IsCOnnected().observe(viewLifecycleOwner , { response ->
+		mainView.IsConnected().observe(viewLifecycleOwner , { response ->
 			when (response.Status)
 			{
 				SUCCESS ->

@@ -2,16 +2,16 @@ package com.b21cap0051.naratik.mainview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 import com.b21cap0051.naratik.dataresource.NaratikRepository
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.util.vo.Resource
 
-class FavoriteMainView(private val repo : NaratikRepository):ViewModel()
+class FavoriteMainView(private val repo : NaratikRepository) : ViewModel()
 {
-	fun getFavourite(): LiveData<Resource<PagedList<BatikEntity>>> = repo.GetAllFavorite()
 	
-	fun addFavor(model : BatikEntity) = repo.AddLikedBatik(model)
+	fun getAllFavourite() : LiveData<Resource<List<BatikEntity>>> = repo.GetAllFavorite()
 	
-	fun checkFavorite():LiveData<List<BatikEntity>> = repo.GetCheckFavorite()
+	fun setFavorite(model : BatikEntity) = repo.updateLikedBatik(model)
+	
+	
 }

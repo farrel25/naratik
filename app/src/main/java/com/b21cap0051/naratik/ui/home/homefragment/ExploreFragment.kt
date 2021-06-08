@@ -1,10 +1,8 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
-import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
+import com.b21cap0051.naratik.adapter.BatikListAdapter
+import com.b21cap0051.naratik.adapter.PopularBatikAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
@@ -30,12 +28,11 @@ import com.b21cap0051.naratik.ui.BatikActivity
 import com.b21cap0051.naratik.ui.SearchActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
-import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
 
 
-class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
+class ExploreFragment : Fragment(),ItemArticleCallBack
 {
 	
 	private var _binding : FragmentExploreBinding? = null
@@ -44,7 +41,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 	
 	private var listShimmer : ArrayList<ShimmerModel> = arrayListOf()
 	private lateinit var adapterArticle : ArticleListAdapter
-	private lateinit var adapterBatik : BatikPagedListAdapter
+	private lateinit var adapterBatik : BatikListAdapter
 	private lateinit var adapterShimmer : ShimmerBatikListAdapter
 	
 	
@@ -73,9 +70,10 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(requireActivity()))
 		mainView = ViewModelProvider(requireActivity() , factory)[BatikMainView::class.java]
+	
 		loadShimmerBatikList()
 		
-		mainView.getLimitedBatik().observe(viewLifecycleOwner , { response ->
+		mainView.getAllbatikRandom().observe(viewLifecycleOwner , { response ->
 			when (response.Status)
 			{
 				Status.SUCCESS ->
@@ -100,16 +98,14 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 			val move = Intent(requireContext() , SearchActivity::class.java)
 			startActivity(move)
 			onPause()
-		
 		}
-		
 		
 		loadListArticle()
 	}
 	
-	private fun loadListBatik(value : PagedList<BatikEntity>)
+	private fun loadListBatik(value : List<BatikEntity>)
 	{
-		adapterBatik = BatikPagedListAdapter(this)
+		adapterBatik = BatikListAdapter(requireContext(),mainView)
 		var row = 2
 		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
@@ -119,7 +115,7 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		binding.rvBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
-		adapterBatik.submitList(value)
+		adapterBatik.setList(value)
 
 		binding.shimmerLayout.visibility = View.GONE
 		
@@ -161,63 +157,6 @@ class ExploreFragment : Fragment() , ItemBatikCallBack , ItemArticleCallBack
 		}
 	}
 	
-	
-	
-	override fun itemBatikClick(model : BatikEntity)
-	{
-	
-	}
-	
-	override fun AddFavour(v : ItemRowBatikBinding , model : BatikEntity)
-	{
-		if(CheckIsFavor(model)){
-			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
-				0
-			                           )
-			mainView.addFavor(modelbaru)
-			
-			v.btnItemFavBatik.setIconTintResource(R.color.red)
-			adapterBatik.notifyDataSetChanged()
-		}else{
-			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
-				1
-			                           )
-			mainView.addFavor(modelbaru)
-			v.btnItemFavBatik.setIconTintResource(R.color.red)
-			adapterBatik.notifyDataSetChanged()
-		}
-	}
-	
-	override fun CheckIsFavor(model : BatikEntity) : Boolean
-	{
-		var stat = false
-		mainView.getFavourAllbatik().observe(viewLifecycleOwner,{
-				response ->
-			when(response.Status){
-				Status.SUCCESS -> {
-					for (i in  0 until response.Data?.size!!){
-						if(response.Data[i]?.batik_id == model.batik_id){
-							Log.d("TESAPP","$response.Data[i]?.batik_id")
-							stat = true
-							Log.d("TESAPP","$stat")
-							break
-						}
-					}
-				}
-			}
-		})
-		return stat
-	}
 	
 	override fun itemArticleClick(model : ArticleModel)
 	{

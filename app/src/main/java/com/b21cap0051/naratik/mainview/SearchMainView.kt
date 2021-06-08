@@ -11,13 +11,11 @@ class SearchMainView(private val repo : NaratikRepository):ViewModel(){
 	
 	fun GetSearch(text : String):LiveData<Resource<List<BatikEntity>>> = repo.searchBatik(text)
 	
-	fun AddHistory(value : HistoryEntity) = repo.InsertHistory(value)
+	fun AddHistory(value : HistoryEntity) = repo.insertHistory(value)
 	
-	fun DelHistory(value : HistoryEntity) = repo.DeleteHistory(value)
+	fun DelHistory(value : HistoryEntity) = repo.deleteHistory(value)
 	
-	fun addFavor(model : BatikEntity) = repo.AddLikedBatik(model)
-	
-	fun checkFavorite():LiveData<List<BatikEntity>> = repo.GetCheckFavorite()
+	fun setFavorite(model : BatikEntity) = repo.updateLikedBatik(model)
 	
 	fun GetALLHistory():LiveData<List<HistoryEntity>> = repo.GetAllHistory()
 	

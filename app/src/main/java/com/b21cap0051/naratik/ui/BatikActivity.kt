@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.ui
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -10,21 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.R
-import com.b21cap0051.naratik.adapter.BatikPagedListAdapter
+import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.ActivityBatikBinding
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
-import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
-import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
 import com.google.android.material.snackbar.Snackbar
 
-class BatikActivity : AppCompatActivity() , ItemBatikCallBack
+class BatikActivity : AppCompatActivity()
 {
 	
-	private lateinit var batikPaged : BatikPagedListAdapter
+	private lateinit var batik : BatikListAdapter
 	private lateinit var binding : ActivityBatikBinding
 	private lateinit var mainView : BatikMainView
 	
@@ -35,7 +31,6 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 		setContentView(binding.root)
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(this))
 		mainView = ViewModelProvider(this , factory)[BatikMainView::class.java]
-		
 		loadActionBar()
 		
 		var row = 2
@@ -47,7 +42,7 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 		binding.rvAllBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		
-		batikPaged = BatikPagedListAdapter(this)
+		batik = BatikListAdapter(this,mainView)
 		
 		
 		mainView.getAllbatik().observe(this , { response ->
@@ -56,8 +51,8 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 				Status.SUCCESS ->
 				{
 					binding.laiLoading.visibility = View.GONE
-					binding.rvAllBatik.adapter = batikPaged
-					batikPaged.submitList(response.Data)
+					binding.rvAllBatik.adapter = batik
+					batik.setList(response.Data!!)
 				}
 				Status.ERROR   ->
 				{
@@ -84,47 +79,4 @@ class BatikActivity : AppCompatActivity() , ItemBatikCallBack
 		}
 	}
 	
-	override fun itemBatikClick(model : BatikEntity)
-	{
-	}
-	
-	override fun AddFavour(v : ItemRowBatikBinding , model : BatikEntity)
-	{
-		if(CheckIsFavor(model)){
-			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
-				0
-			                           )
-			mainView.addFavor(modelbaru)
-			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_outlined)
-		}else{
-			val modelbaru = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
-				1
-			                           )
-			mainView.addFavor(modelbaru)
-			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_filled)
-		}
-	}
-	
-	override fun CheckIsFavor(model : BatikEntity) : Boolean
-	{
-		var stat = false
-		mainView.checkFavorite().observe(this,{
-			for (i in 0 until it.size){
-				if(model.batik_id == it[i].batik_id){
-					stat = true
-				}
-			}
-		})
-		return stat
-	}
 }

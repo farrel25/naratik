@@ -14,48 +14,46 @@ import com.b21cap0051.naratik.util.voapi.ApiResponse
 
 interface NaratikRepoInterface
 {
-	fun GetAllBatik() : LiveData<Resource<PagedList<BatikEntity>>>
+	//Batik
+	fun GetAllBatik() : LiveData<Resource<List<BatikEntity>>>
 	
-	fun GetAllShop():LiveData<Resource<PagedList<ShopEntity>>>
+	fun GetAllBatikRandomDb() : LiveData<Resource<List<BatikEntity>>>
 	
-	fun GetAllFavorite():LiveData<Resource<PagedList<BatikEntity>>>
-	
-	fun GetCheckFavorite():LiveData<List<BatikEntity>>
-	
-	
-	fun GetLimitedBatik() : LiveData<Resource<PagedList<BatikEntity>>>
+	fun GetAllFavorite():LiveData<Resource<List<BatikEntity>>>
 	
 	fun GetPopular() : LiveData<Resource<List<PopularBatikEntity>>>
 	
+	fun updateLikedBatik(value : BatikEntity)
+	
+	//Shop
+	fun GetAllShop():LiveData<Resource<PagedList<ShopEntity>>>
+	
+	//Upload
 	fun InsertUploadImage(upload : ImageUploadModel)
 	
 	fun getInternetConnect() : LiveData<Resource<Boolean>>
 	
-	fun IsDone() : LiveData<Resource<Boolean>>
+	fun isDone() : LiveData<Resource<Boolean>>
 	
+	//Search
 	fun searchBatik(id : String) : LiveData<Resource<List<BatikEntity>>>
 	
-	fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
+	//Result prediction
+	fun getPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
 	
-	fun GetTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
+	fun getTechniquePredict(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
 	
-	fun IsDoneMotif() : LiveData<Resource<Boolean>>
+	fun isDoneMotif() : LiveData<Resource<Boolean>>
 	
-	fun IsDoneTechnique() : LiveData<Resource<Boolean>>
+	fun isDoneTechnique() : LiveData<Resource<Boolean>>
 	
-	fun InsertHistory(value : HistoryEntity)
-	
-	fun DeleteHistory(value : HistoryEntity)
-	
-	fun DeleteAllHistory()
-	
-	fun AddLikedBatik(value : BatikEntity)
-	
-	fun DelLikeBatik(value : BatikEntity)
-	
+	//History
 	fun GetAllHistory():LiveData<List<HistoryEntity>>
 	
+	fun insertHistory(value : HistoryEntity)
 	
+	fun deleteHistory(value : HistoryEntity)
 	
+	fun deleteAllHistory()
 	
 }

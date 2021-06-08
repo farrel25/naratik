@@ -6,21 +6,24 @@ import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
+import com.b21cap0051.naratik.util.vo.Resource
 
 interface LocalDataInterface
 {
 	//Batik
-	fun getAllBatik() : DataSource.Factory<Int , BatikEntity>
-	fun getLimitedBatik() : DataSource.Factory<Int , BatikEntity>
-	fun getAllPopularBatik() : LiveData<List<PopularBatikEntity>>
+	fun getAllBatik() : LiveData<List<BatikEntity>>
+	fun getAllBatikRandomLimit() : LiveData<List<BatikEntity>>
 	fun insertBatik(value : List<BatikEntity>)
+	
+	
+	
+	//Popular Batik
+	fun getAllPopularBatik() : LiveData<List<PopularBatikEntity>>
 	fun insertPopularBatik(value : List<PopularBatikEntity>)
-	fun updatePopularBatik(value : PopularBatikEntity)
 	
 	//Favorite
 	fun checkFavouriteBatik() : LiveData<List<BatikEntity>>
-	fun getAllFavoriteBatik():DataSource.Factory<Int,BatikEntity>
-	fun setAllFavoriteBatik(value : BatikEntity)
+	fun setFavoriteBatik(value : BatikEntity)
 	
 	//Article
 	

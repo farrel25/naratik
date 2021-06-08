@@ -27,7 +27,7 @@ import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.ItemCallbackHistory
 import com.b21cap0051.naratik.util.vo.Status.*
 
-class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack,ItemCallbackHistory
+class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack , ItemCallbackHistory
 {
 	private lateinit var binding : ActivitySearchBinding
 	private lateinit var articleMiniAdapter : ArticleMiniListAdapter
@@ -177,6 +177,11 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	{
 	}
 	
+	override fun CheckIsFavor(model : BatikEntity) : Boolean
+	{
+		TODO("Not yet implemented")
+	}
+	
 	override fun itemBatikClick(model : BatikEntity)
 	{
 	}
@@ -192,7 +197,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				model.daerah_batik ,
 				0
 			                           )
-			viewModel.addFavor(modelbaru)
+			viewModel.setFavorite(modelbaru)
 			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_outlined)
 		}else{
 			val modelbaru = BatikEntity(
@@ -203,25 +208,11 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 				model.daerah_batik ,
 				1
 			                           )
-			viewModel.addFavor(modelbaru)
+			viewModel.setFavorite(modelbaru)
 			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_filled)
 		}
 	}
 	
-	override fun CheckIsFavor(model : BatikEntity) : Boolean
-	{
-		var stat = false
-		viewModel.checkFavorite().observe(this , {
-			for (element in it)
-			{
-				if (model.batik_id == element.batik_id)
-				{
-					stat = true
-				}
-			}
-		})
-		return stat
-	}
 	
 	
 	override fun getItem(model : HistoryEntity)

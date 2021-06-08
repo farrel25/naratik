@@ -260,8 +260,8 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			{
 				if(response.isSuccessful){
 					if(response.body() != null){
-						val responData = response.body() as ShopResponse
-						MutableData.postValue(ApiResponse.success(responData))
+						val responData = response.body()
+						MutableData.postValue(ApiResponse.success(responData!!))
 					}
 				}
 			}
