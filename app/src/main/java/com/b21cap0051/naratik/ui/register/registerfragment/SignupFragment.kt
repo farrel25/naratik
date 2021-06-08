@@ -26,6 +26,6 @@ class SignupFragment : Fragment()
 	
 	companion object
 	{
-	
+
 	}
 }

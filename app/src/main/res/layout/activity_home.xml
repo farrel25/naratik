@@ -9,15 +9,17 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-            <include
-                android:id="@+id/actionBarItem"
-                layout="@layout/custom_action_bar_logo_favorite" />
+
+        <include
+            android:id="@+id/actionBarItem"
+            layout="@layout/custom_action_bar_logo_favorite" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/HomeFragmentActivity"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -32,18 +34,17 @@
         android:id="@+id/fabCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:clickable="true"
         android:contentDescription="@string/button"
         android:focusable="true"
-        android:clickable="true"
         android:src="@drawable/ic_camera_outlined"
-        android:backgroundTint="@color/black"
         app:borderWidth="0dp"
-        app:rippleColor="@color/white"
-        app:tint="@android:color/white"
         app:fabSize="normal"
         app:layout_anchor="@id/bottomBar"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-         />
+        app:rippleColor="@color/white"
+        app:tint="@android:color/white" />
 
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -61,12 +62,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
-            app:itemRippleColor="@null"
             android:background="@android:color/transparent"
             app:itemIconTint="@drawable/item_selector"
+            app:itemRippleColor="@null"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_bottom_nav"
-            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"/>
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            app:menu="@menu/menu_bottom_nav" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 

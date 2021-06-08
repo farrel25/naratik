@@ -7,8 +7,6 @@
     tools:context=".ui.cameraui.CameraActivity">
 
 
-
-
     <androidx.camera.view.PreviewView
         android:id="@+id/cameraFinder"
         android:layout_width="match_parent"
@@ -31,18 +29,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-<!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/btnAlbum"-->
-<!--            android:layout_width="48dp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:layout_gravity="center|end"-->
-<!--            android:insetTop="0dp"-->
-<!--            android:insetBottom="0dp"-->
-<!--            app:cornerRadius="50dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btnCapture"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <!--            android:id="@+id/btnAlbum"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:layout_gravity="center|end"-->
+        <!--            android:insetTop="0dp"-->
+        <!--            android:insetBottom="0dp"-->
+        <!--            app:cornerRadius="50dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/btnCapture"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCapture"

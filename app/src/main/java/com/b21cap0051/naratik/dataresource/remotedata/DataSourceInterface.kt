@@ -12,10 +12,10 @@ interface DataSourceInterface
 	
 	fun UploadImage(upload : ImageUploadModel)
 	
-	fun GetPredictMotif(id : String):LiveData<ApiResponse<PredictResponse>>
+	fun GetPredictMotif(id : String) : LiveData<ApiResponse<PredictResponse>>
 	
-	fun GetPredicTechnique(id : String):LiveData<ApiResponse<TechniquePredictResponse>>
+	fun GetPredicTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>>
 	
-	fun GetAllShop():LiveData<ApiResponse<ShopResponse>>
+	fun GetAllShop() : LiveData<ApiResponse<ShopResponse>>
 }
 

@@ -21,12 +21,12 @@
             android:layout_height="120dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/image"
-            app:shapeAppearanceOverlay="@style/roundedImage"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvItemDateArticle"
+            app:shapeAppearanceOverlay="@style/roundedImage"
             app:srcCompat="@drawable/img_dummy" />
 
         <TextView
@@ -66,9 +66,9 @@
             android:id="@+id/btnItemFavArticle"
             style="@style/btn_favorite_icon"
             android:layout_marginEnd="8dp"
-            app:rippleColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/tvItemWriterArticle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvItemTitleArticle" />
+            app:layout_constraintTop_toTopOf="@+id/tvItemTitleArticle"
+            app:rippleColor="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

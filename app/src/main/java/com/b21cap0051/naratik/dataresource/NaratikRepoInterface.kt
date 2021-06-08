@@ -19,14 +19,14 @@ interface NaratikRepoInterface
 	
 	fun GetAllBatikRandomDb() : LiveData<Resource<List<BatikEntity>>>
 	
-	fun GetAllFavorite():LiveData<Resource<List<BatikEntity>>>
+	fun GetAllFavorite() : LiveData<Resource<List<BatikEntity>>>
 	
 	fun GetPopular() : LiveData<Resource<List<PopularBatikEntity>>>
 	
 	fun updateLikedBatik(value : BatikEntity)
 	
 	//Shop
-	fun GetAllShop():LiveData<Resource<PagedList<ShopEntity>>>
+	fun GetAllShop() : LiveData<Resource<PagedList<ShopEntity>>>
 	
 	//Upload
 	fun InsertUploadImage(upload : ImageUploadModel)
@@ -48,7 +48,7 @@ interface NaratikRepoInterface
 	fun isDoneTechnique() : LiveData<Resource<Boolean>>
 	
 	//History
-	fun GetAllHistory():LiveData<List<HistoryEntity>>
+	fun GetAllHistory() : LiveData<List<HistoryEntity>>
 	
 	fun insertHistory(value : HistoryEntity)
 	

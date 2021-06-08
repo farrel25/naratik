@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ResultActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.ResultActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/laiLoading"
@@ -66,10 +66,10 @@
                         android:layout_height="216dp"
                         android:contentDescription="@string/image"
                         android:scaleType="centerCrop"
-                        app:shapeAppearanceOverlay="@style/roundedImage"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/roundedImage"
                         tools:srcCompat="@tools:sample/avatars" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

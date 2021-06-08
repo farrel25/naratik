@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.dataresource.remotedata.api
 
-import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -17,12 +16,13 @@ class APIConfig
 		{
 			val interceptor = HttpLoggingInterceptor()
 			val Client = OkHttpClient.Builder()
-				.addInterceptor(object : Interceptor{
+				.addInterceptor(object : Interceptor
+				{
 					override fun intercept(chain : Interceptor.Chain) : Response
 					{
 						val original = chain.request()
 						val builder = original.newBuilder()
-							.addHeader("Auth","B21-CAP0051")
+							.addHeader("Auth" , "B21-CAP0051")
 						return chain.proceed(builder.build())
 					}
 				})

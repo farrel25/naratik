@@ -38,7 +38,7 @@ class HistoryAdapter(private val callback : ItemCallbackHistory) :
 			binding.tvHistory.text = model.history
 			
 			binding.btnItemFavBatik.setOnClickListener {
-			callback.getItem(model)
+				callback.getItem(model)
 			}
 		}
 	}

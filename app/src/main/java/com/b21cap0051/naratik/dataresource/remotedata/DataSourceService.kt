@@ -13,7 +13,6 @@ import com.b21cap0051.naratik.util.CheckConnected
 import com.b21cap0051.naratik.util.vo.Resource
 import com.b21cap0051.naratik.util.vo.Status
 import com.b21cap0051.naratik.util.voapi.ApiResponse
-import com.b21cap0051.naratik.util.voapi.StatusResponse
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.ktx.Firebase
@@ -250,16 +249,20 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 		return MutableData
 	}
 	
-	override fun GetAllShop() : LiveData<ApiResponse<ShopResponse>>{
+	override fun GetAllShop() : LiveData<ApiResponse<ShopResponse>>
+	{
 		
-		val MutableData =MutableLiveData<ApiResponse<ShopResponse>>()
+		val MutableData = MutableLiveData<ApiResponse<ShopResponse>>()
 		
 		val retro = APIConfig.ApiPredict().GetShopList()
-		retro.enqueue(object : Callback<ShopResponse>{
+		retro.enqueue(object : Callback<ShopResponse>
+		{
 			override fun onResponse(call : Call<ShopResponse> , response : Response<ShopResponse>)
 			{
-				if(response.isSuccessful){
-					if(response.body() != null){
+				if (response.isSuccessful)
+				{
+					if (response.body() != null)
+					{
 						val responData = response.body()
 						MutableData.postValue(ApiResponse.success(responData!!))
 					}
@@ -268,7 +271,7 @@ class DataSourceService(private val ctx : Context) : DataSourceInterface
 			
 			override fun onFailure(call : Call<ShopResponse> , t : Throwable)
 			{
-				Log.d(DataSourceService::class.java.simpleName,"${t.message}")
+				Log.d(DataSourceService::class.java.simpleName , "${t.message}")
 			}
 		})
 		return MutableData

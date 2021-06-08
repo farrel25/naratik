@@ -16,7 +16,8 @@ import com.b21cap0051.naratik.mainview.UploadMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ResultActivity
 import com.b21cap0051.naratik.ui.ResultActivity.Companion.KEY_DATA
-import com.b21cap0051.naratik.util.vo.Status.*
+import com.b21cap0051.naratik.util.vo.Status.ERROR
+import com.b21cap0051.naratik.util.vo.Status.SUCCESS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -82,10 +83,11 @@ class UploadProcessFragment : DialogFragment()
 			{
 				delay(200)
 				withContext(Dispatchers.Main) {
-					binding.tvProgress.text = resources.getString(R.string.presentase, i.toString())
+					binding.tvProgress.text =
+						resources.getString(R.string.presentase , i.toString())
 					binding.pbCameraUpload.progress = i
 				}
-			
+				
 				
 			}
 			

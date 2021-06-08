@@ -10,5 +10,5 @@ data class StoreEntity(
 	var rating : Double = 0.0 ,
 	var location : String = "" ,
 	var product_count : Int = 0 ,
-	var product : String =""
+	var product : String = ""
                       )

@@ -35,7 +35,7 @@ class ProductAdapter(private val callBack : ItemProductCallback) :
 			binding.tvItemNameProduct.text = model.name
 			binding.tvItemPrice.text = model.price
 			binding.tvItemCategoryProduct.text = model.category
-			val ratingHalf = model.rating/2
+			val ratingHalf = model.rating / 2
 			binding.rbItemProduct.rating = ratingHalf.toFloat()
 
 //			binding.cvBatik.setOnClickListener {
@@ -55,7 +55,7 @@ class ProductAdapter(private val callBack : ItemProductCallback) :
 				LayoutInflater.from(parent.context) ,
 				parent ,
 				false
-			                           )
+			                             )
 		                 )
 	}
 	

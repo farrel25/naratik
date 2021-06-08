@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp"
-    android:layout_marginEnd="16dp">
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="150dp"
@@ -14,9 +14,9 @@
         <ImageView
             android:id="@+id/ivItemImageBackdrop"
             android:layout_width="150dp"
-            android:scaleType="centerCrop"
             android:layout_height="60dp"
             android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,10 +24,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivItemStore"
-            android:scaleType="centerCrop"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/ivItemImageBackdrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

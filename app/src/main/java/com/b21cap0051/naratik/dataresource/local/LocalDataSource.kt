@@ -1,14 +1,11 @@
 package com.b21cap0051.naratik.dataresource.local
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
-import com.b21cap0051.naratik.util.vo.Resource
-import com.b21cap0051.naratik.util.vo.Status
 
 class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 {
@@ -28,7 +25,8 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 	
 	override fun getAllBatik() : LiveData<List<BatikEntity>> = mNaratikDao.getAllBatikDb()
 	
-	override fun getAllBatikRandomLimit() : LiveData<List<BatikEntity>> = mNaratikDao.getAllBatikRandomDb()
+	override fun getAllBatikRandomLimit() : LiveData<List<BatikEntity>> =
+		mNaratikDao.getAllBatikRandomDb()
 	
 	override fun insertBatik(value : List<BatikEntity>) = mNaratikDao.addBatikDb(value)
 	
@@ -38,7 +36,8 @@ class LocalDataSource(private val mNaratikDao : NaratikDAO) : LocalDataInterface
 	override fun insertPopularBatik(value : List<PopularBatikEntity>) =
 		mNaratikDao.addBatikPopularDb(value)
 	
-	override fun checkFavouriteBatik() : LiveData<List<BatikEntity>> = mNaratikDao.getCheckFavoriteBatik()
+	override fun checkFavouriteBatik() : LiveData<List<BatikEntity>> =
+		mNaratikDao.getCheckFavoriteBatik()
 	
 	override fun setFavoriteBatik(value : BatikEntity) = mNaratikDao.updateBatikDb(value)
 	

@@ -37,11 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/batik_name"
+            app:drawableEndCompat="@drawable/ic_next"
             app:layout_constraintBottom_toBottomOf="@+id/tvItemPercentageResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvItemPercentageResult"
-            app:layout_constraintTop_toTopOf="@+id/tvItemPercentageResult"
-            app:drawableEndCompat="@drawable/ic_next" />
+            app:layout_constraintTop_toTopOf="@+id/tvItemPercentageResult" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

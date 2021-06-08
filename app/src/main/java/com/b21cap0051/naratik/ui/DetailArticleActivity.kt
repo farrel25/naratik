@@ -8,7 +8,6 @@ import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.adapter.ArticleMiniListAdapter
 import com.b21cap0051.naratik.databinding.ActivityDetailArticleBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
-import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
@@ -41,10 +40,10 @@ class DetailArticleActivity : AppCompatActivity() , ItemArticleCallBack
 		loadActionBar()
 		
 		
-		
 	}
 	
-	private fun loadDetail(){
+	private fun loadDetail()
+	{
 		val article = intent.getParcelableExtra<ArticleModel>(EXTRA_ARTICLE) as ArticleModel
 		binding.collapsingToolbar.title = article.title
 		binding.tvArticleOverview.text = article.overview
@@ -70,9 +69,11 @@ class DetailArticleActivity : AppCompatActivity() , ItemArticleCallBack
 			.into(binding.ivAdmin)
 	}
 	
-	private fun loadViewMore(){
+	private fun loadViewMore()
+	{
 		binding.rvVMArticle.layoutManager = LinearLayoutManager(
-			this , LinearLayoutManager.HORIZONTAL , false)
+			this , LinearLayoutManager.HORIZONTAL , false
+		                                                       )
 		binding.rvVMArticle.adapter = articleMiniAdapter
 		val listArticle = DataDummy.generateDummyArticle()
 		articleMiniAdapter.setList(listArticle)

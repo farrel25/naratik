@@ -19,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:padding="16dp"
         android:layoutAnimation="@anim/layout_animation"
+        android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_row_article_large" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

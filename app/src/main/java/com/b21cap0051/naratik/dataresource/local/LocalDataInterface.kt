@@ -6,7 +6,6 @@ import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
-import com.b21cap0051.naratik.util.vo.Resource
 
 interface LocalDataInterface
 {
@@ -14,7 +13,6 @@ interface LocalDataInterface
 	fun getAllBatik() : LiveData<List<BatikEntity>>
 	fun getAllBatikRandomLimit() : LiveData<List<BatikEntity>>
 	fun insertBatik(value : List<BatikEntity>)
-	
 	
 	
 	//Popular Batik
@@ -28,7 +26,7 @@ interface LocalDataInterface
 	//Article
 	
 	//Store
-	fun getAllShop(): DataSource.Factory<Int,ShopEntity>
+	fun getAllShop() : DataSource.Factory<Int , ShopEntity>
 	fun insertShop(value : List<ShopEntity>)
 	
 	//Search
@@ -36,5 +34,5 @@ interface LocalDataInterface
 	fun insertHistory(value : HistoryEntity)
 	fun deleteHistory(value : HistoryEntity)
 	fun deleteAllHistory()
-	fun getAllHistory():LiveData<List<HistoryEntity>>
+	fun getAllHistory() : LiveData<List<HistoryEntity>>
 }

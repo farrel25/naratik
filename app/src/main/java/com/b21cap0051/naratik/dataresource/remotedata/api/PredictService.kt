@@ -18,6 +18,6 @@ interface PredictService
 	fun GetPredictTechnique(@Path("unique_id") unique_id : String) : Call<TechniquePredictResponse>
 	
 	@GET("shop")
-	fun GetShopList():Call<ShopResponse>
+	fun GetShopList() : Call<ShopResponse>
 	
 }

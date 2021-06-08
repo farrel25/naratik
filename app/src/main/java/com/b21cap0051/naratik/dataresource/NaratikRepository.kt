@@ -78,7 +78,8 @@ class NaratikRepository constructor(
 		}.asLiveData()
 	}
 	
-	override fun GetAllBatikRandomDb() : LiveData<Resource<List<BatikEntity>>> {
+	override fun GetAllBatikRandomDb() : LiveData<Resource<List<BatikEntity>>>
+	{
 		return object : NetworkBoundResource<List<BatikEntity> , BatikResponse>(Executer)
 		{
 			override fun saveCallResult(item : BatikResponse)
@@ -102,7 +103,8 @@ class NaratikRepository constructor(
 				}
 			}
 			
-			override fun loadfromDb() : LiveData<List<BatikEntity>> = LocalData.getAllBatikRandomLimit()
+			override fun loadfromDb() : LiveData<List<BatikEntity>> =
+				LocalData.getAllBatikRandomLimit()
 			
 			override fun createCall() : LiveData<ApiResponse<BatikResponse>> =
 				RemoteData.GetAllBatikResponse()

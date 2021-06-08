@@ -42,7 +42,7 @@ class BatikActivity : AppCompatActivity()
 		binding.rvAllBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		
-		batik = BatikListAdapter(this,mainView)
+		batik = BatikListAdapter(this , mainView)
 		
 		
 		mainView.getAllbatik().observe(this , { response ->
@@ -68,6 +68,7 @@ class BatikActivity : AppCompatActivity()
 		
 		
 	}
+	
 	
 	private fun loadActionBar()
 	{

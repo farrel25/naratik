@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.homefragment.StoreFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.home.homefragment.StoreFragment">
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/isEc"
@@ -19,9 +18,9 @@
         app:iss_auto_cycle="true"
         app:iss_corner_radius="20"
         app:iss_delay="0"
+        app:iss_error_image="@drawable/ic_error"
         app:iss_period="2000"
-        app:iss_placeholder="@drawable/ic_loading"
-        app:iss_error_image="@drawable/ic_error"/>
+        app:iss_placeholder="@drawable/ic_loading" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -64,9 +63,9 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingStart="16dp"
-        android:paddingBottom="16dp"
-        android:paddingEnd="0dp"
         android:paddingTop="16dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="16dp"
         tools:listitem="@layout/item_row_store" />
 
     <TextView
@@ -84,9 +83,9 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingStart="16dp"
-        android:paddingBottom="16dp"
-        android:paddingEnd="0dp"
         android:paddingTop="16dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="16dp"
         tools:listitem="@layout/item_row_product" />
 
 </LinearLayout>

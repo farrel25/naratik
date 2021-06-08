@@ -113,7 +113,7 @@ class CameraActivity : AppCompatActivity()
 		val cameraProviderFuture =
 			ProcessCameraProvider.getInstance(
 				this
-			                                                                              )
+			                                 )
 		cameraProviderFuture.addListener(
 			Runnable
 			{
@@ -263,7 +263,7 @@ class CameraActivity : AppCompatActivity()
 		mbundle.putParcelable(KEY_UPLOAD , modelUpload)
 		val uploadFragment = UploadProcessFragment()
 		uploadFragment.arguments = mbundle
-		uploadFragment.show(supportFragmentManager,UploadProcessFragment::class.java.simpleName)
+		uploadFragment.show(supportFragmentManager , UploadProcessFragment::class.java.simpleName)
 	}
 	
 	

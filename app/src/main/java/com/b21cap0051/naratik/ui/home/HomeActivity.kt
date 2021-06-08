@@ -22,21 +22,22 @@ class HomeActivity : AppCompatActivity()
 		binding = ActivityHomeBinding.inflate(layoutInflater)
 		bindingActionBar = CustomActionBarLogoFavoriteBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-
+		
 		binding.bottomBarMenu.background = null
 		binding.bottomBarMenu.menu.getItem(1).isEnabled = false
-
-		val navHostFragment = supportFragmentManager.findFragmentById(R.id.HomeFragmentActivity) as NavHostFragment
+		
+		val navHostFragment =
+			supportFragmentManager.findFragmentById(R.id.HomeFragmentActivity) as NavHostFragment
 		val navControl = navHostFragment.navController
-
+		
 		binding.bottomBarMenu.setupWithNavController(navControl)
-
-
+		
+		
 		binding.actionBarItem.btnFavorite.setOnClickListener {
 			val intent = Intent(this@HomeActivity , FavouriteActivity::class.java)
 			startActivity(intent)
 		}
-
+		
 		binding.fabCamera.setOnClickListener {
 			val intent = Intent(this@HomeActivity , CameraActivity::class.java)
 			startActivity(intent)

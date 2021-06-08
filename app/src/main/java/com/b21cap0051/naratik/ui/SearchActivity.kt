@@ -27,7 +27,8 @@ import com.b21cap0051.naratik.util.ItemBatikCallBack
 import com.b21cap0051.naratik.util.ItemCallbackHistory
 import com.b21cap0051.naratik.util.vo.Status.*
 
-class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack , ItemCallbackHistory
+class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCallBack ,
+                       ItemCallbackHistory
 {
 	private lateinit var binding : ActivitySearchBinding
 	private lateinit var articleMiniAdapter : ArticleMiniListAdapter
@@ -67,9 +68,9 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			override fun onQueryTextChange(newText : String?) : Boolean
 			{
 				
-				 if (newText != null)
+				if (newText != null)
 				{
-			//					findItem(newText)
+					//					findItem(newText)
 					binding.rvSearchBatik.visibility = View.VISIBLE
 					binding.llSearch.visibility = View.GONE
 				}
@@ -149,7 +150,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	private fun loadHistory()
 	{
 		binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
-		binding.rvSearchHistory.adapter =adapterHistory
+		binding.rvSearchHistory.adapter = adapterHistory
 		
 		viewModel.GetALLHistory().observe(this , { response ->
 			if (response?.size != 0)
@@ -188,7 +189,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	
 	override fun AddFavour(v : ItemRowBatikBinding , model : BatikEntity)
 	{
-		if(CheckIsFavor(model)){
+		if (CheckIsFavor(model))
+		{
 			val modelbaru = BatikEntity(
 				model.batik_id ,
 				model.name_batik ,
@@ -199,7 +201,8 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 			                           )
 			viewModel.setFavorite(modelbaru)
 			v.btnItemFavBatik.setIconResource(R.drawable.ic_love_outlined)
-		}else{
+		} else
+		{
 			val modelbaru = BatikEntity(
 				model.batik_id ,
 				model.name_batik ,
@@ -214,7 +217,6 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	}
 	
 	
-	
 	override fun getItem(model : HistoryEntity)
 	{
 		viewModel.DelHistory(model)
@@ -224,7 +226,7 @@ class SearchActivity : AppCompatActivity() , ItemArticleCallBack , ItemBatikCall
 	override fun getPosition(Position : Int)
 	{
 		posIndexAdapter = Position
-	
+		
 	}
 	
 }

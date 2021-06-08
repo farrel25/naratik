@@ -9,18 +9,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.b21cap0051.naratik.adapter.ArticleListAdapter
 import com.b21cap0051.naratik.adapter.BatikListAdapter
-import com.b21cap0051.naratik.adapter.PopularBatikAdapter
 import com.b21cap0051.naratik.adapter.ShimmerBatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentExploreBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.dataresource.datamodellist.ShimmerModel
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
-import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.ArticleActivity
@@ -32,7 +29,7 @@ import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
 
 
-class ExploreFragment : Fragment(),ItemArticleCallBack
+class ExploreFragment : Fragment() , ItemArticleCallBack
 {
 	
 	private var _binding : FragmentExploreBinding? = null
@@ -70,7 +67,7 @@ class ExploreFragment : Fragment(),ItemArticleCallBack
 		
 		val factory = ViewFactoryModel(naratikDependencys.injectRepository(requireActivity()))
 		mainView = ViewModelProvider(requireActivity() , factory)[BatikMainView::class.java]
-	
+		
 		loadShimmerBatikList()
 		
 		mainView.getAllbatikRandom().observe(viewLifecycleOwner , { response ->
@@ -105,7 +102,7 @@ class ExploreFragment : Fragment(),ItemArticleCallBack
 	
 	private fun loadListBatik(value : List<BatikEntity>)
 	{
-		adapterBatik = BatikListAdapter(requireContext(),mainView)
+		adapterBatik = BatikListAdapter(requireContext() , mainView)
 		var row = 2
 		if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
@@ -116,7 +113,7 @@ class ExploreFragment : Fragment(),ItemArticleCallBack
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
 		adapterBatik.setList(value)
-
+		
 		binding.shimmerLayout.visibility = View.GONE
 		
 		binding.btnShowAllBatik.setOnClickListener {
@@ -133,11 +130,12 @@ class ExploreFragment : Fragment(),ItemArticleCallBack
 			row = 4
 		}
 		adapterShimmer = ShimmerBatikListAdapter()
-
+		
 		listShimmer = DataDummy.generateShimmerBatik()
-		binding.rvShimmer.layoutManager = StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
+		binding.rvShimmer.layoutManager =
+			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvShimmer.adapter = adapterShimmer
-
+		
 		adapterShimmer.setList(listShimmer)
 	}
 	

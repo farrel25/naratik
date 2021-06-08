@@ -33,7 +33,7 @@ class ArticleListAdapter(private val callback : ItemArticleCallBack) :
 			with(binding) {
 				Glide.with(itemView.context)
 					.load(article.image)
-					.transform(CenterInside() ,RoundedCorners(24))
+					.transform(CenterInside() , RoundedCorners(24))
 					.into(ivItemArticle)
 				
 				tvItemDateArticle.text = article.date

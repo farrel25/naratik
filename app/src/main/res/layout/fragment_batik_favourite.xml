@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favourite.favouritefragment.BatikFavouriteFragment"
-    >
+    tools:context=".ui.favourite.favouritefragment.BatikFavouriteFragment">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavBatik"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false"
+        android:padding="16dp" />
 </androidx.core.widget.NestedScrollView>

@@ -12,7 +12,6 @@ import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.mainview.BatikMainView
-import com.b21cap0051.naratik.mainview.FavoriteMainView
 import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.b21cap0051.naratik.util.vo.Status
 import com.bumptech.glide.Glide
@@ -39,7 +38,7 @@ class PopularBatikAdapter(
 	inner class Itemtarget(private val binding : ItemRowBatikBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
-		fun checkFavourite(model : PopularBatikEntity):Boolean
+		fun checkFavourite(model : PopularBatikEntity) : Boolean
 		{
 			var stat = false
 			mainView.getAllFavoriteDb().observe(life , { response ->
@@ -66,13 +65,13 @@ class PopularBatikAdapter(
 		{
 			
 			val dataModel = BatikEntity(
-				model.batik_id,
-				model.name_batik,
-				model.makna_batik,
-				model.Image,
-				model.daerah_batik,
+				model.batik_id ,
+				model.name_batik ,
+				model.makna_batik ,
+				model.Image ,
+				model.daerah_batik ,
 				model.favorite_batik
-			                                )
+			                           )
 			
 			if (checkFavourite(model))
 			{
@@ -112,7 +111,11 @@ class PopularBatikAdapter(
 					dataModel.favorite_batik = 0
 					binding.btnItemFavBatik.setIconTintResource(R.color.white)
 					mainView.setFavorite(dataModel)
-					Toast.makeText(ctx , "${dataModel.name_batik} UnFavourite!" , Toast.LENGTH_SHORT)
+					Toast.makeText(
+						ctx ,
+						"${dataModel.name_batik} UnFavourite!" ,
+						Toast.LENGTH_SHORT
+					              )
 						.show()
 				} else
 				{

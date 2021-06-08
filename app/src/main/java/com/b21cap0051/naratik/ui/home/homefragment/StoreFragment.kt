@@ -1,6 +1,5 @@
 package com.b21cap0051.naratik.ui.home.homefragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.b21cap0051.naratik.adapter.*
+import com.b21cap0051.naratik.adapter.ProductAdapter
+import com.b21cap0051.naratik.adapter.StoreAdapter
 import com.b21cap0051.naratik.databinding.FragmentStoreBinding
 import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
 import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
-import com.b21cap0051.naratik.ui.BatikActivity
 import com.b21cap0051.naratik.ui.StoreActivity
-import com.b21cap0051.naratik.util.*
+import com.b21cap0051.naratik.util.DataDummy
+import com.b21cap0051.naratik.util.ItemProductCallback
+import com.b21cap0051.naratik.util.ItemStoreCallback
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 
@@ -60,12 +61,12 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 			requireActivity() ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
-		                                                         )
+		                                                   )
 		binding.rvStore.adapter = storeAdapter
 		val listStore = DataDummy.generateDummyStore()
 		storeAdapter.setList(listStore)
 		
-		binding.btnShowAllStore.setOnClickListener(){
+		binding.btnShowAllStore.setOnClickListener() {
 			val intent = Intent(requireActivity() , StoreActivity::class.java)
 			startActivity(intent)
 		}
@@ -78,7 +79,7 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 			requireActivity() ,
 			LinearLayoutManager.HORIZONTAL ,
 			false
-		                                                                  )
+		                                                     )
 		binding.rvProduct.adapter = productAdapter
 		val listProduct = DataDummy.generateDummyProduct()
 		productAdapter.setList(listProduct)

@@ -23,10 +23,10 @@
             android:cropToPadding="false"
             android:scaleType="centerCrop"
 
-            app:shapeAppearanceOverlay="@style/roundedImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImage"
             app:srcCompat="@drawable/img_dummy" />
 
         <TextView

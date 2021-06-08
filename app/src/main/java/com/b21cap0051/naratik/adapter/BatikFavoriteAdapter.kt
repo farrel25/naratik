@@ -7,16 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
-import com.b21cap0051.naratik.databinding.ItemRowBatikBinding
 import com.b21cap0051.naratik.databinding.ItemRowBatikFavoriteBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.mainview.FavoriteMainView
 import com.b21cap0051.naratik.ui.DetailBatikActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import eightbitlab.com.blurview.RenderScriptBlur
 
-class BatikFavoriteAdapter(private val ctx : Context,private val mainView : FavoriteMainView):RecyclerView.Adapter<BatikFavoriteAdapter.ItemTarget>()
+class BatikFavoriteAdapter(private val ctx : Context , private val mainView : FavoriteMainView) :
+	RecyclerView.Adapter<BatikFavoriteAdapter.ItemTarget>()
 {
 	
 	
@@ -38,7 +37,8 @@ class BatikFavoriteAdapter(private val ctx : Context,private val mainView : Favo
 	}
 	
 	
-	inner class ItemTarget(private val binding : ItemRowBatikFavoriteBinding): RecyclerView.ViewHolder(binding.root)
+	inner class ItemTarget(private val binding : ItemRowBatikFavoriteBinding) :
+		RecyclerView.ViewHolder(binding.root)
 	{
 		fun checkFavourite(model : BatikEntity) : Boolean
 		{
@@ -58,7 +58,7 @@ class BatikFavoriteAdapter(private val ctx : Context,private val mainView : Favo
 			{
 				binding.btnItemFavBatik.setIconTintResource(R.color.white)
 			}
-		
+			
 			
 			Glide.with(itemView.context)
 				.load(model.Image)
@@ -100,7 +100,13 @@ class BatikFavoriteAdapter(private val ctx : Context,private val mainView : Favo
 	
 	override fun onCreateViewHolder(parent : ViewGroup , viewType : Int) : ItemTarget
 	{
-		return ItemTarget(ItemRowBatikFavoriteBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+		return ItemTarget(
+			ItemRowBatikFavoriteBinding.inflate(
+				LayoutInflater.from(parent.context) ,
+				parent ,
+				false
+			                                   )
+		                 )
 	}
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)

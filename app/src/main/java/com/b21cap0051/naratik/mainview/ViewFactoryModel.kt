@@ -28,23 +28,23 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 	{
 		return when
 		{
-			modelClass.isAssignableFrom(BatikMainView::class.java)  ->
+			modelClass.isAssignableFrom(BatikMainView::class.java)    ->
 			{
 				BatikMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(UploadMainView::class.java) ->
+			modelClass.isAssignableFrom(UploadMainView::class.java)   ->
 			{
 				UploadMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(SearchMainView::class.java) ->
+			modelClass.isAssignableFrom(SearchMainView::class.java)   ->
 			{
 				SearchMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(PredictMainView::class.java) ->
+			modelClass.isAssignableFrom(PredictMainView::class.java)  ->
 			{
 				PredictMainView(mRepo) as T
 			}
-			modelClass.isAssignableFrom(ShopMainView::class.java) ->
+			modelClass.isAssignableFrom(ShopMainView::class.java)     ->
 			{
 				ShopMainView(mRepo) as T
 			}
@@ -52,8 +52,8 @@ class ViewFactoryModel constructor(private val mRepo : NaratikRepository) :
 			{
 				FavoriteMainView(mRepo) as T
 			}
-		
-			else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
+			
+			else                                                      -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
 		}
 	}
 	

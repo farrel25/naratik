@@ -1,11 +1,5 @@
 package com.b21cap0051.naratik.adapter
 
-import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
-import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
-
 //class PagedListShopeAdapter:PagedListAdapter<ShopEntity,PagedListShopeAdapter.ItemTarget>(DIFF_CALLBACK)
 //{
 //	inner class ItemTarget():RecyclerView.ViewHolder()

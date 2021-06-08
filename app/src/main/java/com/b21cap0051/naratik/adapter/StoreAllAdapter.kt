@@ -8,21 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ItemRowAllStoreBinding
 import com.b21cap0051.naratik.dataresource.local.model.ShopEntity
-import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
 import com.b21cap0051.naratik.util.ItemStoreCallback
-import java.util.*
 
 class StoreAllAdapter(private val callBack : ItemStoreCallback) :
 	PagedListAdapter<ShopEntity , StoreAllAdapter.ItemTarget>(DIFF_CALLBACK)
 {
-
-
-	companion object{
+	
+	
+	companion object
+	{
 		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ShopEntity>()
 		{
 			override fun areItemsTheSame(oldItem : ShopEntity , newItem : ShopEntity) : Boolean
 			{
-			    return oldItem.id == newItem.id
+				return oldItem.id == newItem.id
 			}
 			
 			override fun areContentsTheSame(oldItem : ShopEntity , newItem : ShopEntity) : Boolean
@@ -33,7 +32,6 @@ class StoreAllAdapter(private val callBack : ItemStoreCallback) :
 		}
 		
 	}
-
 	
 	
 	inner class ItemTarget(private val binding : ItemRowAllStoreBinding) :
@@ -43,14 +41,21 @@ class StoreAllAdapter(private val callBack : ItemStoreCallback) :
 		{
 			binding.tvItemAllNameStore.text = model.namaToko
 			binding.tvItemAllLocationStore.text = model.alamatToko
-			binding.tvItemAllProductStore.text = itemView.resources.getString(R.string.product, model.productToko)
+			binding.tvItemAllProductStore.text =
+				itemView.resources.getString(R.string.product , model.productToko)
 		}
 		
 	}
 	
 	override fun onCreateViewHolder(parent : ViewGroup , viewType : Int) : ItemTarget
 	{
-		return ItemTarget(ItemRowAllStoreBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+		return ItemTarget(
+			ItemRowAllStoreBinding.inflate(
+				LayoutInflater.from(parent.context) ,
+				parent ,
+				false
+			                              )
+		                 )
 	}
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)

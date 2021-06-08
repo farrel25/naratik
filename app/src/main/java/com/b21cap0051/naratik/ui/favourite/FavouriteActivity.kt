@@ -21,7 +21,7 @@ class FavouriteActivity : AppCompatActivity()
 		
 		loadActionBar()
 		
-		val sectionsPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)
+		val sectionsPagerAdapter = SectionPagerAdapter(this , supportFragmentManager)
 		binding.viewPager.adapter = sectionsPagerAdapter
 		binding.tabs.setupWithViewPager(binding.viewPager)
 		supportActionBar?.elevation = 0f

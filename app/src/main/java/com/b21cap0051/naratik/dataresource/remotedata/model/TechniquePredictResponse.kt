@@ -7,14 +7,14 @@ data class TechniquePredictResponse
 	(
 	@field:SerializedName("img_url")
 	@Expose
-	val imgUrl: String? = null,
+	val imgUrl : String? = null ,
 	
 	@field:SerializedName("technique")
 	@Expose
-	val technique: List<TechniqueItem>? = null,
+	val technique : List<TechniqueItem>? = null ,
 	
 	@field:SerializedName("id")
 	@Expose
-	val id: String? = null
+	val id : String? = null
 	
 	)

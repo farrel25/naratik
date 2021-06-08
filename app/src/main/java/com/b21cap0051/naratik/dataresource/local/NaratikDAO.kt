@@ -19,11 +19,11 @@ interface NaratikDAO
 	
 	
 	@Query("SELECT * FROM Table_Batik WHERE favourite = 1")
-	fun getCheckFavoriteBatik() :LiveData<List<BatikEntity>>
+	fun getCheckFavoriteBatik() : LiveData<List<BatikEntity>>
 	
 	
 	@Query("SELECT * FROM Shop_Table ORDER BY id")
-	fun getAllQueryShop():DataSource.Factory<Int,ShopEntity>
+	fun getAllQueryShop() : DataSource.Factory<Int , ShopEntity>
 	
 	
 	@Query("SELECT * FROM Popular_Batik_Table ORDER BY id ASC")
@@ -53,9 +53,9 @@ interface NaratikDAO
 	fun delAllHistory()
 	
 	@Query("SELECT * FROM history_table ORDER BY id")
-	fun getAllQueryHistory():LiveData<List<HistoryEntity>>
+	fun getAllQueryHistory() : LiveData<List<HistoryEntity>>
 	
-	@Insert(onConflict =  OnConflictStrategy.REPLACE)
+	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	fun insertShop(value : List<ShopEntity>)
 	
 	

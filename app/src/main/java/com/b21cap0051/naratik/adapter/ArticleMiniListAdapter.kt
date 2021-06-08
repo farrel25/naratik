@@ -1,12 +1,10 @@
 package com.b21cap0051.naratik.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleMiniBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
-import com.b21cap0051.naratik.ui.DetailArticleActivity
 import com.b21cap0051.naratik.util.ItemArticleCallBack
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -52,7 +50,7 @@ class ArticleMiniListAdapter(private val callback : ItemArticleCallBack) :
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
 		holder.bind(listArticle[position])
-		
+
 //		holder.itemView.setOnClickListener {
 //			val intent = Intent(holder.itemView.context , DetailArticleActivity::class.java)
 //			intent.putExtra(DetailArticleActivity.EXTRA_ARTICLE , listArticle[position])

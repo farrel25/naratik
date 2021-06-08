@@ -35,13 +35,13 @@ class SearchAdapter(private val callBack : ItemBatikCallBack) :
 			
 			Glide.with(itemView.context)
 				.load(model.Image)
-				.apply(RequestOptions().override(100 ,100))
+				.apply(RequestOptions().override(100 , 100))
 				.into(binding.ivItemSearchBatik)
 			binding.tvItemSearchBatik.text = model.name_batik
 			
 			binding.cvSearch.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
-                intent.putExtra(EXTRA_BATIK,model)
+				intent.putExtra(EXTRA_BATIK , model)
 				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
 			}
@@ -56,7 +56,7 @@ class SearchAdapter(private val callBack : ItemBatikCallBack) :
 				LayoutInflater.from(parent.context) ,
 				parent ,
 				false
-			                           )
+			                                 )
 		                 )
 	}
 	

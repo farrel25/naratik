@@ -37,10 +37,10 @@ class StoreAdapter(private val callBack : ItemStoreCallback) :
 				.apply(RequestOptions().override(200 , 200))
 				.into(binding.ivItemStore)
 			binding.tvItemNameStore.text = model.name
-			val ratingHalf = model.rating/2
+			val ratingHalf = model.rating / 2
 			binding.rbItemStore.rating = ratingHalf.toFloat()
 //			binding.tvItemRatingStore.text = model.rating.toString()
-			
+
 //			binding.cvBatik.setOnClickListener {
 //				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
 ////                intent.putExtra(DetailBatikActivity.,listBatik[position])

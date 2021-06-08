@@ -7,9 +7,9 @@ data class TechniqueItem
 	(
 	@field:SerializedName("techniqueName")
 	@Expose
-	val techniqueName: String? = null,
+	val techniqueName : String? = null ,
 	
 	@field:SerializedName("value")
 	@Expose
-	val value: Double? = null
+	val value : Double? = null
 	)

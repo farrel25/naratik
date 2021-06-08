@@ -18,8 +18,8 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg",
-				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg",
+				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg" ,
+				"https://cpb-us-e1.wpmucdn.com/blogs.ntu.edu.sg/dist/8/1451/files/2017/04/130504517_6f61ac593e_z-132ahm0.jpg" ,
 				"Title" ,
 				"5 August 2021" ,
 				"Admin" ,
@@ -62,8 +62,8 @@ object DataDummy
 		articles.add(
 			ArticleModel(
 				"id" ,
-				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png",
-				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png",
+				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png" ,
+				"https://pembimbingansni.bsn.go.id/assets/uploads/news/68/6e3a6ff665356487ebd4d742d2b5eaa3.png" ,
 				"Title" ,
 				"5 August 2021" ,
 				"Admin" ,
@@ -175,7 +175,8 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-				))
+			           )
+		          )
 		stores.add(
 			StoreEntity(
 				1 ,
@@ -187,7 +188,8 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-			           ))
+			           )
+		          )
 		stores.add(
 			StoreEntity(
 				1 ,
@@ -199,7 +201,8 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-			           ))
+			           )
+		          )
 		stores.add(
 			StoreEntity(
 				1 ,
@@ -211,7 +214,8 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-			           ))
+			           )
+		          )
 		stores.add(
 			StoreEntity(
 				1 ,
@@ -223,7 +227,8 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-			           ))
+			           )
+		          )
 		stores.add(
 			StoreEntity(
 				1 ,
@@ -235,10 +240,12 @@ object DataDummy
 				"Semarang" ,
 				5 ,
 				"product" ,
-			           ))
+			           )
+		          )
 		
 		return stores
 	}
+	
 	fun generateDummyProduct() : ArrayList<ProductEntity>
 	{
 		val products = ArrayList<ProductEntity>()
@@ -252,7 +259,8 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-				))
+			             )
+		            )
 		products.add(
 			ProductEntity(
 				1 ,
@@ -262,7 +270,8 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-			             ))
+			             )
+		            )
 		products.add(
 			ProductEntity(
 				1 ,
@@ -272,7 +281,8 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-			             ))
+			             )
+		            )
 		products.add(
 			ProductEntity(
 				1 ,
@@ -282,7 +292,8 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-			             ))
+			             )
+		            )
 		products.add(
 			ProductEntity(
 				1 ,
@@ -292,7 +303,8 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-			             ))
+			             )
+		            )
 		products.add(
 			ProductEntity(
 				1 ,
@@ -302,28 +314,35 @@ object DataDummy
 				"https://i.pinimg.com/736x/30/7e/32/307e32aff223035590dbf69357d5a467.jpg" ,
 				8.0 ,
 				"100.000" ,
-			             ))
+			             )
+		            )
 		return products
 	}
-	fun generateShimmerBatik() :  ArrayList<ShimmerModel>{
+	
+	fun generateShimmerBatik() : ArrayList<ShimmerModel>
+	{
 		val shimmers = ArrayList<ShimmerModel>()
 		
 		shimmers.add(
 			ShimmerModel(
 				R.drawable.img_shimmer
-			            ))
+			            )
+		            )
 		shimmers.add(
 			ShimmerModel(
 				R.drawable.img_shimmer
-			            ))
+			            )
+		            )
 		shimmers.add(
 			ShimmerModel(
 				R.drawable.img_shimmer
-			            ))
+			            )
+		            )
 		shimmers.add(
 			ShimmerModel(
 				R.drawable.img_shimmer
-			            ))
+			            )
+		            )
 		return shimmers
 	}
 }

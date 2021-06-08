@@ -7,9 +7,10 @@ import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
 import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.util.vo.Resource
 
-class SearchMainView(private val repo : NaratikRepository):ViewModel(){
+class SearchMainView(private val repo : NaratikRepository) : ViewModel()
+{
 	
-	fun GetSearch(text : String):LiveData<Resource<List<BatikEntity>>> = repo.searchBatik(text)
+	fun GetSearch(text : String) : LiveData<Resource<List<BatikEntity>>> = repo.searchBatik(text)
 	
 	fun AddHistory(value : HistoryEntity) = repo.insertHistory(value)
 	
@@ -17,6 +18,6 @@ class SearchMainView(private val repo : NaratikRepository):ViewModel(){
 	
 	fun setFavorite(model : BatikEntity) = repo.updateLikedBatik(model)
 	
-	fun GetALLHistory():LiveData<List<HistoryEntity>> = repo.GetAllHistory()
+	fun GetALLHistory() : LiveData<List<HistoryEntity>> = repo.GetAllHistory()
 	
 }

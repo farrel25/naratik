@@ -9,9 +9,9 @@ import kotlinx.parcelize.Parcelize
 data class MotifResponseItem(
 	@field:SerializedName("motifName")
 	@Expose
-	var motifName : String? = null,
+	var motifName : String? = null ,
 	
 	@field:SerializedName("value")
 	@Expose
-	var valueMotif : Double? = null,
-							) : Parcelable
+	var valueMotif : Double? = null ,
+                            ) : Parcelable

@@ -192,8 +192,7 @@
         <item name="icon">@drawable/ic_close</item>
     </style>
 
-    <style name="customRatingBar"
-        parent="android:style/Widget.Material.RatingBar.Small">
+    <style name="customRatingBar" parent="android:style/Widget.Material.RatingBar.Small">
         <item name="colorControlActivated">@color/yellow</item>
         <item name="colorControlNormal">@color/grey_700</item>
     </style>

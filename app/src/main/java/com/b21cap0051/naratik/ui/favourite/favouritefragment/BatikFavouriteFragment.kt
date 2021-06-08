@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.adapter.BatikFavoriteAdapter
-import com.b21cap0051.naratik.adapter.BatikListAdapter
 import com.b21cap0051.naratik.databinding.FragmentBatikFavouriteBinding
 import com.b21cap0051.naratik.mainview.FavoriteMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
@@ -32,7 +31,6 @@ class BatikFavouriteFragment : Fragment()
 		return binding.root
 	}
 	
-
 	
 	override fun onViewCreated(view : View , savedInstanceState : Bundle?)
 	{
@@ -40,7 +38,7 @@ class BatikFavouriteFragment : Fragment()
 		
 		val factory = ViewFactoryModel.GetInstance(requireContext())
 		mainMainView = ViewModelProvider(requireActivity() , factory)[FavoriteMainView::class.java]
-		favoriteBatikListAdapter = BatikFavoriteAdapter(requireContext(),mainMainView)
+		favoriteBatikListAdapter = BatikFavoriteAdapter(requireContext() , mainMainView)
 		binding.rvFavBatik.layoutManager =
 			LinearLayoutManager(requireActivity() , LinearLayoutManager.VERTICAL , false)
 		mainMainView.getAllFavourite().observe(viewLifecycleOwner , { response ->
@@ -51,10 +49,12 @@ class BatikFavouriteFragment : Fragment()
 					binding.rvFavBatik.adapter = favoriteBatikListAdapter
 					favoriteBatikListAdapter.setList(response.Data!!)
 				}
-				Status.LOADING -> {
+				Status.LOADING ->
+				{
 				
 				}
-				Status.ERROR -> {
+				Status.ERROR   ->
+				{
 				
 				}
 			}

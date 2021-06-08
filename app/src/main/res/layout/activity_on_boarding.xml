@@ -41,10 +41,10 @@
             android:textAllCaps="false"
             app:backgroundTint="@android:color/transparent"
             app:cornerRadius="8dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
 
         <LinearLayout
             android:id="@+id/llDots"

@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName
 data class PredictResponse(
 	@field:SerializedName("id")
 	@Expose
-	var id_predict : String? = null,
+	var id_predict : String? = null ,
 	
 	@field:SerializedName("img_url")
 	@Expose
-	var img_url : String? = null,
+	var img_url : String? = null ,
 	
 	@field:SerializedName("motif")
 	@Expose
 	var motifResult : List<MotifResponseItem>
-						  )
+                          )

@@ -16,8 +16,8 @@ class PredictMainView(private val repo : NaratikRepository) : ViewModel()
 	fun GetTechnique(id : String) : LiveData<ApiResponse<TechniquePredictResponse>> =
 		repo.getTechniquePredict(id)
 	
-	fun IsDoneMotif():LiveData<Resource<Boolean>> = repo.isDoneMotif()
+	fun IsDoneMotif() : LiveData<Resource<Boolean>> = repo.isDoneMotif()
 	
-	fun IsDoneTechnique():LiveData<Resource<Boolean>> = repo.isDoneTechnique()
+	fun IsDoneTechnique() : LiveData<Resource<Boolean>> = repo.isDoneTechnique()
 	
 }

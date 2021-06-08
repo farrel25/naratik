@@ -29,8 +29,8 @@
         </activity>
         <activity
             android:name=".ui.cameraui.CameraActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ui.home.HomeActivity">
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.home.HomeActivity" />
@@ -47,14 +47,16 @@
 
         </activity>
         <activity android:name=".ui.EditProfileActivity" />
-        <activity android:name=".ui.ArticleActivity"
+        <activity
+            android:name=".ui.ArticleActivity"
             android:parentActivityName=".ui.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.home.HomeActivity" />
 
         </activity>
-        <activity android:name=".ui.BatikActivity"
+        <activity
+            android:name=".ui.BatikActivity"
             android:parentActivityName=".ui.home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,7 +65,8 @@
         </activity>
         <activity android:name=".ui.DetailArticleActivity" />
         <activity android:name=".ui.DetailBatikActivity" />
-        <activity android:name=".ui.SplashActivity"
+        <activity
+            android:name=".ui.SplashActivity"
             android:theme="@style/SplashScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

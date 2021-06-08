@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey_100"
     tools:context=".ui.favourite.FavouriteActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,19 +15,17 @@
         <include
             android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_back_title"
-            app:layout_scrollFlags="scroll|enterAlways"/>
+            app:layout_scrollFlags="scroll|enterAlways" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:tabTextColor="@android:color/black"
             android:backgroundTint="@color/white"
-            />
+            app:tabTextColor="@android:color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
 
     <androidx.viewpager.widget.ViewPager

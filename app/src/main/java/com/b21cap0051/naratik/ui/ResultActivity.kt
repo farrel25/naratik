@@ -20,8 +20,6 @@ import com.b21cap0051.naratik.dataresource.remotedata.model.TechniquePredictResp
 import com.b21cap0051.naratik.mainview.PredictMainView
 import com.b21cap0051.naratik.mainview.ViewFactoryModel
 import com.b21cap0051.naratik.ui.cameraui.CameraActivity
-import com.b21cap0051.naratik.ui.home.HomeActivity
-import com.b21cap0051.naratik.util.DataDummy
 import com.b21cap0051.naratik.util.ItemResultCallback
 import com.b21cap0051.naratik.util.vo.Status
 import com.b21cap0051.naratik.util.voapi.StatusResponse
@@ -47,7 +45,7 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		const val KEY_DATA = "data"
 	}
 	
-	private lateinit var  mainView : PredictMainView
+	private lateinit var mainView : PredictMainView
 	private lateinit var data : ImageUploadModel
 	
 	override fun onCreate(savedInstanceState : Bundle?)
@@ -59,64 +57,72 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		loadActionBar()
 		
 		val dataIntent = intent.extras
-		data =  dataIntent?.getParcelable<ImageUploadModel>(KEY_DATA) as ImageUploadModel
+		data = dataIntent?.getParcelable<ImageUploadModel>(KEY_DATA) as ImageUploadModel
 		
 		val factory = ViewFactoryModel.GetInstance(this)
-		mainView = ViewModelProvider(this,factory)[PredictMainView::class.java]
+		mainView = ViewModelProvider(this , factory)[PredictMainView::class.java]
 		
 		
 		
-		mainView.IsDoneMotif().observe(this,{
-			   response ->
-			when(response.Status){
-				Status.SUCCESS -> {
+		mainView.IsDoneMotif().observe(this , { response ->
+			when (response.Status)
+			{
+				Status.SUCCESS ->
+				{
 					loadingProcess(response.Data!!)
 				}
-				Status.ERROR -> {
+				Status.ERROR   ->
+				{
 				
 				}
 				
-				Status.LOADING -> {
+				Status.LOADING ->
+				{
 					loadingProcess(response.Data!!)
 				}
 			}
 		})
 		
-		mainView.IsDoneTechnique().observe(this,{
+		mainView.IsDoneTechnique().observe(this , {
 		
 		})
 		
 		
-		mainView.GetTechnique(getID(data.uri)).observe(this,{
-			response ->
-			when(response.statusResponse){
-				StatusResponse.SUCCESS->{
+		mainView.GetTechnique(getID(data.uri)).observe(this , { response ->
+			when (response.statusResponse)
+			{
+				StatusResponse.SUCCESS ->
+				{
 					getImage(response.body.imgUrl!!)
 					setupPieChart()
 					loadBatikResult(response.body)
 				}
-				StatusResponse.ERROR -> {
+				StatusResponse.ERROR   ->
+				{
 				
 				}
 			}
 		})
 		
-		mainView.GetMotif(getID(data.uri)).observe(this,{
-			response ->
-			when(response.statusResponse){
-				StatusResponse.SUCCESS->{
-				loadListMotifResult(response.body)
+		mainView.GetMotif(getID(data.uri)).observe(this , { response ->
+			when (response.statusResponse)
+			{
+				StatusResponse.SUCCESS ->
+				{
+					loadListMotifResult(response.body)
 				}
-				StatusResponse.ERROR -> {
+				StatusResponse.ERROR   ->
+				{
 				
 				}
-				StatusResponse.EMPTY ->{
+				StatusResponse.EMPTY   ->
+				{
 				
 				}
 			}
 		})
 		
-		binding.btnGoHome.setOnClickListener{
+		binding.btnGoHome.setOnClickListener {
 			val intent = Intent(this , CameraActivity::class.java)
 			startActivity(intent)
 		}
@@ -132,29 +138,34 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 		}
 	}
 	
-	private fun loadingProcess(stat : Boolean){
-		if(stat){
+	private fun loadingProcess(stat : Boolean)
+	{
+		if (stat)
+		{
 			binding.nsvResult.visibility = View.VISIBLE
 			binding.include.customActionBarBack.visibility = View.VISIBLE
 			
 			binding.laiLoading.visibility = View.GONE
-		}else{
-			binding.include.customActionBarBack.visibility  = View.GONE
+		} else
+		{
+			binding.include.customActionBarBack.visibility = View.GONE
 			binding.laiLoading.visibility = View.VISIBLE
 			binding.nsvResult.visibility = View.GONE
 		}
 	}
 	
-	private fun getImage(id : String){
+	private fun getImage(id : String)
+	{
 		Glide.with(this)
 			.load(id)
-			.apply(RequestOptions().override(160,192))
+			.apply(RequestOptions().override(160 , 192))
 			.placeholder(R.drawable.ic_loading)
 			.error(R.drawable.ic_error)
 			.into(binding.ivResult)
 	}
 	
-	private fun getID(uri : Uri): String{
+	private fun getID(uri : Uri) : String
+	{
 		val temp = uri.lastPathSegment?.split(".")
 		if (temp != null)
 		{
@@ -194,13 +205,23 @@ class ResultActivity : AppCompatActivity() , ItemResultCallback
 	private fun loadBatikResult(result : TechniquePredictResponse)
 	{
 		val entries : ArrayList<PieEntry> = ArrayList()
-		entries.add(PieEntry(result.technique?.get(0)?.value?.toFloat()!!, result.technique[0].techniqueName+" batik"))
-		entries.add(PieEntry(result.technique[1].value?.toFloat()!!, result.technique[1].techniqueName+" batik"))
+		entries.add(
+			PieEntry(
+				result.technique?.get(0)?.value?.toFloat()!! ,
+				result.technique[0].techniqueName + " batik"
+			        )
+		           )
+		entries.add(
+			PieEntry(
+				result.technique[1].value?.toFloat()!! ,
+				result.technique[1].techniqueName + " batik"
+			        )
+		           )
 		
 		val dataSet = PieDataSet(entries , "Technique Detect Result")
 		dataSet.setColors(
-			ContextCompat.getColor(applicationContext,R.color.blue_200) ,
-			ContextCompat.getColor(applicationContext, R.color.brown_200)
+			ContextCompat.getColor(applicationContext , R.color.blue_200) ,
+			ContextCompat.getColor(applicationContext , R.color.brown_200)
 		                 )
 		
 		val data = PieData(dataSet)
