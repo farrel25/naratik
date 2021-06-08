@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:padding="16dp">
 
         <com.google.android.material.button.MaterialButton
@@ -23,6 +23,7 @@
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="18dp"
+            app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,13 +40,15 @@
         <TextView
             android:id="@+id/tvItemAllLocationStore"
             style="@style/text_14sp_regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:drawablePadding="8dp"
             android:maxLines="2"
             android:text="@string/batik_location"
             app:drawableStartCompat="@drawable/ic_location"
+            app:layout_constraintEnd_toStartOf="@+id/btnItemLocationStore"
             app:layout_constraintStart_toStartOf="@+id/tvItemAllNameStore"
             app:layout_constraintTop_toBottomOf="@+id/tvItemAllNameStore" />
 

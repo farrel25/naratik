@@ -10,11 +10,11 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/laiLoading"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         android:visibility="visible"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="among_us_loading.json"
+        app:lottie_fileName="dog_loading.json"
         app:lottie_loop="true"
         app:lottie_renderMode="automatic" />
 
