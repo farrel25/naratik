@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
             style="@style/text_16sp_regular"
             android:layout_width="0dp"
@@ -31,16 +31,18 @@
             app:layout_constraintStart_toEndOf="@+id/btnSkip"
             app:layout_constraintTop_toTopOf="@+id/btnSkip" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSkip"
             style="@style/text_16sp_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_transparent_bordered"
             android:stateListAnimator="@null"
             android:text="@string/skip"
             android:textAllCaps="false"
-            app:cornerRadius="10dp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

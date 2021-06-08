@@ -25,7 +25,7 @@ class BatikListAdapter(
 		RecyclerView.ViewHolder(binding.root)
 	{
 		
-		fun checkFavourite(model : BatikEntity) : Boolean
+		private fun checkFavourite(model : BatikEntity) : Boolean
 		{
 			if (model.favorite_batik == 1)
 			{
@@ -85,23 +85,23 @@ class BatikListAdapter(
 						.show()
 				}
 				
-				binding.cvBatik.setOnClickListener {
-					val intent = Intent(itemView.context , DetailBatikActivity::class.java)
-					intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
-					ctx.startActivity(intent)
-				}
+				
 			}
-			
+			itemView.setOnClickListener {
+				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
+				intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
+				ctx.startActivity(intent)
+			}
 			
 		}
 	}
 	
-	private val BatikList = ArrayList<BatikEntity>()
+	private val batikList = ArrayList<BatikEntity>()
 	
 	fun setList(model : List<BatikEntity>)
 	{
-		BatikList.clear()
-		BatikList.addAll(model)
+		batikList.clear()
+		batikList.addAll(model)
 		notifyDataSetChanged()
 	}
 	
@@ -119,10 +119,10 @@ class BatikListAdapter(
 	
 	override fun onBindViewHolder(holder : ItemTarget , position : Int)
 	{
-		holder.bind(BatikList[position])
+		holder.bind(batikList[position])
 	}
 	
-	override fun getItemCount() : Int = BatikList.size
+	override fun getItemCount() : Int = batikList.size
 	
 	
 }
