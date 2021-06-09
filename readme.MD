@@ -8,7 +8,7 @@ We use Flask, a microframework for python to create a web application. Flask mak
 1. Clone this repository.
 2. Make sure you're inside cloud-prediction-python directory.
 3. Get your own key.json from Firebase Service Account.
-4. Put pre-trained model into this folder, name it "motif.h5" for the motif prediction model and "model_technique.h5" for the technique prediction model.
+4. Put pre-trained model into this folder, name it "motif.h5" for the motif prediction model and "model_technique.h5" for the technique prediction model. (Refer to [Machine Learning Documentation)](https://github.com/farrel25/naratik/tree/machine-learning)
 5. pip install -r requirements.txt
 
 ## How To Run
