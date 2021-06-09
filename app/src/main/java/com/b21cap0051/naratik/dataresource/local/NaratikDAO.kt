@@ -14,7 +14,7 @@ interface NaratikDAO
 	@Query("SELECT * FROM Table_Batik ORDER BY id ASC")
 	fun getAllBatikDb() : LiveData<List<BatikEntity>>
 	
-	@Query("SELECT * FROM Table_Batik ORDER BY RANDOM() LIMIT 4")
+	@Query("SELECT * FROM Table_Batik LIMIT 4 OFFSET ABS(RANDOM()) % MAX(( SELECT COUNT(*) FROM table_batik), 4)")
 	fun getAllBatikRandomDb() : LiveData<List<BatikEntity>>
 	
 	

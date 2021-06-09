@@ -65,9 +65,14 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 				
 				if (newText != null)
 				{
-					//					findItem(newText)
-					binding.rvSearchBatik.visibility = View.VISIBLE
-					binding.llSearch.visibility = View.GONE
+					if(newText.length > 0){
+						findItem(newText)
+						binding.rvSearchBatik.visibility = View.VISIBLE
+						binding.llSearch.visibility = View.GONE
+					}else{
+						binding.rvSearchBatik.visibility = View.GONE
+						binding.llSearch.visibility = View.VISIBLE
+					}
 				}
 				return false
 			}
