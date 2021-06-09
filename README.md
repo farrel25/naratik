@@ -32,9 +32,20 @@ Inside batik-technique-classification folder, there are some files:
 
 
 ## 2. Batik Motif Classification
-Consisting 5 batik motifs :
+Consisting 5 motifs batik to classify :
 1. Ceplok
 2. Kawung
 3. Parang
 4. Megamendung 
 5. Sidomukti
+
+### Dataset :
+After we collected dataset manually from various sources, we got total 3.118 datasets. The distribution as follows :
+Ceplok's dataset : 708
+Kawung's dataset : 661
+Parang's dataset : 922
+Megamendung's dataset : 560
+Sidomukti's dataset : 267
+
+
+
