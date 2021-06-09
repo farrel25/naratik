@@ -1,6 +1,6 @@
 # B21-CAP0051 - Capstone Project (Naratik)
-## Overview
-Hello Everyone! :wave:
+
+## Hello Everyone! :wave:
 
 We are from team B21-CAP0051, and this is our project repository.
 
