@@ -32,7 +32,7 @@ Inside batik-technique-classification folder, there are some files:
 
 
 ## 2. Batik Motif Classification
-Consisting 5 motifs batik to classify :
+Consisting 5 motifs batik to classify, including :
 1. Ceplok
 2. Kawung
 3. Parang
