@@ -47,5 +47,8 @@ After we collected dataset manually from various sources, we got total 3.118 dat
 - Megamendung's dataset : 560
 - Sidomukti's dataset : 267
 
+### TRANSFER LEARNING
+We use the base model from the InceptionV3 pre-trained model developed at Google on Imagenet Dataset
+
 
 
