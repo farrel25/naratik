@@ -43,12 +43,10 @@ class DetailBatikActivity : AppCompatActivity()
 		mainView = ViewModelProvider(this , factory)[FavoriteMainView::class.java]
 		if (isLiked(batik))
 		{
-			binding.IsFavoriteButton.backgroundTintList =
-				ColorStateList.valueOf(Color.rgb(255 , 0 , 0))
+			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_clicked)
 		} else
 		{
-			binding.IsFavoriteButton.backgroundTintList =
-				ColorStateList.valueOf(Color.rgb(255 , 255 , 255))
+			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite)
 		}
 		batikMiniAdapter = BatikMiniListAdapter()
 		loadDetail(batik)

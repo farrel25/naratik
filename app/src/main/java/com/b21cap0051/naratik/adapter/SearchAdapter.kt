@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.util.*
 
-class SearchAdapter(private val callBack : ItemBatikCallBack) :
+class SearchAdapter() :
 	RecyclerView.Adapter<SearchAdapter.ItemTarget>()
 {
 	
@@ -41,7 +41,6 @@ class SearchAdapter(private val callBack : ItemBatikCallBack) :
 			binding.cvSearch.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
 				intent.putExtra(EXTRA_BATIK , model)
-				callBack.itemBatikClick(model)
 				itemView.context.startActivity(intent)
 			}
 		}

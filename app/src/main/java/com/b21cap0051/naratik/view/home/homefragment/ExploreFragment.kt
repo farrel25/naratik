@@ -28,7 +28,7 @@ import com.b21cap0051.naratik.util.naratikDependencys
 import com.b21cap0051.naratik.util.vo.Status
 
 
-class ExploreFragment : Fragment() , ItemArticleCallBack
+class ExploreFragment : Fragment()
 {
 	
 	private var _binding : FragmentExploreBinding? = null
@@ -140,7 +140,7 @@ class ExploreFragment : Fragment() , ItemArticleCallBack
 	
 	private fun loadListArticle()
 	{
-		adapterArticle = ArticleListAdapter(this)
+		adapterArticle = ArticleListAdapter()
 		
 		binding.rvArticle.layoutManager =
 			LinearLayoutManager(activity , LinearLayoutManager.HORIZONTAL , false)
@@ -155,8 +155,4 @@ class ExploreFragment : Fragment() , ItemArticleCallBack
 	}
 	
 	
-	override fun itemArticleClick(model : ArticleModel)
-	{
-	
-	}
 }

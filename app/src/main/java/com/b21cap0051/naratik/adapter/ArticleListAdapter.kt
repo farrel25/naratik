@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowArticleBinding
 import com.b21cap0051.naratik.dataresource.datamodellist.ArticleModel
 import com.b21cap0051.naratik.view.DetailArticleActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class ArticleListAdapter() :
 	RecyclerView.Adapter<ArticleListAdapter.ItemTarget>()

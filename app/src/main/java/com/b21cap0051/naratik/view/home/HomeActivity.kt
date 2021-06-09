@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.ActivityHomeBinding
 import com.b21cap0051.naratik.databinding.CustomActionBarLogoFavoriteBinding

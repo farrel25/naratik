@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.adapter.ProductAdapter
 import com.b21cap0051.naratik.adapter.StoreAdapter
 import com.b21cap0051.naratik.databinding.FragmentStoreBinding
-import com.b21cap0051.naratik.dataresource.local.model.ProductEntity
-import com.b21cap0051.naratik.dataresource.local.model.StoreEntity
 import com.b21cap0051.naratik.view.StoreActivity
 import com.b21cap0051.naratik.util.DataDummy
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 
 
-class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
+class StoreFragment : Fragment()
 {
 	
 	private var _binding : FragmentStoreBinding? = null
@@ -54,7 +52,7 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 	
 	private fun loadStore()
 	{
-		storeAdapter = StoreAdapter(this)
+		storeAdapter = StoreAdapter()
 		binding.rvStore.layoutManager = LinearLayoutManager(
 			requireActivity() ,
 			LinearLayoutManager.HORIZONTAL ,
@@ -64,7 +62,7 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 		val listStore = DataDummy.generateDummyStore()
 		storeAdapter.setList(listStore)
 		
-		binding.btnShowAllStore.setOnClickListener() {
+		binding.btnShowAllStore.setOnClickListener {
 			val intent = Intent(requireActivity() , StoreActivity::class.java)
 			startActivity(intent)
 		}
@@ -72,7 +70,7 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 	
 	private fun loadProduct()
 	{
-		productAdapter = ProductAdapter(this)
+		productAdapter = ProductAdapter()
 		binding.rvProduct.layoutManager = LinearLayoutManager(
 			requireActivity() ,
 			LinearLayoutManager.HORIZONTAL ,
@@ -83,16 +81,5 @@ class StoreFragment : Fragment() , ItemProductCallback , ItemStoreCallback
 		productAdapter.setList(listProduct)
 	}
 	
-	companion object
-	{
 	
-	}
-	
-	override fun itemProductClick(model : ProductEntity)
-	{
-	}
-	
-	override fun itemStoreClick(model : StoreEntity)
-	{
-	}
 }

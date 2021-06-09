@@ -119,7 +119,7 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 	
 	private fun loadSearch(model : List<BatikEntity>)
 	{
-		searchAdapter = SearchAdapter(this)
+		searchAdapter = SearchAdapter()
 		binding.rvSearchBatik.layoutManager = LinearLayoutManager(
 			this ,
 			LinearLayoutManager.VERTICAL ,
