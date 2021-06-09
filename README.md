@@ -53,5 +53,6 @@ We use Convolutional Neural Network and the base model from the InceptionV3 pre-
 ### SUPPORTED BY 
 Tensorflow : 2.5.0
 
-
+### LAUNCH
+Fix model that we use 
 
