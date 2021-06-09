@@ -32,3 +32,9 @@ Inside batik-technique-classification folder, there are some files:
 
 
 ## 2. Batik Motif Classification
+Consisting 5 batik motifs :
+1. Ceplok
+2. Kawung
+3. Parang
+4. Megamendung 
+5. Sidomukti
