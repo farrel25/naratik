@@ -1,12 +1,12 @@
 package com.b21cap0051.naratik.view
 
-import android.content.res.ColorStateList
-import android.graphics.Color
+
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21cap0051.naratik.R
@@ -30,7 +30,7 @@ class DetailBatikActivity : AppCompatActivity()
 	companion object
 	{
 		const val EXTRA_BATIK = "extra_batik"
-		const val EXTRA_RESULT = "extra_result"
+//		const val EXTRA_RESULT = "extra_result"
 	}
 	
 	override fun onCreate(savedInstanceState : Bundle?)
@@ -44,11 +44,11 @@ class DetailBatikActivity : AppCompatActivity()
 		batikMiniAdapter = BatikMiniListAdapter()
 		if (isLiked(batik))
 		{
-			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_clicked)
+			binding.IsFavoriteButton.setColorFilter(ContextCompat.getColor(this,R.color.red))
 		}
 		else{
 			
-			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_outlined)
+			binding.IsFavoriteButton.setColorFilter(ContextCompat.getColor(this,R.color.white))
 		}
 		loadDetail(batik)
 		loadActionBar()
@@ -60,14 +60,14 @@ class DetailBatikActivity : AppCompatActivity()
 			if (isLiked(batik))
 			{
 				batik.favorite_batik = 0
-				binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_outlined)
+				binding.IsFavoriteButton.setColorFilter(ContextCompat.getColor(this,R.color.white))
 				mainView.setFavorite(batik)
 				Toast.makeText(this , "${batik.name_batik} UnFavourite!" , Toast.LENGTH_SHORT)
 					.show()
 			} else
 			{
 				batik.favorite_batik = 1
-				binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_clicked)
+				binding.IsFavoriteButton.setColorFilter(ContextCompat.getColor(this,R.color.red))
 				mainView.setFavorite(batik)
 				Toast.makeText(this , "${batik.name_batik} Favourite!" , Toast.LENGTH_SHORT)
 					.show()
@@ -114,10 +114,10 @@ class DetailBatikActivity : AppCompatActivity()
 	private fun isLiked(model : BatikEntity) : Boolean = model.favorite_batik == 1
 	
 	
-	private fun loadResultDetail()
-	{
-		binding.collapsingToolbar.title = EXTRA_RESULT
-	}
+//	private fun loadResultDetail()
+//	{
+//		binding.collapsingToolbar.title = EXTRA_RESULT
+//	}
 	
 
 	
