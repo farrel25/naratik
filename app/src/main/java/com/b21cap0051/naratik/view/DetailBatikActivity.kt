@@ -41,14 +41,15 @@ class DetailBatikActivity : AppCompatActivity()
 		val batik = intent.getParcelableExtra<BatikEntity>(EXTRA_BATIK) as BatikEntity
 		val factory = ViewFactoryModel.GetInstance(this)
 		mainView = ViewModelProvider(this , factory)[FavoriteMainView::class.java]
+		batikMiniAdapter = BatikMiniListAdapter()
 		if (isLiked(batik))
 		{
 			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_clicked)
-		} else
-		{
-			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite)
 		}
-		batikMiniAdapter = BatikMiniListAdapter()
+		else{
+			
+			binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_outlined)
+		}
 		loadDetail(batik)
 		loadActionBar()
 		loadViewMore()
@@ -59,16 +60,14 @@ class DetailBatikActivity : AppCompatActivity()
 			if (isLiked(batik))
 			{
 				batik.favorite_batik = 0
-				binding.IsFavoriteButton.backgroundTintList =
-					ColorStateList.valueOf(Color.rgb(255 , 255 , 255))
+				binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_outlined)
 				mainView.setFavorite(batik)
 				Toast.makeText(this , "${batik.name_batik} UnFavourite!" , Toast.LENGTH_SHORT)
 					.show()
 			} else
 			{
 				batik.favorite_batik = 1
-				binding.IsFavoriteButton.backgroundTintList =
-					ColorStateList.valueOf(Color.rgb(255 , 0 , 0))
+				binding.IsFavoriteButton.setImageResource(R.drawable.ic_favorite_clicked)
 				mainView.setFavorite(batik)
 				Toast.makeText(this , "${batik.name_batik} Favourite!" , Toast.LENGTH_SHORT)
 					.show()
