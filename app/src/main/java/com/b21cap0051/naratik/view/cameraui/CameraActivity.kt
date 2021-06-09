@@ -2,7 +2,6 @@ package com.b21cap0051.naratik.view.cameraui
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -66,7 +65,7 @@ class CameraActivity : AppCompatActivity()
 			                                 )
 		}
 		binding.btnCapture.setOnClickListener {
-			takePhoto(this)
+			takePhoto()
 		}
 		
 	}
@@ -115,7 +114,6 @@ class CameraActivity : AppCompatActivity()
 				this
 			                                 )
 		cameraProviderFuture.addListener(
-			Runnable
 			{
 				val cameraProvider : ProcessCameraProvider = cameraProviderFuture.get()
 				
@@ -180,7 +178,7 @@ class CameraActivity : AppCompatActivity()
 	}
 	
 	
-	private fun takePhoto(context : Context)
+	private fun takePhoto()
 	{
 		val imageCapture = capturePhoto ?: return
 		val data = Random.nextInt(100)

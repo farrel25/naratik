@@ -12,12 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import com.b21cap0051.naratik.R
 import com.b21cap0051.naratik.databinding.FragmentUploadProcessBinding
 import com.b21cap0051.naratik.dataresource.remotedata.model.ImageUploadModel
+import com.b21cap0051.naratik.util.vo.Status.*
 import com.b21cap0051.naratik.viewmodel.UploadMainView
 import com.b21cap0051.naratik.viewmodel.ViewFactoryModel
 import com.b21cap0051.naratik.view.ResultActivity
 import com.b21cap0051.naratik.view.ResultActivity.Companion.KEY_DATA
-import com.b21cap0051.naratik.util.vo.Status.ERROR
-import com.b21cap0051.naratik.util.vo.Status.SUCCESS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -61,6 +60,10 @@ class UploadProcessFragment : DialogFragment()
 				{
 					backCameraActivity()
 					Toast.makeText(requireContext() , response.message , Toast.LENGTH_SHORT).show()
+				}
+				LOADING ->
+				{
+				
 				}
 			}
 		})
@@ -112,6 +115,10 @@ class UploadProcessFragment : DialogFragment()
 				{
 					Toast.makeText(context , response.message , Toast.LENGTH_SHORT).show()
 					backCameraActivity()
+				}
+				LOADING ->
+				{
+				
 				}
 			}
 		})

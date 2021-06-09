@@ -20,7 +20,7 @@ import com.b21cap0051.naratik.viewmodel.PredictMainView
 import com.b21cap0051.naratik.viewmodel.ViewFactoryModel
 import com.b21cap0051.naratik.view.cameraui.CameraActivity
 import com.b21cap0051.naratik.util.vo.Status
-import com.b21cap0051.naratik.util.voapi.StatusResponse
+import com.b21cap0051.naratik.util.voapi.StatusResponse.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.mikephil.charting.animation.Easing
@@ -89,13 +89,17 @@ class ResultActivity : AppCompatActivity()
 		mainView.GetTechnique(getID(data.uri)).observe(this , { response ->
 			when (response.statusResponse)
 			{
-				StatusResponse.SUCCESS ->
+				SUCCESS ->
 				{
 					getImage(response.body.imgUrl!!)
 					setupPieChart()
 					loadBatikResult(response.body)
 				}
-				StatusResponse.ERROR   ->
+				ERROR   ->
+				{
+				
+				}
+				EMPTY   ->
 				{
 				
 				}
@@ -105,15 +109,15 @@ class ResultActivity : AppCompatActivity()
 		mainView.GetMotif(getID(data.uri)).observe(this , { response ->
 			when (response.statusResponse)
 			{
-				StatusResponse.SUCCESS ->
+				SUCCESS ->
 				{
 					loadListMotifResult(response.body)
 				}
-				StatusResponse.ERROR   ->
+				ERROR   ->
 				{
 				
 				}
-				StatusResponse.EMPTY   ->
+				EMPTY   ->
 				{
 				
 				}
@@ -226,7 +230,7 @@ class ResultActivity : AppCompatActivity()
 		data.setDrawValues(true)
 		data.setValueFormatter(PercentFormatter(batikChart))
 		data.setValueTextSize(10f)
-		data.setValueTextColor(resources.getColor(R.color.black))
+		data.setValueTextColor(ContextCompat.getColor(applicationContext,R.color.black))
 		
 		batikChart.data = data
 		batikChart.invalidate()

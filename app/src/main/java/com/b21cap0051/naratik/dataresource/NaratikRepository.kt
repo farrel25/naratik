@@ -73,7 +73,7 @@ class NaratikRepository constructor(
 				RemoteData.GetAllBatikResponse()
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				data?.isEmpty()!! || data == null
+				data?.isEmpty()!!
 			
 		}.asLiveData()
 	}
@@ -110,7 +110,7 @@ class NaratikRepository constructor(
 				RemoteData.GetAllBatikResponse()
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				data?.isEmpty()!! || data == null
+				data?.isEmpty()!!
 			
 		}.asLiveData()
 	}
@@ -184,7 +184,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : List<PopularBatikEntity>?) : Boolean =
-				data?.isEmpty()!! || data == null
+				data?.isEmpty()!!
 			
 			override fun loadfromDb() : LiveData<List<PopularBatikEntity>> =
 				LocalData.getAllPopularBatik()
@@ -224,7 +224,7 @@ class NaratikRepository constructor(
 			}
 			
 			override fun shouldFetch(data : PagedList<ShopEntity>?) : Boolean =
-				data?.isEmpty()!! || data == null
+				data?.isEmpty()!!
 			
 			
 			override fun loadfromDb() : LiveData<PagedList<ShopEntity>>

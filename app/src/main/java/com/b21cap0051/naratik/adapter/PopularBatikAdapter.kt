@@ -14,6 +14,7 @@ import com.b21cap0051.naratik.dataresource.local.model.PopularBatikEntity
 import com.b21cap0051.naratik.viewmodel.BatikMainView
 import com.b21cap0051.naratik.view.DetailBatikActivity
 import com.b21cap0051.naratik.util.vo.Status
+import com.b21cap0051.naratik.util.vo.Status.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import eightbitlab.com.blurview.RenderScriptBlur
@@ -44,7 +45,7 @@ class PopularBatikAdapter(
 			mainView.getAllFavoriteDb().observe(life , { response ->
 				when (response.Status)
 				{
-					Status.SUCCESS ->
+					SUCCESS ->
 					{
 						val data = response.Data
 						for (i in 0 until data?.size!!)
@@ -55,6 +56,15 @@ class PopularBatikAdapter(
 								break
 							}
 						}
+					}
+					LOADING ->
+					{
+					
+					}
+					ERROR   ->
+					{
+					
+					
 					}
 				}
 			})
