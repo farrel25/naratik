@@ -31,3 +31,4 @@ Inside batik-technique-classification folder, there are some files:
 
 
 
+## 2. Batik Motif Classification
