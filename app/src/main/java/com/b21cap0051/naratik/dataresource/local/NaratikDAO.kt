@@ -52,7 +52,7 @@ interface NaratikDAO
 	@Query("DELETE FROM history_table")
 	fun delAllHistory()
 	
-	@Query("SELECT * FROM history_table ORDER BY id")
+	@Query("SELECT * FROM history_table ORDER BY id DESC")
 	fun getAllQueryHistory() : LiveData<List<HistoryEntity>>
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
