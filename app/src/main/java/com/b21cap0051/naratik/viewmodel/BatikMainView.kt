@@ -19,7 +19,6 @@ class BatikMainView(private val Repository : NaratikRepository) : ViewModel()
 	fun getAllbatikRandom() : LiveData<Resource<List<BatikEntity>>> =
 		Repository.GetAllBatikRandomDb()
 	
-	
 	fun setFavorite(model : BatikEntity) = Repository.updateLikedBatik(model)
 	
 	fun getAllFavoriteDb() : LiveData<Resource<List<BatikEntity>>> = Repository.GetAllFavorite()

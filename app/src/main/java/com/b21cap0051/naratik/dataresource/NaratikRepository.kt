@@ -110,7 +110,7 @@ class NaratikRepository constructor(
 				RemoteData.GetAllBatikResponse()
 			
 			override fun shouldFetch(data : List<BatikEntity>?) : Boolean =
-				data?.isEmpty()!!
+				data == null || data.isEmpty()
 			
 		}.asLiveData()
 	}

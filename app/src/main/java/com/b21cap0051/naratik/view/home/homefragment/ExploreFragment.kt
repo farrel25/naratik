@@ -111,7 +111,7 @@ class ExploreFragment : Fragment()
 		binding.rvBatik.layoutManager =
 			StaggeredGridLayoutManager(row , StaggeredGridLayoutManager.VERTICAL)
 		binding.rvBatik.adapter = adapterBatik
-		adapterBatik.setList(value)
+			adapterBatik.setList(value)
 		
 		binding.shimmerLayout.visibility = View.GONE
 		
