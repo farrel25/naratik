@@ -54,5 +54,5 @@ We use Convolutional Neural Network and the base model from the InceptionV3 pre-
 Tensorflow : 2.5.0
 
 ### LAUNCH
-Fix model that we use [colab_image_classification_inceptionv3.ipynb](https://github.com/farrel25/naratik/blob/machine-learning/batik-motif-classification/colab_image_classification_inceptionv3.ipynb)
+Inside batik-motif-classification folder, we use fix model : [colab_image_classification_inceptionv3.ipynb](https://github.com/farrel25/naratik/blob/machine-learning/batik-motif-classification/colab_image_classification_inceptionv3.ipynb)
 
