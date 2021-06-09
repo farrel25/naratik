@@ -29,13 +29,12 @@ class BatikFavoriteAdapter(private val ctx : Context , private val mainView : Fa
 		notifyDataSetChanged()
 	}
 	
-	fun removeItem(position : Int)
-	{
-		this.listFavorite.removeAt(position)
-		notifyItemRemoved(position)
-		notifyItemRangeChanged(position , this.listFavorite.size)
-	}
-	
+//	fun removeItem(position : Int)
+//	{
+//		this.listFavorite.removeAt(position)
+//		notifyItemRemoved(position)
+//		notifyItemRangeChanged(position , this.listFavorite.size)
+//	}
 	
 	inner class ItemTarget(private val binding : ItemRowBatikFavoriteBinding) :
 		RecyclerView.ViewHolder(binding.root)

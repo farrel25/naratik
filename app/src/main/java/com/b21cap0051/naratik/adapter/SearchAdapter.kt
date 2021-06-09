@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21cap0051.naratik.databinding.ItemRowSearchBatikBinding
 import com.b21cap0051.naratik.dataresource.local.model.BatikEntity
+import com.b21cap0051.naratik.dataresource.local.model.HistoryEntity
 import com.b21cap0051.naratik.view.DetailBatikActivity
 import com.b21cap0051.naratik.view.DetailBatikActivity.Companion.EXTRA_BATIK
+import com.b21cap0051.naratik.viewmodel.FavoriteMainView
+import com.b21cap0051.naratik.viewmodel.SearchMainView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.util.*
 
-class SearchAdapter() :
+class SearchAdapter(private val mainView : SearchMainView) :
 	RecyclerView.Adapter<SearchAdapter.ItemTarget>()
 {
 	
@@ -40,6 +43,7 @@ class SearchAdapter() :
 			
 			binding.cvSearch.setOnClickListener {
 				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
+				mainView.AddHistory(HistoryEntity(0,model.name_batik))
 				intent.putExtra(EXTRA_BATIK , model)
 				itemView.context.startActivity(intent)
 			}

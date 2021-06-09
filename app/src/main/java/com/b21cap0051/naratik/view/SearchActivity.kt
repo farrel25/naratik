@@ -53,7 +53,7 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 				if (query != null && TextUtils.getTrimmedLength(query) > 0)
 				{
 					findItem(query)
-					viewModel.AddHistory(HistoryEntity(0 , query))
+//					viewModel.AddHistory(HistoryEntity(0 , query))
 					binding.rvSearchBatik.visibility = View.VISIBLE
 					binding.llSearch.visibility = View.GONE
 				}
@@ -78,8 +78,6 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 			}
 			
 		})
-		
-		
 		
 		loadActionBar()
 		loadBatik()
@@ -124,7 +122,7 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 	
 	private fun loadSearch(model : List<BatikEntity>)
 	{
-		searchAdapter = SearchAdapter()
+		searchAdapter = SearchAdapter(viewModel)
 		binding.rvSearchBatik.layoutManager = LinearLayoutManager(
 			this ,
 			LinearLayoutManager.VERTICAL ,
@@ -162,6 +160,7 @@ class SearchActivity : AppCompatActivity() , ItemCallbackHistory
 				binding.rvSearchHistory.visibility = View.VISIBLE
 			}
 		})
+		
 	}
 	
 	private fun loadActionBar()
