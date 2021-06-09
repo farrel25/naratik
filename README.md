@@ -50,5 +50,8 @@ After we collected dataset manually from various sources, we got total 3.118 dat
 ### TRANSFER LEARNING
 We use Convolutional Neural Network and the base model from the InceptionV3 pre-trained model developed at Google on Imagenet Dataset
 
+### SUPPORTED BY 
+Tensorflow : 2.5.0
+
 
 
