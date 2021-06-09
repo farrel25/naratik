@@ -41,11 +41,11 @@ Consisting 5 motifs batik to classify, including :
 
 ### Dataset :
 After we collected dataset manually from various sources, we got total 3.118 datasets. The distribution as follows :
-Ceplok's dataset : 708
-Kawung's dataset : 661
-Parang's dataset : 922
-Megamendung's dataset : 560
-Sidomukti's dataset : 267
+- Ceplok's dataset : 708
+- Kawung's dataset : 661
+- Parang's dataset : 922
+- Megamendung's dataset : 560
+- Sidomukti's dataset : 267
 
 
 
