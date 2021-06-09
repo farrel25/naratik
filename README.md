@@ -39,7 +39,7 @@ Consisting 5 motifs batik to classify, including :
 4. Megamendung 
 5. Sidomukti
 
-### Dataset :
+### DATASET
 After we collected dataset manually from various sources, we got total 3.118 datasets. The distribution as follows :
 - Ceplok's dataset : 708
 - Kawung's dataset : 661
