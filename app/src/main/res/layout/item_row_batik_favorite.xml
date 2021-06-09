@@ -24,7 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/image" />
 
         <TextView
             android:id="@+id/tvItemNameFavBatik"
@@ -44,8 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/batik_id"
-            app:layout_constraintStart_toStartOf="@+id/tvItemNameFavBatik"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameFavBatik" />
+            app:layout_constraintStart_toStartOf="@+id/tvItemLocationFavBatik"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemLocationFavBatik" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnItemFavBatik"
@@ -55,6 +56,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvItemLocationFavBatik"
+            style="@style/text_14sp_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/batik_location"
+            app:layout_constraintStart_toStartOf="@+id/tvItemNameFavBatik"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameFavBatik" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -40,7 +40,7 @@ class BatikFavoriteAdapter(private val ctx : Context , private val mainView : Fa
 	inner class ItemTarget(private val binding : ItemRowBatikFavoriteBinding) :
 		RecyclerView.ViewHolder(binding.root)
 	{
-		fun checkFavourite(model : BatikEntity) : Boolean
+		private fun checkFavourite(model : BatikEntity) : Boolean
 		{
 			if (model.favorite_batik == 1)
 			{
@@ -70,6 +70,7 @@ class BatikFavoriteAdapter(private val ctx : Context , private val mainView : Fa
 			binding.tvItemNameFavBatik.text = model.name_batik
 			binding.tvItemIdFavBatik.text =
 				itemView.resources.getString(R.string.batik_id , model.batik_id)
+			binding.tvItemLocationFavBatik.text = model.daerah_batik
 			
 			
 			binding.btnItemFavBatik.setOnClickListener {
@@ -94,6 +95,12 @@ class BatikFavoriteAdapter(private val ctx : Context , private val mainView : Fa
 					intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
 					ctx.startActivity(intent)
 				}
+			}
+			
+			itemView.setOnClickListener {
+				val intent = Intent(itemView.context , DetailBatikActivity::class.java)
+				intent.putExtra(DetailBatikActivity.EXTRA_BATIK , model)
+				ctx.startActivity(intent)
 			}
 		}
 	}
