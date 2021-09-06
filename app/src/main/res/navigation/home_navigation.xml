@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.b21cap0051.naratik.view.home.homefragment.ExploreFragment"
+        android:name="com.naratik.batikapps.ui.view.home.homefragment.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" />
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.b21cap0051.naratik.view.home.homefragment.StoreFragment"
+        android:name="com.naratik.batikapps.ui.view.home.homefragment.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" />
 

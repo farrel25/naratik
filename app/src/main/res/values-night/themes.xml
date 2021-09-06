@@ -7,8 +7,8 @@
         <item name="colorPrimaryVariant">@color/grey_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/brown_200</item>
-        <item name="colorSecondaryVariant">@color/brown_200</item>
+        <item name="colorSecondary">@color/cream</item>
+        <item name="colorSecondaryVariant">@color/cream</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/grey_100</item>

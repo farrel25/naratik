@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".view.home.homefragment.ExploreFragment">
+    tools:context=".ui.view.home.homefragment.ExploreFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -102,7 +100,7 @@
             android:layout_height="28dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:backgroundTint="@color/brown_200"
+            android:backgroundTint="@color/cream"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:stateListAnimator="@null"
@@ -112,7 +110,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/txtBatik"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtBatik"
-            tools:ignore="RelativeOverlap" />
+            tools:ignore="RelativeOverlap,TouchTargetSizeCheck" />
 
     </RelativeLayout>
 
@@ -174,7 +172,7 @@
             android:layout_centerInParent="true"
 
             android:layout_marginEnd="0dp"
-            android:backgroundTint="@color/brown_200"
+            android:backgroundTint="@color/cream"
             android:foregroundGravity="center"
             android:includeFontPadding="false"
             android:insetTop="0dp"
@@ -204,4 +202,4 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

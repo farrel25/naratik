@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.onboarding.OnBoardingActivity">
+    tools:context=".ui.view.onboarding.OnBoardingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:backgroundTint="@color/brown_200"
+            android:backgroundTint="@color/cream"
             android:stateListAnimator="@null"
             android:text="@string/next"
             android:textAllCaps="false"

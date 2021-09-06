@@ -14,6 +14,8 @@
         app:icon="@drawable/ic_favorite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -24,7 +26,7 @@
         android:clickable="true"
         android:contentDescription="@string/image"
         android:focusable="true"
-        android:src="@drawable/img_logo_naratik"
+        android:src="@drawable/img_logo_dark_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

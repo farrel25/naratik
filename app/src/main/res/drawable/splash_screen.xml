@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/brown_200" />
+    <item android:drawable="@color/cream" />
 
     <item
-        android:width="130dp"
-        android:height="180dp"
+        android:width="200dp"
+        android:height="160dp"
         android:gravity="center">
         <bitmap
             android:gravity="fill_horizontal|fill_vertical"
-            android:src="@drawable/img_logo_splash_screen" />
+            android:src="@drawable/img_splash_screen_dark_transparent" />
     </item>
 
 

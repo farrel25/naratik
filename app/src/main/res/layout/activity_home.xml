@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.HomeActivity">
+    android:orientation="vertical"
+    tools:context=".ui.view.home.HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,6 +15,8 @@
             android:id="@+id/actionBarItem"
             layout="@layout/custom_action_bar_logo_favorite" />
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -27,6 +30,7 @@
             android:layout_height="match_parent"
             app:defaultNavHost="true"
             app:navGraph="@navigation/home_navigation" />
+
     </androidx.core.widget.NestedScrollView>
 
 

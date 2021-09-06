@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/drawable/bg_gradient_dark.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/bg_gradient_light.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/bg_image_corner.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/item_selector.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/on_boarding_active.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/on_boarding_inactive.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/activity_batik.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/activity_camera.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_feedback.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_store.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_action_bar_back.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_action_bar_back_filter.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_action_bar_back_sort.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_action_bar_back_title.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_action_bar_logo_favorite.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_snack_bar.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/fragment_batik_favourite.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/fragment_store.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/item_row_all_store.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/item_row_store.xml" value="0.1796875" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.1796875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
